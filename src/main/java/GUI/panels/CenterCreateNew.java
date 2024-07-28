@@ -305,7 +305,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
             gui.goToPanel(OperatorLogin.ID, null);
 
-        } else if (currentOperator.getCurrentOperator().centerID() != null) {
+        } else if (currentOperator.getCurrentOperator().centerID() != 0) {
             JOptionPane.showMessageDialog(
                     this,
                     "Hai già creato il tuo centro.",
