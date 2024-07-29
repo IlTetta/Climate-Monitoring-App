@@ -72,7 +72,7 @@ public class DataHandler extends DataQuery {
                                      String districtName,
                                      Integer[] cityIDs) throws SQLException {
 
-        String checkSql = "SELECT * FROM centrimonitoraggio WHERE centername = ?, streetname = ?, streetnumber = ?, CAP = ?, townname = ?, districtname = ?";
+        String checkSql = "SELECT * FROM centrimonitoraggio WHERE centername = ? AND streetname = ? AND streetnumber = ? AND CAP = ? AND townname = ? AND districtname = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, centerName);
             checkStmt.setString(2, streetName);
