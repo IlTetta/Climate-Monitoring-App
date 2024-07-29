@@ -9,6 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 //Classe che gestisce i dati: aggiunge e aggiorna i record nel database
 public class DataHandler extends DataQuery {
@@ -118,25 +121,53 @@ public class DataHandler extends DataQuery {
                               RecordWeather.WeatherData glacierElevation,
                               RecordWeather.WeatherData glacierMass) throws SQLException {
 
-        String insertSql = "INSERT INTO parametriclimatici (cityid, centerid, date, wind_score, wind_comment, humidity_score, humidity_comment, pressure_score, pressure_comment, temperature_score, temperature_comment, precipitation_score, precipitation_comment, glacierelevation_score, glacierelevation_comment, glaciermass_score, glaciermass_comment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String insertSql = "INSERT INTO parametriclimatici (cityid, centerid, date, windscore, windcomment, humidityscore, humiditycomment, pressurescore, pressurecomment, temperaturescore, temperaturecomment, precipitationscore, precipitationcomment, glacierelevationscore, glacierelevationcomment, glaciermassscore, glaciermasscomment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try(PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStmt.setInt(1, cityID);
             insertStmt.setInt(2, centerID);
-            insertStmt.setString(3, date);
-            insertStmt.setInt(4, wind.score());
+            try {
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+                java.util.Date parseDate = dateFormat.parse(date);
+                java.sql.Date sqlDate = new java.sql.Date(parseDate.getTime());
+                insertStmt.setDate(3, sqlDate);
+            } catch (ParseException e) {
+                throw new RuntimeException(e);
+            }
+            if(wind.score()!=null)
+                insertStmt.setInt(4, wind.score());
+            else
+                insertStmt.setNull(4, java.sql.Types.INTEGER);
             insertStmt.setString(5, wind.comment());
-            insertStmt.setInt(6, humidity.score());
+            if (humidity.score()!=null)
+                insertStmt.setInt(6, humidity.score());
+            else
+                insertStmt.setNull(6, java.sql.Types.INTEGER);
             insertStmt.setString(7, humidity.comment());
-            insertStmt.setInt(8, pressure.score());
+            if (pressure.score()!=null)
+                insertStmt.setInt(8, pressure.score());
+            else
+                insertStmt.setNull(8, java.sql.Types.INTEGER);
             insertStmt.setString(9, pressure.comment());
-            insertStmt.setInt(10, temperature.score());
+            if (temperature.score()!=null)
+                insertStmt.setInt(10, temperature.score());
+            else
+                insertStmt.setNull(10, java.sql.Types.INTEGER);
             insertStmt.setString(11, temperature.comment());
-            insertStmt.setInt(12, precipitation.score());
+            if (precipitation.score()!=null)
+                insertStmt.setInt(12, precipitation.score());
+            else
+                insertStmt.setNull(12, java.sql.Types.INTEGER);
             insertStmt.setString(13, precipitation.comment());
-            insertStmt.setInt(14, glacierElevation.score());
+            if (glacierElevation.score()!=null)
+                insertStmt.setInt(14, glacierElevation.score());
+            else
+                insertStmt.setNull(14, java.sql.Types.INTEGER);
             insertStmt.setString(15, glacierElevation.comment());
-            insertStmt.setInt(16, glacierMass.score());
+            if (glacierMass.score()!=null)
+                insertStmt.setInt(16, glacierMass.score());
+            else
+                insertStmt.setNull(16, java.sql.Types.INTEGER);
             insertStmt.setString(17, glacierMass.comment());
             insertStmt.executeUpdate();
 

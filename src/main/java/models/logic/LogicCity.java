@@ -105,6 +105,7 @@ public class LogicCity {
             if (data.score() != null) {
 
                 categoryScore.put(category, categoryScore.getOrDefault(category, 0f) + data.score());
+
                 categoryRecordCounts.put(category, categoryRecordCounts.getOrDefault(category, 0) + 1);
 
             }

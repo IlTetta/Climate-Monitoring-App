@@ -154,9 +154,10 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         textfieldLongitude.setText(String.valueOf(RecordCity.longitude()));
 
         QueryCondition condition = new QueryCondition("cityID", cityID);
-        RecordWeather[] weatherRecords = new RecordWeather[0];
+        RecordWeather[] weatherRecords;
         try {
             weatherRecords = mainModel.data.getWeatherBy(condition);
+
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -171,7 +172,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                 Integer recordCount = weatherTableData.getCategoryRecordCount(keyString);
                 String comment = String.join(" | ", weatherTableData.getCategoryComments(keyString));
 
-                if (avgScore != null) {
+                if (avgScore != 0) {
                     defaulmodelTable.setValueAt(avgScore.toString(), row, 1);
                 } else {
                     defaulmodelTable.setValueAt("N/A", row, 1);

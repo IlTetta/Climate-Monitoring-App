@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="climateMonitoring@localhost" uuid="6f81dc6f-98f1-4caa-819b-e5497a14c4fb">
+    <data-source source="LOCAL" name="PostgreSQL" uuid="4db6d8e2-d907-4728-8073-183a9a657aa3">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
+      <configured-by-url>true</configured-by-url>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost/climateMonitoring</jdbc-url>
+      <jdbc-url>postgresql://climateMonitoring_owner:xfrB0mD7ySkp@ep-late-mouse-a23idtts.eu-central-1.aws.neon.tech/climateMonitoring?sslmode=require</jdbc-url>
       <jdbc-additional-properties>
         <property name="com.intellij.clouds.kubernetes.db.host.port" />
         <property name="com.intellij.clouds.kubernetes.db.enabled" value="false" />

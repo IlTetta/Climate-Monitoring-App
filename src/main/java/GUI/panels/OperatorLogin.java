@@ -23,8 +23,8 @@ import utils.Interfaces;
  * all'applicazione.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see GUI.layouts.TwoColumns
  * @see models.CurrentOperator
  * @see models.MainModel
@@ -140,7 +140,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
     }
 
     private void proceedToCenterCreation(CurrentOperator currentOperator) {
-        if (currentOperator.getCurrentOperator().centerID() == null) {
+        if (currentOperator.getCurrentOperator().centerID() == 0) {
 
             String[] options = { "Crea nuovo centro", "Associa centro esistente", "Annulla" };
             var selection = JOptionPane.showOptionDialog(null,

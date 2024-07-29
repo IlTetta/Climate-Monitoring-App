@@ -171,7 +171,7 @@ public class LogicOperator {
             throw new RuntimeException("Nessun utente loggato");
         }
 
-        if (currentOperator.getCurrentOperator().centerID() != null) {
+        if (currentOperator.getCurrentOperator().centerID() != 0) {
             throw new RuntimeException("Utente fa già parte di un Centro");
         }
 
