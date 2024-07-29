@@ -88,7 +88,7 @@ public class DataQuery{
                             rs.getString("email"),
                             rs.getString("username"),
                             rs.getString("password"),
-                            rs.getInt("centerid")
+                            rs.wasNull() ? null : rs.getInt("centerid")
                     );
                 }else{
                     throw new SQLException("Nessun operatore trovato con l'ID specificato");
