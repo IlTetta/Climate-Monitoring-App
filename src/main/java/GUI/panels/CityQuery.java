@@ -129,6 +129,10 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
                 case 0:
                     String cityName = textfieldCityName.getText();
 
+                    char firstChar = Character.toUpperCase(cityName.charAt(0));                 //Gestione formattazione città
+                    String restOfString = cityName.substring(1).toLowerCase();
+                    cityName = firstChar + restOfString;
+
                     conditions.add(new QueryCondition("name", cityName));
                     try {
                         result = mainModel.data.getCityBy(conditions);

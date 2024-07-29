@@ -170,7 +170,29 @@ public class GUI {
      * @param ID L'ID del pannello da visualizzare.
      * @param args Gli argomenti da passare al pannello.
      */
+
     public void goToPanel(String ID, Object[] args) {
+        try {
+            if ("CityAddData".equals(currentID)) {
+                clearCityAddData();
+            }
+            cardLayout.show(mainWindowsArea.getContentPanel(), ID);
+            getUIPanel(ID).onOpen(args);
+            currentID = ID;
+        } catch (NullPointerException e) {
+            System.out.println("Errore: Un componente è nullo. Verifica che 'mainWindowsArea', 'cardLayout' e altri componenti siano inizializzati correttamente.");
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            System.out.println("Errore: L'ID del pannello '" + ID + "' non è valido o il pannello non esiste.");
+            e.printStackTrace();
+        } catch (Exception e) {
+            System.out.println("Errore: Si è verificato un errore inaspettato durante il cambio del pannello.");
+            e.printStackTrace();
+        }
+    }
+
+
+    /*public void goToPanel(String ID, Object[] args) {
         try {
             if ("CityAddData".equals(currentID)) {
                 clearCityAddData();
@@ -181,5 +203,5 @@ public class GUI {
         } catch (Exception e) {
             System.out.println("Errore: Panel non trovato.");
         }
-    }
+    }*/
 }

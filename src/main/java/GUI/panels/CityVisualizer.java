@@ -169,18 +169,19 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
             for (String keyString : WeatherTableData.keys) {
                 Integer avgScore = weatherTableData.getCategoryAvgScore(keyString);
+                if (avgScore == null) avgScore = 0;
                 Integer recordCount = weatherTableData.getCategoryRecordCount(keyString);
-                String comment = String.join(" | ", weatherTableData.getCategoryComments(keyString));
+
+                String comment = String.join(" / ", weatherTableData.getCategoryComments(keyString));
 
                 if (avgScore != 0) {
                     defaulmodelTable.setValueAt(avgScore.toString(), row, 1);
                 } else {
                     defaulmodelTable.setValueAt("N/A", row, 1);
                 }
-
-                if ("NULL".equals(comment)) {
-                    comment = "";
-                }
+                comment = comment.replaceAll("NULL / ", "NULL");
+                comment = comment.replaceAll("NULL / NULL", "NULL NULL");
+                comment = comment.replaceAll("NULL", "");
 
                 defaulmodelTable.setValueAt(recordCount, row, 2);
                 defaulmodelTable.setValueAt(comment, row, 3);
