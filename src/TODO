@@ -1,0 +1,6 @@
+1) creare il package server e spostare tutti i file che gestiscono i dati
+2) creare l'interfaccia dei servizi
+3) creare la classe che implementa l'interfaccia con connessione al DB
+4) Definire quali sono i metodi concorrenti e quali no
+5) creare il main che crea il registry e pubblica il servizio
+6) creare il main client che si connette al servizio
