@@ -161,10 +161,16 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
             String cityName = textfieldCityName.getText().trim();
 
+
+
             if (!cityName.isEmpty() && !listmodelCityIDs.contains(cityName)) {
 
                 RecordCity[] result = null;
                 List<QueryCondition> conditions = new ArrayList<>();
+
+                char firstChar = Character.toUpperCase(cityName.charAt(0));                 //Gestione formattazione città
+                String restOfString = cityName.substring(1).toLowerCase();
+                cityName = firstChar + restOfString;
 
                 conditions.add(new QueryCondition("name", cityName));
                 try {
