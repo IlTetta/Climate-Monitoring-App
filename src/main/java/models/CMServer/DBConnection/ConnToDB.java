@@ -6,21 +6,21 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 //Classe che si connette al database
-public class QueryToDB {
+public class ConnToDB {
 
     private Connection conn;
 
-    //Costruisce un oggetto QueryToDB con i parametri passati
-    public QueryToDB(String url, String username, String password) throws SQLException {
+    //Costruisce un oggetto ConnToDB con i parametri passati
+    public ConnToDB(String url, String username, String password) throws SQLException {
     conn=Conncetionmaker(url,username,password);
         System.out.println("Connesso al database "+conn.getCatalog());
     }
 
-    //ritorna un'istanza di QueryToDB da un file di properties
-    public static QueryToDB createFromProperties(String filepath) throws SQLException, IOException {
+    //ritorna un'istanza di ConnToDB da un file di properties
+    public static ConnToDB createFromProperties(String filepath) throws SQLException, IOException {
 
         Properties props = new Properties();
-        try (InputStream input = QueryToDB.class.getClassLoader().getResourceAsStream(filepath)) {
+        try (InputStream input = ConnToDB.class.getClassLoader().getResourceAsStream(filepath)) {
             if (input == null) {
                 throw new RuntimeException("Sorry, unable to find " + filepath);
             }
@@ -31,7 +31,7 @@ public class QueryToDB {
         String username = props.getProperty("db.username");
         String password = props.getProperty("db.password");
 
-        return new QueryToDB(url, username, password);
+        return new ConnToDB(url, username, password);
     }
     private Connection Conncetionmaker(String url, String username, String password) throws SQLException {
         Properties props = new Properties();

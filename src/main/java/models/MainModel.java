@@ -1,8 +1,7 @@
 package models;
 
-import models.CMServer.DBConnection.QueryToDB;
+import models.CMServer.DBConnection.ConnToDB;
 import models.data.DataHandler;
-import models.file.FileHandler;
 import models.logic.*;
 
 import java.io.IOException;
@@ -22,7 +21,6 @@ import java.sql.SQLException;
  * </p>
  * 
  * @see models.data.DataHandler
- * @see models.file.FileHandler
  * @see models.logic.LogicOperator
  * @see models.logic.LogicCenter
  * @see models.logic.LogicCity
@@ -66,11 +64,11 @@ public class MainModel {
      */
     public MainModel() {
         //bisogna collegarsi al registry che contiene il riferimento al database
-        //bisogna creare un oggetto QueryToDB
-        //conn = QueryToDB.createFromProperties("db.properties").getConnection();
+        //bisogna creare un oggetto ConnToDB
+        //conn = ConnToDB.createFromProperties("db.properties").getConnection();
         //data = new DataHandler(conn);
         try {
-            data = new DataHandler(QueryToDB.createFromProperties("database.properties").getConnection());
+            data = new DataHandler(ConnToDB.createFromProperties("database.properties").getConnection());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
