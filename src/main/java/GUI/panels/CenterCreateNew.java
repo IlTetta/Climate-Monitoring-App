@@ -188,18 +188,24 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                             null,
                             result,
                             result[0]);
-                    if (selectedCity != null) {
+                    if (selectedCity != null && !listmodelCityIDs.contains(selectedCity.toString())) {
                         listmodelCityIDs.addElement(selectedCity.toString());
                         textfieldCityName.setText("");
+                    }else  {
+                        JOptionPane.showMessageDialog(
+                                this,
+                                "La città inserita non è presente nel database o già associata al centro.",
+                                "Città non trovata",
+                                JOptionPane.WARNING_MESSAGE);
                     }
 
-                } else if (result.length == 1) {
+                } else if (result.length == 1 && !listmodelCityIDs.contains(result[0].toString())) {
                     listmodelCityIDs.addElement(result[0].toString());
                     textfieldCityName.setText("");
                 } else {
                     JOptionPane.showMessageDialog(
                             this,
-                            "La città inserita non è presente nel database.",
+                            "La città inserita non è presente nel database o già associata al centro.",
                             "Città non trovata",
                             JOptionPane.WARNING_MESSAGE);
                 }
