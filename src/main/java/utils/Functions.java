@@ -89,4 +89,8 @@ public class Functions {
         return newString;
     }
 
+    public static Integer zeroToNull(Integer value) {
+        return value == 0 ? null : value;
+    }
+
 }

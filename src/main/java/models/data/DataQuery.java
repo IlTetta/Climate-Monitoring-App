@@ -4,7 +4,6 @@ import models.record.RecordCenter;
 import models.record.RecordCity;
 import models.record.RecordOperator;
 import models.record.RecordWeather;
-import utils.ZeroToNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import static utils.Functions.zeroToNull;
 
 //classe che implementa i metodi per interrogare il database
 public class DataQuery{
@@ -217,13 +218,13 @@ public class DataQuery{
                             rs.getInt("cityid"),
                             rs.getInt("centerid"),
                             rs.getString("date"),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("windscore")), rs.getString("windcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("humidityscore")), rs.getString("humiditycomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("pressurescore")), rs.getString("pressurecomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("temperaturescore")), rs.getString("temperaturecomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("precipitationscore")), rs.getString("precipitationcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("glacierelevationscore")), rs.getString("glacierelevationcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("glaciermassscore")), rs.getString("glaciermasscomment"))
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("windscore")), rs.getString("windcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("humidityscore")), rs.getString("humiditycomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("pressurescore")), rs.getString("pressurecomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("temperaturescore")), rs.getString("temperaturecomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("precipitationscore")), rs.getString("precipitationcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glacierelevationscore")), rs.getString("glacierelevationcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glaciermassscore")), rs.getString("glaciermasscomment"))
 
                     );
                 }else{
@@ -251,13 +252,13 @@ public class DataQuery{
                             rs.getInt("cityid"),
                             rs.getInt("centerid"),
                             rs.getString("date"),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("windscore")), rs.getString("windcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("humidityscore")), rs.getString("humiditycomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("pressurescore")), rs.getString("pressurecomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("temperaturescore")), rs.getString("temperaturecomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("precipitationscore")), rs.getString("precipitationcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("glacierelevationscore")), rs.getString("glacierelevationcomment")),
-                            new RecordWeather.WeatherData(ZeroToNull.zeroToNull(rs.getInt("glaciermassscore")), rs.getString("glaciermasscomment"))
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("windscore")), rs.getString("windcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("humidityscore")), rs.getString("humiditycomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("pressurescore")), rs.getString("pressurecomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("temperaturescore")), rs.getString("temperaturecomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("precipitationscore")), rs.getString("precipitationcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glacierelevationscore")), rs.getString("glacierelevationcomment")),
+                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glaciermassscore")), rs.getString("glaciermasscomment"))
                     ));
                 }
                 return weathers.toArray(new RecordWeather[0]);
