@@ -2,7 +2,7 @@ package models;
 
 import models.CMServer.DBConnection.QueryToDB;
 import models.data.DataHandler;
-import models.file.FileHandler;
+
 import models.logic.*;
 
 import java.io.IOException;
@@ -22,7 +22,6 @@ import java.sql.SQLException;
  * </p>
  * 
  * @see models.data.DataHandler
- * @see models.file.FileHandler
  * @see models.logic.LogicOperator
  * @see models.logic.LogicCenter
  * @see models.logic.LogicCity
