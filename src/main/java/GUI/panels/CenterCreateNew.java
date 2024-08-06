@@ -17,6 +17,7 @@ import GUI.Widget;
 import GUI.layouts.TwoColumns;
 import models.CurrentOperator;
 import models.MainModel;
+import models.data.DataQueryImp;
 import models.record.RecordCity;
 import utils.Constants;
 import utils.Interfaces;
@@ -41,7 +42,7 @@ import utils.QueryCondition;
  * @see GUI.layouts.TwoColumns
  * @see models.CurrentOperator
  * @see models.MainModel
- * @see models.data.DataQuery.QueryCondition
+ * @see DataQueryImp.QueryCondition
  * @see models.record.RecordCity
  * @see utils.Constants
  * @see utils.Interfaces
@@ -175,7 +176,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
                 conditions.add(new QueryCondition("name", cityName));
                 try {
-                    result = mainModel.data.getCityBy(conditions);
+                    result = mainModel.data.dataQuery.getCityBy(conditions);
                 } catch (SQLException | RemoteException ex) {
                     throw new RuntimeException(ex);
                 }

@@ -1,11 +1,7 @@
 package models.CMServer.interfaces;
 
-import models.data.DataQuery;
-import models.record.RecordOperator;
-
 import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.util.List;
 
 public interface OperatorService extends Remote {
 

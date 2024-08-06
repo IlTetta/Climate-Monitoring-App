@@ -7,6 +7,7 @@ import GUI.Widget;
 import GUI.layouts.TwoColumns;
 import models.MainModel;
 
+import models.data.DataQueryImp;
 import models.record.RecordCity;
 import utils.Interfaces;
 import utils.QueryCondition;
@@ -29,7 +30,6 @@ import java.util.List;
  * @see GUI.Widget
  * @see GUI.layouts.TwoColumns
  * @see models.MainModel
- * @see models.data.DataQuery.QueryCondition
  * @see models.record.RecordCity
  * @see utils.Interfaces
  * 
@@ -137,7 +137,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
 
                     conditions.add(new QueryCondition("name", cityName));
                     try {
-                        result = mainModel.data.getCityBy(conditions);
+                        result = mainModel.data.dataQuery.getCityBy(conditions);
                     } catch (SQLException | RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -150,7 +150,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
 
                         conditions.add(new QueryCondition("latitude", latitude));
                         conditions.add(new QueryCondition("longitude", longitude));
-                        result = mainModel.data.getCityBy(conditions);
+                        result = mainModel.data.dataQuery.getCityBy(conditions);
                     } catch (Exception exception) {
                         JOptionPane.showMessageDialog(null,
                                 "Inserisci delle coordinate valide (es. 45,80819 e 9,0832)",

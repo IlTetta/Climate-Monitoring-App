@@ -428,7 +428,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
             RecordCenter center = null;
             try {
-                center = mainModel.data.getCenterBy(centerID);
+                center = mainModel.data.dataQuery.getCenterBy(centerID);
             } catch (SQLException | RemoteException e) {
                 throw new RuntimeException(e);
             }
@@ -440,7 +440,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                 for (Integer cityID : cityIDs) {
                     RecordCity city = null;
                     try {
-                        city = mainModel.data.getCityBy(cityID);
+                        city = mainModel.data.dataQuery.getCityBy(cityID);
                     } catch (SQLException | RemoteException e) {
                         throw new RuntimeException(e);
                     }

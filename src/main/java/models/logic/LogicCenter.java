@@ -103,7 +103,7 @@ public class LogicCenter {
 
         for (Integer cityID : cityIDs) {
             try {
-                if (dataHandler.getCityBy(cityID) == null) {
+                if (dataHandler.dataQuery.getCityBy(cityID) == null) {
                     throw new IllegalArgumentException("Nome della città non valido.");
                 }
             } catch (SQLException | RemoteException e) {

@@ -11,6 +11,7 @@ import java.util.List;
 
 import models.CurrentOperator;
 import models.data.DataHandler;
+import models.data.DataQueryImp;
 import models.record.RecordOperator;
 import utils.QueryCondition;
 
@@ -24,7 +25,7 @@ import utils.QueryCondition;
  * 
  * @see models.CurrentOperator
  * @see models.data.DataHandler
- * @see models.data.DataQuery.QueryCondition
+ * @see DataQueryImp.QueryCondition
  * @see models.record.RecordOperator
  * 
  * @author Andrea Tettamanti
@@ -76,7 +77,7 @@ public class LogicOperator {
 
         RecordOperator[] result;
         try {
-            result = dataHandler.getOperatorBy(conditions);
+            result = dataHandler.dataQuery.getOperatorBy(conditions);
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -235,7 +236,7 @@ public class LogicOperator {
         QueryCondition condition = new QueryCondition("username", username);
         RecordOperator[] result = new RecordOperator[0];
         try {
-            result = dataHandler.getOperatorBy(condition);
+            result = dataHandler.dataQuery.getOperatorBy(condition);
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }

@@ -19,12 +19,12 @@ import java.util.List;
 import static utils.Functions.zeroToNull;
 
 //classe che implementa i metodi per interrogare il database
-public class DataQuery extends UnicastRemoteObject implements DataQueryInterface{
+public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterface{
 
 
     private final Connection conn;
 
-    public DataQuery(Connection conn) throws RemoteException {
+    public DataQueryImp(Connection conn) throws RemoteException {
         super();
         this.conn = conn;
     }

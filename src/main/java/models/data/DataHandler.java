@@ -5,22 +5,28 @@ import models.record.RecordCity;
 import models.record.RecordOperator;
 import models.record.RecordWeather;
 
+import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 
 //Classe che gestisce i dati: aggiunge e aggiorna i record nel database
-public class DataHandler extends DataQuery {
+public class DataHandler  {
 
     private Connection conn;
 
+    public DataQueryImp dataQuery;
+
     public DataHandler(Connection conn) {
-        super(conn);
         this.conn = conn;
+        try {
+            dataQuery=new DataQueryImp(conn);
+        } catch (RemoteException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     //aggiunge un nuovo operatore al database

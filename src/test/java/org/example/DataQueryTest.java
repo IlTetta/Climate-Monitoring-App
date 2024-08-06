@@ -1,6 +1,6 @@
 package org.example;
 
-import models.data.DataQuery;
+import models.data.DataQueryImp;
 import models.record.RecordCenter;
 import models.record.RecordCity;
 import models.record.RecordOperator;
@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class DataQueryTest {
 
     private static Connection connection;
-    private static DataQuery dataQuery;
+    private static DataQueryImp dataQuery;
 
     @BeforeAll
     public static void setUp() throws SQLException, IOException {
@@ -38,7 +38,7 @@ public class DataQueryTest {
         String password = props.getProperty("db.password");
 
         connection = DriverManager.getConnection(url, username, password);
-        dataQuery = new DataQuery(connection);
+        dataQuery = new DataQueryImp(connection);
     }
 
     @AfterAll
