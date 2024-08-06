@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.CurrentOperator;
-import models.data.DataHandler;
+import models.data.DataHandlerImp;
 import models.data.DataQueryImp;
 import models.record.RecordOperator;
 import utils.QueryCondition;
@@ -24,7 +24,7 @@ import utils.QueryCondition;
  * </p>
  * 
  * @see models.CurrentOperator
- * @see models.data.DataHandler
+ * @see DataHandlerImp
  * @see DataQueryImp.QueryCondition
  * @see models.record.RecordOperator
  * 
@@ -38,7 +38,7 @@ public class LogicOperator {
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandler dataHandler;
+    private DataHandlerImp dataHandler;
 
     /**
      * Costruttore della classe {@code LogicOperator}.
@@ -46,7 +46,7 @@ public class LogicOperator {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati degli
      *                    operatori.
      */
-    public LogicOperator(DataHandler dataHandler) {
+    public LogicOperator(DataHandlerImp dataHandler) {
         this.dataHandler = dataHandler;
     }
 
@@ -144,7 +144,7 @@ public class LogicOperator {
                     username,
                     hashPassword(username, password),
                     centerID);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
 
@@ -188,7 +188,7 @@ public class LogicOperator {
 
         try {
             dataHandler.updateOperator(updatedOperator);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
 

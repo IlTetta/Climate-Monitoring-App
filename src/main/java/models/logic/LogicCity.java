@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import models.data.DataHandler;
+import models.data.DataHandlerImp;
 import models.record.RecordWeather;
 import models.record.RecordWeather.WeatherData;
 
@@ -15,7 +15,7 @@ import models.record.RecordWeather.WeatherData;
  * Fornisce metodi per l'elaborazione dei dati meteorologici delle citt&agrave;.
  * </p>
  * 
- * @see models.data.DataHandler
+ * @see DataHandlerImp
  * @see models.record.RecordWeather
  * @see models.record.RecordWeather.WeatherData
  * 
@@ -32,7 +32,7 @@ public class LogicCity {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati delle
      *                    citt&agrave;.
      */
-    public LogicCity(DataHandler dataHandler) {
+    public LogicCity(DataHandlerImp dataHandler) {
     }
 
     /**

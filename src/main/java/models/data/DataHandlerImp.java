@@ -1,11 +1,13 @@
 package models.data;
 
+import models.CMServer.interfaces.DataHandlerInterface;
 import models.record.RecordCenter;
 import models.record.RecordCity;
 import models.record.RecordOperator;
 import models.record.RecordWeather;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,13 +16,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 //Classe che gestisce i dati: aggiunge e aggiorna i record nel database
-public class DataHandler  {
+public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerInterface {
 
     private Connection conn;
 
     public DataQueryImp dataQuery;
 
-    public DataHandler(Connection conn) {
+    public DataHandlerImp(Connection conn) throws RemoteException{
+        super();
         this.conn = conn;
         try {
             dataQuery=new DataQueryImp(conn);
@@ -30,12 +33,13 @@ public class DataHandler  {
     }
 
     //aggiunge un nuovo operatore al database
+    @Override
     public RecordOperator addNewOperator(String nameSurname,
-                                       String taxCode,
-                                       String email,
-                                       String username,
-                                       String password,
-                                       Integer centerID) throws SQLException {
+                                         String taxCode,
+                                         String email,
+                                         String username,
+                                         String password,
+                                         Integer centerID) throws SQLException, RemoteException {
         String checkSql = "SELECT * FROM operatoriregistrati WHERE username = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, username);
@@ -73,13 +77,14 @@ public class DataHandler  {
     }
 
     //aggiunge un nuovo centro al database
+    @Override
     public RecordCenter addNewCenter(String centerName,
                                      String streetName,
                                      String streetNumber,
                                      String CAP,
                                      String townName,
                                      String districtName,
-                                     Integer[] cityIDs) throws SQLException {
+                                     Integer[] cityIDs) throws SQLException, RemoteException {
 
         String checkSql = "SELECT * FROM centrimonitoraggio WHERE centername = ? AND streetname = ? AND streetnumber = ? AND CAP = ? AND townname = ? AND districtname = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
@@ -116,6 +121,7 @@ public class DataHandler  {
     }
 
     //aggiunge nuovi parametri climatici al database
+    @Override
     public void addNewWeather(Integer cityID,
                               Integer centerID,
                               String date,
@@ -125,7 +131,7 @@ public class DataHandler  {
                               RecordWeather.WeatherData temperature,
                               RecordWeather.WeatherData precipitation,
                               RecordWeather.WeatherData glacierElevation,
-                              RecordWeather.WeatherData glacierMass) throws SQLException {
+                              RecordWeather.WeatherData glacierMass) throws SQLException, RemoteException {
 
         String insertSql = "INSERT INTO parametriclimatici (cityid, centerid, date, windscore, windcomment, humidityscore, humiditycomment, pressurescore, pressurecomment, temperaturescore, temperaturecomment, precipitationscore, precipitationcomment, glacierelevationscore, glacierelevationcomment, glaciermassscore, glaciermasscomment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -187,24 +193,10 @@ public class DataHandler  {
         }
     }
 
-    //aggiorna un RecordCity nel sistema
-    public void updateCity(RecordCity city) throws SQLException{
-        updateRecord("coordinatemonitoraggio", city.ID(), city);
-    }
-
     //aggiorna un RecordOperator nel sistema
-    public void updateOperator(RecordOperator operator) throws SQLException{
+    @Override
+    public void updateOperator(RecordOperator operator) throws SQLException, RemoteException{
         updateRecord("operatoriregistrati", operator.ID(), operator);
-    }
-
-    //aggiorna un RecordCenter nel sistema
-    public void updateCenter(RecordCenter center) throws SQLException{
-        updateRecord("centrimonitoraggio", center.ID(), center);
-    }
-
-    //aggiorna un RecordWeather nel sistema
-    public void updateWeather(RecordWeather weather) throws SQLException{
-        updateRecord("parametriclimatici", weather.ID(), weather);
     }
 
     //aggiorna un record nel sistema

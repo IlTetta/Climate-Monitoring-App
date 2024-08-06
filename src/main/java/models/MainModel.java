@@ -1,7 +1,7 @@
 package models;
 
 import models.CMServer.DBConnection.QueryToDB;
-import models.data.DataHandler;
+import models.data.DataHandlerImp;
 
 import models.logic.*;
 
@@ -21,7 +21,7 @@ import java.sql.SQLException;
  * E' un componente centrale nell'architettura MVC dell'applicazione.
  * </p>
  * 
- * @see models.data.DataHandler
+ * @see DataHandlerImp
  * @see models.logic.LogicOperator
  * @see models.logic.LogicCenter
  * @see models.logic.LogicCity
@@ -36,7 +36,7 @@ public class MainModel {
     /**
      * Gestisce l'accesso e la manipolazione dei dati nell'applicazione.
      */
-    public DataHandler data;
+    public DataHandlerImp data;
 
     /**
      * Gestisce la logica specifica dell'operatore.
@@ -67,9 +67,9 @@ public class MainModel {
         //bisogna collegarsi al registry che contiene il riferimento al database
         //bisogna creare un oggetto QueryToDB
         //conn = QueryToDB.createFromProperties("db.properties").getConnection();
-        //data = new DataHandler(conn);
+        //data = new DataHandlerImp(conn);
         try {
-            data = new DataHandler(QueryToDB.createFromProperties("database.properties").getConnection());
+            data = new DataHandlerImp(QueryToDB.createFromProperties("database.properties").getConnection());
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.CurrentOperator;
-import models.data.DataHandler;
+import models.data.DataHandlerImp;
 import models.record.RecordCenter;
 import models.record.RecordOperator;
 import models.record.RecordWeather.WeatherData;
@@ -21,7 +21,7 @@ import utils.Functions;
  * associati a una citt&agrave; specifica.
  * </p>
  * 
- * @see models.data.DataHandler
+ * @see DataHandlerImp
  * @see models.record.RecordCenter
  * @see models.record.RecordWeather
  * @see models.record.RecordOperator
@@ -38,7 +38,7 @@ public class LogicCenter {
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandler dataHandler;
+    private DataHandlerImp dataHandler;
 
     /**
      * Costruttore della classe {@code LogicCenter}.
@@ -46,7 +46,7 @@ public class LogicCenter {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati
      *                    dell'applicazione.
      */
-    public LogicCenter(DataHandler dataHandler) {
+    public LogicCenter(DataHandlerImp dataHandler) {
         this.dataHandler = dataHandler;
     }
 
@@ -121,7 +121,7 @@ public class LogicCenter {
                     townName,
                     districtName,
                     cityIDs);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
 
@@ -136,7 +136,7 @@ public class LogicCenter {
 
         try {
             dataHandler.updateOperator(updatedOperator);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
         currentOperator.setCurrentOperator(updatedOperator);
@@ -204,7 +204,7 @@ public class LogicCenter {
                     weatherDataList.get(4),
                     weatherDataList.get(5),
                     weatherDataList.get(6));
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
 
