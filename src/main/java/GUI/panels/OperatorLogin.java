@@ -3,6 +3,7 @@ package GUI.panels;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 import javax.swing.*;
@@ -163,7 +164,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                 RecordCenter[] result = new RecordCenter[0];
                 try {
                     result = mainModel.data.getCenters();
-                } catch (SQLException e) {
+                } catch (SQLException | RemoteException e) {
                     throw new RuntimeException(e);
                 }
                 if (result.length == 0) {

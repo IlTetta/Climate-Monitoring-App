@@ -2,6 +2,7 @@ package models.logic;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.rmi.RemoteException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
@@ -10,8 +11,8 @@ import java.util.List;
 
 import models.CurrentOperator;
 import models.data.DataHandler;
-import models.data.DataQuery.QueryCondition;
 import models.record.RecordOperator;
+import utils.QueryCondition;
 
 /**
  * La classe {@code LogicOperator} gestisce la logica relativa agli operatori
@@ -76,7 +77,7 @@ public class LogicOperator {
         RecordOperator[] result;
         try {
             result = dataHandler.getOperatorBy(conditions);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
         if (result.length == 1) {
@@ -235,7 +236,7 @@ public class LogicOperator {
         RecordOperator[] result = new RecordOperator[0];
         try {
             result = dataHandler.getOperatorBy(condition);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
         boolean correct = true;

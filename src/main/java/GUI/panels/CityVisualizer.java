@@ -12,18 +12,19 @@ import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.EventObject;
 
 import GUI.GUI;
 import GUI.Widget;
 import models.MainModel;
-import models.data.DataQuery.QueryCondition;
 import models.logic.LogicCity.WeatherTableData;
 import models.record.RecordCity;
 import models.record.RecordWeather;
 import utils.Interfaces;
 import utils.Constants.Legend;
+import utils.QueryCondition;
 
 /**
  * La classe {@code CityVisualizer} rappresenta un pannello Swing per la
@@ -35,10 +36,9 @@ import utils.Constants.Legend;
  * i dati meteorologici associati.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see models.MainModel
- * @see models.data.DataQuery.QueryCondition
  * @see models.logic.LogicCity.WeatherTableData
  * @see models.record.RecordCity
  * @see models.record.RecordWeather
@@ -145,7 +145,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         RecordCity RecordCity = null;
         try {
             RecordCity = mainModel.data.getCityBy(cityID);
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
         textfieldCityName.setText(RecordCity.name());
@@ -158,7 +158,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         try {
             weatherRecords = mainModel.data.getWeatherBy(condition);
 
-        } catch (SQLException e) {
+        } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
 

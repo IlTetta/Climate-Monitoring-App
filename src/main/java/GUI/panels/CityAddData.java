@@ -22,6 +22,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.EventObject;
@@ -42,8 +43,8 @@ import java.util.EventObject;
  * inseriti.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see GUI.Widget.ComboItem
  * @see models.CurrentOperator
  * @see models.MainModel
@@ -428,7 +429,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
             RecordCenter center = null;
             try {
                 center = mainModel.data.getCenterBy(centerID);
-            } catch (SQLException e) {
+            } catch (SQLException | RemoteException e) {
                 throw new RuntimeException(e);
             }
 
@@ -440,7 +441,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                     RecordCity city = null;
                     try {
                         city = mainModel.data.getCityBy(cityID);
-                    } catch (SQLException e) {
+                    } catch (SQLException | RemoteException e) {
                         throw new RuntimeException(e);
                     }
                     if (city != null) {

@@ -5,10 +5,12 @@ import models.record.RecordCenter;
 import models.record.RecordCity;
 import models.record.RecordOperator;
 import models.record.RecordWeather;
+import utils.QueryCondition;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.rmi.RemoteException;
 import java.sql.*;
 import java.util.List;
 import java.util.Properties;
@@ -91,7 +93,7 @@ public class DataQueryTest {
     }
 
     @Test
-    public void testGetCityById() throws SQLException {
+    public void testGetCityById() throws SQLException, RemoteException {
         int testId = 1;
         RecordCity city = dataQuery.getCityBy(testId);
         assertNotNull(city);
@@ -99,28 +101,12 @@ public class DataQueryTest {
         assertEquals("Sample City", city.name());
     }
 
-    @Test
-    public void testGetCityByConditions() throws SQLException {
-        DataQuery.QueryCondition condition = new DataQuery.QueryCondition("countrycode", "SC");
-        RecordCity[] cities = dataQuery.getCityBy(condition);
-        assertNotNull(cities);
-        assertNotEquals(0, cities.length);
-        assertEquals(1, cities.length);
-        assertEquals("Sample City", cities[0].name());
-    }
+
+
 
     @Test
-    public void testGetOperatorById() throws SQLException {
-        int testId = 1;
-        RecordOperator operator = dataQuery.getOperatorBy(testId);
-        assertNotNull(operator);
-        assertEquals(testId, operator.ID());
-        assertEquals("Sample Operator", operator.nameSurname());
-    }
-
-    @Test
-    public void testGetOperatorByConditions() throws SQLException {
-        DataQuery.QueryCondition condition = new DataQuery.QueryCondition("username", "operator");
+    public void testGetOperatorByConditions() throws SQLException, RemoteException {
+        QueryCondition condition = new QueryCondition("username", "operator");
         RecordOperator[] operators = dataQuery.getOperatorBy(condition);
         assertNotNull(operators);
         assertTrue(operators.length > 0);
@@ -128,7 +114,7 @@ public class DataQueryTest {
     }
 
     @Test
-    public void testGetCenterById() throws SQLException {
+    public void testGetCenterById() throws SQLException, RemoteException {
         int testId = 1;
         RecordCenter center = dataQuery.getCenterBy(testId);
         assertNotNull(center);
@@ -137,26 +123,8 @@ public class DataQueryTest {
     }
 
     @Test
-    public void testGetCenterByConditions() throws SQLException {
-        DataQuery.QueryCondition condition = new DataQuery.QueryCondition("centername", "Sample Center");
-        RecordCenter[] centers = dataQuery.getCenterBy(condition);
-        assertNotNull(centers);
-        assertTrue(centers.length > 0);
-        assertEquals("Sample Center", centers[0].centerName());
-    }
-
-    @Test
-    public void testGetWeatherById() throws SQLException {
-        int testId = 1;
-        RecordWeather weather = dataQuery.getWeatherBy(testId);
-        assertNotNull(weather);
-        assertEquals(testId, weather.ID());
-        assertEquals("2024-01-01", weather.date());
-    }
-
-    @Test
-    void testGetWeatherBy() throws SQLException {
-        DataQuery.QueryCondition condition = new DataQuery.QueryCondition("date", java.sql.Date.valueOf("2024-01-01"));
+    void testGetWeatherBy() throws SQLException, RemoteException {
+        QueryCondition condition = new QueryCondition("date", java.sql.Date.valueOf("2024-01-01"));
         RecordWeather[] weathers = dataQuery.getWeatherBy(condition);
         assertNotNull(weathers);
         assertTrue(weathers.length > 0);
@@ -165,10 +133,10 @@ public class DataQueryTest {
 
     // Test con condizioni multiple
     @Test
-    public void testGetCityByMultipleConditions() throws SQLException {
-        DataQuery.QueryCondition condition1 = new DataQuery.QueryCondition("countrycode", "SC");
-        DataQuery.QueryCondition condition2 = new DataQuery.QueryCondition("name", "Sample City");
-        List<DataQuery.QueryCondition> conditions = List.of(condition1, condition2);
+    public void testGetCityByMultipleConditions() throws SQLException, RemoteException {
+        QueryCondition condition1 = new QueryCondition("countrycode", "SC");
+        QueryCondition condition2 = new QueryCondition("name", "Sample City");
+        List<QueryCondition> conditions = List.of(condition1, condition2);
         RecordCity[] cities = dataQuery.getCityBy(conditions);
         assertNotNull(cities);
         assertEquals(1, cities.length);
@@ -176,10 +144,10 @@ public class DataQueryTest {
     }
 
     @Test
-    public void testGetWeatherByMultipleConditions() throws SQLException {
-        DataQuery.QueryCondition condition1 = new DataQuery.QueryCondition("date", java.sql.Date.valueOf("2024-01-01"));
-        DataQuery.QueryCondition condition2 = new DataQuery.QueryCondition("wind_score", 5);
-        List<DataQuery.QueryCondition> conditions = List.of(condition1, condition2);
+    public void testGetWeatherByMultipleConditions() throws SQLException, RemoteException {
+        QueryCondition condition1 = new QueryCondition("date", java.sql.Date.valueOf("2024-01-01"));
+        QueryCondition condition2 = new QueryCondition("wind_score", 5);
+        List<QueryCondition> conditions = List.of(condition1, condition2);
         RecordWeather[] weathers = dataQuery.getWeatherBy(conditions);
         assertNotNull(weathers);
         assertEquals(1, weathers.length);
@@ -188,14 +156,14 @@ public class DataQueryTest {
 
     // Test con dati non esistenti
     @Test
-    public void testGetNonExistingCityById() throws SQLException {
+    public void testGetNonExistingCityById() {
         int testId = 999;
         assertThrows(SQLException.class, () -> dataQuery.getCityBy(testId));
     }
 
     @Test
-    public void testGetNonExistingWeatherByConditions() throws SQLException {
-        DataQuery.QueryCondition condition = new DataQuery.QueryCondition("date", java.sql.Date.valueOf("2099-01-01"));
+    public void testGetNonExistingWeatherByConditions() throws SQLException, RemoteException {
+        QueryCondition condition = new QueryCondition("date", java.sql.Date.valueOf("2099-01-01"));
         RecordWeather[] weathers = dataQuery.getWeatherBy(condition);
         assertNotNull(weathers);
         assertEquals(0, weathers.length);
@@ -203,7 +171,7 @@ public class DataQueryTest {
 
     // Test di inserimento di nuovi dati
     @Test
-    public void testInsertNewCity() throws SQLException {
+    public void testInsertNewCity() throws SQLException, RemoteException {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("INSERT INTO coordinatemonitoraggio (id, name, asciiname, countrycode, countryname, latitude, longitude) " +
                     "VALUES (2, 'New City', 'New AsciiName', 'NC', 'New Country', 30.0, 40.0)");
@@ -216,7 +184,7 @@ public class DataQueryTest {
 
     // Test di aggiornamento di dati esistenti
     @Test
-    public void testUpdateCityName() throws SQLException {
+    public void testUpdateCityName() throws SQLException, RemoteException {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("UPDATE coordinatemonitoraggio SET name = 'Updated City' WHERE id = 1");
         }

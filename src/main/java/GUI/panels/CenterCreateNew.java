@@ -1,5 +1,6 @@
 package GUI.panels;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,10 +17,10 @@ import GUI.Widget;
 import GUI.layouts.TwoColumns;
 import models.CurrentOperator;
 import models.MainModel;
-import models.data.DataQuery.QueryCondition;
 import models.record.RecordCity;
 import utils.Constants;
 import utils.Interfaces;
+import utils.QueryCondition;
 
 /**
  * La classe {@code CenterCreateNew} rappresenta un pannello per la creazione di
@@ -175,7 +176,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 conditions.add(new QueryCondition("name", cityName));
                 try {
                     result = mainModel.data.getCityBy(conditions);
-                } catch (SQLException ex) {
+                } catch (SQLException | RemoteException ex) {
                     throw new RuntimeException(ex);
                 }
 

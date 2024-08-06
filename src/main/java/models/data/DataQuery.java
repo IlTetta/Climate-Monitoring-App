@@ -1,10 +1,14 @@
 package models.data;
 
+import models.CMServer.interfaces.DataQueryInterface;
 import models.record.RecordCenter;
 import models.record.RecordCity;
 import models.record.RecordOperator;
 import models.record.RecordWeather;
+import utils.QueryCondition;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,16 +19,18 @@ import java.util.List;
 import static utils.Functions.zeroToNull;
 
 //classe che implementa i metodi per interrogare il database
-public class DataQuery{
+public class DataQuery extends UnicastRemoteObject implements DataQueryInterface{
 
 
     private final Connection conn;
 
-    public DataQuery(Connection conn){
+    public DataQuery(Connection conn) throws RemoteException {
+        super();
         this.conn = conn;
     }
 
-    public RecordCity getCityBy(Integer ID) throws SQLException {
+    @Override
+    public RecordCity getCityBy(Integer ID) throws SQLException, RemoteException {
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE id = ?";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setInt(1, ID);
@@ -47,14 +53,8 @@ public class DataQuery{
         }
     }
 
-    //non viene mai usato, lo si toglie? //TODO
-    public RecordCity[] getCityBy(QueryCondition condition) throws SQLException{
-        List<QueryCondition> conditions=new ArrayList<>();
-        conditions.add(condition);
-        return getCityBy(conditions);
-    }
-
-    public RecordCity[] getCityBy(List<QueryCondition> conditions) throws SQLException{
+    @Override
+    public RecordCity[] getCityBy(List<QueryCondition> conditions) throws SQLException, RemoteException{
         String sql="SELECT * FROM coordinatemonitoraggio WHERE "+createSQLCondition(conditions);
         try (PreparedStatement stmt=conn.prepareStatement(sql)){
             setPreparedStatementValues(stmt, conditions);
@@ -76,36 +76,16 @@ public class DataQuery{
         }
     }
 
-    //non viene mai usato, lo si toglie? //TODO
-    public RecordOperator getOperatorBy(Integer ID) throws SQLException{
-        String sql="SELECT * FROM operatoriregistrati WHERE id = ?";
-        try(PreparedStatement stmt=conn.prepareStatement(sql)){
-            stmt.setInt(1, ID);
-            try(ResultSet rs=stmt.executeQuery()){
-                if(rs.next()){
-                    return new RecordOperator(
-                            rs.getInt("id"),
-                            rs.getString("namesurname"),
-                            rs.getString("taxcode"),
-                            rs.getString("email"),
-                            rs.getString("username"),
-                            rs.getString("password"),
-                            rs.wasNull() ? null : rs.getInt("centerid")
-                    );
-                }else{
-                    throw new SQLException("Nessun operatore trovato con l'ID specificato");
-                }
-            }
-        }
-    }
 
-    public RecordOperator[] getOperatorBy(QueryCondition condition) throws SQLException{
+    @Override
+    public RecordOperator[] getOperatorBy(QueryCondition condition) throws SQLException, RemoteException{
         List<QueryCondition> conditions=new ArrayList<>();
         conditions.add(condition);
         return getOperatorBy(conditions);
     }
 
-    public RecordOperator[] getOperatorBy(List<QueryCondition> conditions) throws SQLException{
+    @Override
+    public RecordOperator[] getOperatorBy(List<QueryCondition> conditions) throws SQLException, RemoteException{
         String sql="SELECT * FROM operatoriregistrati WHERE "+createSQLCondition(conditions);
         try(PreparedStatement stmt=conn.prepareStatement(sql)){
             setPreparedStatementValues(stmt, conditions);
@@ -127,7 +107,8 @@ public class DataQuery{
         }
     }
 
-    public RecordCenter getCenterBy(Integer ID) throws SQLException{
+    @Override
+    public RecordCenter getCenterBy(Integer ID) throws SQLException, RemoteException{
         String sql="SELECT * FROM centrimonitoraggio WHERE id = ?";
         try(PreparedStatement stmt=conn.prepareStatement(sql)){
             stmt.setInt(1, ID);
@@ -151,38 +132,8 @@ public class DataQuery{
         }
     }
 
-//non viene mai usato, lo si toglie? //TODO
-    public RecordCenter[] getCenterBy(QueryCondition condition) throws SQLException{
-        List<QueryCondition> conditions=new ArrayList<>();
-        conditions.add(condition);
-        return getCenterBy(conditions);
-    }
-
-    public RecordCenter[] getCenterBy(List<QueryCondition> conditions) throws SQLException{
-        String sql="SELECT * FROM centrimonitoraggio WHERE "+createSQLCondition(conditions);
-        try(PreparedStatement stmt=conn.prepareStatement(sql)){
-            setPreparedStatementValues(stmt, conditions);
-            try(ResultSet rs=stmt.executeQuery()){
-                List<RecordCenter> centers=new ArrayList<>();
-                while(rs.next()){
-                    Integer[] cityIds = (Integer[]) rs.getArray("cityids").getArray();
-                    centers.add(new RecordCenter(
-                            rs.getInt("id"),
-                            rs.getString("centername"),
-                            rs.getString("streetname"),
-                            rs.getString("streetnumber"),
-                            rs.getString("cap"),
-                            rs.getString("townname"),
-                            rs.getString("districtname"),
-                            cityIds
-                    ));
-                }
-                return centers.toArray(new RecordCenter[0]);
-            }
-        }
-    }
-
-    public RecordCenter[] getCenters() throws SQLException{
+    @Override
+    public RecordCenter[] getCenters() throws SQLException, RemoteException{
         String sql="SELECT * FROM centrimonitoraggio";
 
         try(PreparedStatement stmt=conn.prepareStatement(sql)){
@@ -206,41 +157,15 @@ public class DataQuery{
         }
     }
 
-    //non viene mai usato, lo si toglie? //TODO
-    public RecordWeather getWeatherBy(Integer ID) throws SQLException{
-        String sql="SELECT * FROM parametriclimatici WHERE id = ?";
-        try(PreparedStatement stmt=conn.prepareStatement(sql)){
-            stmt.setInt(1, ID);
-            try(ResultSet rs=stmt.executeQuery()){
-                if(rs.next()){
-                    return new RecordWeather(
-                            rs.getInt("id"),
-                            rs.getInt("cityid"),
-                            rs.getInt("centerid"),
-                            rs.getString("date"),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("windscore")), rs.getString("windcomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("humidityscore")), rs.getString("humiditycomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("pressurescore")), rs.getString("pressurecomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("temperaturescore")), rs.getString("temperaturecomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("precipitationscore")), rs.getString("precipitationcomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glacierelevationscore")), rs.getString("glacierelevationcomment")),
-                            new RecordWeather.WeatherData(zeroToNull(rs.getInt("glaciermassscore")), rs.getString("glaciermasscomment"))
-
-                    );
-                }else{
-                    throw new SQLException("Nessuna registrazione meteo trovata con l'ID specificato");
-                }
-            }
-        }
-    }
-
-    public RecordWeather[] getWeatherBy(QueryCondition condition) throws SQLException{
+    @Override
+    public RecordWeather[] getWeatherBy(QueryCondition condition) throws SQLException, RemoteException{
         List<QueryCondition> conditions=new ArrayList<>();
         conditions.add(condition);
         return getWeatherBy(conditions);
     }
 
-    public RecordWeather[] getWeatherBy(List<QueryCondition> conditions) throws SQLException{
+    @Override
+    public RecordWeather[] getWeatherBy(List<QueryCondition> conditions) throws SQLException, RemoteException{
         String sql="SELECT * FROM parametriclimatici WHERE "+createSQLCondition(conditions);
         try(PreparedStatement stmt=conn.prepareStatement(sql)){
             setPreparedStatementValues(stmt, conditions);
@@ -296,27 +221,6 @@ private String createSQLCondition(List<QueryCondition> conditions) {
             } else {
                 stmt.setObject(i + 1, value);
             }
-        }
-    }
-
-
-
-    //classe interna per rappresentare una condizione di query
-    public static class QueryCondition{
-        private final String key;
-        private final Object value;
-
-        public QueryCondition(String key, Object value){
-            this.key=key;
-            this.value=value;
-        }
-
-        public String getKey(){
-            return key;
-        }
-
-        public Object getValue(){
-            return value;
         }
     }
 

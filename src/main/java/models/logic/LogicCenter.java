@@ -1,5 +1,6 @@
 package models.logic;
 
+import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +106,7 @@ public class LogicCenter {
                 if (dataHandler.getCityBy(cityID) == null) {
                     throw new IllegalArgumentException("Nome della città non valido.");
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | RemoteException e) {
                 throw new RuntimeException(e);
             }
         }
