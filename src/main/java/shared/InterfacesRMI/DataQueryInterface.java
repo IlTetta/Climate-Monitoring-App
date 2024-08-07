@@ -8,6 +8,7 @@ import shared.utils.QueryCondition;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -27,4 +28,6 @@ public interface DataQueryInterface extends Remote {
     RecordWeather[] getWeatherBy(QueryCondition condition) throws SQLException, RemoteException;
 
     RecordWeather[] getWeatherBy(List<QueryCondition> conditions) throws SQLException, RemoteException;
+
+    Connection getConn() throws RemoteException;
 }

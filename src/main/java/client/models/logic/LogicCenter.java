@@ -10,6 +10,8 @@ import client.models.record.RecordCenter;
 import client.models.record.RecordOperator;
 import client.models.record.RecordWeather;
 import server.DataHandlerImp;
+import shared.InterfacesRMI.DataHandlerInterface;
+import shared.InterfacesRMI.DataQueryInterface;
 import shared.utils.Functions;
 
 /**
@@ -38,7 +40,11 @@ public class LogicCenter {
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandlerImp dataHandler;
+    private DataHandlerInterface dataHandler;
+
+    private DataQueryInterface dataQuery;
+
+
 
     /**
      * Costruttore della classe {@code LogicCenter}.
@@ -46,7 +52,7 @@ public class LogicCenter {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati
      *                    dell'applicazione.
      */
-    public LogicCenter(DataHandlerImp dataHandler) {
+    public LogicCenter(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) {
         this.dataHandler = dataHandler;
     }
 
@@ -103,7 +109,7 @@ public class LogicCenter {
 
         for (Integer cityID : cityIDs) {
             try {
-                if (dataHandler.dataQuery.getCityBy(cityID) == null) {
+                if (dataQuery.getCityBy(cityID) == null) {
                     throw new IllegalArgumentException("Nome della città non valido.");
                 }
             } catch (SQLException | RemoteException e) {

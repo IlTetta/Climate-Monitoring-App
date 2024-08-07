@@ -146,7 +146,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
         RecordCity RecordCity = null;
         try {
-            RecordCity = mainModel.data.dataQuery.getCityBy(cityID);
+            RecordCity = mainModel.dataQuery.getCityBy(cityID);
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -158,7 +158,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         QueryCondition condition = new QueryCondition("cityID", cityID);
         RecordWeather[] weatherRecords;
         try {
-            weatherRecords = mainModel.data.dataQuery.getWeatherBy(condition);
+            weatherRecords = mainModel.dataQuery.getWeatherBy(condition);
 
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);

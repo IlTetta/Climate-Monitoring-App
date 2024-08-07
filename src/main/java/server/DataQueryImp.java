@@ -7,6 +7,7 @@ import client.models.record.RecordOperator;
 import client.models.record.RecordWeather;
 import shared.utils.QueryCondition;
 
+import java.io.IOException;
 import java.io.Serial;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -22,15 +23,20 @@ import static shared.utils.Functions.zeroToNull;
 //classe che implementa i metodi per interrogare il database
 public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterface{
 
-
-    private final Connection conn;
-
     @Serial
     private static final long serialVersionUID = 2L;
 
-    public DataQueryImp(Connection conn) throws RemoteException {
+    private final Connection conn;
+
+    public DataQueryImp() throws RemoteException {
         super();
-        this.conn = conn;
+        try {
+            QueryToDB queryToDB = QueryToDB.createFromProperties("database.properties");
+            this.conn= queryToDB.getConnection();
+        } catch (SQLException | IOException e) {
+            e.printStackTrace();
+            throw new RemoteException("Inizializzazione della connessione al database fallita", e);
+        }
     }
 
     @Override
@@ -229,6 +235,7 @@ private String createSQLCondition(List<QueryCondition> conditions) {
     }
 
     //ritorna la connessione al database per i test
+    @Override
     public Connection getConn() {
         return conn;
     }

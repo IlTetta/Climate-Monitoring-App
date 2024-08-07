@@ -13,6 +13,8 @@ import client.models.CurrentOperator;
 import client.models.record.RecordOperator;
 import server.DataHandlerImp;
 import server.DataQueryImp;
+import shared.InterfacesRMI.DataHandlerInterface;
+import shared.InterfacesRMI.DataQueryInterface;
 import shared.utils.QueryCondition;
 
 /**
@@ -25,7 +27,7 @@ import shared.utils.QueryCondition;
  * 
  * @see CurrentOperator
  * @see DataHandlerImp
- * @see DataQueryImp.QueryCondition
+ * @see QueryCondition
  * @see RecordOperator
  * 
  * @author Andrea Tettamanti
@@ -38,7 +40,9 @@ public class LogicOperator {
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandlerImp dataHandler;
+    private DataHandlerInterface dataHandler;
+
+    private DataQueryInterface dataQuery;
 
     /**
      * Costruttore della classe {@code LogicOperator}.
@@ -46,8 +50,9 @@ public class LogicOperator {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati degli
      *                    operatori.
      */
-    public LogicOperator(DataHandlerImp dataHandler) {
+    public LogicOperator(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) {
         this.dataHandler = dataHandler;
+        this.dataQuery = dataQuery;
     }
 
     /**
@@ -77,7 +82,7 @@ public class LogicOperator {
 
         RecordOperator[] result;
         try {
-            result = dataHandler.dataQuery.getOperatorBy(conditions);
+            result = dataQuery.getOperatorBy(conditions);
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }
@@ -236,7 +241,7 @@ public class LogicOperator {
         QueryCondition condition = new QueryCondition("username", username);
         RecordOperator[] result = new RecordOperator[0];
         try {
-            result = dataHandler.dataQuery.getOperatorBy(condition);
+            result = dataQuery.getOperatorBy(condition);
         } catch (SQLException | RemoteException e) {
             throw new RuntimeException(e);
         }

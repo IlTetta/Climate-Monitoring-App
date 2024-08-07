@@ -136,7 +136,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
 
                     conditions.add(new QueryCondition("name", cityName));
                     try {
-                        result = mainModel.data.dataQuery.getCityBy(conditions);
+                        result = mainModel.dataQuery.getCityBy(conditions);
                     } catch (SQLException | RemoteException ex) {
                         throw new RuntimeException(ex);
                     }
@@ -149,7 +149,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
 
                         conditions.add(new QueryCondition("latitude", latitude));
                         conditions.add(new QueryCondition("longitude", longitude));
-                        result = mainModel.data.dataQuery.getCityBy(conditions);
+                        result = mainModel.dataQuery.getCityBy(conditions);
                     } catch (Exception exception) {
                         JOptionPane.showMessageDialog(null,
                                 "Inserisci delle coordinate valide (es. 45,80819 e 9,0832)",

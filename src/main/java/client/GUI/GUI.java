@@ -13,7 +13,6 @@ import client.GUI.mainElements.MainFrame;
 import client.GUI.mainElements.MainWindows;
 import client.GUI.mainElements.MenuBar;
 import client.GUI.panels.*;
-import client.GUI.panels.*;
 import client.models.MainModel;
 import shared.utils.Interfaces;
 
@@ -36,7 +35,7 @@ import shared.utils.Interfaces;
  * @see CityAddData
  * @see MainModel
  * @see Interfaces
- * @see GUI.Theme
+ * @see Theme
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti

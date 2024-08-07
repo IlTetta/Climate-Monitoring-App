@@ -5,6 +5,7 @@ import client.models.record.RecordCenter;
 import client.models.record.RecordCity;
 import client.models.record.RecordOperator;
 import client.models.record.RecordWeather;
+import shared.InterfacesRMI.DataQueryInterface;
 
 import java.io.Serial;
 import java.rmi.RemoteException;
@@ -19,20 +20,23 @@ import java.text.SimpleDateFormat;
 //Classe che gestisce i dati: aggiunge e aggiorna i record nel database
 public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerInterface {
 
-    private Connection conn;
-
-    public DataQueryImp dataQuery;
-
     @Serial
     private static final long serialVersionUID = 1L;
 
-    public DataHandlerImp(Connection conn) throws RemoteException{
+    private DataQueryInterface dataQuery;
+
+    private Connection conn;
+
+
+
+    public DataHandlerImp() throws RemoteException{
         super();
-        this.conn = conn;
         try {
-            dataQuery=new DataQueryImp(conn);
+            this.dataQuery= new DataQueryImp();
+            this.conn=dataQuery.getConn();
+
         } catch (RemoteException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Inizializzazione fallita", e);
         }
     }
 

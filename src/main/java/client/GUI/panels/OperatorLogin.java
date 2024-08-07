@@ -163,7 +163,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
                 RecordCenter[] result = new RecordCenter[0];
                 try {
-                    result = mainModel.data.dataQuery.getCenters();
+                    result = mainModel.dataQuery.getCenters();
                 } catch (SQLException | RemoteException e) {
                     throw new RuntimeException(e);
                 }

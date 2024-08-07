@@ -2,6 +2,8 @@ package client.models.record;
 
 import shared.utils.Constants;
 
+import java.io.Serializable;
+
 /**
  * La classe {@code RecordWeather} rappresenta dati meteorologici registrati in
  * una determinata data per una citt&agrave; e un centro specifici.
@@ -48,7 +50,7 @@ public record RecordWeather(
         WeatherData temperature,
         WeatherData precipitation,
         WeatherData glacierElevation,
-        WeatherData glacierMass) {
+        WeatherData glacierMass) implements Serializable {
 
     /**
      * Restituisce una rappresentazione testuale formattata dell'oggetto
@@ -150,7 +152,7 @@ public record RecordWeather(
      */
     public record WeatherData(
             Integer score,
-            String comment) {
+            String comment) implements Serializable {
 
         /**
          * Restituisce una rappresentazione testuale formattata dell'oggetto

@@ -1,5 +1,6 @@
 package client.models.record;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -41,7 +42,7 @@ public record RecordCenter(
                 String CAP,
                 String townName,
                 String districtName,
-                Integer[] cityIDs) {
+                Integer[] cityIDs) implements Serializable {
 
         /**
          * Restituisce una rappresentazione testuale formattata dell'oggetto

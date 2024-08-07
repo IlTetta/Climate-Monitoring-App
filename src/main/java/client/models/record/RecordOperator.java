@@ -2,6 +2,8 @@ package client.models.record;
 
 import shared.utils.Constants;
 
+import java.io.Serializable;
+
 /**
  * La classe {@code RecordOperator} rappresenta un operatore e contiene
  * informazioni come l'ID, il nome e cognome,
@@ -35,7 +37,7 @@ public record RecordOperator(
         String email,
         String username,
         String password,
-        Integer centerID) {
+        Integer centerID) implements Serializable {
 
     /**
      * Restituisce una rappresentazione testuale formattata dell'oggetto

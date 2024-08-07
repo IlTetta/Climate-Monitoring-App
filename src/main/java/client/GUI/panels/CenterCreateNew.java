@@ -176,7 +176,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
                 conditions.add(new QueryCondition("name", cityName));
                 try {
-                    result = mainModel.data.dataQuery.getCityBy(conditions);
+                    result = mainModel.dataQuery.getCityBy(conditions);
                 } catch (SQLException | RemoteException ex) {
                     throw new RuntimeException(ex);
                 }

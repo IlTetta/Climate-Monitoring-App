@@ -3,14 +3,16 @@ package client.models;
 import client.models.logic.LogicCenter;
 import client.models.logic.LogicCity;
 import client.models.logic.LogicOperator;
-import server.QueryToDB;
 import server.DataHandlerImp;
 
-import client.models.logic.*;
+import shared.InterfacesRMI.DataHandlerInterface;
+import shared.InterfacesRMI.DataQueryInterface;
 
-import java.io.IOException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.sql.Connection;
-import java.sql.SQLException;
 
 /**
  * La classe {@code MainModel} rappresenta il modello principale
@@ -23,12 +25,12 @@ import java.sql.SQLException;
  * <p>
  * E' un componente centrale nell'architettura MVC dell'applicazione.
  * </p>
- * 
+ *
  * @see DataHandlerImp
  * @see LogicOperator
  * @see LogicCenter
  * @see LogicCity
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -39,7 +41,9 @@ public class MainModel {
     /**
      * Gestisce l'accesso e la manipolazione dei dati nell'applicazione.
      */
-    public DataHandlerImp data;
+    public DataHandlerInterface dataHandler;
+
+    public DataQueryInterface dataQuery;
 
     /**
      * Gestisce la logica specifica dell'operatore.
@@ -67,19 +71,17 @@ public class MainModel {
      * </p>
      */
     public MainModel() {
-        //bisogna collegarsi al registry che contiene il riferimento al database
-        //bisogna creare un oggetto QueryToDB
-        //conn = QueryToDB.createFromProperties("db.properties").getConnection();
-        //data = new DataHandlerImp(conn);
+
         try {
-            data = new DataHandlerImp(QueryToDB.createFromProperties("database.properties").getConnection());
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
+            Registry registry = LocateRegistry.getRegistry("localhost", 1099);
+
+            dataHandler = (DataHandlerInterface) registry.lookup("DataHandler");
+            dataQuery = (DataQueryInterface) registry.lookup("DataQuery");
+        } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
-        logicOperator = new LogicOperator(data);
-        logicCenter = new LogicCenter(data);
-        logicCity = new LogicCity(data);
+        logicOperator = new LogicOperator(dataHandler, dataQuery);
+        logicCenter = new LogicCenter(dataHandler, dataQuery);
+        logicCity = new LogicCity(dataHandler);
     }
 }

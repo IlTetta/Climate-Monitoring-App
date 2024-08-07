@@ -2,6 +2,8 @@ package client.models.record;
 
 import shared.utils.Constants;
 
+import java.io.Serializable;
+
 /**
  * La classe {@code RecordCity} rappresenta una citt&agrave; e contiene
  * informazioni
@@ -36,7 +38,7 @@ public record RecordCity(
         String countryCode,
         String countryName,
         double latitude,
-        double longitude) {
+        double longitude) implements Serializable {
 
     /**
      * Restituisce una rappresentazione testuale formattata dell'oggetto

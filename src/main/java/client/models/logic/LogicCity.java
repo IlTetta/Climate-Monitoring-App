@@ -7,6 +7,7 @@ import java.util.Map;
 
 import client.models.record.RecordWeather;
 import server.DataHandlerImp;
+import shared.InterfacesRMI.DataHandlerInterface;
 
 /**
  * La classe {@code LogicCity} gestisce la logica relativa alle citt&agrave;.
@@ -31,7 +32,7 @@ public class LogicCity {
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati delle
      *                    citt&agrave;.
      */
-    public LogicCity(DataHandlerImp dataHandler) {
+    public LogicCity(DataHandlerInterface dataHandler) {
     }
 
     /**
