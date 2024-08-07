@@ -1,11 +1,11 @@
 package org.example;
 
-import models.data.DataQueryImp;
-import models.record.RecordCenter;
-import models.record.RecordCity;
-import models.record.RecordOperator;
-import models.record.RecordWeather;
-import utils.QueryCondition;
+import server.DataQueryImp;
+import client.models.record.RecordCenter;
+import client.models.record.RecordCity;
+import client.models.record.RecordOperator;
+import client.models.record.RecordWeather;
+import shared.utils.QueryCondition;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;

@@ -1,6 +1,6 @@
 package org.example;
 
-import models.CMServer.DBConnection.QueryToDB;
+import server.QueryToDB;
 import org.junit.jupiter.api.*;
 import static org.junit.jupiter.api.Assertions.*;
 
