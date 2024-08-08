@@ -45,7 +45,7 @@ import java.util.EventObject;
  * 
  * @see GUI
  * @see Widget
- * @see GUI.Widget.ComboItem
+ * @see ComboItem
  * @see CurrentOperator
  * @see MainModel
  * @see RecordCenter
@@ -75,45 +75,45 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Il pattern per la data.
      */
-    private static String datePattern = "dd/MM/yyyy";
+    private static final String datePattern = "dd/MM/yyyy";
 
     /**
      * La maschera per per la data.
      */
-    private static String dateMask = datePattern.replaceAll("[dMy]", "#");
+    private static final String dateMask = datePattern.replaceAll("[dMy]", "#");
 
     /** Campo di testo per il nome del Centro */
-    private JTextField textfieldCenterName = new JTextField();
+    private final JTextField textfieldCenterName = new JTextField();
 
     /**
      * ComboBox per la selezione della citt&agrave;.
      */
-    private JComboBox<ComboItem> comboboxCityName = new JComboBox<>();
+    private final JComboBox<ComboItem> comboboxCityName = new JComboBox<>();
 
     /**
      * Campo di testo formattato per la data di rilevamento.
      */
-    private JFormattedTextField textfieldDate = new JFormattedTextField();
+    private final JFormattedTextField textfieldDate = new JFormattedTextField();
 
     /**
      * Tabella per l'inserimento dati.
      */
-    private JTable table = new JTable();
+    private final JTable table = new JTable();
 
     /**
      * Modello predefinito per la tabella.
      */
-    private DefaultTableModel defaulmodelTable = new DefaultTableModel();
+    private final DefaultTableModel defaulmodelTable = new DefaultTableModel();
 
     /**
      * Bottone per il salvataggio dei dati.
      */
-    private JButton buttonPerformSave = new Widget.Button("Salva il nuovo set di dati");
+    private final JButton buttonPerformSave = new Widget.Button("Salva il nuovo set di dati");
 
     /**
      * Lunghezza massima consentita per i commenti.
@@ -123,9 +123,9 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     /**
      * Matrice di dati predefiniti per la tabella.
      */
-    private static String[][] data = {
+    private static final String[][] data = {
             { "Vento", "Velocità del vento (km/h)" },
-            { "Umidita'", "% di Umidità;" },
+            { "Umidità", "% di Umidità;" },
             { "Pressione", "In hPa" },
             { "Temperatura", "In C°" },
             { "Precipitazioni", "In mm di pioggia" },
@@ -217,8 +217,11 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
             }
 
             try {
+                CurrentOperator currentOperator = CurrentOperator.getInstance();
+                Integer operatorID = currentOperator.getCurrentOperator().ID();
                 mainModel.logicCenter.addDataToCenter(
                         cityID,
+                        operatorID,
                         date,
                         tableData);
                 JOptionPane.showMessageDialog(this,
@@ -325,7 +328,6 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
             MaskFormatter maskFormatter = new MaskFormatter(dateMask);
             maskFormatter.install(textfieldDate);
         } catch (ParseException e) {
-            e.printStackTrace();
             JOptionPane.showMessageDialog(
                     null,
                     "Formato data non valido. Assicurati di inserire la data nel formato corretto.",
@@ -400,7 +402,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
      * La classe {@code NonEditableCellEditor} &egrave; un editor per celle non
      * modificabili.
      */
-    class NonEditableCellEditor extends DefaultCellEditor {
+    static class NonEditableCellEditor extends DefaultCellEditor {
 
         public NonEditableCellEditor() {
             super(new JTextField());
@@ -426,7 +428,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
         if (currentOperator.isUserLogged()) {
             Integer centerID = currentOperator.getCurrentOperator().centerID();
 
-            RecordCenter center = null;
+            RecordCenter center;
             try {
                 center = mainModel.dataQuery.getCenterBy(centerID);
             } catch (SQLException | RemoteException e) {
@@ -438,7 +440,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                 Integer[] cityIDs = center.cityIDs();
 
                 for (Integer cityID : cityIDs) {
-                    RecordCity city = null;
+                    RecordCity city;
                     try {
                         city = mainModel.dataQuery.getCityBy(cityID);
                     } catch (SQLException | RemoteException e) {

@@ -1,19 +1,19 @@
 package client.models;
 
-import client.models.logic.LogicCenter;
+import server.ImplementationRMI.LogicCenterImp;
 import client.models.logic.LogicCity;
 import server.ImplementationRMI.LogicOperatorImp;
 import server.ImplementationRMI.DataHandlerImp;
 
 import shared.InterfacesRMI.DataHandlerInterface;
 import shared.InterfacesRMI.DataQueryInterface;
+import shared.InterfacesRMI.LogicCenterInterface;
 import shared.InterfacesRMI.LogicOperatorInterface;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import java.sql.Connection;
 
 /**
  * La classe {@code MainModel} rappresenta il modello principale
@@ -29,7 +29,7 @@ import java.sql.Connection;
  *
  * @see DataHandlerImp
  * @see LogicOperatorImp
- * @see LogicCenter
+ * @see LogicCenterImp
  * @see LogicCity
  *
  * @author Andrea Tettamanti
@@ -54,7 +54,7 @@ public class MainModel {
     /**
      * Gestisce la logica specifica del centro di monitoraggio.
      */
-    public LogicCenter logicCenter;
+    public LogicCenterInterface logicCenter;
 
     /**
      * Gestisce la logica specifica della citt&agrave;.
@@ -77,10 +77,10 @@ public class MainModel {
             dataHandler = (DataHandlerInterface) registry.lookup("DataHandler");
             dataQuery = (DataQueryInterface) registry.lookup("DataQuery");
             logicOperator = (LogicOperatorInterface) registry.lookup("LogicOperator");
+            logicCenter = (LogicCenterInterface) registry.lookup("LogicCenter");
         } catch (RemoteException | NotBoundException e) {
             throw new RuntimeException(e);
         }
-        logicCenter = new LogicCenter(dataHandler, dataQuery);
         logicCity = new LogicCity(dataHandler);
     }
 }

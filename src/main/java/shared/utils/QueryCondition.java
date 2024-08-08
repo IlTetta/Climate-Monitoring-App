@@ -7,8 +7,6 @@ import java.io.Serializable;
 //Implementa Serializable per poter essere inviata tramite RMI
 public class QueryCondition implements Serializable {
 
-    @Serial
-    private static final long serialVersionUID = 3L;
     private final String key;
     private final Object value;
 

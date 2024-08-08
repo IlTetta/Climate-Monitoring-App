@@ -1,21 +1,23 @@
-package client.models.logic;
+package server.ImplementationRMI;
 
+import java.io.Serial;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 import client.models.CurrentOperator;
+import shared.InterfacesRMI.LogicCenterInterface;
 import shared.record.RecordCenter;
 import shared.record.RecordOperator;
 import shared.record.RecordWeather;
-import server.ImplementationRMI.DataHandlerImp;
 import shared.InterfacesRMI.DataHandlerInterface;
 import shared.InterfacesRMI.DataQueryInterface;
 import shared.utils.Functions;
 
 /**
- * La classe {@code LogicCenter} gestisce la logica relativa ai Centri di
+ * La classe {@code LogicCenterImp} gestisce la logica relativa ai Centri di
  * Monitoraggio.
  * <p>
  * Questa classe offre metodi per inizializzare un nuovo Centro di Monitoraggio
@@ -35,25 +37,28 @@ import shared.utils.Functions;
  * @version 1.0
  * @since 16/09/2023
  */
-public class LogicCenter {
+public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterInterface {
 
+    @Serial
+    private static final long serialVersionUID = 4L;
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandlerInterface dataHandler;
+    private final DataHandlerInterface dataHandler;
 
-    private DataQueryInterface dataQuery;
+    private final DataQueryInterface dataQuery;
 
 
 
     /**
-     * Costruttore della classe {@code LogicCenter}.
+     * Costruttore della classe {@code LogicCenterImp}.
      * 
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati
      *                    dell'applicazione.
      */
-    public LogicCenter(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) {
+    public LogicCenterImp(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) throws RemoteException {
         this.dataHandler = dataHandler;
+        this.dataQuery = dataQuery;
     }
 
     /**
@@ -75,6 +80,7 @@ public class LogicCenter {
      *                                  centro di
      *                                  monitoraggio.
      */
+    @Override
     public void initNewCenter(
             String centerName,
             String streetName,
@@ -82,17 +88,9 @@ public class LogicCenter {
             String CAP,
             String townName,
             String districtName,
-            Integer[] cityIDs) {
+            Integer[] cityIDs,
+            Integer operatorID) throws RemoteException, SQLException {
 
-        CurrentOperator currentOperator = CurrentOperator.getInstance();
-
-        if (currentOperator.isUserLogged() == false) {
-            throw new RuntimeException("Nessun utente loggato");
-        }
-
-        if (currentOperator.getCurrentOperator().centerID() != 0) {
-            throw new RuntimeException("Utente fa già parte di un Centro");
-        }
 
         if (centerName.isBlank())
             throw new IllegalArgumentException("Nome del Centro non valido!");
@@ -108,18 +106,12 @@ public class LogicCenter {
             throw new IllegalArgumentException("Provincia non valida!");
 
         for (Integer cityID : cityIDs) {
-            try {
-                if (dataQuery.getCityBy(cityID) == null) {
+                if (cityID == null|| dataQuery.getCityBy(cityID) == null) {
                     throw new IllegalArgumentException("Nome della città non valido.");
                 }
-            } catch (SQLException | RemoteException e) {
-                throw new RuntimeException(e);
-            }
         }
 
-        RecordCenter newCenter = null;
-        try {
-            newCenter = dataHandler.addNewCenter(
+        RecordCenter newCenter = dataHandler.addNewCenter(
                     centerName,
                     streetName,
                     streetNumber,
@@ -127,25 +119,18 @@ public class LogicCenter {
                     townName,
                     districtName,
                     cityIDs);
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
 
+        RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
         RecordOperator updatedOperator = new RecordOperator(
-                currentOperator.getCurrentOperator().ID(),
-                currentOperator.getCurrentOperator().nameSurname(),
-                currentOperator.getCurrentOperator().taxCode(),
-                currentOperator.getCurrentOperator().email(),
-                currentOperator.getCurrentOperator().username(),
-                currentOperator.getCurrentOperator().password(),
+                currentOperator.ID(),
+                currentOperator.nameSurname(),
+                currentOperator.taxCode(),
+                currentOperator.email(),
+                currentOperator.username(),
+                currentOperator.password(),
                 newCenter.ID());
 
-        try {
-            dataHandler.updateOperator(updatedOperator);
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
-        currentOperator.setCurrentOperator(updatedOperator);
+        dataHandler.updateOperator(updatedOperator);
     }
 
     /**
@@ -163,27 +148,29 @@ public class LogicCenter {
      *                                  di
      *                                  monitoraggio.
      */
+    @Override
     public void addDataToCenter(
             Integer cityID,
+            Integer operatorID,
             String date,
-            Object[][] tableDatas) {
+            Object[][] tableDatas) throws RemoteException, SQLException {
 
-        CurrentOperator currentOperator = CurrentOperator.getInstance();
+RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
-        if (currentOperator.isUserLogged() == false) {
+        if (currentOperator == null) {
             throw new RuntimeException("Nessun utente loggato");
         }
 
-        if (currentOperator.getCurrentOperator().centerID() == 0) {
+        if (currentOperator.centerID() == 0) {
             throw new RuntimeException("L'utente non è associtato a nessun centro");
         }
 
-        if (date.isBlank() || !Functions.isDateValid(date))
+        if (date ==null || date.isBlank() || !Functions.isDateValid(date))
             throw new IllegalArgumentException("Data non valida");
 
         boolean allRowsNull = true;
-        for (int i = 0; i < tableDatas.length; i++) {
-            if (tableDatas[i][0] != null) {
+        for (Object[] tableData : tableDatas) {
+            if (tableData[0] != null) {
                 allRowsNull = false;
                 break;
             }
@@ -192,16 +179,15 @@ public class LogicCenter {
             throw new IllegalArgumentException("Dati non validi");
 
         List<RecordWeather.WeatherData> weatherDataList = new ArrayList<>();
-        for (int i = 0; i < tableDatas.length; i++) {
-            Integer integerValue = (Integer) tableDatas[i][0];
-            String stringValue = (String) tableDatas[i][1];
+        for (Object[] tableData : tableDatas) {
+            Integer integerValue = (Integer) tableData[0];
+            String stringValue = (String) tableData[1];
             weatherDataList.add(new RecordWeather.WeatherData(integerValue, stringValue));
         }
 
-        try {
-            dataHandler.addNewWeather(
+        dataHandler.addNewWeather(
                     cityID,
-                    currentOperator.getCurrentOperator().centerID(),
+                    currentOperator.centerID(),
                     date,
                     weatherDataList.get(0),
                     weatherDataList.get(1),
@@ -210,10 +196,5 @@ public class LogicCenter {
                     weatherDataList.get(4),
                     weatherDataList.get(5),
                     weatherDataList.get(6));
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
-
     }
-
 }

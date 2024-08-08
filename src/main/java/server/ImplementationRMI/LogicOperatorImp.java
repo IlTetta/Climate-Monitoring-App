@@ -1,6 +1,7 @@
 package server.ImplementationRMI;
 
 import java.io.IOException;
+import java.io.Serial;
 import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -37,6 +38,8 @@ import shared.utils.Functions;
  */
 public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperatorInterface {
 
+    @Serial
+    private static final long serialVersionUID = 3L;
     /**
      * Gestore dei dati dell'applicazione.
      */

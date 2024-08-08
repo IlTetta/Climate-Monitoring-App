@@ -16,8 +16,8 @@ import shared.utils.Interfaces;
  * all'applicazione.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoRows
  * @see MainModel
  * @see Interfaces

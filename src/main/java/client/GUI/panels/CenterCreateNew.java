@@ -18,6 +18,7 @@ import client.GUI.layouts.TwoColumns;
 import client.models.CurrentOperator;
 import client.models.MainModel;
 import server.ImplementationRMI.DataQueryImp;
+import shared.record.RecordCenter;
 import shared.record.RecordCity;
 import shared.utils.Constants;
 import shared.utils.Interfaces;
@@ -219,7 +220,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 int selectedIndex = listCityIDs.getSelectedIndex();
 
                 if (selectedIndex >= 0) {
-                    Integer answer = JOptionPane.showConfirmDialog(
+                    int answer = JOptionPane.showConfirmDialog(
                             this,
                             "Vuoi rimuovere la città selezionata?",
                             "Rimuovi città",
@@ -247,6 +248,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 cityIDs[i] = Integer.parseInt(listmodelCityIDs.get(i).split(Constants.CSV_SEPARATOR)[0]);
             }
 
+            CurrentOperator currentOperator = CurrentOperator.getInstance();
             try {
                 mainModel.logicCenter.initNewCenter(centerName,
                         streetName,
@@ -254,7 +256,12 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                         CAP,
                         townName,
                         districtName,
-                        cityIDs);
+                        cityIDs,
+                        currentOperator.getCurrentOperator().ID());
+
+                currentOperator.setCurrentOperator(
+                        mainModel.dataQuery.getOperatorBy(currentOperator.getCurrentOperator().ID()));
+
                 JOptionPane.showMessageDialog(
                         this,
                         "Nuovo centro inserito correttamente.",
