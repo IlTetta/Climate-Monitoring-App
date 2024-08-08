@@ -19,8 +19,8 @@ import java.util.EventObject;
 import client.GUI.GUI;
 import client.GUI.Widget;
 import client.models.MainModel;
-import client.models.logic.LogicCity;
-import client.models.logic.LogicCity.WeatherTableData;
+import server.ImplementationRMI.LogicCityImp;
+import server.ImplementationRMI.LogicCityImp.WeatherTableData;
 import shared.record.RecordCity;
 import shared.record.RecordWeather;
 import shared.utils.Constants;
@@ -41,7 +41,7 @@ import shared.utils.QueryCondition;
  * @see GUI
  * @see Widget
  * @see MainModel
- * @see LogicCity.WeatherTableData
+ * @see LogicCityImp.WeatherTableData
  * @see RecordCity
  * @see RecordWeather
  * @see Interfaces
@@ -166,7 +166,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
         if (weatherRecords.length > 0) {
 
-            Integer row = 0;
+            int row = 0;
             WeatherTableData weatherTableData = new WeatherTableData(weatherRecords);
 
             for (String keyString : WeatherTableData.keys) {

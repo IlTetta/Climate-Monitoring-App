@@ -1,13 +1,7 @@
 package server;
 
-import server.ImplementationRMI.DataHandlerImp;
-import server.ImplementationRMI.DataQueryImp;
-import server.ImplementationRMI.LogicCenterImp;
-import server.ImplementationRMI.LogicOperatorImp;
-import shared.InterfacesRMI.DataHandlerInterface;
-import shared.InterfacesRMI.DataQueryInterface;
-import shared.InterfacesRMI.LogicCenterInterface;
-import shared.InterfacesRMI.LogicOperatorInterface;
+import server.ImplementationRMI.*;
+import shared.InterfacesRMI.*;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -19,11 +13,13 @@ public class Server {
             DataHandlerInterface dataHandler = new DataHandlerImp(dataQuery);
             LogicOperatorInterface logicOperator = new LogicOperatorImp(dataHandler, dataQuery);
             LogicCenterInterface logicCenter = new LogicCenterImp(dataHandler, dataQuery);
+            LogicCityInterface logicCity = new LogicCityImp();
             Registry registry = LocateRegistry.createRegistry(1099);
             registry.rebind("DataQuery", dataQuery);
             registry.rebind("DataHandler", dataHandler);
             registry.rebind("LogicOperator", logicOperator);
             registry.rebind("LogicCenter", logicCenter);
+            registry.rebind("LogicCity", logicCity);
             System.out.println("Server started");
         } catch (Exception e) {
             e.printStackTrace();

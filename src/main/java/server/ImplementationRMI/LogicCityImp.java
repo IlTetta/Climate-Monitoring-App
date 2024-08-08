@@ -1,16 +1,17 @@
-package client.models.logic;
+package server.ImplementationRMI;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import shared.InterfacesRMI.LogicCityInterface;
 import shared.record.RecordWeather;
-import server.ImplementationRMI.DataHandlerImp;
-import shared.InterfacesRMI.DataHandlerInterface;
 
 /**
- * La classe {@code LogicCity} gestisce la logica relativa alle citt&agrave;.
+ * La classe {@code LogicCityImp} gestisce la logica relativa alle citt&agrave;.
  * <p>
  * Fornisce metodi per l'elaborazione dei dati meteorologici delle citt&agrave;.
  * </p>
@@ -24,15 +25,14 @@ import shared.InterfacesRMI.DataHandlerInterface;
  * @version 1.0
  * @since 16/09/2023
  */
-public class LogicCity {
+public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterface {
 
     /**
-     * Costruttore della classe {@code LogicCity}.
-     * 
-     * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati delle
-     *                    citt&agrave;.
+     * Costruttore della classe {@code LogicCityImp}.
+     *
      */
-    public LogicCity(DataHandlerInterface dataHandler) {
+    public LogicCityImp() throws RemoteException {
+        super();
     }
 
     /**
@@ -59,17 +59,17 @@ public class LogicCity {
         /**
          * Mappa per archiviare il punteggio per ciascuna categoria di dati.
          */
-        private Map<String, Float> categoryScore = new HashMap<>();
+        private final Map<String, Float> categoryScore = new HashMap<>();
 
         /**
          * Mappa per archiviare il conteggio dei record per ciascuna categoria di dati.
          */
-        private Map<String, Integer> categoryRecordCounts = new HashMap<>();
+        private final Map<String, Integer> categoryRecordCounts = new HashMap<>();
 
         /**
          * Mappa per archiviare i commenti relativi a ciascuna categoria di dati.
          */
-        private Map<String, List<String>> categoryComments = new HashMap<>();
+        private final Map<String, List<String>> categoryComments = new HashMap<>();
 
         /**
          * Costruttore della classe {@code WeatherTableData}.
@@ -153,6 +153,11 @@ public class LogicCity {
         public List<String> getCategoryComments(String category) {
             return categoryComments.getOrDefault(category, new ArrayList<>());
         }
+    }
+
+    @Override
+    public WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords) throws RemoteException {
+        return new WeatherTableData(weatherRecords);
     }
 
 }
