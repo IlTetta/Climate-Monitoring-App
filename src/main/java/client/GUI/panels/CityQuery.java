@@ -7,7 +7,7 @@ import client.GUI.Widget;
 import client.GUI.layouts.TwoColumns;
 import client.models.MainModel;
 
-import client.models.record.RecordCity;
+import shared.record.RecordCity;
 import shared.utils.Interfaces;
 import shared.utils.QueryCondition;
 

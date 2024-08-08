@@ -85,8 +85,7 @@ public class Functions {
 
         Charset charset = StandardCharsets.UTF_8;
         byte[] byteString = string.getBytes(charset);
-        String newString = new String(byteString, charset);
-        return newString;
+        return new String(byteString, charset);
     }
 
     public static Integer zeroToNull(Integer value) {

@@ -1,4 +1,4 @@
-package client.models.record;
+package shared.record;
 
 import shared.utils.Constants;
 

@@ -1,6 +1,6 @@
 /*package org.example;
 
-import server.DataQueryImp;
+import server.ImplementationRMI.DataQueryImp;
 import client.models.record.RecordCenter;
 import client.models.record.RecordCity;
 import client.models.record.RecordOperator;

@@ -5,8 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import client.models.record.RecordWeather;
-import server.DataHandlerImp;
+import shared.record.RecordWeather;
+import server.ImplementationRMI.DataHandlerImp;
 import shared.InterfacesRMI.DataHandlerInterface;
 
 /**

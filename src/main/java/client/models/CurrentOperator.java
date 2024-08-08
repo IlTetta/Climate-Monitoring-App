@@ -1,6 +1,6 @@
 package client.models;
 
-import client.models.record.RecordOperator;
+import shared.record.RecordOperator;
 import java.util.ArrayList;
 import java.util.List;
 

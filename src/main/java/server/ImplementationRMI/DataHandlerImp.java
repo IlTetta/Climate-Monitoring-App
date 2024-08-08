@@ -1,10 +1,10 @@
-package server;
+package server.ImplementationRMI;
 
 import shared.InterfacesRMI.DataHandlerInterface;
-import client.models.record.RecordCenter;
-import client.models.record.RecordCity;
-import client.models.record.RecordOperator;
-import client.models.record.RecordWeather;
+import shared.record.RecordCenter;
+import shared.record.RecordCity;
+import shared.record.RecordOperator;
+import shared.record.RecordWeather;
 import shared.InterfacesRMI.DataQueryInterface;
 
 import java.io.Serial;
@@ -23,16 +23,13 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private DataQueryInterface dataQuery;
-
-    private Connection conn;
+    private final Connection conn;
 
 
 
-    public DataHandlerImp() throws RemoteException{
+    public DataHandlerImp(DataQueryInterface dataQuery) throws RemoteException{
         super();
         try {
-            this.dataQuery= new DataQueryImp();
             this.conn=dataQuery.getConn();
 
         } catch (RemoteException e) {

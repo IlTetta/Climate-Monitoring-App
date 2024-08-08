@@ -4,6 +4,7 @@ import java.io.Serial;
 import java.io.Serializable;
 
 //classe interna per rappresentare una condizione di query
+//Implementa Serializable per poter essere inviata tramite RMI
 public class QueryCondition implements Serializable {
 
     @Serial

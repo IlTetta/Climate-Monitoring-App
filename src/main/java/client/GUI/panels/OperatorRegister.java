@@ -19,8 +19,8 @@ import shared.utils.Interfaces;
  * al fine di creare un nuovo account operatore.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoColumns
  * @see CurrentOperator
  * @see MainModel
@@ -109,29 +109,39 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
             String email = textfieldEmail.getText().trim();
             String username = textfieldUsername.getText().trim();
             String password = new String(textfieldPassword.getPassword()).trim();
-            Integer centerID = null;
 
-            try {
-                mainModel.logicOperator.performRegistration(
-                        nameSurname,
-                        taxCode,
-                        email,
-                        username,
-                        password,
-                        centerID);
+            CurrentOperator currentOperator = CurrentOperator.getInstance();
+
+            if(currentOperator.isUserLogged()) {
                 JOptionPane.showMessageDialog(
                         this,
-                        "Profilo registrato con successo. Accedi.",
-                        "Successo",
-                        JOptionPane.INFORMATION_MESSAGE);
-                gui.goToPanel(OperatorLogin.ID, null);
-
-            } catch (Exception exception) {
-                JOptionPane.showMessageDialog(
-                        this,
-                        exception.getMessage(),
+                        "Devi prima effettuare il logout.",
                         "Errore",
                         JOptionPane.ERROR_MESSAGE);
+            }else {
+
+                try {
+                    mainModel.logicOperator.performRegistration(
+                            nameSurname,
+                            taxCode,
+                            email,
+                            username,
+                            password,
+                            null);
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Profilo registrato con successo. Accedi.",
+                            "Successo",
+                            JOptionPane.INFORMATION_MESSAGE);
+                    gui.goToPanel(OperatorLogin.ID, null);
+
+                } catch (Exception exception) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            exception.getMessage(),
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                }
             }
         });
 

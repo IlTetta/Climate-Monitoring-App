@@ -6,10 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import client.models.CurrentOperator;
-import client.models.record.RecordCenter;
-import client.models.record.RecordOperator;
-import client.models.record.RecordWeather;
-import server.DataHandlerImp;
+import shared.record.RecordCenter;
+import shared.record.RecordOperator;
+import shared.record.RecordWeather;
+import server.ImplementationRMI.DataHandlerImp;
 import shared.InterfacesRMI.DataHandlerInterface;
 import shared.InterfacesRMI.DataQueryInterface;
 import shared.utils.Functions;

@@ -1,10 +1,11 @@
-package server;
+package server.ImplementationRMI;
 
+import server.QueryToDB;
 import shared.InterfacesRMI.DataQueryInterface;
-import client.models.record.RecordCenter;
-import client.models.record.RecordCity;
-import client.models.record.RecordOperator;
-import client.models.record.RecordWeather;
+import shared.record.RecordCenter;
+import shared.record.RecordCity;
+import shared.record.RecordOperator;
+import shared.record.RecordWeather;
 import shared.utils.QueryCondition;
 
 import java.io.IOException;
@@ -34,7 +35,6 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
             QueryToDB queryToDB = QueryToDB.createFromProperties("database.properties");
             this.conn= queryToDB.getConnection();
         } catch (SQLException | IOException e) {
-            e.printStackTrace();
             throw new RemoteException("Inizializzazione della connessione al database fallita", e);
         }
     }
@@ -42,9 +42,9 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
     @Override
     public RecordCity getCityBy(Integer ID) throws SQLException, RemoteException {
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE id = ?";
-        try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setInt(1, ID);
-            try (ResultSet rs = pstmt.executeQuery()) {
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, ID);
+            try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     return new RecordCity(
                             rs.getInt("id"),
@@ -82,6 +82,29 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
                     ));
                 }
                 return cities.toArray(new RecordCity[0]);
+            }
+        }
+    }
+
+    @Override
+    public RecordOperator getOperatorBy(Integer ID) throws SQLException, RemoteException{
+        String sql="SELECT * FROM operatoriregistrati WHERE id = ?";
+        try(PreparedStatement stmt=conn.prepareStatement(sql)){
+            stmt.setInt(1, ID);
+            try(ResultSet rs=stmt.executeQuery()){
+                if(rs.next()){
+                    return new RecordOperator(
+                            rs.getInt("id"),
+                            rs.getString("namesurname"),
+                            rs.getString("taxcode"),
+                            rs.getString("email"),
+                            rs.getString("username"),
+                            rs.getString("password"),
+                            rs.getInt("centerid")
+                    );
+                }else{
+                    throw new SQLException("Nessun operatore trovato con l'ID specificato");
+                }
             }
         }
     }

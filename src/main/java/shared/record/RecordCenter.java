@@ -1,4 +1,4 @@
-package client.models.record;
+package shared.record;
 
 import java.io.Serializable;
 import java.util.Arrays;

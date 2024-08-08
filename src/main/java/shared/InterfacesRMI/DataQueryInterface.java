@@ -1,9 +1,9 @@
 package shared.InterfacesRMI;
 
-import client.models.record.RecordCenter;
-import client.models.record.RecordCity;
-import client.models.record.RecordOperator;
-import client.models.record.RecordWeather;
+import shared.record.RecordCenter;
+import shared.record.RecordCity;
+import shared.record.RecordOperator;
+import shared.record.RecordWeather;
 import shared.utils.QueryCondition;
 
 import java.rmi.Remote;
@@ -16,6 +16,8 @@ public interface DataQueryInterface extends Remote {
     RecordCity getCityBy(Integer ID) throws SQLException, RemoteException;
 
     RecordCity[] getCityBy(List<QueryCondition> conditions) throws SQLException, RemoteException;
+
+    RecordOperator getOperatorBy(Integer ID) throws SQLException, RemoteException;
 
     RecordOperator[] getOperatorBy(QueryCondition condition) throws SQLException, RemoteException;
 

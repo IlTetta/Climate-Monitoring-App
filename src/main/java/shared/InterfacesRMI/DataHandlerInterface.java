@@ -1,8 +1,8 @@
 package shared.InterfacesRMI;
 
-import client.models.record.RecordCenter;
-import client.models.record.RecordOperator;
-import client.models.record.RecordWeather;
+import shared.record.RecordCenter;
+import shared.record.RecordOperator;
+import shared.record.RecordWeather;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

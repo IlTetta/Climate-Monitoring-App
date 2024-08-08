@@ -1,24 +1,24 @@
-package client.models.logic;
+package server.ImplementationRMI;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import client.models.CurrentOperator;
-import client.models.record.RecordOperator;
-import server.DataHandlerImp;
-import server.DataQueryImp;
+import shared.InterfacesRMI.LogicOperatorInterface;
+import shared.record.RecordOperator;
 import shared.InterfacesRMI.DataHandlerInterface;
 import shared.InterfacesRMI.DataQueryInterface;
 import shared.utils.QueryCondition;
+import shared.utils.Functions;
 
 /**
- * La classe {@code LogicOperator} gestisce la logica relativa agli operatori
+ * La classe {@code LogicOperatorImp} gestisce la logica relativa agli operatori
  * dell'applicazione.
  * <p>
  * Fornisce metodi per effettuare il login, la registrazione e le verifiche di
@@ -35,22 +35,23 @@ import shared.utils.QueryCondition;
  * @version 1.0
  * @since 16/09/2023
  */
-public class LogicOperator {
+public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperatorInterface {
 
     /**
      * Gestore dei dati dell'applicazione.
      */
-    private DataHandlerInterface dataHandler;
+    private final DataHandlerInterface dataHandler;
 
-    private DataQueryInterface dataQuery;
+    private final DataQueryInterface dataQuery;
 
     /**
-     * Costruttore della classe {@code LogicOperator}.
+     * Costruttore della classe {@code LogicOperatorImp}.
      * 
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati degli
      *                    operatori.
      */
-    public LogicOperator(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) {
+    public LogicOperatorImp(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) throws RemoteException {
+        super();
         this.dataHandler = dataHandler;
         this.dataQuery = dataQuery;
     }
@@ -64,33 +65,27 @@ public class LogicOperator {
      * @throws IllegalArgumentException Se il nome utente o la password sono vuoti o
      *                                  se le credenziali sono errate.
      */
-    public void performLogin(String username, String password) {
+    @Override
+    public RecordOperator performLogin(String username, String password) throws RemoteException {
 
-        if (username.isEmpty() || password.isEmpty()) {
+        if (username==null || username.isEmpty() || password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Username e password non possono essere vuoti.");
         }
 
-        CurrentOperator currentOperator = CurrentOperator.getInstance();
+        List<QueryCondition> conditions = List.of(
+                new QueryCondition("username", username),
+                new QueryCondition("password", hashPassword(username, password))
+        );
 
-        if (currentOperator.isUserLogged()) {
-            currentOperator.performLogout();
-        }
-
-        List<QueryCondition> conditions = new ArrayList<>();
-        conditions.add(new QueryCondition("username", username));
-        conditions.add(new QueryCondition("password", hashPassword(username, password)));
-
-        RecordOperator[] result;
         try {
-            result = dataQuery.getOperatorBy(conditions);
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
-        if (result.length == 1) {
-            currentOperator.setCurrentOperator(result[0]);
-        } else {
-            currentOperator.performLogout();
-            throw new IllegalArgumentException("Username o password non sono corretti.");
+            RecordOperator[] result = dataQuery.getOperatorBy(conditions);
+            if(result.length == 1){
+                return result[0];
+            }else{
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Errore durante il login", e);
         }
     }
 
@@ -115,30 +110,30 @@ public class LogicOperator {
      *                                  si &egrave; gi&agrave; loggati come
      *                                  operatore.
      */
+    @Override
     public void performRegistration(String nameSurname,
-            String taxCode,
-            String email,
-            String username,
-            String password,
-            Integer centerID) {
+                                    String taxCode,
+                                    String email,
+                                    String username,
+                                    String password,
+                                    Integer centerID) {
 
-        CurrentOperator currentOperator = CurrentOperator.getInstance();
+        String nameSurnamePattern = "^[a-zA-Z\\s]+$";
+        String taxCodePattern = "^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$";
+        String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        String passwordPattern = "^(?=.*[A-Z])(?=.*[@#$%^&+=!.])(.{8,})$";
 
-        if (currentOperator.isUserLogged()) {
-            currentOperator.performLogout();
-        }
-
-        if (!isValidNameSurname(nameSurname))
+        if (!nameSurname.matches(nameSurnamePattern))
             throw new IllegalArgumentException(
                     "Nome e Cognome non validi! \nNon devono contenere simboli numeri o altri caratteri speciali.");
-        if (!isValidTaxCode(taxCode))
+        if (!taxCode.matches(taxCodePattern))
             throw new IllegalArgumentException("Codice fiscale non valido!\nEsempio atteso: RSSMRA80A01H501T");
-        if (!isValidEmail(email))
+        if (!email.matches(emailPattern))
             throw new IllegalArgumentException("Indirizzo E-mail non valido!");
         if (!isValidUsername(username))
             throw new IllegalArgumentException(
                     "Username non valido/già esistente!\nMinimo 3 caratteri tra cui lettere, numeri e i seguenti simboli: . - _");
-        if (!isValidPassword(password))
+        if (!password.matches(passwordPattern))
             throw new IllegalArgumentException(
                     "Password non valida!\nDeve essere lunga almeno 8 caratteri e deve contenere una maiscula e un carattere speciale.");
 
@@ -150,7 +145,7 @@ public class LogicOperator {
                     hashPassword(username, password),
                     centerID);
         } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Errore durante la registrazione", e);
         }
 
     }
@@ -170,64 +165,25 @@ public class LogicOperator {
      *                     dei file
      *                     o l'aggiornamento dei dati dell'operatore.
      */
-    public void associateCenter(Integer centerID) {
+    @Override
+    public RecordOperator associateCenter(Integer operatorID, Integer centerID) throws SQLException, RemoteException {
 
-        CurrentOperator currentOperator = CurrentOperator.getInstance();
+        RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
-        if (currentOperator.isUserLogged() == false) {
-            throw new RuntimeException("Nessun utente loggato");
-        }
-
-        if (currentOperator.getCurrentOperator().centerID() != 0) {
-            throw new RuntimeException("Utente fa già parte di un Centro");
-        }
+        if(currentOperator.centerID() != 0)
+            throw new SQLException();
 
         RecordOperator updatedOperator = new RecordOperator(
-                currentOperator.getCurrentOperator().ID(),
-                currentOperator.getCurrentOperator().nameSurname(),
-                currentOperator.getCurrentOperator().taxCode(),
-                currentOperator.getCurrentOperator().email(),
-                currentOperator.getCurrentOperator().username(),
-                currentOperator.getCurrentOperator().password(),
+                currentOperator.ID(),
+                currentOperator.nameSurname(),
+                currentOperator.taxCode(),
+                currentOperator.email(),
+                currentOperator.username(),
+                currentOperator.password(),
                 centerID);
 
-        try {
-            dataHandler.updateOperator(updatedOperator);
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
-        }
-
-        currentOperator.setCurrentOperator(updatedOperator);
-    }
-
-    /**
-     * Verifica se il formato del nome e cognome &egrave; valido.
-     * 
-     * @param nameSurname Il nome e cognome da verificare.
-     * @return {@code true} se il formato &egrave; valido, {@code false} altrimenti.
-     */
-    public boolean isValidNameSurname(String nameSurname) {
-        return nameSurname.matches("^[a-zA-Z\\s]+$");
-    }
-
-    /**
-     * Verifica se il formato del codice fiscale &egrave; valido.
-     * 
-     * @param taxCode Il codice fiscale da verificare.
-     * @return {@code true} se il formato &egrave; valido, {@code false} altrimenti.
-     */
-    public boolean isValidTaxCode(String taxCode) {
-        return taxCode.matches("^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$");
-    }
-
-    /**
-     * Verifica se il formato dell'indirizzo email &egrave; valido.
-     * 
-     * @param email L'indirizzo email da verificare.
-     * @return {@code true} se il formato &egrave; valido, {@code false} altrimenti.
-     */
-    public boolean isValidEmail(String email) {
-        return email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        dataHandler.updateOperator(updatedOperator);
+        return updatedOperator;
     }
 
     /**
@@ -237,9 +193,9 @@ public class LogicOperator {
      * @param username Il nome utente da verificare.
      * @return {@code true} se il formato &egrave; valido, {@code false} altrimenti.
      */
-    public boolean isValidUsername(String username) {
+    private boolean isValidUsername(String username) {
         QueryCondition condition = new QueryCondition("username", username);
-        RecordOperator[] result = new RecordOperator[0];
+        RecordOperator[] result;
         try {
             result = dataQuery.getOperatorBy(condition);
         } catch (SQLException | RemoteException e) {
@@ -247,22 +203,13 @@ public class LogicOperator {
         }
         boolean correct = true;
         for (RecordOperator recordOperator : result) {
-            if (recordOperator.username().equals(username))
+            if (recordOperator.username().equals(username)) {
                 correct = false;
-
+                break;
+            }
         }
-        return (username.matches("^[a-zA-Z0-9._-]{3,}$") && correct);
-    }
-
-    /**
-     * Verifica se il formato della password &egrave; valido.
-     * 
-     * @param password La password da verificare.
-     * @return {@code true} se il formato &egrave; valido, {@code false} altrimenti.
-     */
-    public boolean isValidPassword(String password) {
-
-        return password.matches("^(?=.*[A-Z])(?=.*[@#$%^&+=!.])(.{8,})$");
+        String usernamePattern = "^[a-zA-Z0-9._-]{3,}$";
+        return (username.matches(usernamePattern) && correct);
     }
 
     /**
@@ -273,7 +220,7 @@ public class LogicOperator {
      * @param password La password dell'utente.
      * @return La password cifrata.
      */
-    public String hashPassword(String username, String password) {
+    private String hashPassword(String username, String password) {
         try {
             String combinedString = username + password;
             MessageDigest md = MessageDigest.getInstance("SHA-256");

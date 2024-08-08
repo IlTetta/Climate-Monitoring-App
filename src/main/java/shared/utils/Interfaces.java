@@ -40,7 +40,7 @@ import client.GUI.GUI;
  * nel sistema.
  * </p>
  * 
- * @see GUI.GUI
+ * @see GUI
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -108,35 +108,35 @@ public class Interfaces {
 
         /**
          * Restituisce il nome della citt&agrave; in formato ASCII.
-         * 
+         *
          * @return Il nome della citt&agrave; in formato ASCII.
          */
         String getASCIIName();
 
         /**
          * Restituisce il codice del paese a cui appartiene la citt&agrave;.
-         * 
+         *
          * @return Il codice del paese a cui appartiene la citt&agrave;.
          */
         String getCountryCode();
 
         /**
          * Restituisce il nome del paese a cui appartiene la citt&agrave;.
-         * 
+         *
          * @return Il nome del paese a cui appartiene la citt&agrave;.
          */
         String getCountryName();
 
         /**
          * Restituisce la latitudine geografica della citt&agrave;.
-         * 
+         *
          * @return La latitudine geografica della citt&agrave;.
          */
         double getLatitude();
 
         /**
          * Restituisce la longitudine geografica della citt&agrave;.
-         * 
+         *
          * @return La longitudine geografica della citt&agrave;.
          */
         double getLongitude();

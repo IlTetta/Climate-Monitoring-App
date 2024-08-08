@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import client.models.CurrentOperator;
-import client.models.record.RecordOperator;
+import shared.record.RecordOperator;
 import shared.utils.Functions;
 import shared.utils.Interfaces;
 

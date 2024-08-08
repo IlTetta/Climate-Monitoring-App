@@ -13,7 +13,8 @@ import client.GUI.Widget;
 import client.GUI.layouts.TwoColumns;
 import client.models.CurrentOperator;
 import client.models.MainModel;
-import client.models.record.RecordCenter;
+import shared.record.RecordCenter;
+import shared.record.RecordOperator;
 import shared.utils.Interfaces;
 
 /**
@@ -116,14 +117,18 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
             String userID = textfieldUsedID.getText();
             String userPassword = new String(textfieldPassword.getPassword());
 
+            CurrentOperator currentOperator = CurrentOperator.getInstance();
+
             try {
-                mainModel.logicOperator.performLogin(userID, userPassword);
-
-                CurrentOperator currentOperator = CurrentOperator.getInstance();
-
+                RecordOperator loggedOperator = mainModel.logicOperator.performLogin(userID, userPassword);
+                if(loggedOperator!=null){
+                    currentOperator.setCurrentOperator(loggedOperator);
+                }else {
+                    throw new IllegalArgumentException();
+                }
                 proceedToCenterCreation(currentOperator);
 
-            } catch (Exception exception) {
+            } catch (IllegalArgumentException | RemoteException | SQLException exception){
 
                 JOptionPane.showMessageDialog(
                         this,
@@ -157,11 +162,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                 gui.goToPanel(CenterCreateNew.ID, null);
             }
             if (selection == 1) {
-                // for (RecordCenter recordCenter : mainModel.data.getCenters()) {
-                // comboboxExistingCenter.addItem(recordCenter.ID());
-                // }
-
-                RecordCenter[] result = new RecordCenter[0];
+                RecordCenter[] result;
                 try {
                     result = mainModel.dataQuery.getCenters();
                 } catch (SQLException | RemoteException e) {
@@ -185,8 +186,15 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                             result[0]);
 
                     if (selectedCenter != null) {
+                        RecordOperator updatedOperator;
 
-                        mainModel.logicOperator.associateCenter(selectedCenter.ID());
+                        try {
+                            updatedOperator=mainModel.logicOperator.associateCenter(currentOperator.getCurrentOperator().ID(),selectedCenter.ID());
+                        } catch (SQLException | RemoteException e) {
+                            throw new RuntimeException(e);
+                        }
+                        currentOperator.setCurrentOperator(updatedOperator);
+
                         JOptionPane.showMessageDialog(
                                 this,
                                 "Centro associato con successo.",
