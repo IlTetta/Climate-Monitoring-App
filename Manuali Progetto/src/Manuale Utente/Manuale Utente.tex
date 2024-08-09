@@ -1,0 +1,55 @@
+\RequirePackage{fix-cm}
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{background}
+\usepackage{tikz}
+\usepackage{float}
+\usepackage{eso-pic}
+\usepackage{hyperref}
+
+
+% Imposta il background per la prima pagina
+\backgroundsetup{
+    scale=1,
+    color=black,
+    opacity=1,
+    angle=0,
+    contents={
+        \begin{tikzpicture}[overlay, remember picture]
+            \node[inner sep=0pt, anchor=center] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{../../img/firstpage_background.png}};
+            \node[text=cyan, font=\fontsize{35}{50}\selectfont\bfseries] at ([xshift=-0.2cm,yshift=-4.5cm]current page.center) {Climate Monitoring};
+            \node[text=cyan, font=\large] at ([xshift=-0.4cm,yshift=-7.5cm]current page.center) {\textit{Manuale Utente}};
+            \node[text=white, font=\large] at ([xshift=-8.5cm,yshift=-9cm]current page.center) {Autori:};
+            \node[text=white, font=\large] at ([xshift=-6.85cm,yshift=-10.5cm]current page.center) {Andrea Tettamanti 745387};
+            \node[text=white, font=\large] at ([xshift=-7.28cm,yshift=-11.5cm]current page.center) {Luca Mascetti 752951};
+            \node[text=white, font=\large] at ([xshift = 8cm, yshift = -9cm]current page.center) {Versione: 1.1};
+            \node[text=white, font=\large] at ([xshift = 8cm, yshift = -10cm]current page.center) {Data: 07-02-2024};
+        \end{tikzpicture}    }
+}
+
+\begin{document}
+
+%frontespizio
+\begin{titlepage}
+    \null
+\end{titlepage}
+
+% Sovrapponi l'immagine al numero di pagina
+\AddToShipoutPictureBG{
+    \begin{tikzpicture}[overlay, remember picture]
+        \node[inner sep=0pt, anchor=south] at ([xshift=-0.15cm,yshift=2.7cm]current page.south) {\includegraphics[width=1.5cm,height=1.5cm]{../../img/number page.png}};
+    \end{tikzpicture}
+}
+
+\clearpage
+\NoBgThispage
+\tableofcontents
+\listoffigures
+\clearpage
+
+\input{Introduzione.tex}
+\input{Installazione.tex}
+\input{Esecuzione ed Uso.tex}
+
+\end{document}

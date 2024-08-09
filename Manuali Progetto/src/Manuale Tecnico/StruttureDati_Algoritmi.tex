@@ -1,0 +1,181 @@
+\section{Strutture Dati e scelte Algoritmiche}
+I dati vengono salvati in modo definitivo in un file \texttt{.csv}. Quando si apre l'applicazione, i dati contenuti nei file vengono letti e caricati in delle mappe strutturate
+come relazioni in un database (chiave primaria + tupla), da cui poi estrarre i dati quando richiessto.\\
+Abbiamo scelto di utilizzare le \texttt{HashMap} per diversi motivi. In primo luogo, l'uso di una \texttt{HashMap} in memoria offre un accesso rapido ed efficinete ai dati. 
+Una volta che i dati sono stati letti dai file, vengono memorizzati in memoria sottoforma di \texttt{HashMap}, consentendo operazioni di accesso rapido con complessità $O(1)$.\\ 
+Lavorare direttamente sui file avrebbe richiesto operazioni di lettura e scrittura più frequenti, coinvolgendo l'I/O del disco, che è generalmente più lento rispetto all'I/O in memoria.
+Memorizzare i dati in una \texttt{HashMap} consente di evitare la necessità di aprire e chiudere frequentemente i file durante le operazioni.\\
+Inoltre, le \texttt{HashMap} forniscono una struttura dati efficiente per la gestione di associazioi chiave-valore. Questo è particolarmente utile nel nostro caso, dova abbiamo bisogno
+di eseguire operazioni di ricerca, inserimento e aggiornamento dei dati in modo veloce ed efficiente.\\
+Alcune della altre strutture dati potrebbero essere meno adatte alle esigenze specifiche del progetto. Ad esempio, le liste potrebbero risultare inefficaci per le operazioni di ricerca 
+rapida, mentre altre strutture dati complesse, come alberi, grafi o liste di liste, potrebbero aggiungere una complessità non necessaria alla nostra implementazione.\\
+\\
+Ora verranno descritte le sclete algoritmiche e le loro complessità della parte \texttt{Model} del progetto, in quanto è la sezione che si occupa della gestione dei dati.\\
+\\
+\textbf{DataStorage}
+\begin{enumerate}
+    \item Creazione delle Mappe:
+    \begin{itemize}
+        \item Inizializzazione nel costruttore tramite i metodi \texttt{createCityMap(), createOperatorMap(), createCenterMap(), e createWeatherMap()}.
+        \item Ogni metodo legge i dati dal file corrispondente utilizzando \texttt{FileHandler} e costruisce oggetti (es. \texttt{RecordCity, RecordOperator}, ecc.)
+        per l'inserimento nella mappa corrispondente.
+        \item Complessità: $O(n)$, dove $n$ è il numero di record nel file. 
+    \end{itemize}
+    \item Operazioni di Ricerca:
+    \begin{itemize}
+        \item Fornisce metodi (es. \texttt{getCityByID, getOperatorByID, getCenterByID, getWeatherByID}) per recuperare oggetti specifici dalla mappa basandosi sull'ID.
+        \item Complessità: $O(1)$, per accesso in una \texttt{HashMap}.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{DataQuery}
+\begin{enumerate}
+    \item Metodi di Recupero per Singole Entità:
+    \begin{itemize}
+        \item Utilizzando il metodo privato\texttt{filterData} per filtrare i dati basandosi su condizioni specifiche.
+        \item Complessità: $O(n)$, dove $n$ è il numero di elementi nella collezione.
+    \end{itemize}
+    \item Metodi di Filtraggio Interni:
+    \begin{itemize}
+        \item Verificano se un elemento soddisfa una condizione specifica.
+        \item Complessità: $O(1)$, ma totale dipende dal numero di condizioni.
+    \end{itemize}
+    \item Generazione di Epsilon:
+    \begin{itemize}
+        \item Il metodo \texttt{generateEpsilon} calcola un valore di $\epsilon$ basato sul numero di posizioni deciamli di un dato valore.
+        \item Complessità: $O(n)$, dove $n$ è il numero di posizioni decimali.
+    \end{itemize}
+    \item Caloclo delle Posizioni Decimali:
+    \begin{itemize}
+        \item Il metodo \texttt{computeDecimalPositions} calcola il numero di posizioni decimali di un valore \texttt{double}.
+        \item Complessità: $O(n)$, dove $n$ è la lunghezza della stringa rappresentante il valore.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{DataHandler}
+\begin{enumerate}
+    \item Generazione della Chiave Primaria:
+    \begin{itemize}
+        \item Il metodo \texttt{generatePrimaryKey} cerca iterativamente la chiave $k$ più alta della mappa attuale e genera una nuova chiave $k' = {k+1}$.
+        \item Complessità: $O(n)$, dove $n$ è il numero di elementi nella mappa.
+    \end{itemize}
+    \item Aggiunta di nuovi Record Operatore, Centro e dati Meteorologici:
+    \begin{itemize}
+        \item Il metodo \texttt{addNewRecord} genera un nuovo record, verifica se ci sono duplicati, aggiunge il record nella relativa mappa e scrive i dati nel file corrispondente.
+        \item Complessità: $O(n)$, dove $n$ è il numero di record già presenti.
+    \end{itemize}
+    Aggiornamento di Record:
+    \begin{itemize}
+        \item Il metodo \texttt{updateRecord} ricerca il record nel file, lo aggiorna e riscrive il file con il nuovo record.
+        \item Complessità: $O(n)$, dove $n$ è il numero totale di righe nel file.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{LogicCenter}
+\begin{enumerate}
+    \item Inizializzazione di un nuovo Centro di Monitoraggio:
+    \begin{itemize}
+        \item Algorimto con controlli su autenticazione, associazione dell'utene a un centro esistente, validità parametri del nuovo centro e verifica validità ID città.
+        \item Aggiorna i dati dell'operatore quando viene associato al nuovo centro.
+        \item Complessità: $O(n)$, dove $n$ è il numero di città associate al centro.
+    \end{itemize}
+    \item Aggiunta di dati meteorologici a un centro:
+    \begin{itemize}
+        \item Controlli sull'autenticazione dell'utente, associazione a un centro, validità della data e dei dati meteorologici.
+        \item Aggiorna i dati della mappa e del file corrispondente aggiungendo un nuovo record di dati meteorologici.
+        \item Complessità: $O(n)$, dove $n$ è il numero di righe di dati meteorologici fornite.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{LogicCity}
+\begin{enumerate}
+    \item Costruttore \texttt{WeatherTableData}:
+    \begin{itemize}
+        \item Construttore con array di record di dati meteorologici e chiamata a \texttt{processCategory} per ogni categoria presente nei record.
+        \item Complessità:$O(n*m)$, dove $n$ è la lunghezza dell'array e $m$ è il numero di categorie.
+    \end{itemize}
+    \item Metodo \texttt{processCategory}:
+    \begin{itemize}
+        \item Aggiorna i punteggi, i conteggi dei record e i commenti per la categoria data.
+        \item Complessità: $O(1)$ per ogni chiamata.
+    \end{itemize}
+    \item Metodo \texttt{getCategoryAvgScore}:
+    \begin{itemize}
+        \item Calcola la media dei punteggi per una categoria data.
+        \item Complessità: $O(1)$.
+    \end{itemize}
+    \item Metodo \texttt{getCategoryRecordCount}:
+    \begin{itemize}
+        \item Ottiene il conteggio dei record per una categoria data.
+        \item Complessità: $O(1)$.
+    \end{itemize}
+    \item Metodo \texttt{getCategoryComments}:
+    \begin{itemize}
+        \item Ottine la lista di commenti per una categoria data.
+        \item Complessità: $O(1)$.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{LogicOperator}
+\begin{enumerate}
+    \item Algoritmo di Login \texttt{performLogin}:
+    \begin{itemize}
+        \item Verifica se i campi per il login non sono vuoti, esegue il \texttt{logout} se un operatore è già loggato, costruiisce la lista di condizioni per la query da effettuare
+        e la esegue per ottenere l'operatore corrispondente alle credenziali fornite.
+        \item Complessità: $O(n)$, dove $n$ è il numero di operatori registrati.
+    \end{itemize}
+    \item Algoritmo di Registrazione \texttt{performRegistration}:
+    \begin{itemize}
+        \item Controlli di validità su nome, cognome, codice fiscale, e-mail, username e password.
+        \item Aggiunge un nuovo record alla mappa corrispondente.
+        \item Complessità: $O(1)$, in quanto le operazioni sono indipendenti dal numero di operatori registrati.
+    \end{itemize}
+    \item Algoritmo di Associazione a un Centro \texttt{associateCenter}:
+    \begin{itemize}
+        \item Verifica se l'operatore è loggato ed aggiorna l'operatore corrente con l'ID del centro specificato.
+        \item Complessità: $O(1)$, in quanto coinvolge solo operazioni di aggiornamento nella mappa.
+    \end{itemize}
+    \item Algoritmo di Validazione dei Dati:
+    \begin{itemize}
+        \item Controlli di validità sui dati froniti.
+        \item Complessità: $O(n)$, dove $n$ è il numero di campi da controllare.
+    \end{itemize}
+    \item Algoritmo di Hashing della Password \texttt{hashPassword}:
+    \begin{itemize}
+        \item E' utilizzato l'algoritmo \texttt{SHA-256} combinato con la concatenazione di username e password.
+        \item Complessità: $O(n)$, dove $n$ è la lunghezza dell'input in bit.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{RecordCity, RecordOperator, RecordCenter, RecordWeather}
+\begin{enumerate}
+    \item Costruttore del Record:
+    \begin{itemize}
+        \item Assegna i valori forniti ai campi del record.
+        \item Complessità: $O(1)$.
+    \end{itemize}
+    \item Metodo \texttt{toString}: 
+    \begin{itemize}
+        \item Restituisce una rappresentazione testuale del record.
+        \item Complessità: $O(n)$, dove $n$ è la lunghezza dell'array dei campi.
+    \end{itemize}
+\end{enumerate}
+
+\textbf{CurrentOperator}
+\begin{enumerate}
+    \item Pattern Singleton:
+    \begin{itemize}
+        \item Implementato con una variabile statica privata \texttt{instance} e costruttore privato.
+        \item \texttt{getInstance()} restituisce l'instanza unica di \texttt{CurrentOperator}.
+        \item Complessità: $O(1)$, coinvolge solo operazioni di controlloe e allocazione di memoria.
+    \end{itemize}
+    \item Pattern Observer:
+    \begin{itemize}
+        \item Metodi \texttt{addCurrentUserChangeListener} e \texttt{removeCurrentUserChangeListener} gestiscono l'aggiunte e la rimozione di listener per i cambiamenti di utente.
+        $O(1)$ per entrambi.
+        \item Metodo \texttt{notifyCurrentUserChange} notifica tutti i listener registrati di un cambio di utente.
+        $O(n)$, dove $n$ è il numero di listener registrati.
+        \item Metodo \texttt{setCurrentOperator} imposta l'operatore corrente e notidica i listener solo se l'operatore è diverso da quello corrente.
+        $O(n)$, per la chiamata a \texttt{notifyCurrentUserChange}.
+    \end{itemize}
+\end{enumerate}
