@@ -17,7 +17,7 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-//Classe che gestisce i dati: aggiunge e aggiorna i record nel database
+// Classe che gestisce i dati: aggiunge e aggiorna i record nel database
 public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerInterface {
 
     @Serial
@@ -25,19 +25,15 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
 
     private final Connection conn;
 
-
-
-    public DataHandlerImp(DataQueryInterface dataQuery) throws RemoteException{
+    public DataHandlerImp(DataQueryInterface dataQuery) throws RemoteException {
         super();
         try {
-            this.conn=dataQuery.getConn();
-
+            this.conn = dataQuery.getConn();
         } catch (RemoteException e) {
-            throw new RuntimeException("Inizializzazione fallita", e);
+            throw new RemoteException("Inizializzazione fallita", e);
         }
     }
 
-    //aggiunge un nuovo operatore al database
     @Override
     public RecordOperator addNewOperator(String nameSurname,
                                          String taxCode,
@@ -48,12 +44,14 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
         String checkSql = "SELECT * FROM operatoriregistrati WHERE username = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, username);
-            if (checkStmt.executeQuery().next()) {
-                throw new IllegalArgumentException("L'utente esiste già");
+            try (ResultSet rs = checkStmt.executeQuery()) {
+                if (rs.next()) {
+                    throw new IllegalArgumentException("L'utente esiste già");
+                }
             }
         }
 
-        String insertSql="INSERT INTO operatoriregistrati (namesurname, taxcode, email, username, password, centerid) VALUES (?, ?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO operatoriregistrati (namesurname, taxcode, email, username, password, centerid) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStmt.setString(1, nameSurname);
             insertStmt.setString(2, taxCode);
@@ -61,7 +59,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
             insertStmt.setString(4, username);
             insertStmt.setString(5, password);
 
-            if(centerID != null) {
+            if (centerID != null) {
                 insertStmt.setInt(6, centerID);
             } else {
                 insertStmt.setNull(6, java.sql.Types.INTEGER);
@@ -69,19 +67,17 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
 
             insertStmt.executeUpdate();
 
-            ResultSet generatedKeys = insertStmt.getGeneratedKeys();
-            if (generatedKeys.next()){
-                int newID = generatedKeys.getInt(1);
-                return new RecordOperator(newID, nameSurname, taxCode, email, username, password, centerID);
-            }else {
-                throw new SQLException("Inserimento fallito, nessun ID generato.");
+            try (ResultSet generatedKeys = insertStmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int newID = generatedKeys.getInt(1);
+                    return new RecordOperator(newID, nameSurname, taxCode, email, username, password, centerID);
+                } else {
+                    throw new SQLException("Inserimento fallito, nessun ID generato.");
+                }
             }
         }
-
-
     }
 
-    //aggiunge un nuovo centro al database
     @Override
     public RecordCenter addNewCenter(String centerName,
                                      String streetName,
@@ -99,12 +95,14 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
             checkStmt.setString(4, CAP);
             checkStmt.setString(5, townName);
             checkStmt.setString(6, districtName);
-            if (checkStmt.executeQuery().next()) {
-                throw new IllegalArgumentException("Il centro esiste già");
+            try (ResultSet rs = checkStmt.executeQuery()) {
+                if (rs.next()) {
+                    throw new IllegalArgumentException("Il centro esiste già");
+                }
             }
         }
 
-        String insertSql="INSERT INTO centrimonitoraggio (centername, streetname, streetnumber, cap, townname, districtname, cityids) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String insertSql = "INSERT INTO centrimonitoraggio (centername, streetname, streetnumber, cap, townname, districtname, cityids) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStmt.setString(1, centerName);
             insertStmt.setString(2, streetName);
@@ -115,17 +113,17 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
             insertStmt.setArray(7, conn.createArrayOf("INTEGER", cityIDs));
             insertStmt.executeUpdate();
 
-            ResultSet generatedKeys = insertStmt.getGeneratedKeys();
-            if (generatedKeys.next()){
-                int newID = generatedKeys.getInt(1);
-                return new RecordCenter(newID, centerName, streetName, streetNumber, CAP, townName, districtName, cityIDs);
-            }else {
-                throw new SQLException("Inserimento fallito, nessun ID generato.");
+            try (ResultSet generatedKeys = insertStmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int newID = generatedKeys.getInt(1);
+                    return new RecordCenter(newID, centerName, streetName, streetNumber, CAP, townName, districtName, cityIDs);
+                } else {
+                    throw new SQLException("Inserimento fallito, nessun ID generato.");
+                }
             }
         }
     }
 
-    //aggiunge nuovi parametri climatici al database
     @Override
     public void addNewWeather(Integer cityID,
                               Integer centerID,
@@ -140,7 +138,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
 
         String insertSql = "INSERT INTO parametriclimatici (cityid, centerid, date, windscore, windcomment, humidityscore, humiditycomment, pressurescore, pressurecomment, temperaturescore, temperaturecomment, precipitationscore, precipitationcomment, glacierelevationscore, glacierelevationcomment, glaciermassscore, glaciermasscomment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
-        try(PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
             insertStmt.setInt(1, cityID);
             insertStmt.setInt(2, centerID);
             try {
@@ -149,190 +147,133 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
                 java.sql.Date sqlDate = new java.sql.Date(parseDate.getTime());
                 insertStmt.setDate(3, sqlDate);
             } catch (ParseException e) {
-                throw new RuntimeException(e);
+                throw new SQLException("Errore nel parsing della data", e);
             }
-            if(wind.score()!=null)
-                insertStmt.setInt(4, wind.score());
-            else
-                insertStmt.setNull(4, java.sql.Types.INTEGER);
-            insertStmt.setString(5, wind.comment());
-            if (humidity.score()!=null)
-                insertStmt.setInt(6, humidity.score());
-            else
-                insertStmt.setNull(6, java.sql.Types.INTEGER);
-            insertStmt.setString(7, humidity.comment());
-            if (pressure.score()!=null)
-                insertStmt.setInt(8, pressure.score());
-            else
-                insertStmt.setNull(8, java.sql.Types.INTEGER);
-            insertStmt.setString(9, pressure.comment());
-            if (temperature.score()!=null)
-                insertStmt.setInt(10, temperature.score());
-            else
-                insertStmt.setNull(10, java.sql.Types.INTEGER);
-            insertStmt.setString(11, temperature.comment());
-            if (precipitation.score()!=null)
-                insertStmt.setInt(12, precipitation.score());
-            else
-                insertStmt.setNull(12, java.sql.Types.INTEGER);
-            insertStmt.setString(13, precipitation.comment());
-            if (glacierElevation.score()!=null)
-                insertStmt.setInt(14, glacierElevation.score());
-            else
-                insertStmt.setNull(14, java.sql.Types.INTEGER);
-            insertStmt.setString(15, glacierElevation.comment());
-            if (glacierMass.score()!=null)
-                insertStmt.setInt(16, glacierMass.score());
-            else
-                insertStmt.setNull(16, java.sql.Types.INTEGER);
-            insertStmt.setString(17, glacierMass.comment());
+
+            setWeatherData(insertStmt, 4, wind);
+            setWeatherData(insertStmt, 6, humidity);
+            setWeatherData(insertStmt, 8, pressure);
+            setWeatherData(insertStmt, 10, temperature);
+            setWeatherData(insertStmt, 12, precipitation);
+            setWeatherData(insertStmt, 14, glacierElevation);
+            setWeatherData(insertStmt, 16, glacierMass);
+
             insertStmt.executeUpdate();
 
-            ResultSet generatedKeys = insertStmt.getGeneratedKeys();
-            if (generatedKeys.next()){
-                int newID = generatedKeys.getInt(1);
-                new RecordWeather(newID, cityID, centerID, date, wind, humidity, pressure, temperature, precipitation, glacierElevation, glacierMass);
-            }else {
-                throw new SQLException("Inserimento fallito, nessun ID generato.");
+            try (ResultSet generatedKeys = insertStmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    int newID = generatedKeys.getInt(1);
+                    new RecordWeather(newID, cityID, centerID, date, wind, humidity, pressure, temperature, precipitation, glacierElevation, glacierMass);
+                } else {
+                    throw new SQLException("Inserimento fallito, nessun ID generato.");
+                }
             }
         }
     }
 
-    //aggiorna un RecordOperator nel sistema
+    private void setWeatherData(PreparedStatement stmt, int index, RecordWeather.WeatherData data) throws SQLException {
+        if (data.score() != null) {
+            stmt.setInt(index, data.score());
+        } else {
+            stmt.setNull(index, java.sql.Types.INTEGER);
+        }
+        stmt.setString(index + 1, data.comment());
+    }
+
     @Override
-    public void updateOperator(RecordOperator operator) throws SQLException, RemoteException{
+    public void updateOperator(RecordOperator operator) throws SQLException, RemoteException {
         updateRecord("operatoriregistrati", operator.ID(), operator);
     }
 
-    //aggiorna un record nel sistema
-    private void updateRecord(String tableName, int ID, Object record) throws SQLException{
-        String updateSql = "UPDATE "+tableName+" SET "+getUpdateQueryPart(record)+" WHERE ID = ?";
-        try(PreparedStatement updateStmt = conn.prepareStatement(updateSql)){
+    private void updateRecord(String tableName, int ID, Object record) throws SQLException {
+        String updateSql = "UPDATE " + tableName + " SET " + getUpdateQueryPart(record) + " WHERE ID = ?";
+        try (PreparedStatement updateStmt = conn.prepareStatement(updateSql)) {
             setUpdateParameters(updateStmt, record);
-            updateStmt.setInt(getParameterCount(record)+1, ID);
+            updateStmt.setInt(getParameterCount(record) + 1, ID);
             updateStmt.executeUpdate();
         }
     }
 
-    //metodi che generano la parte della query di aggiornamento che rappresenta la parte SET
     private String getUpdateQueryPart(Object object) {
         if (object instanceof RecordCity) {
-            return getUpdateQueryPart((RecordCity) object);
+            return "name = ?, street = ?, streetNumber = ?, CAP = ?, townName = ?, districtName = ?";
         } else if (object instanceof RecordOperator) {
-            return getUpdateQueryPart((RecordOperator) object);
+            return "nameSurname = ?, taxCode = ?, email = ?, username = ?, password = ?, centerID = ?";
         } else if (object instanceof RecordCenter) {
-            return getUpdateQueryPart((RecordCenter) object);
+            return "centerName = ?, streetName = ?, streetNumber = ?, CAP = ?, townName = ?, districtName = ?, cityIDs = ?";
         } else if (object instanceof RecordWeather) {
-            return getUpdateQueryPart((RecordWeather) object);
+            return "cityID = ?, centerID = ?, date = ?, wind_score = ?, wind_comment = ?, humidity_score = ?, humidity_comment = ?, pressure_score = ?, pressure_comment = ?, temperature_score = ?, temperature_comment = ?, precipitation_score = ?, precipitation_comment = ?, glacierElevation_score = ?, glacierElevation_comment = ?, glacierMass_score = ?, glacierMass_comment = ?";
         }
         return "";
     }
 
-    private String getUpdateQueryPart(RecordCity city) {
-        return "name = ?, street = ?, streetNumber = ?, CAP = ?, townName = ?, districtName = ?";
-    }
-
-    private String getUpdateQueryPart(RecordOperator operator) {
-        return "nameSurname = ?, taxCode = ?, email = ?, username = ?, password = ?, centerID = ?";
-    }
-
-    private String getUpdateQueryPart(RecordCenter center) {
-        return "centerName = ?, streetName = ?, streetNumber = ?, CAP = ?, townName = ?, districtName = ?, cityIDs = ?";
-    }
-
-    private String getUpdateQueryPart(RecordWeather weather) {
-        return "cityID = ?, centerID = ?, date = ?, wind_score = ?, wind_comment = ?, humidity_score = ?, humidity_comment = ?, pressure_score = ?, pressure_comment = ?, temperature_score = ?, temperature_comment = ?, precipitation_score = ?, precipitation_comment = ?, glacierElevation_score = ?, glacierElevation_comment = ?, glacierMass_score = ?, glacierMass_comment = ?";
-    }
-
-    //metodi che impostano i parametri della query di aggiornamento
     private void setUpdateParameters(PreparedStatement stmt, Object object) throws SQLException {
-        int index = 1;
         if (object instanceof RecordCity) {
-            setUpdateParameters(stmt, (RecordCity) object, index);
+            setUpdateParameters(stmt, (RecordCity) object, 1);
         } else if (object instanceof RecordOperator) {
-            setUpdateParameters(stmt, (RecordOperator) object, index);
+            setUpdateParameters(stmt, (RecordOperator) object, 1);
         } else if (object instanceof RecordCenter) {
-            setUpdateParameters(stmt, (RecordCenter) object, index);
+            setUpdateParameters(stmt, (RecordCenter) object, 1);
         } else if (object instanceof RecordWeather) {
-            setUpdateParameters(stmt, (RecordWeather) object, index);
+            setUpdateParameters(stmt, (RecordWeather) object, 1);
         }
     }
 
-    private void setUpdateParameters(PreparedStatement stmt, RecordCity city, int startIndex) throws SQLException {
-        stmt.setString(startIndex++, city.name());
-        stmt.setString(startIndex++, city.ASCIIName());
-        stmt.setString(startIndex++, city.countryCode());
-        stmt.setString(startIndex++, city.countryName());
-        stmt.setDouble(startIndex++, city.latitude());
-        stmt.setDouble(startIndex, city.longitude());
+    private void setUpdateParameters(PreparedStatement stmt, RecordCity city, int index) throws SQLException {
+        stmt.setString(index++, city.name());
+        stmt.setString(index++, city.ASCIIName());
+        stmt.setString(index++, city.countryCode());
+        stmt.setString(index++, city.countryName());
+        stmt.setDouble(index++, city.latitude());
+        stmt.setDouble(index, city.longitude());
     }
 
-    private void setUpdateParameters(PreparedStatement stmt, RecordOperator operator, int startIndex) throws SQLException {
-        stmt.setString(startIndex++, operator.nameSurname());
-        stmt.setString(startIndex++, operator.taxCode());
-        stmt.setString(startIndex++, operator.email());
-        stmt.setString(startIndex++, operator.username());
-        stmt.setString(startIndex++, operator.password());
-        stmt.setInt(startIndex, operator.centerID());
+    private void setUpdateParameters(PreparedStatement stmt, RecordOperator operator, int index) throws SQLException {
+        stmt.setString(index++, operator.nameSurname());
+        stmt.setString(index++, operator.taxCode());
+        stmt.setString(index++, operator.email());
+        stmt.setString(index++, operator.username());
+        stmt.setString(index++, operator.password());
+        if (operator.centerID() != null) {
+            stmt.setInt(index, operator.centerID());
+        } else {
+            stmt.setNull(index, java.sql.Types.INTEGER);
+        }
     }
 
-    private void setUpdateParameters(PreparedStatement stmt, RecordCenter center, int startIndex) throws SQLException {
-        stmt.setString(startIndex++, center.centerName());
-        stmt.setString(startIndex++, center.streetName());
-        stmt.setString(startIndex++, center.streetNumber());
-        stmt.setString(startIndex++, center.CAP());
-        stmt.setString(startIndex++, center.townName());
-        stmt.setString(startIndex++, center.districtName());
-        stmt.setArray(startIndex, conn.createArrayOf("INTEGER", center.cityIDs()));
+    private void setUpdateParameters(PreparedStatement stmt, RecordCenter center, int index) throws SQLException {
+        stmt.setString(index++, center.centerName());
+        stmt.setString(index++, center.streetName());
+        stmt.setString(index++, center.streetNumber());
+        stmt.setString(index++, center.CAP());
+        stmt.setString(index++, center.townName());
+        stmt.setString(index++, center.districtName());
+        stmt.setArray(index, conn.createArrayOf("INTEGER", center.cityIDs()));
     }
 
-    private void setUpdateParameters(PreparedStatement stmt, RecordWeather weather, int startIndex) throws SQLException {
-        stmt.setInt(startIndex++, weather.cityID());
-        stmt.setInt(startIndex++, weather.centerID());
-        stmt.setString(startIndex++, weather.date());
-        stmt.setInt(startIndex++, weather.wind().score());
-        stmt.setString(startIndex++, weather.wind().comment());
-        stmt.setInt(startIndex++, weather.humidity().score());
-        stmt.setString(startIndex++, weather.humidity().comment());
-        stmt.setInt(startIndex++, weather.pressure().score());
-        stmt.setString(startIndex++, weather.precipitation().comment());
-        stmt.setInt(startIndex++, weather.temperature().score());
-        stmt.setString(startIndex++, weather.temperature().comment());
-        stmt.setInt(startIndex++, weather.precipitation().score());
-        stmt.setString(startIndex++, weather.precipitation().comment());
-        stmt.setInt(startIndex++, weather.glacierElevation().score());
-        stmt.setString(startIndex++, weather.glacierElevation().comment());
-        stmt.setInt(startIndex++, weather.glacierMass().score());
-        stmt.setString(startIndex, weather.glacierMass().comment());
+    private void setUpdateParameters(PreparedStatement stmt, RecordWeather weather, int index) throws SQLException {
+        stmt.setInt(index++, weather.cityID());
+        stmt.setInt(index++, weather.centerID());
+        stmt.setDate(index++, java.sql.Date.valueOf(weather.date()));
+        setWeatherData(stmt, index++, weather.wind());
+        setWeatherData(stmt, index++, weather.humidity());
+        setWeatherData(stmt, index++, weather.pressure());
+        setWeatherData(stmt, index++, weather.temperature());
+        setWeatherData(stmt, index++, weather.precipitation());
+        setWeatherData(stmt, index++, weather.glacierElevation());
+        setWeatherData(stmt, index, weather.glacierMass());
     }
 
-    //metodi che restituiscono il numero di parametri della query di aggiornamento
-    private int getParameterCount(Object object) {
-        if (object instanceof RecordCity) {
-            return getParameterCount((RecordCity) object);
-        } else if (object instanceof RecordOperator) {
-            return getParameterCount((RecordOperator) object);
-        } else if (object instanceof RecordCenter) {
-            return getParameterCount((RecordCenter) object);
-        } else if (object instanceof RecordWeather) {
-            return getParameterCount((RecordWeather) object);
+    private int getParameterCount(Object record) {
+        if (record instanceof RecordCity) {
+            return 6;
+        } else if (record instanceof RecordOperator) {
+            return 6;
+        } else if (record instanceof RecordCenter) {
+            return 7;
+        } else if (record instanceof RecordWeather) {
+            return 16;
         }
         return 0;
-    }
-
-    private int getParameterCount(RecordCity city) {
-        return 6; // Numero di parametri per RecordCity
-    }
-
-    private int getParameterCount(RecordOperator operator) {
-        return 6; // Numero di parametri per RecordOperator
-    }
-
-    private int getParameterCount(RecordCenter center) {
-        return 7; // Numero di parametri per RecordCenter (incluso cityIDs)
-    }
-
-    private int getParameterCount(RecordWeather weather) {
-        return 17; // Numero di parametri per RecordWeather (inclusi i punteggi e commenti)
     }
 }

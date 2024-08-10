@@ -9,7 +9,7 @@ import client.models.MainModel;
 
 import shared.record.RecordCity;
 import shared.utils.Interfaces;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 
 import java.awt.event.*;
 import java.rmi.RemoteException;

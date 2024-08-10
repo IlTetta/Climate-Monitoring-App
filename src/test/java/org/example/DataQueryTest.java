@@ -5,7 +5,7 @@ import client.models.record.RecordCenter;
 import client.models.record.RecordCity;
 import client.models.record.RecordOperator;
 import client.models.record.RecordWeather;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 import org.junit.jupiter.api.*;
 
 import java.io.IOException;

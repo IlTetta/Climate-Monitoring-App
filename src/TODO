@@ -1,6 +1,8 @@
-2) creare l'interfaccia dei servizi (query fatte, servizi utente da fare)
-4) Definire quali sono i metodi concorrenti e quali no
-5) Trovare una soluzione per la doppia connessione al db
 6) Modificare classe Costants
 7) Luca prova a fare uno script in bash per creare il DB con le tabelle e con i dati delle città (prova a usare il file di backup di pgAdmin4)
 8) Controllare per bene TUTTE le eccezioni e gestirle mandando un messaggio di errore
+
+
+
+JavaDoc:
+Interfaces

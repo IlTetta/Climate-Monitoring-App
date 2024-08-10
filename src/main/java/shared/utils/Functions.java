@@ -76,7 +76,7 @@ public class Functions {
     }
 
     /**
-     * Converte una stringa in un'altra stringa utilizzando l'encoding UTF-8.
+     * Converte una stringa in un'altra stringa utilizzando encoding UTF-8.
      * 
      * @param string La stringa da convertire.
      * @return Una nuova stringa convertita.

@@ -15,8 +15,7 @@ import shared.InterfacesRMI.LogicOperatorInterface;
 import shared.record.RecordOperator;
 import shared.InterfacesRMI.DataHandlerInterface;
 import shared.InterfacesRMI.DataQueryInterface;
-import shared.utils.QueryCondition;
-import shared.utils.Functions;
+import shared.record.QueryCondition;
 
 /**
  * La classe {@code LogicOperatorImp} gestisce la logica relativa agli operatori

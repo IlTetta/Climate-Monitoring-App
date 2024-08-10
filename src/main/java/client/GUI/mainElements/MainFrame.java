@@ -41,7 +41,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
 
         setTitle(Constants.APP_TITLE);
-        setIcon(Constants.Path.Assets.LOGO);
+        setIcon(Constants.Assets.LOGO);
         setLayout(new BorderLayout());
     }
 

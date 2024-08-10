@@ -4,7 +4,7 @@ import shared.record.RecordCenter;
 import shared.record.RecordCity;
 import shared.record.RecordOperator;
 import shared.record.RecordWeather;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;

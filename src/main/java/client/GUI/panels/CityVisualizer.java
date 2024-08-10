@@ -26,7 +26,7 @@ import shared.record.RecordWeather;
 import shared.utils.Constants;
 import shared.utils.Interfaces;
 import shared.utils.Constants.Legend;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 
 /**
  * La classe {@code CityVisualizer} rappresenta un pannello Swing per la

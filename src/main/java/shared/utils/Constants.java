@@ -1,7 +1,6 @@
 package shared.utils;
 
 import java.awt.Dimension;
-import java.nio.file.Paths;
 
 /**
  * La classe {@code Constants} fornisce una serie di costanti e definizioni
@@ -58,58 +57,6 @@ public class Constants {
      * </p>
      */
     private Constants() {
-    }
-
-    /**
-     * La classe interna {@code Index} fornisce costanti per gli indici dei campi
-     * dei dati.
-     * <p>
-     * Queste costanti sono utilizzate per accedere ai dati nei file CSV.
-     * </p>
-     */
-    public static final class Index {
-        /**
-         * Indice del nome nei dati.
-         */
-        public static final int NAME = 0;
-
-        /**
-         * Indice del codice fiscale nei dati.
-         */
-        public static final int TAXCODE = 1;
-
-        /**
-         * Indice dell'indirizzo email nei dati.
-         */
-        public static final int EMAIL = 2;
-
-        /**
-         * Indice dell'ID nei dati.
-         */
-        public static final int ID = 3;
-
-        /**
-         * Indice della password nei dati.
-         */
-        public static final int PWD = 4;
-
-        /**
-         * Indice del centro nei dati.
-         */
-        public static final int CENTER = 5;
-
-        /**
-         * Questa classe interna &egrave; progettata per memorizzare costanti per gli
-         * indici
-         * dei campi dei dati.
-         * <p>
-         * Non &egrave; possibile creare istanze di questa classe in quanto tutti i
-         * membri sono
-         * statici.
-         * </p>
-         */
-        private Index() {
-        }
     }
 
     /**
@@ -214,59 +161,16 @@ public class Constants {
     }
 
     /**
-     * La classe interna {@code Path} fornisce costanti per i percorsi dei file e
+     * La classe interna {@code Assets} fornisce costanti per i percorsi dei file e
      * delle risorse dell'applicazione.
      */
-    public static final class Path {
+    public static final class Assets {
 
         /**
          * Separatore di percorsi.
          */
         public static final String SEPARATOR = "/";
 
-        /**
-         * La classe interna {@code Files} fornisce costanti per i percorsi dei file di
-         * dati.
-         */
-        public static final class Files {
-            /**
-             * Percorso del file dati meteorologici.
-             */
-            public static final String WEATHER = getPath("Weather.data.csv");
-
-            /**
-             * Percorso del file dati degli operatori.
-             */
-            public static final String OPERATOR = getPath("Operator.data.csv");
-
-            /**
-             * Percorso del file dati delle citt&agrave;.
-             */
-            public static final String CITY = getPath("City.list.csv");
-
-            /**
-             * Percorso del file dati dei centri.
-             */
-            public static final String CENTER = getPath("Center.data.csv");
-
-            /**
-             * Questa classe interna &egrave; progettata per memorizzare costanti per i
-             * percorsi
-             * dei file di dati.
-             */
-            private Files() {
-            }
-
-            private static String getPath(String fileName) {
-                return Paths.get("data", fileName).toString();
-            }
-        }
-
-        /**
-         * La classe interna {@code Assets} fornisce costanti per i percorsi delle
-         * risorse dell'applicazione.
-         */
-        public static final class Assets {
             /**
              * Percorso del logo dell'applicazione.
              */
@@ -282,20 +186,12 @@ public class Constants {
              */
             public static final String THEME = getPath("iconTheme.png");
 
-            /**
-             * Questa classe interna &egrave; progettata per memorizzare costanti per i
-             * percorsi
-             * delle risorse dell'applicazione.
-             */
-            private Assets() {
-            }
-
             private static String getPath(String fileName) {
                 return SEPARATOR + String.join(SEPARATOR, new String[] { "assets", fileName });
             }
-        }
 
-        private Path() {
+
+        private Assets() {
         }
     }
 

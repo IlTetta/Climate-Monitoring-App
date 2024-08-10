@@ -6,7 +6,7 @@ import shared.record.RecordCenter;
 import shared.record.RecordCity;
 import shared.record.RecordOperator;
 import shared.record.RecordWeather;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 
 import java.io.IOException;
 import java.io.Serial;
@@ -234,10 +234,10 @@ private String createSQLCondition(List<QueryCondition> conditions) {
         if (i > 0) {
             conditionString.append(" AND ");
         }
-        if (condition.getValue() instanceof java.util.Date) {
-            conditionString.append("CAST(").append(condition.getKey()).append(" AS DATE) = ?");
+        if (condition.value() instanceof java.util.Date) {
+            conditionString.append("CAST(").append(condition.key()).append(" AS DATE) = ?");
         } else {
-            conditionString.append(condition.getKey()).append(" = ?");
+            conditionString.append(condition.key()).append(" = ?");
         }
     }
     return conditionString.toString();
@@ -246,7 +246,7 @@ private String createSQLCondition(List<QueryCondition> conditions) {
     //imposta i valori dei parametri nel PreparedStatement basato sulle condizioni, attenzione al tipo date che deve essere convertito in java.sql.Date
     private void setPreparedStatementValues(PreparedStatement stmt, List<QueryCondition> conditions) throws SQLException {
         for (int i = 0; i < conditions.size(); i++) {
-            Object value = conditions.get(i).getValue();
+            Object value = conditions.get(i).value();
             if (value instanceof java.sql.Date) {
                 stmt.setDate(i + 1, (java.sql.Date) value);
             } else if (value instanceof java.util.Date) {

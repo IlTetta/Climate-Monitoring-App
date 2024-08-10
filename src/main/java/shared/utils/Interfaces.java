@@ -9,7 +9,7 @@ import client.GUI.GUI;
 /**
  * L'interfaccia {@code Interfaces} definisce una serie di interfacce e
  * contratti che rappresentano diversi aspetti
- * e entit&agrave; all'interno del sistema. Queste interfacce definiscono i
+ * ed entit&agrave; all'interno del sistema. Queste interfacce definiscono i
  * metodi e le
  * propriet&agrave; che devono essere implementati
  * da classi specifiche per fornire funzionalit&agrave; legate a citt&agrave;,
@@ -51,7 +51,7 @@ public class Interfaces {
 
     /**
      * L'interfaccia {@code RecordCity} definisce il contratto per i dati relativi
-     * ad una citt&agrave;.
+     * a una citt&agrave;.
      * <p>
      * Questi dati includono informazioni come l'identificatore della citt&agrave;,
      * il nome,

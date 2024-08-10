@@ -114,7 +114,7 @@ public class Widget {
             setVerticalAlignment(JLabel.CENTER);
 
             try {
-                BufferedImage originalImage = ImageIO.read(getClass().getResource(Constants.Path.Assets.LOGO));
+                BufferedImage originalImage = ImageIO.read(getClass().getResource(Constants.Assets.LOGO));
                 Image scaledImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
 
                 ImageIcon icon = new ImageIcon(scaledImage);

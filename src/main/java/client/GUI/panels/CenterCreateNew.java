@@ -18,11 +18,10 @@ import client.GUI.layouts.TwoColumns;
 import client.models.CurrentOperator;
 import client.models.MainModel;
 import server.ImplementationRMI.DataQueryImp;
-import shared.record.RecordCenter;
 import shared.record.RecordCity;
 import shared.utils.Constants;
 import shared.utils.Interfaces;
-import shared.utils.QueryCondition;
+import shared.record.QueryCondition;
 
 /**
  * La classe {@code CenterCreateNew} rappresenta un pannello per la creazione di

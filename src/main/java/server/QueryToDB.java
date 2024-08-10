@@ -8,11 +8,11 @@ import java.util.Properties;
 //Classe che si connette al database
 public class QueryToDB {
 
-    private Connection conn;
+    private final Connection conn;
 
     //Costruisce un oggetto QueryToDB con i parametri passati
     public QueryToDB(String url, String username, String password) throws SQLException {
-    conn=Conncetionmaker(url,username,password);
+    conn= connectionMaker(url,username,password);
         System.out.println("Connesso al database "+conn.getCatalog());
     }
 
@@ -22,7 +22,7 @@ public class QueryToDB {
         Properties props = new Properties();
         try (InputStream input = QueryToDB.class.getClassLoader().getResourceAsStream(filepath)) {
             if (input == null) {
-                throw new RuntimeException("Sorry, unable to find " + filepath);
+                throw new RuntimeException("File " + filepath + " non trovato");
             }
             props.load(input);
         }
@@ -33,7 +33,7 @@ public class QueryToDB {
 
         return new QueryToDB(url, username, password);
     }
-    private Connection Conncetionmaker(String url, String username, String password) throws SQLException {
+    private Connection connectionMaker(String url, String username, String password) throws SQLException {
         Properties props = new Properties();
         props.setProperty("user", username);
         props.setProperty("password", password);
