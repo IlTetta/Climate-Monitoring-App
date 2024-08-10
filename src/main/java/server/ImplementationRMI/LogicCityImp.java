@@ -11,17 +11,14 @@ import shared.InterfacesRMI.LogicCityInterface;
 import shared.record.RecordWeather;
 
 /**
- * La classe {@code LogicCityImp} gestisce la logica relativa alle citt&agrave;.
+ * La classe {@code LogicCityImp} gestisce la logica relativa alle città.
  * <p>
- * Fornisce metodi per l'elaborazione dei dati meteorologici delle citt&agrave;.
+ * Fornisce metodi per l'elaborazione dei dati meteorologici delle città.
  * </p>
- * 
- * @see DataHandlerImp
+ *
  * @see RecordWeather
  * @see RecordWeather.WeatherData
- * 
- * @author Andrea Tettamanti
- * @author Luca Mascetti
+ *
  * @version 1.0
  * @since 16/09/2023
  */
@@ -30,13 +27,14 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
     /**
      * Costruttore della classe {@code LogicCityImp}.
      *
+     * @throws RemoteException Se si verifica un errore durante la creazione dell'oggetto remoto.
      */
     public LogicCityImp() throws RemoteException {
         super();
     }
 
     /**
-     * La classe {@code WeatherTableData} elabora i dati meteorologici delle citt&agrave;.
+     * La classe {@code WeatherTableData} elabora i dati meteorologici delle città.
      * <p>
      * Fornisce metodi per calcolare la media dei punteggi, il conteggio dei record
      * e i commenti per diverse categorie meteorologiche.
@@ -47,14 +45,15 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
         /**
          * Array di chiavi per i dati meteorologici.
          */
-        public static final String[] keys = {
+        public static final String[] KEYS = {
                 "wind",
                 "humidity",
                 "pressure",
                 "temperature",
                 "precipitation",
                 "glacierElevation",
-                "glacierMass", };
+                "glacierMass"
+        };
 
         /**
          * Mappa per archiviare il punteggio per ciascuna categoria di dati.
@@ -76,18 +75,22 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          * <p>
          * Elabora i dati meteorologici dei record specificati.
          * </p>
-         * 
+         *
          * @param weatherRecords Un array di record meteorologici.
          */
         public WeatherTableData(RecordWeather[] weatherRecords) {
+            if (weatherRecords == null || weatherRecords.length == 0) {
+                throw new IllegalArgumentException("Nessun dato meteorologico fornito.");
+            }
+
             for (RecordWeather record : weatherRecords) {
-                processCategory(record.wind(), keys[0]);
-                processCategory(record.humidity(), keys[1]);
-                processCategory(record.pressure(), keys[2]);
-                processCategory(record.temperature(), keys[3]);
-                processCategory(record.precipitation(), keys[4]);
-                processCategory(record.glacierElevation(), keys[5]);
-                processCategory(record.glacierMass(), keys[6]);
+                processCategory(record.wind(), KEYS[0]);
+                processCategory(record.humidity(), KEYS[1]);
+                processCategory(record.pressure(), KEYS[2]);
+                processCategory(record.temperature(), KEYS[3]);
+                processCategory(record.precipitation(), KEYS[4]);
+                processCategory(record.glacierElevation(), KEYS[5]);
+                processCategory(record.glacierMass(), KEYS[6]);
             }
         }
 
@@ -97,37 +100,36 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          * Aggiorna i punteggi, i conteggi dei record e i commenti per la categoria
          * data.
          * </p>
-         * 
+         *
          * @param data     I dati meteorologici da processare.
          * @param category La categoria meteorologica a cui appartengono i dati.
          */
         private void processCategory(RecordWeather.WeatherData data, String category) {
+            if (data == null) {
+                return;
+            }
+
             if (data.score() != null) {
-
                 categoryScore.put(category, categoryScore.getOrDefault(category, 0f) + data.score());
-
                 categoryRecordCounts.put(category, categoryRecordCounts.getOrDefault(category, 0) + 1);
-
             }
 
             if (data.comment() != null) {
-
                 List<String> comments = categoryComments.getOrDefault(category, new ArrayList<>());
                 comments.add(data.comment());
                 categoryComments.put(category, comments);
-
             }
         }
 
         /**
          * Ottiene la media dei punteggi per una categoria meteorologica specifica.
-         * 
+         *
          * @param category La categoria meteorologica desiderata.
          * @return La media dei punteggi per la categoria o {@code null} se non ci sono
          *         record.
          */
         public Integer getCategoryAvgScore(String category) {
-            if (getCategoryRecordCount(category) == 0) {
+            if (category == null || getCategoryRecordCount(category) == 0) {
                 return null;
             }
             return Math.round(categoryScore.getOrDefault(category, 0.0f) / getCategoryRecordCount(category));
@@ -135,7 +137,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
 
         /**
          * Ottiene il conteggio dei record per una categoria meteorologica specifica.
-         * 
+         *
          * @param category La categoria meteorologica desiderata.
          * @return Il conteggio dei record per la categoria.
          */
@@ -145,7 +147,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
 
         /**
          * Ottiene una lista di commenti per una categoria meteorologica specifica.
-         * 
+         *
          * @param category La categoria meteorologica desiderata.
          * @return Una lista di commenti per la categoria o una lista vuota se non ci
          *         sono commenti.
@@ -155,9 +157,18 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
         }
     }
 
+    /**
+     * Implementa il metodo per ottenere i dati meteorologici elaborati.
+     *
+     * @param weatherRecords Un array di record meteorologici.
+     * @return Un oggetto {@code WeatherTableData} con i dati elaborati.
+     * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
+     */
     @Override
     public WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords) throws RemoteException {
+        if (weatherRecords == null) {
+            throw new IllegalArgumentException("L'array di record meteorologici non può essere nullo.");
+        }
         return new WeatherTableData(weatherRecords);
     }
-
 }
