@@ -229,7 +229,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         "Salvataggio dati",
                         JOptionPane.INFORMATION_MESSAGE);
 
-            } catch (Exception exception) {
+            } catch (SQLException | RemoteException | IllegalArgumentException e1) {
 
                 JOptionPane.showMessageDialog(this,
                         "Errore nella scrittura dei dati!",
