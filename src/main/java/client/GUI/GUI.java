@@ -17,9 +17,10 @@ import client.models.MainModel;
 import shared.utils.Interfaces;
 
 /**
- * La classe {@code GUI} gestisce l'interfaccia utente dell'applicazione e
- * la navigazione tra diversi pannelli. &#201; un componente chiave nell'architettura
- * dell'applicazione.
+ * La classe {@code GUI} gestisce l'interfaccia utente dell'applicazione e la navigazione
+ * tra diversi pannelli. È una componente chiave dell'architettura dell'applicazione,
+ * responsabile della creazione e gestione dei pannelli dell'interfaccia utente e della
+ * loro visualizzazione.
  *
  * @see MainFrame
  * @see MainWindows
@@ -36,16 +37,16 @@ import shared.utils.Interfaces;
  * @see MainModel
  * @see Interfaces
  * @see Theme
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
-  * @version 1
+ * @version 1.0
+ * @since 15/09/2023
  */
-
 public class GUI {
 
     /**
-     * Il tema grafico dell'applicazione
+     * Il tema grafico dell'applicazione.
      */
     public Theme appTheme = new Theme();
 
@@ -66,9 +67,11 @@ public class GUI {
 
     /**
      * Costruttore della classe {@code GUI}.
+     * <p>
      * Inizializza il frame principale dell'applicazione e i pannelli dell'interfaccia utente.
-     * 
-     * @param mainModel Il modello dell'applicazione
+     * </p>
+     *
+     * @param mainModel Il modello dell'applicazione utilizzato per inizializzare i pannelli.
      */
     public GUI(MainModel mainModel) {
         JFrame mainFrame = new MainFrame();
@@ -107,7 +110,7 @@ public class GUI {
 
     /**
      * Aggiunge un pannello alla mappa dei pannelli e applica il tema grafico ad esso.
-     * 
+     *
      * @param Panel Il pannello da aggiungere.
      */
     public void addPanel(Interfaces.UIPanel Panel) {
@@ -117,9 +120,10 @@ public class GUI {
         appTheme.registerPanel((JPanel) Panel);
         appTheme.applyTheme();
     }
-     /**
-      * Cancella i dati nella citt&agrave; di aggiunta dati, se il pannello &egrave; attualmente visualizzato
-      */
+
+    /**
+     * Cancella i dati nella città di aggiunta dati, se il pannello è attualmente visualizzato.
+     */
     public void clearCityAddData() {
         if (cityAddDataPanel != null) {
             cityAddDataPanel.clearTableData();
@@ -127,10 +131,10 @@ public class GUI {
     }
 
     /**
-     * Ottiene un pannello dell'interfaccia utente in base all'ID specificato
-     * 
+     * Ottiene un pannello dell'interfaccia utente in base all'ID specificato.
+     *
      * @param ID L'ID del pannello da ottenere.
-     * @return Il pannello dell'interfaccia utente corrispondente all'ID.
+     * @return Il pannello dell'interfaccia utente corrispondente all'ID, oppure {@code null} se non esiste.
      */
     public Interfaces.UIPanel getUIPanel(String ID) {
         return Panels.get(ID);
@@ -138,7 +142,7 @@ public class GUI {
 
     /**
      * Ottiene l'area principale della finestra dell'interfaccia utente.
-     * 
+     *
      * @return L'area principale della finestra dell'interfaccia utente.
      */
     public Interfaces.UIWindows getMainWindowArea() {
@@ -147,8 +151,8 @@ public class GUI {
 
     /**
      * Ottiene il layout utilizzato per la navigazione tra i pannelli.
-     * 
-     * @return Il layout.
+     *
+     * @return Il layout {@code CardLayout} utilizzato per la navigazione tra i pannelli.
      */
     public CardLayout getCardLayout() {
         return cardLayout;
@@ -156,7 +160,7 @@ public class GUI {
 
     /**
      * Ottiene l'ID del pannello attualmente visualizzato.
-     * 
+     *
      * @return L'ID del pannello corrente.
      */
     public String getCurrentID() {
@@ -166,11 +170,10 @@ public class GUI {
     /**
      * Passa alla visualizzazione di un pannello specifico ed esegue le operazioni
      * necessarie quando si passa a un nuovo pannello.
-     * 
+     *
      * @param ID L'ID del pannello da visualizzare.
      * @param args Gli argomenti da passare al pannello.
      */
-
     public void goToPanel(String ID, Object[] args) {
         try {
             if ("CityAddData".equals(currentID)) {
