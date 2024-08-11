@@ -41,11 +41,11 @@ import shared.record.QueryCondition;
  * @see GUI
  * @see Widget
  * @see MainModel
- * @see LogicCityImp.WeatherTableData
+ * @see WeatherTableData
  * @see RecordCity
  * @see RecordWeather
  * @see Interfaces
- * @see Constants.Legend
+ * @see Legend
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti
@@ -68,47 +68,47 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Campo di testo per il nome della citt&agrave;.
      */
-    private JTextField textfieldCityName = new JTextField();
+    private final JTextField textfieldCityName = new JTextField();
 
     /**
      * Campo di testo per il nome del paese.
      */
-    private JTextField textfieldCountryName = new JTextField();
+    private final JTextField textfieldCountryName = new JTextField();
 
     /**
      * Campo di testo per la latitudine della citt&agrave;.
      */
-    private JTextField textfieldLatitude = new JTextField();
+    private final JTextField textfieldLatitude = new JTextField();
 
     /**
      * Campo di testo per la longitudine della citt&agrave;.
      */
-    private JTextField textfieldLongitude = new JTextField();
+    private final JTextField textfieldLongitude = new JTextField();
 
     /**
      * Tabella per visualizzare i dati meteorologici della citt&agrave;.
      */
-    private JTable table = new JTable();
+    private final JTable table = new JTable();
 
     /**
      * Modello di tabella predefinito per i dati meteorologici.
      */
-    private DefaultTableModel defaulmodelTable = new DefaultTableModel();
+    private final DefaultTableModel defaulmodelTable = new DefaultTableModel();
 
     /**
      * Pulsante per tornare indietro.
      */
-    private JButton buttonToBack = new Widget.Button("Indietro");
+    private final JButton buttonToBack = new Widget.Button("Indietro");
 
     /**
      * Categorie della tabella per i dati meteorologici.
      */
-    private static String[] tableCategory = {
+    private static final String[] tableCategory = {
             "Vento",
             "Umidità",
             "Pressione",
@@ -144,12 +144,17 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
      */
     public void loadDatas(Integer cityID) {
 
-        RecordCity RecordCity = null;
+        RecordCity RecordCity;
         try {
             RecordCity = mainModel.dataQuery.getCityBy(cityID);
         } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null,
+                    "Errore nel ricerca della città",
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
+
         textfieldCityName.setText(RecordCity.name());
         textfieldCountryName.setText(RecordCity.countryName());
         textfieldLatitude.setText(String.valueOf(RecordCity.latitude()));
@@ -161,7 +166,11 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
             weatherRecords = mainModel.dataQuery.getWeatherBy(condition);
 
         } catch (SQLException | RemoteException e) {
-            throw new RuntimeException(e);
+            JOptionPane.showMessageDialog(null,
+                    "Errore nel caricamento dei dati meteorologici",
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
         }
 
         if (weatherRecords.length > 0) {
@@ -243,13 +252,10 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                 int row = table.getSelectedRow();
                 int col = table.getSelectedColumn();
 
-                if (col == 3) { // Colonna "Commenti"
+                if (col == 3) {
                     String comment = ((String) table.getValueAt(row, col)).trim();
-                    if (comment != null && !comment.isEmpty()) {
-                        // Sostituisci "|" con il carattere di nuova riga "\n" nei commenti
-                        comment = comment.replace("| ", "\n");
-
-                        // Apri un pannello con il testo del commento
+                    if (!comment.isEmpty()) {
+                        comment = comment.replace(" /", "\n");
                         JOptionPane.showMessageDialog(null, comment, "Commenti", JOptionPane.PLAIN_MESSAGE);
                     }
                 }
@@ -270,17 +276,11 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         topPanel.add(new Widget.FormPanel(gui.appTheme, "Latitudine", textfieldLatitude));
         topPanel.add(new Widget.FormPanel(gui.appTheme, "Longitudine", textfieldLongitude));
 
-        // Crea un nuovo pannello per contenere la tabella
-
         JPanel tablePanel = new JPanel(new BorderLayout());
 
         tablePanel.add(new JScrollPane(table), BorderLayout.CENTER);
-
-        // add(table, BorderLayout.CENTER);
-
         add(topPanel, BorderLayout.NORTH);
         add(tablePanel, BorderLayout.CENTER);
-
         add(buttonToBack, BorderLayout.SOUTH);
 
         gui.appTheme.registerPanel(topPanel);
@@ -362,5 +362,4 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
             gui.goToPanel(Home.ID, null);
         }
     }
-
 }
