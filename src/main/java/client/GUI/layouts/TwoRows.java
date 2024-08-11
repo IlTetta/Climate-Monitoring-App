@@ -5,7 +5,7 @@ import java.awt.*;
 
 /**
  * Questa &egrave; una classe astratta che rappresenta un layout a due righe per
- * un'interfaccia grafica swing.
+ * un'interfaccia grafica Swing.
  * <p>
  * Le due righe contengono un pannello superiore e un pannello inferiore per
  * organizzare i componenti dell'interfaccia.
@@ -14,7 +14,7 @@ import java.awt.*;
  * &#201; possibile aggiungere componenti ai pannelli superiore e inferiore
  * utilizzando i metodi {@code addTop} e {@code addBottom}.
  * </p>
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -33,8 +33,12 @@ public abstract class TwoRows extends JPanel {
     public JPanel bottomPanel;
 
     /**
-     * Le impostazioni del layout per il pannello principale che contiene le due
-     * righe.
+     * Le impostazioni del layout per il pannello principale che contiene le due righe.
+     * <p>
+     * Queste impostazioni definiscono il comportamento dei pannelli all'interno del layout
+     * principale, assegnando loro un peso uniforme sia in larghezza che in altezza,
+     * e specificando che occupino tutto lo spazio disponibile.
+     * </p>
      */
     protected GridBagConstraints mainPanelConstraints = new GridBagConstraints() {
         {
@@ -48,7 +52,12 @@ public abstract class TwoRows extends JPanel {
     };
 
     /**
-     * Le impostazione del layout per i pannelli superiore e inferiore.
+     * Le impostazioni del layout per i pannelli superiore e inferiore.
+     * <p>
+     * Questi vincoli definiscono il comportamento dei componenti all'interno dei
+     * pannelli superiore e inferiore, garantendo che siano disposti verticalmente
+     * uno sotto l'altro e che occupino tutto lo spazio orizzontale disponibile.
+     * </p>
      */
     protected GridBagConstraints subPanelConstraints = new GridBagConstraints() {
         {
@@ -61,8 +70,13 @@ public abstract class TwoRows extends JPanel {
     };
 
     /**
-     * Costruttore che crea il layout a due righe e inizializza i pannelli superiore
-     * e inferiore.
+     * Costruttore che crea il layout a due righe e inizializza i pannelli superiore e inferiore.
+     * <p>
+     * Il costruttore imposta il layout del pannello principale come un {@link GridBagLayout},
+     * e inizializza i pannelli {@code topPanel} e {@code bottomPanel} con lo stesso layout.
+     * Entrambi i pannelli sono poi aggiunti al pannello principale utilizzando i vincoli
+     * definiti in {@code mainPanelConstraints}.
+     * </p>
      */
     public TwoRows() {
         setLayout(new GridBagLayout());
@@ -75,7 +89,12 @@ public abstract class TwoRows extends JPanel {
 
     /**
      * Aggiunge un componente al pannello superiore.
-     * 
+     * <p>
+     * Il componente viene aggiunto al {@code topPanel} utilizzando i vincoli definiti
+     * in {@code subPanelConstraints}, che ne determinano la posizione e il comportamento
+     * all'interno del pannello.
+     * </p>
+     *
      * @param component Il componente da aggiungere.
      */
     protected void addTop(Component component) {
@@ -84,7 +103,12 @@ public abstract class TwoRows extends JPanel {
 
     /**
      * Aggiunge un componente al pannello inferiore.
-     * 
+     * <p>
+     * Il componente viene aggiunto al {@code bottomPanel} utilizzando i vincoli definiti
+     * in {@code subPanelConstraints}, che ne determinano la posizione e il comportamento
+     * all'interno del pannello.
+     * </p>
+     *
      * @param component Il componente da aggiungere.
      */
     protected void addBottom(Component component) {
