@@ -16,17 +16,16 @@ import shared.utils.Interfaces;
  * dell'applicazione.
  * <p>
  * Questa finestra contiene un pannello scorrevole con un layout a schede, in
- * cui vengono visualizzate diverse
- * schermate dell'applicazione. Inoltre, nella parte inferiore della finestra,
- * vengono visualizzate infromazioni
- * sull'operatore attualmente loggato e l'orario correnti.
+ * cui vengono visualizzate diverse schermate dell'applicazione. Inoltre, nella parte inferiore
+ * della finestra, vengono visualizzate informazioni sull'operatore attualmente loggato e l'orario corrente.
+ * </p>
  *
  * @see CurrentOperator
  * @see CurrentOperator.CurrentUserChangeListener
  * @see RecordOperator
  * @see Functions
  * @see Interfaces
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -35,35 +34,41 @@ import shared.utils.Interfaces;
 public class MainWindows extends JPanel implements Interfaces.UIWindows {
 
     /**
-     * Il Pannello con barra di scorrimento.
+     * Il pannello con barra di scorrimento per il contenuto principale.
      */
-    private JScrollPane scrollPane = new JScrollPane();
-    
-    /**
-     * Il pannello di contenuto.
-     */
-    private JPanel contentPanel = new JPanel();
+    private final JScrollPane scrollPane = new JScrollPane();
 
     /**
-     * La label che indica che non c'&egrave; nesun operatore attualmente loggato.
+     * Il pannello di contenuto, gestito tramite un {@link CardLayout}.
      */
-    private JLabel labelAppInfo = new JLabel("Operatore: /");
+    private final JPanel contentPanel = new JPanel();
 
     /**
-     * La label che rappresenta la data corrente.
+     * La label che indica che non c'&egrave; nessun operatore attualmente loggato.
      */
-    private JLabel labelCurrentData = new JLabel();
+    private final JLabel labelAppInfo = new JLabel("Operatore: /");
 
     /**
-     * Il pannello inferiore della finestra.
+     * La label che rappresenta la data e l'ora corrente.
+     */
+    private final JLabel labelCurrentData = new JLabel();
+
+    /**
+     * Il pannello inferiore della finestra che contiene le informazioni sull'operatore
+     * e l'orario corrente.
      */
     private JPanel bottomPanel = new JPanel();
 
     /**
      * Costruttore per la classe {@code MainWindows}.
-     * 
-     * @param cardLayout Layout delle schede da utilizzare per il pannello
-     *                   principale.
+     * <p>
+     * Inizializza la finestra principale impostando il layout del pannello di contenuto con
+     * il {@code CardLayout} fornito, aggiungendo il pannello di scorrimento e configurando il pannello
+     * inferiore con le informazioni sull'operatore e l'orario corrente.
+     * Un timer viene avviato per aggiornare l'orario visualizzato ogni secondo.
+     * </p>
+     *
+     * @param cardLayout Il layout delle schede da utilizzare per il pannello principale.
      */
     public MainWindows(CardLayout cardLayout) {
         super(new BorderLayout());
@@ -91,40 +96,64 @@ public class MainWindows extends JPanel implements Interfaces.UIWindows {
         CurrentOperator.getInstance().addCurrentUserChangeListener(new CurrentOperator.CurrentUserChangeListener() {
             @Override
             public void onCurrentUserChange(RecordOperator newOperator) {
-                if (newOperator == null)
+                if (newOperator == null) {
                     setAppInfo("Operatore: /");
-                else
+                } else {
                     setAppInfo("Operatore: " + newOperator.username());
+                }
             }
         });
     }
 
-    
-    /** 
-     * @return JPanel
+    /**
+     * Restituisce il pannello principale della finestra.
+     * <p>
+     * Questo metodo implementa l'interfaccia {@link Interfaces.UIWindows}.
+     * </p>
+     *
+     * @return Il pannello principale della finestra.
      */
     @Override
     public JPanel getMainPanel() {
         return this;
     }
 
-    
-    /** 
-     * @return JScrollPane
+    /**
+     * Restituisce il pannello con barra di scorrimento della finestra.
+     * <p>
+     * Questo metodo implementa l'interfaccia {@link Interfaces.UIWindows}.
+     * </p>
+     *
+     * @return Il pannello con barra di scorrimento.
      */
     @Override
     public JScrollPane getScrollPanel() {
         return scrollPane;
     }
 
+    /**
+     * Restituisce il pannello di contenuto della finestra, che utilizza un {@link CardLayout}.
+     * <p>
+     * Questo metodo implementa l'interfaccia {@link Interfaces.UIWindows}.
+     * </p>
+     *
+     * @return Il pannello di contenuto.
+     */
     @Override
     public JPanel getContentPanel() {
         return contentPanel;
     }
 
+    /**
+     * Imposta il testo informativo dell'applicazione relativo all'operatore corrente.
+     * <p>
+     * Questo testo viene visualizzato nella parte inferiore della finestra.
+     * </p>
+     *
+     * @param text Il testo da visualizzare nell'etichetta informativa dell'applicazione.
+     */
     @Override
     public void setAppInfo(String text) {
         labelAppInfo.setText(text);
     }
-
 }
