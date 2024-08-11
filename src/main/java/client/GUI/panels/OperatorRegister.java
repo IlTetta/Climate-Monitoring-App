@@ -13,35 +13,34 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 /**
- * La classe {@code OperatorRegister} &egrave; un pannello Swing utilizzato per
- * la
- * registrazione di un operatore all'interno dell'applicazione.
+ * La classe {@code OperatorRegister} rappresenta un pannello Swing utilizzato per
+ * la registrazione di un operatore all'interno dell'applicazione.
  * <p>
- * Questo pannello consente agli operatori di inserire i loro dati personali,
- * come nome, codice fiscale, email, username e password,
- * al fine di creare un nuovo account operatore.
+ * Questo pannello consente agli operatori di inserire i loro dati personali, come nome,
+ * codice fiscale, email, username e password, al fine di creare un nuovo account operatore.
+ * Utilizza il modulo server RMI per la registrazione e gestisce le eccezioni che possono
+ * derivare dalla connessione al server o dalle operazioni sul database.
  * </p>
- * 
+ *
  * @see GUI
  * @see Widget
  * @see TwoColumns
  * @see CurrentOperator
  * @see MainModel
  * @see Interfaces
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
  * @since 17/09/2023
  */
-
 public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
 
     /**
      * L'ID univoco di questo pannello. Viene utilizzato per identificare e navigare
      * tra i diversi pannelli dell'applicazione.
      */
-    public static String ID = "OperatorRegister";
+    public static final String ID = "OperatorRegister";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -51,6 +50,8 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
 
     /**
      * Riferimento al modello principale associato a questo pannello.
+     * Utilizza il modello per interagire con la logica dell'applicazione e
+     * comunicare con il server RMI.
      */
     private final MainModel mainModel;
 
@@ -85,9 +86,10 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
     private final JButton buttonPerformRegistration = new Widget.Button("Registrati");
 
     /**
-     * Crea una nuova istanza di OperatorRegister.
+     * Crea una nuova istanza di {@code OperatorRegister}.
      *
-     * @param mainModel Il modello principale dell'applicazione.
+     * @param mainModel Il modello principale dell'applicazione, utilizzato per
+     *                  interagire con la logica dell'applicazione e il server RMI.
      */
     public OperatorRegister(MainModel mainModel) {
         this.mainModel = mainModel;
@@ -97,16 +99,12 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
      * Aggiunge un {@code ActionListener} al pulsante di registrazione.
      * <p>
      * Quando il pulsante viene premuto, i dati inseriti vengono validati e
-     * utilizzati per registrare un nuovo operatore.
-     * </p>
-     * <p>
+     * utilizzati per registrare un nuovo operatore utilizzando il modulo server RMI.
      * In caso di errore, viene visualizzato un messaggio di errore.
      * </p>
      */
     public void addActionEvent() {
-
         buttonPerformRegistration.addActionListener(e -> {
-
             String nameSurname = textfieldName.getText().trim();
             String taxCode = textfieldTaxCode.getText().trim();
             String email = textfieldEmail.getText().trim();
@@ -115,14 +113,13 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
 
             CurrentOperator currentOperator = CurrentOperator.getInstance();
 
-            if(currentOperator.isUserLogged()) {
+            if (currentOperator.isUserLogged()) {
                 JOptionPane.showMessageDialog(
                         this,
                         "Devi prima effettuare il logout.",
                         "Errore",
                         JOptionPane.ERROR_MESSAGE);
-            }else {
-
+            } else {
                 try {
                     mainModel.logicOperator.performRegistration(
                             nameSurname,
@@ -151,6 +148,7 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
                             "Errore di connessione al server.",
                             "Errore di sistema",
                             JOptionPane.ERROR_MESSAGE);
+
                 } catch (SQLException e3) {
                     JOptionPane.showMessageDialog(
                             this,
@@ -164,9 +162,14 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
 
     /**
      * Crea il pannello grafico e registra i componenti UI necessari.
+     * <p>
+     * Configura il pannello con il logo e i campi di input, quindi registra i
+     * componenti con il tema grafico dell'applicazione.
+     * </p>
      *
-     * @param gui L'istanza dell'interfaccia grafica dell'applicazione.
-     * @return Restituisce l'istanza corrente di OperatorRegister.
+     * @param gui L'istanza dell'interfaccia grafica dell'applicazione, utilizzata
+     *            per gestire la navigazione e il tema grafico.
+     * @return Restituisce l'istanza corrente di {@code OperatorRegister}.
      */
     @Override
     public OperatorRegister createPanel(GUI gui) {
@@ -188,15 +191,23 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
         return this;
     }
 
-    @Override
-    public String getID() {
-        return ID;
-    }
-
+    /**
+     * Gestisce l'apertura del pannello.
+     * <p>
+     * Effettua il logout dell'operatore corrente quando il pannello viene aperto,
+     * garantendo che non ci siano sessioni di operatore attive durante la registrazione.
+     * </p>
+     *
+     * @param args Argomenti opzionali che possono essere passati all'apertura del pannello.
+     */
     @Override
     public void onOpen(Object[] args) {
         CurrentOperator currentOperator = CurrentOperator.getInstance();
         currentOperator.performLogout();
     }
 
+    @Override
+    public String getID() {
+        return ID;
+    }
 }
