@@ -4,37 +4,39 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Questa &egrave; una classe astratta che rappresenta un layout a due colonne per
- * un'interfaccia grafica swing.
+ * La classe astratta {@code TwoColumns} rappresenta un layout a due colonne, con un pannello sinistro
+ * e un pannello destro. È progettata per essere estesa da altre classi che necessitano di questo tipo di layout.
  * <p>
- * Le due colonne contengono un pannello sinistro e un pannello destro per
- * organizzare i componenti dell'interfaccia.
+ *     Entrambi i pannelli utilizzano un {@link GridBagLayout} per permettere un layout flessibile dei componenti.
+ *     La classe fornisce metodi protetti per aggiungere componenti ai pannelli sinistro e destro.
  * </p>
- * <p>
- * E' possibile aggiungere componenti ai pannelli sinistro e destro utilizzando
- * i metodi {@code addLeft} e {@code addRight}.
- * </p>
+ *
+ * @see JPanel
+ * @see GridBagLayout
  *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
- * @since 15/09/2023
+ * @since 15/09/2024
  */
 public abstract class TwoColumns extends JPanel {
 
     /**
-     * Il pannello sinistro in cui verranno aggiunti i componenti.
+     * Pannello a sinistra della disposizione a due colonne.
      */
     public JPanel leftPanel;
 
     /**
-     * Il pannello destro in cui verranno aggiunti i componenti.
+     * Pannello a destra della disposizione a due colonne.
      */
     public JPanel rightPanel;
 
     /**
-     * Le impostazioni del layout per il pannello principale che contiene le due
-     * colonne.
+     * Vincoli utilizzati per i pannelli principali (sinistro e destro) nel layout della classe {@code TwoColumns}.
+     * <p>
+     *     Questi vincoli stabiliscono che i pannelli occupino tutto lo spazio disponibile, con un peso
+     *     uguale per la distribuzione orizzontale e verticale, e siano riempiti completamente.
+     * </p>
      */
     protected GridBagConstraints mainPanelConstraints = new GridBagConstraints() {
         {
@@ -48,7 +50,11 @@ public abstract class TwoColumns extends JPanel {
     };
 
     /**
-     * Le impostazioni del layout per i pannelli sinistro e destro.
+     * Vincoli utilizzati per i componenti aggiunti ai pannelli sinistro e destro.
+     * <p>
+     *     Questi vincoli stabiliscono che i componenti occupino una posizione relativa nel layout
+     *     e abbiano un peso uguale per la distribuzione orizzontale.
+     * </p>
      */
     protected GridBagConstraints subPanelConstraints = new GridBagConstraints() {
         {
@@ -61,8 +67,11 @@ public abstract class TwoColumns extends JPanel {
     };
 
     /**
-     * Costruttore che crea il layout a due colonne e inizializza i pannelli
-     * sinistro e destro.
+     * Costruttore della classe {@code TwoColumns}.
+     * <p>
+     *     Questo costruttore imposta il layout del pannello principale come un {@link GridBagLayout},
+     *     e inizializza i pannelli sinistro e destro con lo stesso layout, aggiungendoli poi al pannello principale.
+     * </p>
      */
     public TwoColumns() {
         setLayout(new GridBagLayout());
@@ -74,18 +83,16 @@ public abstract class TwoColumns extends JPanel {
     }
 
     /**
-     * Aggiunge un componente al pannello sinistro.
-     * 
-     * @param component Il componente da aggiungere al pannello.
+     * Aggiunge un componente al pannello sinistro usando i vincoli {@code subPanelConstraints}.
+     * @param component il componente da aggiungere al pannello sinistro.
      */
     protected void addLeft(Component component) {
         leftPanel.add(component, subPanelConstraints);
     }
 
     /**
-     * Aggiunge un componente al pannello destro.
-     * 
-     * @param component Il componente da aggiungere al pannello.
+     * Aggiunge un componente al pannello destro usando i vincoli {@code subPanelConstraints}.
+     * @param component il componente da aggiungere al pannello destro.
      */
     protected void addRight(Component component) {
         rightPanel.add(component, subPanelConstraints);
