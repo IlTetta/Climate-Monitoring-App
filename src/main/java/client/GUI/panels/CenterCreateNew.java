@@ -29,15 +29,18 @@ import shared.record.QueryCondition;
  * un nuovo Centro di Monitoraggio da parte dell'operatore.
  * <p>
  * Il pannello consente all'operatore di inserire informazioni sul centro, come
- * il nome, la via, il numero civico, il CAP, il comune,
- * la provincia, e le citt&agrave; associate al centro. Una volta inseriti i
- * dati,
- * l'operatore pu&ograve; salvare il centro nel sistema.
+ * il nome, la via, il numero civico, il CAP, il comune, la provincia e le
+ * città associate al centro. Una volta inseriti i dati, l'operatore può salvare
+ * il centro nel sistema utilizzando i servizi offerti dal modulo server RMI e
+ * interagendo con il database.
  * </p>
  * <p>
  * La classe gestisce la validazione dei dati inseriti e fornisce feedback
- * all'operatore in caso di errori.
- * 
+ * all'operatore in caso di errori. La comunicazione con il server RMI è gestita
+ * attraverso l'interfaccia {@link DataQueryImp} per le query sui dati e
+ * {@link MainModel} per la logica di applicazione.
+ * </p>
+ *
  * @see GUI
  * @see Widget
  * @see TwoColumns
@@ -47,18 +50,18 @@ import shared.record.QueryCondition;
  * @see RecordCity
  * @see Constants
  * @see Interfaces
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 15/09/2023
+ * @version 1.1
+ * @since 18/08/2024
  */
 public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
     /**
-     * L'identificatoe unico per questo pannello.
+     * L'identificatore unico per questo pannello.
      */
-    public static String ID = "CenterCreateNew";
+    public static final String ID = "CenterCreateNew";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -102,7 +105,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
     private final JTextField textfieldDistrictName = new JTextField();
 
     /**
-     * Campo di testo per il nome dela citt&agrave; da associare al centro.
+     * Campo di testo per il nome della città da associare al centro.
      */
     private final JTextField textfieldCityName = new JTextField();
 
@@ -112,23 +115,23 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
     private final JButton buttonPerformInit = new Widget.Button("Crea il centro");
 
     /**
-     * Modello predefinito per la lista delle citt&agrave; asscoiate al centro.
+     * Modello predefinito per la lista delle città associate al centro.
      */
     private final DefaultListModel<String> listmodelCityIDs = new DefaultListModel<>();
 
     /**
-     * Lista delle citt&agrave; associate al centro.
+     * Lista delle città associate al centro.
      */
     private final JList<String> listCityIDs = new JList<>(listmodelCityIDs);
 
     /**
-     * ScrollPane per la lista delle citt&agrave;.
+     * ScrollPane per la lista delle città.
      */
     private final JScrollPane scrollpaneCityInfo = new JScrollPane();
 
     /**
      * Crea una nuova istanza di {@code CenterCreateNew}.
-     * 
+     *
      * @param mainModel Il modello principale dell'applicazione.
      */
     public CenterCreateNew(MainModel mainModel) {
@@ -150,12 +153,11 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
      * Aggiunge azioni agli elementi dell'interfaccia.
      * <p>
      * Questo metodo gestisce le azioni degli elementi dell'interfaccia, come la
-     * pressione
-     * del pulsante "Crea il centro" o l'inserimento del nome delle citt&agrave;. In
-     * caso di
-     * errori o dati
-     * non validi, il metodo fornisce feedback all'operatore attraverso messaggi di
-     * errore o avvisi.
+     * pressione del pulsante "Crea il centro" o l'inserimento del nome delle città.
+     * In caso di errori o dati non validi, il metodo fornisce feedback all'operatore
+     * attraverso messaggi di errore o avvisi. Le operazioni di query sui dati delle
+     * città vengono eseguite tramite il modulo server RMI e le eccezioni relative
+     * a tali operazioni sono gestite di conseguenza.
      * </p>
      */
     private void addActionEvent() {
@@ -204,10 +206,10 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                     if (selectedCity != null && !listmodelCityIDs.contains(selectedCity.toString())) {
                         listmodelCityIDs.addElement(selectedCity.toString());
                         textfieldCityName.setText("");
-                    }else  {
+                    } else {
                         JOptionPane.showMessageDialog(
                                 this,
-                                "La città inserita non è presente nel database o già associata al centro.",
+                                "La città inserita non è presente nel database o è già associata al centro.",
                                 "Città non trovata",
                                 JOptionPane.WARNING_MESSAGE);
                     }
@@ -218,7 +220,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 } else {
                     JOptionPane.showMessageDialog(
                             this,
-                            "La città inserita non è presente nel database o già associata al centro.",
+                            "La città inserita non è presente nel database o è già associata al centro.",
                             "Città non trovata",
                             JOptionPane.WARNING_MESSAGE);
                 }
@@ -293,7 +295,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                         JOptionPane.ERROR_MESSAGE);
             }
         });
-    };
+    }
 
     @Override
     public CenterCreateNew createPanel(GUI gui) {
@@ -311,7 +313,7 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
         addRight(new Widget.FormPanel(gui.appTheme, "CAP", textfieldCAP));
         addRight(new Widget.FormPanel(gui.appTheme, "Nome del comune", textfieldTownName));
         addRight(new Widget.FormPanel(gui.appTheme, "Nome della provincia", textfieldDistrictName));
-        addRight(new Widget.FormPanel(gui.appTheme, "Nomi delle città; associate al centro", textfieldCityName));
+        addRight(new Widget.FormPanel(gui.appTheme, "Nomi delle città associate al centro", textfieldCityName));
         addRight(scrollpaneCityInfo);
         addRight(buttonPerformInit);
 
