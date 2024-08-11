@@ -25,7 +25,7 @@ import java.rmi.registry.Registry;
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.1
- * @date 11/08/2024
+ * @since 11/08/2024
  */
 public class MainModel {
 

@@ -5,36 +5,49 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La classe {@code CurrentOperator} gestisce l'utente attualmente loggato
- * nell'applicazione
- * e fornisce un meccanismo per notificare i cambiamenti di utente tramite il
- * pattern Observer.
+ * La classe {@code CurrentOperator} è un singleton che gestisce lo stato dell'operatore attualmente loggato.
+ * Fornisce metodi per settare e recuperare l'operatore corrente, controllare lo stato di login, effettuare
+ * il logout e gestire i listener che osservano i cambiamenti dell'operatore corrente.
+ *
  * <p>
- * &#201; implementata come un Singleton per garantire una sola istanza attiva
- * nell'applicazione.
+ *     Questa classe usa il pattern Singleton per assicurarsi che ci sia una sola istanza di {@code CurrentOperator}.
  * </p>
- * 
+ *
  * @see RecordOperator
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
  * @since 16/09/2023
  */
 public class CurrentOperator {
-    private static CurrentOperator instance = null;
-    private RecordOperator currentOperator = null;
-    private List<CurrentUserChangeListener> listeners = new ArrayList<>();
 
-    // Costruttore privato per implementare il pattern Singleton
+    /**
+     * L'unica istanza della classe {@code CurrentOperator}.
+     */
+    private static CurrentOperator instance = null;
+
+    /**
+     * L'operatore attualmente loggato.
+     */
+    private RecordOperator currentOperator = null;
+
+    /**
+     * Lista dei listener che vengono notificati quando l'operatore corrente cambia.
+     */
+    private final List<CurrentUserChangeListener> listeners = new ArrayList<>();
+
+    /**
+     * Costruttore privato per evitare istanziazioni multiple della classe {@code CurrentOperator}.
+     */
     private CurrentOperator() {
     }
 
     /**
-     * Restituisce l'istanza unica di {@code CurrentOperator} secondo il pattern
-     * Singleton.
-     * 
-     * @return L'istanza di {@code CurrentOperator}
+     * Restituisce l'unica istanza della classe {@code CurrentOperator}.
+     * Se l'istanza non esiste ancora, viene creata.
+     *
+     * @return l'istanza singleton di {@code CurrentOperator}
      */
     public static CurrentOperator getInstance() {
         if (instance == null) {
@@ -44,10 +57,10 @@ public class CurrentOperator {
     }
 
     /**
-     * Imposta l'operatore corrente e notifica tutti i listener registrati in caso
-     * di cambiamento.
-     * 
-     * @param operator L'operatore da impostare come corrente
+     * Imposta l'operatore corrente.
+     * Se l'operatore è diverso dall'attuale, notifica i listener del cambiamento.
+     *
+     * @param operator il nuovo operatore corrente
      */
     public void setCurrentOperator(RecordOperator operator) {
         if (operator != currentOperator) {
@@ -57,69 +70,67 @@ public class CurrentOperator {
     }
 
     /**
-     * Restituisce l'operatore correntemente loggato.
-     * 
-     * @return L'operatore corrente o {@code null} se nessun utente &egrave; loggato
+     * Restituisce l'operatore attualmente loggato.
+     *
+     * @return l'operatore corrente, o {@code null} se nessun operatore è loggato.
      */
     public RecordOperator getCurrentOperator() {
         return currentOperator;
     }
 
     /**
-     * Verifica se un utente &egrave; attualmente loggato nell'applicazione.
-     * 
-     * @return {@code true} se un utente &egrave; loggato, {@code false} altrimenti
+     * Verifica se un operatore è attualmente loggato.
+     *
+     * @return {@code true} se un operatore è loggato, {@code false} altrimenti
      */
     public boolean isUserLogged() {
         return currentOperator != null;
     }
 
     /**
-     * Esegue il logout dell'utente corrente impostando l'operatore corrente a
-     * {@code null}.
+     * Effettua il logout dell'operatore corrente, settando il valore a {@code null}.
      */
     public void performLogout() {
         setCurrentOperator(null);
     }
 
-    // Metodi del pattern Observer
-
     /**
-     * L'interfaccia {@code CurrentUserChangeListener} definisce il metodo
-     * {@code onCurrentUserChange} che deve essere implementato dalle classi
-     * interessate ai cambiamenti dell'utente corrente.
+     * Interfaccia che deve essere implementata dai listener per reagire ai cambiamenti
+     * dell'operatore corrente.
      */
     public interface CurrentUserChangeListener {
 
         /**
-         * Questo metodo viene chiamato quando l'utente corrente cambia.
-         * 
-         * @param newOperator Il nuovo operatore corrente
+         * Metodo chiamato quando l'operatore corrente cambia.
+         *
+         * @param newOperator il nuovo operatore corrente
          */
         void onCurrentUserChange(RecordOperator newOperator);
     }
 
     /**
-     * Registra un listener interessato ai cambiamenti dell'utente corrente.
-     * 
-     * @param listener Il listener da registrare
+     * Aggiunge un listener alla lista dei listener che vengono notificati quando
+     * l'operatore corrente cambia.
+     *
+     * @param listener il listener da aggiungere
      */
     public void addCurrentUserChangeListener(CurrentUserChangeListener listener) {
         listeners.add(listener);
     }
 
+
     /**
-     * Rimuove un listener precedentemente registrato per i cambiamenti dell'utente
-     * corrente.
-     * 
-     * @param listener Il listener da rimuovere
+     * Rimuove un listener dalla lista dei listener che vengono notificati quando
+     * l'operatore corrente cambia.
+     *
+     * @param listener il listener da rimuovere
      */
     public void removeCurrentUserChangeListener(CurrentUserChangeListener listener) {
         listeners.remove(listener);
     }
 
     /**
-     * Notifica tutti i listener registrati quando l'utente corrente cambia.
+     * Notifica tutti i listener che l'operatore corrente è cambiato.
      */
     private void notifyCurrentUserChange() {
         for (CurrentUserChangeListener listener : listeners) {
