@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 
 import client.GUI.GUI;
 import client.GUI.panels.CityAddData;
-import client.GUI.panels.CityQuery;
+import client.GUI.panels.CitySerch;
 import client.GUI.panels.Home;
 import client.GUI.panels.OperatorHome;
 import client.GUI.panels.OperatorLogin;
@@ -36,7 +36,7 @@ import client.models.CurrentOperator;
  * 
  * @see GUI.GUI
  * @see CityAddData
- * @see CityQuery
+ * @see CitySerch
  * @see Home
  * @see OperatorHome
  * @see OperatorLogin
@@ -92,7 +92,7 @@ public class MenuBar extends JMenuBar {
         });
 
         itemCityQuery.addActionListener(e -> {
-            gui.goToPanel(CityQuery.ID, null);
+            gui.goToPanel(CitySerch.ID, null);
         });
 
         submenuOperator.addActionListener(e -> {

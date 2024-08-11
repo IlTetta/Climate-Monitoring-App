@@ -18,15 +18,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La classe {@code CityQuery} rappresenta un pannello Swing per effettuare
+ * La classe {@code CitySerch} rappresenta un pannello Swing per effettuare
  * query sulla base di dati delle citt&agrave;.
  * <p>
  * Gli utenti possono cercare una citt&agrave; per nome o per coordinate
  * geografiche.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoColumns
  * @see MainModel
  * @see RecordCity
@@ -37,12 +37,12 @@ import java.util.List;
  * @version 1.0
  * @since 17/09/2023
  */
-public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
+public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
 
     /**
      * L'ID univoco per identificare questo pannello.
      */
-    public static String ID = "CityQuery";
+    public static String ID = "CitySerch";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -53,39 +53,39 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Il campo di testo per il nome della citt&agrave;.
      */
-    private JTextField textfieldCityName = new JTextField();
+    private final JTextField textfieldCityName = new JTextField();
 
     /**
      * Il campo per la latitudine della citt&agrave;.
      */
-    private JTextField textfieldLatitude = new JTextField();
+    private final JTextField textfieldLatitude = new JTextField();
 
     /**
      * Il campo per la longitudine della citt&agrave;.
      */
-    private JTextField textfieldLongitude = new JTextField();
+    private final JTextField textfieldLongitude = new JTextField();
 
     /**
      * Pulsante per passare alla finestra di visualizzazione dati.
      */
-    private JButton buttonPerfomQuery = new Widget.Button("Cerca dati città");
+    private final JButton buttonPerfomQuery = new Widget.Button("Cerca dati città");
 
     /**
      * La combobox per il tipo di ricerca.
      */
-    private JComboBox<String> comboboxQueryType = new JComboBox<String>();
+    private final JComboBox<String> comboboxQueryType = new JComboBox<String>();
 
     /**
-     * Costruttore della classe {@code CityQuery}.
+     * Costruttore della classe {@code CitySerch}.
      *
      * @param mainModel Il modello principale dell'applicazione.
      */
-    public CityQuery(MainModel mainModel) {
+    public CitySerch(MainModel mainModel) {
         this.mainModel = mainModel;
     }
 
@@ -130,7 +130,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
                 case 0:
                     String cityName = textfieldCityName.getText();
 
-                    char firstChar = Character.toUpperCase(cityName.charAt(0));                 //Gestione formattazione città
+                    char firstChar = Character.toUpperCase(cityName.charAt(0));
                     String restOfString = cityName.substring(1).toLowerCase();
                     cityName = firstChar + restOfString;
 
@@ -138,7 +138,10 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
                     try {
                         result = mainModel.dataQuery.getCityBy(conditions);
                     } catch (SQLException | RemoteException ex) {
-                        throw new RuntimeException(ex);
+                            JOptionPane.showMessageDialog(null,
+                                    "Errore durante la ricerca della città",
+                                    "Errore",
+                                    JOptionPane.ERROR_MESSAGE);
                     }
                     break;
 
@@ -150,16 +153,17 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
                         conditions.add(new QueryCondition("latitude", latitude));
                         conditions.add(new QueryCondition("longitude", longitude));
                         result = mainModel.dataQuery.getCityBy(conditions);
-                    } catch (Exception exception) {
+                    } catch (SQLException | RemoteException ex) {
                         JOptionPane.showMessageDialog(null,
-                                "Inserisci delle coordinate valide (es. 45,80819 e 9,0832)",
-                                "Coordinate non valide",
-                                JOptionPane.WARNING_MESSAGE);
-                        return;
+                                "Errore durante la ricerca della città",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
                     }
+                    break;
             }
 
-            if (result.length > 1) {
+
+            if (result!=null && result.length > 1) {
                 RecordCity selectedCity = (RecordCity) JOptionPane.showInputDialog(
                         this,
                         "Sono state trovate più città con lo stesso nome. Seleziona quella desiderata.",
@@ -202,7 +206,7 @@ public class CityQuery extends TwoColumns implements Interfaces.UIPanel {
     }
 
     @Override
-    public CityQuery createPanel(GUI gui) {
+    public CitySerch createPanel(GUI gui) {
         this.gui = gui;
 
         String[] comboboxValues = new String[] { "Cerca per nome", "Cerca per coordinate" };

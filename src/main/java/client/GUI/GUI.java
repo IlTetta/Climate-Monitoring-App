@@ -26,7 +26,7 @@ import shared.utils.Interfaces;
  * @see MenuBar
  * @see Loading
  * @see Home
- * @see CityQuery
+ * @see CitySerch
  * @see CityVisualizer
  * @see OperatorHome
  * @see OperatorLogin
@@ -57,7 +57,7 @@ public class GUI {
 
     private Loading loadingPanel;
     private Home homePanel;
-    private CityQuery cityQueryPanel;
+    private CitySerch cityQueryPanel;
     private CityVisualizer cityVisualizerPanel;
     private OperatorHome operatorHomePanel;
     private OperatorLogin operatorLoginPanel;
@@ -80,7 +80,7 @@ public class GUI {
 
         loadingPanel = new Loading(mainModel);
         homePanel = new Home(mainModel);
-        cityQueryPanel = new CityQuery(mainModel);
+        cityQueryPanel = new CitySerch(mainModel);
         cityVisualizerPanel = new CityVisualizer(mainModel);
         operatorHomePanel = new OperatorHome(mainModel);
         operatorLoginPanel = new OperatorLogin(mainModel);

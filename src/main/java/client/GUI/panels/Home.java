@@ -73,7 +73,7 @@ public class Home extends TwoRows implements Interfaces.UIPanel {
      */
     private void addActionEvent() {
         buttonToFind.addActionListener(e -> {
-            gui.goToPanel(CityQuery.ID, null);
+            gui.goToPanel(CitySerch.ID, null);
         });
 
         buttonToOperator.addActionListener(e -> {

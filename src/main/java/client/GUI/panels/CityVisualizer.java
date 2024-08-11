@@ -132,7 +132,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
     private void addActionEvent() {
 
         buttonToBack.addActionListener(e -> {
-            gui.goToPanel(CityQuery.ID, null);
+            gui.goToPanel(CitySerch.ID, null);
         });
     }
 
@@ -196,7 +196,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                     "L'operatore non ha ancora inserito dati per la città selezionata.",
                     "Dati mancanti",
                     JOptionPane.WARNING_MESSAGE);
-            gui.goToPanel(CityQuery.ID, null);
+            gui.goToPanel(CitySerch.ID, null);
         }
     }
 
