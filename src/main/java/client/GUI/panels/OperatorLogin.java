@@ -3,7 +3,6 @@ package client.GUI.panels;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -23,16 +22,17 @@ import shared.utils.Interfaces;
  * operatori dell'applicazione.
  * <p>
  * Gli operatori possono inserire il loro Username e la password per accedere
- * all'applicazione.
+ * all'applicazione. Utilizza un modulo server RMI per autenticare l'operatore
+ * e interagisce con un database per recuperare e gestire i dati necessari.
  * </p>
- * 
+ *
  * @see GUI
  * @see Widget
  * @see TwoColumns
  * @see CurrentOperator
  * @see MainModel
  * @see Interfaces
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -44,7 +44,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
      * L'ID univoco di questo pannello. Viene utilizzato per identificare e navigare
      * tra i diversi pannelli dell'applicazione.
      */
-    public static String ID = "OperatorLogin";
+    public static final String ID = "OperatorLogin";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -54,6 +54,8 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
     /**
      * Riferimento al modello principale associato a questo pannello.
+     * Utilizza il modello per interagire con la logica dell'applicazione e
+     * comunicare con il server RMI e il database.
      */
     private final MainModel mainModel;
 
@@ -75,7 +77,9 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Crea una nuova istanza di {@code OperatorLogin}.
      *
-     * @param mainModel Il modello principale dell'applicazione.
+     * @param mainModel Il modello principale dell'applicazione, utilizzato per
+     *                  interagire con la logica dell'applicazione, il server RMI
+     *                  e il database.
      */
     public OperatorLogin(MainModel mainModel) {
         this.mainModel = mainModel;
@@ -86,9 +90,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
      * {@code KeyListener} per la pressione del tasto "Enter".
      * <p>
      * Quando il pulsante viene premuto o viene premuto "Enter", i dati inseriti
-     * vengono validati e utilizzati per effettuare il login.
-     * 
-     * <p>
+     * vengono validati e utilizzati per effettuare il login tramite il server RMI.
      * In caso di errore, viene visualizzato un messaggio di errore.
      * </p>
      */
@@ -99,8 +101,8 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                    String userID = textfieldUsedID.getText();
-                    String userPassword = new String(textfieldPassword.getPassword());
+                    String userID = textfieldUsedID.getText().trim();
+                    String userPassword = new String(textfieldPassword.getPassword()).trim();
 
                     if (!userID.isEmpty() && !userPassword.isEmpty()) {
                         buttonPerformLogin.doClick();
@@ -115,8 +117,8 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
         };
 
         buttonPerformLogin.addActionListener(e -> {
-            String userID = textfieldUsedID.getText();
-            String userPassword = new String(textfieldPassword.getPassword());
+            String userID = textfieldUsedID.getText().trim();
+            String userPassword = new String(textfieldPassword.getPassword()).trim();
 
             CurrentOperator currentOperator = CurrentOperator.getInstance();
 
@@ -157,17 +159,26 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
         textfieldUsedID.addKeyListener(enterKeyListener);
         textfieldPassword.addKeyListener(enterKeyListener);
-
     }
 
+    /**
+     * Gestisce la creazione o l'associazione di un centro per l'operatore.
+     * <p>
+     * Se l'operatore non ha un centro associato, offre la possibilità di creare
+     * un nuovo centro o associare un centro esistente. In caso contrario, reindirizza
+     * direttamente al pannello di aggiunta dati della città.
+     * </p>
+     *
+     * @param currentOperator L'operatore attualmente loggato.
+     */
     private void proceedToCenterCreation(CurrentOperator currentOperator) {
         if (currentOperator.getCurrentOperator().centerID() == 0) {
 
             String[] options = { "Crea nuovo centro", "Associa centro esistente", "Annulla" };
-            var selection = JOptionPane.showOptionDialog(null,
+            int selection = JOptionPane.showOptionDialog(null,
                     "Ancora non hai associato nessun centro. Cosa vuoi fare?",
                     "Centro non definito",
-                    0,
+                    JOptionPane.DEFAULT_OPTION,
                     JOptionPane.QUESTION_MESSAGE,
                     null,
                     options,
@@ -175,8 +186,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
             if (selection == 0) {
                 gui.goToPanel(CenterCreateNew.ID, null);
-            }
-            if (selection == 1) {
+            } else if (selection == 1) {
                 RecordCenter[] result;
                 try {
                     result = mainModel.dataQuery.getCenters();
@@ -214,42 +224,38 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                             result[0]);
 
                     if (selectedCenter != null) {
-                        RecordOperator updatedOperator;
-
                         try {
-                            updatedOperator=mainModel.logicOperator.associateCenter(currentOperator.getCurrentOperator().ID(),selectedCenter.ID());
+                            RecordOperator updatedOperator = mainModel.logicOperator.associateCenter(
+                                    currentOperator.getCurrentOperator().ID(),
+                                    selectedCenter.ID());
+                            currentOperator.setCurrentOperator(updatedOperator);
+
+                            JOptionPane.showMessageDialog(
+                                    this,
+                                    "Centro associato con successo.",
+                                    "Centro associato",
+                                    JOptionPane.INFORMATION_MESSAGE);
+                            gui.goToPanel(CityAddData.ID, null);
+
                         } catch (SQLException e) {
                             JOptionPane.showMessageDialog(
                                     this,
                                     "Errore durante l'accesso al database.",
                                     "Errore di connessione",
                                     JOptionPane.ERROR_MESSAGE);
-                            return;
                         } catch (RemoteException e) {
                             JOptionPane.showMessageDialog(
                                     this,
                                     "Errore di connessione al server.",
                                     "Errore di connessione",
                                     JOptionPane.ERROR_MESSAGE);
-                            return;
-
                         } catch (IllegalStateException e) {
                             JOptionPane.showMessageDialog(
                                     this,
                                     e.getMessage(),
                                     "Errore di associazione",
                                     JOptionPane.ERROR_MESSAGE);
-                            return;
                         }
-                        currentOperator.setCurrentOperator(updatedOperator);
-
-                        JOptionPane.showMessageDialog(
-                                this,
-                                "Centro associato con successo.",
-                                "Centro associato",
-                                JOptionPane.INFORMATION_MESSAGE);
-                        gui.goToPanel(CityAddData.ID, null);
-
                     } else {
                         JOptionPane.showMessageDialog(
                                 this,
@@ -259,9 +265,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                         selection = 2;
                     }
                 }
-            }
-
-            if (selection == 2) {
+            } else {
                 JOptionPane.showMessageDialog(
                         this,
                         "Stai per essere reindirizzato a Home.",
@@ -269,7 +273,6 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                         JOptionPane.INFORMATION_MESSAGE);
                 gui.goToPanel(Home.ID, null);
             }
-
         } else {
             gui.goToPanel(CityAddData.ID, null);
         }
@@ -300,7 +303,8 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Invocato quando il pannello viene aperto.
      * <p>
-     * Esegue l'operazione di logout dell'operatore attuale se presente.
+     * Esegue l'operazione di logout dell'operatore attuale se presente. Se l'operatore
+     * è già loggato, offre la possibilità di proseguire o eseguire il logout.
      * </p>
      *
      * @param args Argomenti aggiuntivi (non utilizzati in questo caso).

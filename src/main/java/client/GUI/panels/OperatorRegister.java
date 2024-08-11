@@ -31,8 +31,8 @@ import java.sql.SQLException;
  *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 17/09/2023
+ * @version 1.1
+ * @since 11/08/2024
  */
 public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
 
