@@ -169,7 +169,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
             int row = 0;
             WeatherTableData weatherTableData = new WeatherTableData(weatherRecords);
 
-            for (String keyString : WeatherTableData.keys) {
+            for (String keyString : WeatherTableData.KEYS) {
                 Integer avgScore = weatherTableData.getCategoryAvgScore(keyString);
                 if (avgScore == null) avgScore = 0;
                 Integer recordCount = weatherTableData.getCategoryRecordCount(keyString);
