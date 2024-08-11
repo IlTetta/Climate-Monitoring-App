@@ -30,20 +30,19 @@ import java.util.NoSuchElementException;
 
 /**
  * La classe {@code CityAddData} rappresenta un pannello per l'aggiunta di dati
- * di una citt&agrave; da parte dell'operatore.
+ * di una città da parte dell'operatore.
  * <p>
- * Il pannello consente all'operatore di inserire i dati relativi alla
- * citt&agrave;
+ * Il pannello consente all'operatore di inserire i dati relativi alla città
  * selezionata quali:
  * data di rilevamento dati, punteggi per le varie categorie ed eventualmente
  * dei commenti che li descrivono.
  * </p>
  * <p>
  * La classe gestisce la validazione della data inserita, il limite di caratteri
- * per i commenti dei dati e la funzionalit&agrave; per il salvataggio dei dati
+ * per i commenti dei dati e la funzionalità per il salvataggio dei dati
  * inseriti.
  * </p>
- * 
+ *
  * @see GUI
  * @see Widget
  * @see ComboItem
@@ -57,15 +56,15 @@ import java.util.NoSuchElementException;
  *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 15-09-2023
+ * @version 1.1
+ * @since 18/08/2024
  */
 public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
     /**
      * L'identificatore unico per questo pannello.
      */
-    public static String ID = "CityAddData";
+    public static final String ID = "CityAddData";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -81,18 +80,18 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     /**
      * Il pattern per la data.
      */
-    private static final String datePattern = "dd/MM/yyyy";
+    private static final String DATE_PATTERN = "dd/MM/yyyy";
 
     /**
-     * La maschera per per la data.
+     * La maschera per la data.
      */
-    private static final String dateMask = datePattern.replaceAll("[dMy]", "#");
+    private static final String DATE_MASK = DATE_PATTERN.replaceAll("[dMy]", "#");
 
     /** Campo di testo per il nome del Centro */
     private final JTextField textfieldCenterName = new JTextField();
 
     /**
-     * ComboBox per la selezione della citt&agrave;.
+     * ComboBox per la selezione della città.
      */
     private final JComboBox<ComboItem> comboboxCityName = new JComboBox<>();
 
@@ -102,7 +101,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     private final JFormattedTextField textfieldDate = new JFormattedTextField();
 
     /**
-     * Tabella per l'inserimento dati.
+     * Tabella per l'inserimento dei dati.
      */
     private final JTable table = new JTable();
 
@@ -124,9 +123,9 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     /**
      * Matrice di dati predefiniti per la tabella.
      */
-    private static final String[][] data = {
+    private static final String[][] DATA = {
             { "Vento", "Velocità del vento (km/h)" },
-            { "Umidità", "% di Umidità;" },
+            { "Umidità", "% di Umidità" },
             { "Pressione", "In hPa" },
             { "Temperatura", "In C°" },
             { "Precipitazioni", "In mm di pioggia" },
@@ -136,7 +135,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
     /**
      * Crea una nuova istanza di {@code CityAddData}.
-     * 
+     *
      * @param mainModel Il modello principale dell'applicazione.
      */
     public CityAddData(MainModel mainModel) {
@@ -145,6 +144,10 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
     /**
      * Cancella i dati nella tabella.
+     * <p>
+     * Questo metodo rimuove i dati dalla tabella, ripristinando le celle
+     * ai valori vuoti.
+     * </p>
      */
     public void clearTableData() {
         DefaultTableModel model = (DefaultTableModel) table.getModel();
@@ -158,6 +161,11 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
     /**
      * Aggiunge azioni agli elementi dell'interfaccia.
+     * <p>
+     * Questo metodo imposta i listener per gli eventi di focus e di
+     * azione sui componenti dell'interfaccia, gestendo la validazione
+     * della data e il salvataggio dei dati.
+     * </p>
      */
     private void addActionEvent() {
 
@@ -171,7 +179,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
             public void focusLost(FocusEvent e) {
                 String dateString = textfieldDate.getText();
 
-                if (dateString.equals(dateMask.replace("#", " "))) {
+                if (dateString.equals(DATE_MASK.replace("#", " "))) {
                     textfieldDate.setText(Functions.getCurrentDateString());
                     textfieldDate.setForeground(Color.GRAY);
                     return;
@@ -190,7 +198,6 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
         });
 
         buttonPerformSave.addActionListener(e -> {
-
             Integer cityID = ((ComboItem) comboboxCityName.getSelectedItem()).getValue();
             String date = textfieldDate.getText();
 
@@ -203,7 +210,6 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                 String commentCell = Functions.charsetString(defaulmodelTable.getValueAt(i, 2).toString());
 
                 if (commentCell.length() > maxCommentLength) {
-
                     JOptionPane.showMessageDialog(this,
                             "Il commento supera il limite di " + maxCommentLength + " caratteri.",
                             "Limite di caratteri superato", JOptionPane.WARNING_MESSAGE);
@@ -246,9 +252,8 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     }
 
     /**
-     * La classe interna {@code IntegerCellEditor} &egrave; un editor per celle con
-     * valori
-     * interi.
+     * La classe interna {@code IntegerCellEditor} è un editor per celle con
+     * valori interi.
      */
     private static class IntegerCellEditor extends DefaultCellEditor {
 
@@ -267,16 +272,14 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
         /**
          * Restituisce il valore intero selezionato dal JComboBox.
          * <p>
-         * Se il valore selezionato &egrave; un intero valido, lo converte e lo
+         * Se il valore selezionato è un intero valido, lo converte e lo
          * restituisce.
-         * Se il valore selezionato non pu&ograve; essere convertito in un intero,
-         * restituisce
-         * null.
+         * Se il valore selezionato non può essere convertito in un intero,
+         * restituisce null.
          * </p>
          *
          * @return Il valore intero selezionato, o null se il valore selezionato non
-         *         &egrave;
-         *         un intero valido.
+         *         è un intero valido.
          */
         @Override
         public Integer getCellEditorValue() {
@@ -290,7 +293,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     }
 
     /**
-     * La classe interna {@code TooltipCellRender} &egrave; un rendere per celle con
+     * La classe interna {@code TooltipCellRenderer} è un renderer per celle con
      * tooltip.
      */
     static class TooltipCellRenderer extends JTextArea implements TableCellRenderer {
@@ -303,11 +306,11 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
         @Override
         public Component getTableCellRendererComponent(JTable table,
-                Object value,
-                boolean isSelected,
-                boolean hasFocus,
-                int row,
-                int column) {
+                                                       Object value,
+                                                       boolean isSelected,
+                                                       boolean hasFocus,
+                                                       int row,
+                                                       int column) {
 
             setText(value != null ? value.toString() : "");
             setToolTipText(value != null ? value.toString() : "");
@@ -328,7 +331,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
         this.gui = gui;
 
         try {
-            MaskFormatter maskFormatter = new MaskFormatter(dateMask);
+            MaskFormatter maskFormatter = new MaskFormatter(DATE_MASK);
             maskFormatter.install(textfieldDate);
         } catch (ParseException e) {
             JOptionPane.showMessageDialog(
@@ -348,7 +351,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
         defaulmodelTable.addColumn("Punteggio");
         defaulmodelTable.addColumn("Commento");
 
-        for (String[] rowInitData : data) {
+        for (String[] rowInitData : DATA) {
             defaulmodelTable.addRow(new Object[] { rowInitData[0], "", "" });
         }
 
@@ -402,7 +405,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
     }
 
     /**
-     * La classe {@code NonEditableCellEditor} &egrave; un editor per celle non
+     * La classe {@code NonEditableCellEditor} è un editor per celle non
      * modificabili.
      */
     static class NonEditableCellEditor extends DefaultCellEditor {

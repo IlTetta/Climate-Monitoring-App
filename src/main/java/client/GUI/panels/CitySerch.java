@@ -34,8 +34,8 @@ import java.util.List;
  *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 17/09/2023
+ * @version 1.1
+ * @since 18/08/2024
  */
 public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
 
