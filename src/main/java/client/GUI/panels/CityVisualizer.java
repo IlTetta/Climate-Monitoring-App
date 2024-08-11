@@ -1,20 +1,17 @@
 package client.GUI.panels;
 
 import java.awt.BorderLayout;
-
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
-
-import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
 import java.awt.event.MouseEvent;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.EventObject;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 
 import client.GUI.GUI;
 import client.GUI.Widget;
@@ -30,14 +27,13 @@ import shared.record.QueryCondition;
 
 /**
  * La classe {@code CityVisualizer} rappresenta un pannello Swing per la
- * visualizzazione dei dati di una citt&agrave;,
- * inclusi i dati meteorologici relativi a diverse categorie.
+ * visualizzazione dei dati di una città, inclusi i dati meteorologici relativi
+ * a diverse categorie.
  * <p>
- * &#201; utilizzato nell'applicazione per mostrare dettagli sulla citt&agrave;
- * selezionata e
+ * È utilizzato nell'applicazione per mostrare dettagli sulla città selezionata e
  * i dati meteorologici associati.
  * </p>
- * 
+ *
  * @see GUI
  * @see Widget
  * @see MainModel
@@ -46,18 +42,19 @@ import shared.record.QueryCondition;
  * @see RecordWeather
  * @see Interfaces
  * @see Legend
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 17/09/2023
+ * @version 1.1
+ * @since 17
+ * 18/08/2024
  */
 public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
     /**
      * L'ID univoco per identificare questo pannello.
      */
-    public static String ID = "CityVisualizer";
+    public static final String ID = "CityVisualizer";
 
     /**
      * Riferimento all'interfaccia utente grafica (GUI) associata alla barra del
@@ -71,7 +68,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
     private final MainModel mainModel;
 
     /**
-     * Campo di testo per il nome della citt&agrave;.
+     * Campo di testo per il nome della città.
      */
     private final JTextField textfieldCityName = new JTextField();
 
@@ -81,17 +78,17 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
     private final JTextField textfieldCountryName = new JTextField();
 
     /**
-     * Campo di testo per la latitudine della citt&agrave;.
+     * Campo di testo per la latitudine della città.
      */
     private final JTextField textfieldLatitude = new JTextField();
 
     /**
-     * Campo di testo per la longitudine della citt&agrave;.
+     * Campo di testo per la longitudine della città.
      */
     private final JTextField textfieldLongitude = new JTextField();
 
     /**
-     * Tabella per visualizzare i dati meteorologici della citt&agrave;.
+     * Tabella per visualizzare i dati meteorologici della città.
      */
     private final JTable table = new JTable();
 
@@ -128,25 +125,26 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
     /**
      * Aggiunge gli eventi di azione ai componenti dell'interfaccia utente.
+     * <p>
+     * Questo metodo assegna i listener ai pulsanti per gestire la navigazione
+     * tra i pannelli dell'applicazione quando vengono premuti.
+     * </p>
      */
     private void addActionEvent() {
-
         buttonToBack.addActionListener(e -> {
             gui.goToPanel(CitySerch.ID, null);
         });
     }
 
     /**
-     * Carica i dati relativi a una citt&agrave; specifica e li visualizza nella
-     * tabella.
+     * Carica i dati relativi a una città specifica e li visualizza nella tabella.
      *
-     * @param cityID L'ID della citt&agrave; di cui caricare i dati.
+     * @param cityID L'ID della città di cui caricare i dati.
      */
     public void loadDatas(Integer cityID) {
-
-        RecordCity RecordCity;
+        RecordCity recordCity;
         try {
-            RecordCity = mainModel.dataQuery.getCityBy(cityID);
+            recordCity = mainModel.dataQuery.getCityBy(cityID);
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     e.getMessage(),
@@ -161,17 +159,16 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
             return;
         }
 
-        textfieldCityName.setText(RecordCity.name());
-        textfieldCountryName.setText(RecordCity.countryName());
-        textfieldLatitude.setText(String.valueOf(RecordCity.latitude()));
-        textfieldLongitude.setText(String.valueOf(RecordCity.longitude()));
+        textfieldCityName.setText(recordCity.name());
+        textfieldCountryName.setText(recordCity.countryName());
+        textfieldLatitude.setText(String.valueOf(recordCity.latitude()));
+        textfieldLongitude.setText(String.valueOf(recordCity.longitude()));
 
         QueryCondition condition = new QueryCondition("cityID", cityID);
         RecordWeather[] weatherRecords;
         try {
             weatherRecords = mainModel.dataQuery.getWeatherBy(condition);
-
-        } catch (SQLException  e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
                     "Errore di connessione al database",
                     "Errore",
@@ -186,7 +183,6 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         }
 
         if (weatherRecords.length > 0) {
-
             int row = 0;
             WeatherTableData weatherTableData = new WeatherTableData(weatherRecords);
 
@@ -211,7 +207,6 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
                 row++;
             }
-
         } else {
             JOptionPane.showMessageDialog(null,
                     "L'operatore non ha ancora inserito dati per la città selezionata.",
@@ -235,12 +230,9 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         defaulmodelTable.addColumn("Numero campionamenti");
         defaulmodelTable.addColumn("Commenti");
 
-        for (int i = 0; i < table.getColumnCount(); i++) {
-            TableColumn column = table.getColumnModel().getColumn(i);
-            column.setHeaderValue(tableCategory[i]);
+        for (int i = 0; i < tableCategory.length; i++) {
+            defaulmodelTable.addRow(new Object[] { tableCategory[i], "/", "0", "" });
         }
-
-        table.getTableHeader().repaint();
 
         table.setModel(defaulmodelTable);
 
@@ -249,10 +241,6 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         table.getColumnModel().getColumn(2).setCellEditor(new NonEditableCellEditor());
         table.getColumnModel().getColumn(3).setCellEditor(new NonEditableCellEditor());
         table.getColumnModel().getColumn(3).setCellRenderer(new TooltipCellRenderer());
-
-        for (String columnName : tableCategory) {
-            defaulmodelTable.addRow(new Object[] { columnName, "/", "0", "" });
-        }
 
         table.getTableHeader().setResizingAllowed(false);
         table.getTableHeader().setReorderingAllowed(false);
@@ -275,7 +263,6 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                 if (col == 1 && row >= 0 && row < Legend.LEGENDS.length) {
                     String legendMessage = Legend.LEGENDS[row];
                     JOptionPane.showMessageDialog(null, legendMessage, "Legenda", JOptionPane.INFORMATION_MESSAGE);
-
                 }
             }
         });
@@ -289,8 +276,8 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         topPanel.add(new Widget.FormPanel(gui.appTheme, "Longitudine", textfieldLongitude));
 
         JPanel tablePanel = new JPanel(new BorderLayout());
-
         tablePanel.add(new JScrollPane(table), BorderLayout.CENTER);
+
         add(topPanel, BorderLayout.NORTH);
         add(tablePanel, BorderLayout.CENTER);
         add(buttonToBack, BorderLayout.SOUTH);
@@ -304,6 +291,10 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
     /**
      * Classe interna per il rendering delle celle con tooltip.
+     * <p>
+     * Questa classe estende {@code JTextArea} e implementa {@code TableCellRenderer}
+     * per mostrare un tooltip con il testo della cella.
+     * </p>
      */
     static class TooltipCellRenderer extends JTextArea implements TableCellRenderer {
 
@@ -315,11 +306,11 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
 
         @Override
         public Component getTableCellRendererComponent(JTable table,
-                Object value,
-                boolean isSelected,
-                boolean hasFocus,
-                int row,
-                int column) {
+                                                       Object value,
+                                                       boolean isSelected,
+                                                       boolean hasFocus,
+                                                       int row,
+                                                       int column) {
 
             setText(value != null ? value.toString() : "");
             setToolTipText(value != null ? value.toString() : "");
@@ -335,13 +326,12 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         }
     }
 
-    @Override
-    public String getID() {
-        return ID;
-    }
-
     /**
      * Classe interna per l'editor di celle non modificabili.
+     * <p>
+     * Questa classe estende {@code DefaultCellEditor} e sovrascrive il metodo
+     * {@code isCellEditable} per impedire la modifica delle celle.
+     * </p>
      */
     class NonEditableCellEditor extends DefaultCellEditor {
 
@@ -355,12 +345,18 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         }
     }
 
+    @Override
+    public String getID() {
+        return ID;
+    }
+
     /**
-     * Invocato quando il pannello viene aperto. Carica i dati della citt&agrave;
-     * specificata.
+     * Invocato quando il pannello viene aperto. Carica i dati della città specificata.
+     * <p>
+     * Se l'ID della città non è fornito o non valido, viene mostrato un messaggio di errore.
+     * </p>
      *
-     * @param args Argomenti aggiuntivi (in questo caso, l'ID della citt&agrave; da
-     *             visualizzare).
+     * @param args Argomenti aggiuntivi (in questo caso, l'ID della città da visualizzare).
      */
     @Override
     public void onOpen(Object[] args) {
