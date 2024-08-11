@@ -11,14 +11,14 @@ import shared.utils.Constants;
 
 /**
  * Questa classe rappresenta il frame principale dell'applicazione.
- * 
  * <p>
- * Il frame contiene i componenti principali dell'interfaccia utente.
+ * Il frame contiene i componenti principali dell'interfaccia utente e funge da
+ * contenitore principale per tutti i widget e pannelli dell'applicazione.
  * </p>
- * 
+ *
  * @see Widget
  * @see Constants
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -29,9 +29,9 @@ public class MainFrame extends JFrame {
     /**
      * Crea una nuova istanza del frame principale.
      * <p>
-     * Imposta la dimensione, la chiusura, la posizione e la visibilit&agrave; del frame.
-     * Imposta il titolo del frame e l'icona.
-     * Imposta il layout del frame.
+     * Questo costruttore configura il frame principale dell'applicazione impostandone le
+     * dimensioni, la modalità di chiusura, la posizione, la visibilità, il titolo e l'icona.
+     * Viene inoltre impostato un layout di tipo {@link BorderLayout} per la gestione dei componenti.
      * </p>
      */
     public MainFrame() {
@@ -49,10 +49,13 @@ public class MainFrame extends JFrame {
      * Imposta l'icona del frame.
      * <p>
      * Questa icona viene visualizzata nell'angolo in alto a sinistra della finestra
-     * del frame.
+     * del frame. L'icona viene caricata utilizzando il percorso specificato e impostata come
+     * icona del frame. Se il caricamento dell'icona fallisce, viene lanciata un'eccezione di runtime.
      * </p>
-     * 
-     * @param iconPath Il percorso dell'icona da caricare.
+     *
+     * @param iconPath Il percorso dell'icona da caricare. Deve essere un percorso valido
+     *                 all'interno delle risorse del progetto.
+     * @throws RuntimeException se si verifica un errore durante il caricamento dell'icona.
      */
     private void setIcon(String iconPath) {
         ImageIcon iconImage = new ImageIcon();
@@ -62,7 +65,6 @@ public class MainFrame extends JFrame {
             iconImage = new ImageIcon(originalImage);
         } catch (IOException e) {
             throw new RuntimeException("Errore durante la lettura del file dell'icona", e);
-
         }
 
         setIconImage(iconImage.getImage());

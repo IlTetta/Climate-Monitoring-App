@@ -49,21 +49,20 @@ public class GUI {
      */
     public Theme appTheme = new Theme();
 
-    private CardLayout cardLayout = new CardLayout();
-    private JFrame mainFrame = new MainFrame();
-    private Interfaces.UIWindows mainWindowsArea = new MainWindows(cardLayout);
-    private Map<String, Interfaces.UIPanel> Panels = new HashMap<>();
+    private final CardLayout cardLayout = new CardLayout();
+    private final Interfaces.UIWindows mainWindowsArea = new MainWindows(cardLayout);
+    private final Map<String, Interfaces.UIPanel> Panels = new HashMap<>();
     private String currentID;
 
-    private Loading loadingPanel;
-    private Home homePanel;
-    private CitySerch cityQueryPanel;
-    private CityVisualizer cityVisualizerPanel;
-    private OperatorHome operatorHomePanel;
-    private OperatorLogin operatorLoginPanel;
-    private OperatorRegister operatorRegisterPanel;
-    private CenterCreateNew centerCreateNewPanel;
-    private CityAddData cityAddDataPanel;
+    private final Loading loadingPanel;
+    private final Home homePanel;
+    private final CitySerch cityQueryPanel;
+    private final CityVisualizer cityVisualizerPanel;
+    private final OperatorHome operatorHomePanel;
+    private final OperatorLogin operatorLoginPanel;
+    private final OperatorRegister operatorRegisterPanel;
+    private final CenterCreateNew centerCreateNewPanel;
+    private final CityAddData cityAddDataPanel;
 
     /**
      * Costruttore della classe {@code GUI}.
@@ -72,6 +71,7 @@ public class GUI {
      * @param mainModel Il modello dell'applicazione
      */
     public GUI(MainModel mainModel) {
+        JFrame mainFrame = new MainFrame();
         mainFrame.setJMenuBar(new MenuBar(this));
         mainFrame.add(mainWindowsArea.getMainPanel(), BorderLayout.CENTER);
 
@@ -164,8 +164,8 @@ public class GUI {
     }
 
     /**
-     * Passa alla visualizzazione di un pannello specifico e esegue le operazioni
-     * necessarie quando si passa ad un nuovo pannello.
+     * Passa alla visualizzazione di un pannello specifico ed esegue le operazioni
+     * necessarie quando si passa a un nuovo pannello.
      * 
      * @param ID L'ID del pannello da visualizzare.
      * @param args Gli argomenti da passare al pannello.
@@ -190,18 +190,4 @@ public class GUI {
             e.printStackTrace();
         }
     }
-
-
-    /*public void goToPanel(String ID, Object[] args) {
-        try {
-            if ("CityAddData".equals(currentID)) {
-                clearCityAddData();
-            }
-            cardLayout.show(mainWindowsArea.getContentPanel(), ID);
-            getUIPanel(ID).onOpen(args);
-            currentID = ID;
-        } catch (Exception e) {
-            System.out.println("Errore: Panel non trovato.");
-        }
-    }*/
 }
