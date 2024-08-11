@@ -4,65 +4,60 @@ import client.GUI.panels.Loading;
 import client.models.MainModel;
 
 /**
- * La classe {@code Main} &egrave; il punto di ingresso principale dell'applicazione.
+ * La classe {@code Main} è il punto di ingresso dell'applicazione client.
+ * Essa si occupa di inizializzare il modello principale e di lanciare l'interfaccia grafica utente (GUI).
  * <p>
- * Contiene un'istanza dell'interfaccia utente {@code GUI} e del modello
- * principale {@code MainModel}.
+ *     Il metodo {@code main} avvia l'applicazione creando un'istanza di {@code Main} e chiamando il metodo {@code launchGUI}.
  * </p>
- * <p>
- * Questa classe &egrave; responsabile per l'inizializzazione dell'applicazione e il
- * lancio dell'interfaccia utente.
- * </p>
- * 
- * @see GUI
- * @see Loading
+ *
  * @see MainModel
- * 
+ * @see GUI
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
- * @since 15/09/2023
+ * @since 15/09/20023
  */
 
 public class Main {
 
-    private GUI gui;
-    private MainModel mainModel;
+    /**
+     * Istanza di {@code MainModel} utilizzata per accedere ai servizi che gestiscono i dati e la logica dell'applicazione
+     */
+    private final MainModel mainModel;
 
     /**
      * Costruttore della classe {@code Main}.
      * <p>
-     * Crea un nuovo oggetto {@code MainModel} per gestire la logica
-     * dell'applicazione.
-     * </p>
+     *     Questo costruttore inizializza un'istanza di {@code MainModel} per accedere ai servizi RMI.
      */
     public Main() {
         mainModel = new MainModel();
     }
 
     /**
-     * Metodo per avviare l'interfaccia utente.
+     * Lancia l'interfaccia grafica utente (GUI) dell'applicazione.
      * <p>
-     * Crea un'istanza di {@code GUI}, aggiunge i pannelli necessari e passa al
-     * pannello di caricamento (Loading).
+     *     Questo metodo crea un'istanza di {@code GUI}, aggiunge i pannelli necessari e
+     *     visualizza il pannello di caricamento iniziale.
      * </p>
+     *
+     * @see GUI#addPanels()
+     * @see GUI#goToPanel(String, Object[])
      */
     public void launchGUI() {
-        gui = new GUI(mainModel);
+        GUI gui = new GUI(mainModel);
         gui.addPanels();
         gui.goToPanel(Loading.ID, null);
     }
 
     /**
-     * Il metodo principale dell'applicazione.
+     * Punto di ingresso dell'applicazione client.
      * <p>
-     * Crea un'istanza di {@code Main} e avvia l'interfaccia utente chiamando il
-     * metodo {@code launchGUI}.
+     *     Questo metodo avvia l'applicazione creando un'istanza di {@code Main} e chiamando il {@code launchGUI}.
      * </p>
-     * 
-     * @param args Gli argomenti della riga di comando (non utilizzati in questo
-     *             caso).
-     * 
+     *
+     * @param args argomenti da riga di comando (non utilizzati)
      */
     public static void main(String[] args) {
         Main mainInstance = new Main();
