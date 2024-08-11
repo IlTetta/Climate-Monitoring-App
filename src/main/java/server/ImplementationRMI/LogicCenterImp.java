@@ -6,6 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import shared.InterfacesRMI.LogicCenterInterface;
 import shared.InterfacesRMI.DataHandlerInterface;
@@ -91,13 +92,7 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
                 cityIDs);
 
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
-        if (currentOperator == null) {
-            throw new RuntimeException("Operatore non trovato con ID specificato.");
-        }
-
-        if (currentOperator.centerID() != 0) {
-            throw new RuntimeException("L'operatore è già associato a un centro di monitoraggio.");
-        }
+        validateOperator(operatorID);
 
         RecordOperator updatedOperator = new RecordOperator(
                 currentOperator.ID(),
@@ -156,17 +151,17 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
     private void validateCenterParameters(String centerName, String streetName, String streetNumber, String CAP,
                                           String townName, String districtName, Integer[] cityIDs) throws RemoteException, SQLException, IllegalArgumentException {
         if (centerName.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il nome del centro non può essere vuoto.");
         if (streetName.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il nome della via non può essere vuoto.");
         if (streetNumber.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il numero civico non può essere vuoto.");
         if (CAP.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il CAP non può essere vuoto.");
         if (townName.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il nome del comune non può essere vuoto.");
         if (districtName.isBlank())
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Il nome della provincia non può essere vuoto.");
 
         for (Integer cityID : cityIDs) {
             if (cityID == null || dataQuery.getCityBy(cityID) == null) {
@@ -179,11 +174,11 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
         if (currentOperator == null) {
-            throw new RuntimeException("Nessun operatore trovato con ID specificato.");
+            throw new NoSuchElementException("Nessun operatore trovato con ID specificato.");
         }
 
         if (currentOperator.centerID() == 0) {
-            throw new RuntimeException("L'operatore non è associato a nessun centro di monitoraggio.");
+            throw new IllegalStateException("L'operatore non è associato a nessun centro di monitoraggio.");
         }
     }
 

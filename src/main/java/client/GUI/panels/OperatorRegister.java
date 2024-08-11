@@ -153,7 +153,7 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
                 } catch (SQLException e3) {
                     JOptionPane.showMessageDialog(
                             this,
-                            "Errore di connessione al database.",
+                            e3.getMessage(),
                             "Errore di sistema",
                             JOptionPane.ERROR_MESSAGE);
                 }

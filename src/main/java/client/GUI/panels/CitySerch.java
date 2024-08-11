@@ -137,11 +137,16 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                     conditions.add(new QueryCondition("name", cityName));
                     try {
                         result = mainModel.dataQuery.getCityBy(conditions);
-                    } catch (SQLException | RemoteException ex) {
+                    } catch (SQLException ex) {
                             JOptionPane.showMessageDialog(null,
-                                    "Errore durante la ricerca della città",
+                                    "Errore di connessione al database",
                                     "Errore",
                                     JOptionPane.ERROR_MESSAGE);
+                    } catch (RemoteException ex) {
+                        JOptionPane.showMessageDialog(null,
+                                "Errore di connessione al server",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
                     }
                     break;
 
@@ -153,9 +158,19 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                         conditions.add(new QueryCondition("latitude", latitude));
                         conditions.add(new QueryCondition("longitude", longitude));
                         result = mainModel.dataQuery.getCityBy(conditions);
-                    } catch (SQLException | RemoteException ex) {
+                    } catch (SQLException ex) {
                         JOptionPane.showMessageDialog(null,
-                                "Errore durante la ricerca della città",
+                                "Errore di connessione al database",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                    } catch (RemoteException ex) {
+                        JOptionPane.showMessageDialog(null,
+                                "Errore di connessione al server",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                    } catch (NumberFormatException ex) {
+                        JOptionPane.showMessageDialog(null,
+                                "Inserire valori numerici validi per le coordinate",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
                     }
@@ -236,5 +251,4 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
     public void onOpen(Object[] args) {
         comboboxQueryType.setSelectedIndex(0);
     }
-
 }

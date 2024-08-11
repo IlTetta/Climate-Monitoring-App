@@ -147,9 +147,15 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         RecordCity RecordCity;
         try {
             RecordCity = mainModel.dataQuery.getCityBy(cityID);
-        } catch (SQLException | RemoteException e) {
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null,
-                    "Errore nel ricerca della città",
+                    e.getMessage(),
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (RemoteException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Errore nella connessione al server",
                     "Errore",
                     JOptionPane.ERROR_MESSAGE);
             return;
@@ -165,9 +171,15 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         try {
             weatherRecords = mainModel.dataQuery.getWeatherBy(condition);
 
-        } catch (SQLException | RemoteException e) {
+        } catch (SQLException  e) {
             JOptionPane.showMessageDialog(null,
-                    "Errore nel caricamento dei dati meteorologici",
+                    "Errore di connessione al database",
+                    "Errore",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        } catch (RemoteException e) {
+            JOptionPane.showMessageDialog(null,
+                    "Errore nella connessione al server",
                     "Errore",
                     JOptionPane.ERROR_MESSAGE);
             return;

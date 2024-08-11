@@ -4,6 +4,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -175,10 +176,17 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 conditions.add(new QueryCondition("name", cityName));
                 try {
                     result = mainModel.dataQuery.getCityBy(conditions);
-                } catch (SQLException | RemoteException ex) {
+                } catch (SQLException ex) {
                     JOptionPane.showMessageDialog(
                             this,
-                            "Errore durante la ricerca della città.",
+                            ex.getMessage(),
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                } catch (RemoteException ex) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore di connessione al server.",
                             "Errore",
                             JOptionPane.ERROR_MESSAGE);
                     return;
@@ -271,11 +279,17 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                         JOptionPane.INFORMATION_MESSAGE);
                 gui.goToPanel(CityAddData.ID, null);
 
-            } catch (SQLException | RemoteException exception) {
+            } catch (SQLException | NoSuchElementException | IllegalStateException | IllegalArgumentException exception) {
                 JOptionPane.showMessageDialog(
                         this,
-                        "Tutti i campi sono obbligatori. Assicurati di aver inserito i dati correttamente.",
-                        "Dato mancante",
+                        exception.getMessage(),
+                        "Errore",
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (RemoteException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Errore di connessione al server.",
+                        "Errore",
                         JOptionPane.ERROR_MESSAGE);
             }
         });

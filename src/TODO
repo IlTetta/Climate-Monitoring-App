@@ -3,6 +3,11 @@
 8) Controllare per bene TUTTE le eccezioni e gestirle mandando un messaggio di errore
 
 
+Eccezioni fatte:
+OperatorRegister
+OperatorLogin
+CityVisualizer
+CitySearch
+CityAddData
+CenterCreateNew
 
-JavaDoc:
-Interfaces

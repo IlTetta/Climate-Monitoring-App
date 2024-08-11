@@ -26,6 +26,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.EventObject;
+import java.util.NoSuchElementException;
 
 /**
  * La classe {@code CityAddData} rappresenta un pannello per l'aggiunta di dati
@@ -201,13 +202,12 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         : "";
                 String commentCell = Functions.charsetString(defaulmodelTable.getValueAt(i, 2).toString());
 
-                // Verifica lunghezza commento
                 if (commentCell.length() > maxCommentLength) {
 
                     JOptionPane.showMessageDialog(this,
                             "Il commento supera il limite di " + maxCommentLength + " caratteri.",
                             "Limite di caratteri superato", JOptionPane.WARNING_MESSAGE);
-                    return;// non salvo i dati
+                    return;
                 }
 
                 tableData[i] = new Object[] {
@@ -229,11 +229,15 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         "Salvataggio dati",
                         JOptionPane.INFORMATION_MESSAGE);
 
-            } catch (SQLException | RemoteException | IllegalArgumentException e1) {
-
+            } catch (SQLException | NoSuchElementException | IllegalStateException e1) {
                 JOptionPane.showMessageDialog(this,
-                        "Errore nella scrittura dei dati!",
+                        e1.getMessage(),
                         "Errore nel salvataggio dati",
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (RemoteException ex) {
+                JOptionPane.showMessageDialog(this,
+                        "Errore di connessione al server.",
+                        "Errore di connessione",
                         JOptionPane.ERROR_MESSAGE);
             }
             this.clearTableData();
