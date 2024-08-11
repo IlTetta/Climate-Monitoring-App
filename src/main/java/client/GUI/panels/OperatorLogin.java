@@ -132,19 +132,19 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                     currentOperator.setCurrentOperator(loggedOperator);
                     proceedToCenterCreation(currentOperator);
                 }
-            } catch (IllegalArgumentException exception){
+            } catch (IllegalArgumentException e1){
                 JOptionPane.showMessageDialog(
                         this,
-                        "Username o password non validi.",
+                        e1.getMessage(),
                         "Errore di login",
                         JOptionPane.ERROR_MESSAGE);
-            } catch (SQLException ex) {
+            } catch (SQLException e2) {
                 JOptionPane.showMessageDialog(
                         this,
                         "Errore durante l'accesso al database.",
                         "Errore di connessione",
                         JOptionPane.ERROR_MESSAGE);
-            } catch (RemoteException ex) {
+            } catch (RemoteException e3) {
                 JOptionPane.showMessageDialog(
                         this,
                         "Errore di connessione al server.",
@@ -233,6 +233,13 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                                     JOptionPane.ERROR_MESSAGE);
                             return;
 
+                        } catch (IllegalStateException e) {
+                            JOptionPane.showMessageDialog(
+                                    this,
+                                    e.getMessage(),
+                                    "Errore di associazione",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
                         }
                         currentOperator.setCurrentOperator(updatedOperator);
 

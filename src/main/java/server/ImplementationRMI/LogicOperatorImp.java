@@ -71,20 +71,15 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws IllegalArgumentException Se il nome utente o la password sono vuoti.
      */
     @Override
-    public RecordOperator performLogin(String username, String password) throws RemoteException {
+    public RecordOperator performLogin(String username, String password) throws RemoteException, SQLException {
         validateLoginInputs(username, password);
 
         List<QueryCondition> conditions = List.of(
                 new QueryCondition("username", username),
                 new QueryCondition("password", hashPassword(username, password))
         );
-
-        try {
             RecordOperator[] result = dataQuery.getOperatorBy(conditions);
             return result.length == 1 ? result[0] : null;
-        } catch (SQLException e) {
-            throw new RemoteException();
-        }
     }
 
     /**
@@ -107,15 +102,12 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      */
     @Override
     public void performRegistration(String nameSurname, String taxCode, String email, String username,
-                                    String password, Integer centerID) throws RemoteException {
+                                    String password, Integer centerID) throws RemoteException, SQLException, IllegalArgumentException {
+
         validateRegistrationInputs(nameSurname, taxCode, email, username, password);
 
-        try {
-            dataHandler.addNewOperator(nameSurname, taxCode, email, username,
+        dataHandler.addNewOperator(nameSurname, taxCode, email, username,
                     hashPassword(username, password), centerID);
-        } catch (SQLException e) {
-            throw new RemoteException("Errore durante la registrazione", e);
-        }
     }
 
     /**
@@ -138,7 +130,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
         if (currentOperator.centerID() != 0) {
-            throw new SQLException("L'operatore è già associato a un centro.");
+            throw new IllegalStateException("L'operatore è già associato a un centro.");
         }
 
         RecordOperator updatedOperator = new RecordOperator(
@@ -161,19 +153,15 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @param username Il nome utente da verificare.
      * @return {@code true} se il formato è valido e non esiste già, {@code false} altrimenti.
      */
-    private boolean isValidUsername(String username) {
+    private boolean isValidUsername(String username) throws SQLException, RemoteException {
         String usernamePattern = "^[a-zA-Z0-9._-]{3,}$";
         if (!username.matches(usernamePattern)) {
             return false;
         }
 
         QueryCondition condition = new QueryCondition("username", username);
-        try {
             RecordOperator[] result = dataQuery.getOperatorBy(condition);
             return result.length == 0;
-        } catch (SQLException | RemoteException e) {
-            throw new RuntimeException("Errore durante la verifica del nome utente", e);
-        }
     }
 
     /**
@@ -194,10 +182,9 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
             for (byte hashedByte : hashedBytes) {
                 sb.append(String.format("%02x", hashedByte));
             }
-
             return sb.toString();
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("Errore durante la cifratura della password", e);
+            throw new RuntimeException("Algoritmo di cifratura non disponibile", e);
         }
     }
 
@@ -210,7 +197,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      */
     private void validateLoginInputs(String username, String password) {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Nome utente e/o password non validi. Assicurati di inserire entrambi i dati.");
         }
     }
 
@@ -225,26 +212,26 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws IllegalArgumentException Se uno dei dati inseriti non è valido.
      */
     private void validateRegistrationInputs(String nameSurname, String taxCode, String email,
-                                            String username, String password) {
+                                            String username, String password) throws RemoteException, SQLException {
         String nameSurnamePattern = "^[a-zA-Z\\s]+$";
         String taxCodePattern = "^[A-Z]{6}\\d{2}[A-Z]\\d{2}[A-Z]\\d{3}[A-Z]$";
-        String emailPattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+        String emailPattern = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
         String passwordPattern = "^(?=.*[A-Z])(?=.*[@#$%^&+=!.])(.{8,})$";
 
         if (!nameSurname.matches(nameSurnamePattern)) {
-            throw new IllegalArgumentException("Nome e cognome non validi! Non devono contenere simboli numeri o altri caratteri speciali.");
+            throw new IllegalArgumentException("Nome e cognome non validi! Esempio atteso: Mario Rossi.");
         }
         if (!taxCode.matches(taxCodePattern)) {
-            throw new IllegalArgumentException("Codice fiscale non valido! Esempio atteso: RSSMRA80A01H501T");
+            throw new IllegalArgumentException("Codice fiscale non valido! Esempio atteso: RSSMRA80A01H501T.");
         }
         if (!email.matches(emailPattern)) {
-            throw new IllegalArgumentException("Indirizzo email non valido!");
+            throw new IllegalArgumentException("Indirizzo email non valido! Esempio atteso: esempio@mail.com.");
         }
         if (!isValidUsername(username)) {
-            throw new IllegalArgumentException("Username non valido/già esistente! Minimo 3 caratteri tra cui lettere, numeri e i seguenti simboli: . - _");
+            throw new IllegalArgumentException("Username non valido/già esistente! Esempio atteso: utente_01.");
         }
         if (!password.matches(passwordPattern)) {
-            throw new IllegalArgumentException("Password non valida! Deve essere lunga almeno 8 caratteri e deve contenere una maiuscola e un carattere speciale.");
+            throw new IllegalArgumentException("Password non valida! Deve essere lunga almeno 8 caratteri, con una maiuscola e un carattere speciale. Esempio: Password@123.");
         }
     }
 }

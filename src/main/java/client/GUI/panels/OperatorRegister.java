@@ -9,6 +9,9 @@ import client.models.CurrentOperator;
 import client.models.MainModel;
 import shared.utils.Interfaces;
 
+import java.rmi.RemoteException;
+import java.sql.SQLException;
+
 /**
  * La classe {@code OperatorRegister} &egrave; un pannello Swing utilizzato per
  * la
@@ -49,37 +52,37 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Campo di testo per l'inserimento del nome dell'operatore.
      */
-    private JTextField textfieldName = new JTextField();
+    private final JTextField textfieldName = new JTextField();
 
     /**
      * Campo di testo per l'inserimento del codice fiscale dell'operatore.
      */
-    private JTextField textfieldTaxCode = new JTextField();
+    private final JTextField textfieldTaxCode = new JTextField();
 
     /**
      * Campo di testo per l'inserimento dell'email dell'operatore.
      */
-    private JTextField textfieldEmail = new JTextField();
+    private final JTextField textfieldEmail = new JTextField();
 
     /**
      * Campo di testo per l'inserimento dell'username dell'operatore.
      */
-    private JTextField textfieldUsername = new JTextField();
+    private final JTextField textfieldUsername = new JTextField();
 
     /**
      * Campo di testo per l'inserimento della password dell'operatore.
      */
-    private JPasswordField textfieldPassword = new JPasswordField();
+    private final JPasswordField textfieldPassword = new JPasswordField();
 
     /**
      * Pulsante per effettuare la registrazione come operatore.
      */
-    private JButton buttonPerformRegistration = new Widget.Button("Registrati");
+    private final JButton buttonPerformRegistration = new Widget.Button("Registrati");
 
     /**
      * Crea una nuova istanza di OperatorRegister.
@@ -135,16 +138,27 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
                             JOptionPane.INFORMATION_MESSAGE);
                     gui.goToPanel(OperatorLogin.ID, null);
 
-                } catch (Exception exception) {
+                } catch (IllegalArgumentException e1) {
                     JOptionPane.showMessageDialog(
                             this,
-                            exception.getMessage(),
-                            "Errore",
+                            e1.getMessage(),
+                            "Errore di validazione",
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (RemoteException e2) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore di connessione al server.",
+                            "Errore di sistema",
+                            JOptionPane.ERROR_MESSAGE);
+                } catch (SQLException e3) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore di connessione al database.",
+                            "Errore di sistema",
                             JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-
     }
 
     /**
