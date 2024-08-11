@@ -434,8 +434,20 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
             RecordCenter center;
             try {
                 center = mainModel.dataQuery.getCenterBy(centerID);
-            } catch (SQLException | RemoteException e) {
-                throw new RuntimeException(e);
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Errore di connessione al database.",
+                        "Errore",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
+            } catch (RemoteException e) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Errore di connessione al server.",
+                        "Errore",
+                        JOptionPane.ERROR_MESSAGE);
+                return;
             }
 
             if (center != null) {
@@ -446,8 +458,20 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                     RecordCity city;
                     try {
                         city = mainModel.dataQuery.getCityBy(cityID);
-                    } catch (SQLException | RemoteException e) {
-                        throw new RuntimeException(e);
+                    } catch (SQLException e) {
+                        JOptionPane.showMessageDialog(
+                                this,
+                                e.getMessage(),
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
+                    } catch (RemoteException e) {
+                        JOptionPane.showMessageDialog(
+                                this,
+                                "Errore di connessione al server.",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                     if (city != null) {
                         comboboxCityName.addItem(new ComboItem(city.name()+" "+city.latitude()+" "+city.longitude(), city.ID()));
