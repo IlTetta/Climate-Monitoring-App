@@ -19,19 +19,19 @@ import java.util.List;
 
 /**
  * La classe {@code CitySerch} rappresenta un pannello Swing per effettuare
- * query sulla base di dati delle citt&agrave;.
+ * query sulla base di dati delle città.
  * <p>
- * Gli utenti possono cercare una citt&agrave; per nome o per coordinate
- * geografiche.
+ * Gli utenti possono cercare una città per nome o per coordinate
+ * geografiche utilizzando i campi di input e i pulsanti forniti.
  * </p>
- * 
+ *
  * @see GUI
  * @see Widget
  * @see TwoColumns
  * @see MainModel
  * @see RecordCity
  * @see Interfaces
- * 
+ *
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @version 1.0
@@ -56,29 +56,29 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
     private final MainModel mainModel;
 
     /**
-     * Il campo di testo per il nome della citt&agrave;.
+     * Campo di testo per il nome della città.
      */
     private final JTextField textfieldCityName = new JTextField();
 
     /**
-     * Il campo per la latitudine della citt&agrave;.
+     * Campo di testo per la latitudine della città.
      */
     private final JTextField textfieldLatitude = new JTextField();
 
     /**
-     * Il campo per la longitudine della citt&agrave;.
+     * Campo di testo per la longitudine della città.
      */
     private final JTextField textfieldLongitude = new JTextField();
 
     /**
-     * Pulsante per passare alla finestra di visualizzazione dati.
+     * Pulsante per eseguire la ricerca dei dati della città.
      */
     private final JButton buttonPerfomQuery = new Widget.Button("Cerca dati città");
 
     /**
-     * La combobox per il tipo di ricerca.
+     * ComboBox per selezionare il tipo di ricerca.
      */
-    private final JComboBox<String> comboboxQueryType = new JComboBox<String>();
+    private final JComboBox<String> comboboxQueryType = new JComboBox<>();
 
     /**
      * Costruttore della classe {@code CitySerch}.
@@ -90,7 +90,11 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
     }
 
     /**
-     * Aggiunge gestori degli eventi ai componenti del pannello.
+     * Aggiunge i gestori degli eventi ai componenti del pannello.
+     * <p>
+     * Include la gestione degli eventi di pressione del tasto Enter per i campi di testo
+     * e l'azione del pulsante per eseguire la ricerca dei dati.
+     * </p>
      */
     public void addActionEvent() {
         KeyListener enterKeyListenerCityName = new KeyAdapter() {
@@ -138,11 +142,11 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                     try {
                         result = mainModel.dataQuery.getCityBy(conditions);
                     } catch (SQLException ex) {
-                            JOptionPane.showMessageDialog(null,
-                                    "Errore di connessione al database",
-                                    "Errore",
-                                    JOptionPane.ERROR_MESSAGE);
-                            return;
+                        JOptionPane.showMessageDialog(null,
+                                "Errore di connessione al database",
+                                "Errore",
+                                JOptionPane.ERROR_MESSAGE);
+                        return;
                     } catch (RemoteException ex) {
                         JOptionPane.showMessageDialog(null,
                                 "Errore di connessione al server",
@@ -182,8 +186,7 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                     break;
             }
 
-
-            if (result!=null && result.length > 1) {
+            if (result != null && result.length > 1) {
                 RecordCity selectedCity = (RecordCity) JOptionPane.showInputDialog(
                         this,
                         "Sono state trovate più città con lo stesso nome. Seleziona quella desiderata.",
@@ -195,7 +198,7 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                 if (selectedCity != null)
                     gui.goToPanel(CityVisualizer.ID, new Object[] { selectedCity.ID() });
 
-            } else if (result!=null &&result.length == 1) {
+            } else if (result != null && result.length == 1) {
                 gui.goToPanel(CityVisualizer.ID, new Object[] { result[0].ID() });
 
             } else {
@@ -222,7 +225,6 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
         textfieldCityName.addKeyListener(enterKeyListenerCityName);
         textfieldLatitude.addKeyListener(enterKeyListenerCoordinates);
         textfieldLongitude.addKeyListener(enterKeyListenerCoordinates);
-
     }
 
     @Override
