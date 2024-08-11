@@ -179,7 +179,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
 
                 if (!Functions.isDateValid(dateString)) {
                     JOptionPane.showMessageDialog(null,
-                            "La data inserita non &egrave; corretta.",
+                            "La data inserita non è corretta.",
                             "Data errata",
                             JOptionPane.ERROR_MESSAGE);
                     textfieldDate.setForeground(Color.RED);
@@ -229,7 +229,9 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         "Salvataggio dati",
                         JOptionPane.INFORMATION_MESSAGE);
 
-            } catch (SQLException | NoSuchElementException | IllegalStateException e1) {
+                this.clearTableData();
+
+            } catch (SQLException | NoSuchElementException | IllegalStateException | IllegalArgumentException e1) {
                 JOptionPane.showMessageDialog(this,
                         e1.getMessage(),
                         "Errore nel salvataggio dati",
@@ -240,7 +242,6 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         "Errore di connessione",
                         JOptionPane.ERROR_MESSAGE);
             }
-            this.clearTableData();
         });
     }
 

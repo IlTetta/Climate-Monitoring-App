@@ -144,6 +144,7 @@ public class OperatorRegister extends TwoColumns implements Interfaces.UIPanel {
                             e1.getMessage(),
                             "Errore di validazione",
                             JOptionPane.ERROR_MESSAGE);
+
                 } catch (RemoteException e2) {
                     JOptionPane.showMessageDialog(
                             this,

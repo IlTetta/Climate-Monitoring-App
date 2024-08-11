@@ -142,11 +142,13 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                                     "Errore di connessione al database",
                                     "Errore",
                                     JOptionPane.ERROR_MESSAGE);
+                            return;
                     } catch (RemoteException ex) {
                         JOptionPane.showMessageDialog(null,
                                 "Errore di connessione al server",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                     break;
 
@@ -163,16 +165,19 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                                 "Errore di connessione al database",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
+                        return;
                     } catch (RemoteException ex) {
                         JOptionPane.showMessageDialog(null,
                                 "Errore di connessione al server",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
+                        return;
                     } catch (NumberFormatException ex) {
                         JOptionPane.showMessageDialog(null,
                                 "Inserire valori numerici validi per le coordinate",
                                 "Errore",
                                 JOptionPane.ERROR_MESSAGE);
+                        return;
                     }
                     break;
             }
@@ -190,7 +195,7 @@ public class CitySerch extends TwoColumns implements Interfaces.UIPanel {
                 if (selectedCity != null)
                     gui.goToPanel(CityVisualizer.ID, new Object[] { selectedCity.ID() });
 
-            } else if (result.length == 1) {
+            } else if (result!=null &&result.length == 1) {
                 gui.goToPanel(CityVisualizer.ID, new Object[] { result[0].ID() });
 
             } else {

@@ -267,7 +267,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                 if (col == 3) {
                     String comment = ((String) table.getValueAt(row, col)).trim();
                     if (!comment.isEmpty()) {
-                        comment = comment.replace(" /", "\n");
+                        comment = comment.replace(" / ", "\n");
                         JOptionPane.showMessageDialog(null, comment, "Commenti", JOptionPane.PLAIN_MESSAGE);
                     }
                 }

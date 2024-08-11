@@ -125,7 +125,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                 if (loggedOperator == null) {
                     JOptionPane.showMessageDialog(
                             this,
-                            "Utente non trovato",
+                            "Utente non trovato o password errata.",
                             "Errore di login",
                             JOptionPane.ERROR_MESSAGE);
                 } else {
