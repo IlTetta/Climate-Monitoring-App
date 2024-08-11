@@ -236,10 +236,8 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         "Errore nel salvataggio dati",
                         JOptionPane.ERROR_MESSAGE);
             }
-
             this.clearTableData();
         });
-
     }
 
     /**
@@ -247,7 +245,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
      * valori
      * interi.
      */
-    public static class IntegerCellEditor extends DefaultCellEditor {
+    private static class IntegerCellEditor extends DefaultCellEditor {
 
         private static final JComboBox<String> comboBox = new JComboBox<>(new String[] { "", "1", "2", "3", "4", "5" });
 
@@ -257,7 +255,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
          * Inizializza l'editor di celle con un JComboBox contenente valori interi.
          * </p>
          */
-        public IntegerCellEditor() {
+        private IntegerCellEditor() {
             super(comboBox);
         }
 
