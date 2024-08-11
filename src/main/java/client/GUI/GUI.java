@@ -78,11 +78,11 @@ public class GUI {
         mainWindowsArea.getMainPanel().revalidate();
         mainWindowsArea.getMainPanel().repaint();
 
-        loadingPanel = new Loading(mainModel);
-        homePanel = new Home(mainModel);
+        loadingPanel = new Loading();
+        homePanel = new Home();
         cityQueryPanel = new CitySerch(mainModel);
         cityVisualizerPanel = new CityVisualizer(mainModel);
-        operatorHomePanel = new OperatorHome(mainModel);
+        operatorHomePanel = new OperatorHome();
         operatorLoginPanel = new OperatorLogin(mainModel);
         operatorRegisterPanel = new OperatorRegister(mainModel);
         centerCreateNewPanel = new CenterCreateNew(mainModel);

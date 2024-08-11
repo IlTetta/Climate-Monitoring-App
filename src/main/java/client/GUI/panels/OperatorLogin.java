@@ -3,6 +3,7 @@ package client.GUI.panels;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.sql.SQLException;
 
@@ -54,22 +55,22 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Campo di testo per l'inserimento dell'Username dell'operatore.
      */
-    private JTextField textfieldUsedID = new JTextField();
+    private final JTextField textfieldUsedID = new JTextField();
 
     /**
      * Campo di testo per l'inserimento della password dell'operatore.
      */
-    private JPasswordField textfieldPassword = new JPasswordField();
+    private final JPasswordField textfieldPassword = new JPasswordField();
 
     /**
      * Pulsante per effettuare l'accesso come operatore.
      */
-    private JButton buttonPerformLogin = new Widget.Button("Accedi");
+    private final JButton buttonPerformLogin = new Widget.Button("Accedi");
 
     /**
      * Crea una nuova istanza di {@code OperatorLogin}.
@@ -121,19 +122,33 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
             try {
                 RecordOperator loggedOperator = mainModel.logicOperator.performLogin(userID, userPassword);
-                if(loggedOperator!=null){
+                if (loggedOperator == null) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Utente non trovato",
+                            "Errore di login",
+                            JOptionPane.ERROR_MESSAGE);
+                } else {
                     currentOperator.setCurrentOperator(loggedOperator);
-                }else {
-                    throw new IllegalArgumentException();
+                    proceedToCenterCreation(currentOperator);
                 }
-                proceedToCenterCreation(currentOperator);
-
-            } catch (IllegalArgumentException | RemoteException | SQLException exception){
-
+            } catch (IllegalArgumentException exception){
                 JOptionPane.showMessageDialog(
                         this,
-                        exception.getMessage(),
+                        "Username o password non validi.",
                         "Errore di login",
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Errore durante l'accesso al database.",
+                        "Errore di connessione",
+                        JOptionPane.ERROR_MESSAGE);
+            } catch (RemoteException ex) {
+                JOptionPane.showMessageDialog(
+                        this,
+                        "Errore di connessione al server.",
+                        "Errore di connessione",
                         JOptionPane.ERROR_MESSAGE);
             } finally {
                 textfieldPassword.setText("");
@@ -165,9 +180,22 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
                 RecordCenter[] result;
                 try {
                     result = mainModel.dataQuery.getCenters();
-                } catch (SQLException | RemoteException e) {
-                    throw new RuntimeException(e);
+                } catch (SQLException e) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore durante l'accesso al database.",
+                            "Errore di connessione",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
+                } catch (RemoteException e) {
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore di connessione al server.",
+                            "Errore di connessione",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
+
                 if (result.length == 0) {
                     JOptionPane.showMessageDialog(
                             this,
@@ -190,8 +218,21 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
 
                         try {
                             updatedOperator=mainModel.logicOperator.associateCenter(currentOperator.getCurrentOperator().ID(),selectedCenter.ID());
-                        } catch (SQLException | RemoteException e) {
-                            throw new RuntimeException(e);
+                        } catch (SQLException e) {
+                            JOptionPane.showMessageDialog(
+                                    this,
+                                    "Errore durante l'accesso al database.",
+                                    "Errore di connessione",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+                        } catch (RemoteException e) {
+                            JOptionPane.showMessageDialog(
+                                    this,
+                                    "Errore di connessione al server.",
+                                    "Errore di connessione",
+                                    JOptionPane.ERROR_MESSAGE);
+                            return;
+
                         }
                         currentOperator.setCurrentOperator(updatedOperator);
 
@@ -264,7 +305,7 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
         CurrentOperator currentOperator = CurrentOperator.getInstance();
 
         if (currentOperator.isUserLogged()) {
-            Integer response = JOptionPane.showConfirmDialog(
+            int response = JOptionPane.showConfirmDialog(
                     null,
                     "Risulti già loggato con UserName: " + currentOperator.getCurrentOperator().username() + "\n"
                             + "Proseguire?",
@@ -279,5 +320,4 @@ public class OperatorLogin extends TwoColumns implements Interfaces.UIPanel {
             }
         }
     }
-
 }

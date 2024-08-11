@@ -23,8 +23,8 @@ import shared.utils.Interfaces;
  * dell'applicazione.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoRows
  * @see MainModel
  * @see Constants
@@ -47,7 +47,7 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
      * Etichetta per visualizzare il nome dell'applicazione durante l'animazione di
      * caricamento.
      */
-    private JLabel labelAppName = new JLabel();
+    private final JLabel labelAppName = new JLabel();
 
     /**
      * Timer utilizzato per gestire l'animazione di caricamento.
@@ -57,9 +57,8 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
     /**
      * Crea una nuova istanza di {@code Loading}.
      *
-     * @param mainModel Il modello principale dell'applicazione.
      */
-    public Loading(MainModel mainModel) {
+    public Loading() {
     }
 
     /**
@@ -69,8 +68,6 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
         timer.start();
     }
 
-    
-    
     @Override
     public Loading createPanel(GUI gui) {
         timer = new Timer(700, e -> {
@@ -86,7 +83,7 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
         });
 
         labelAppName.setText(Constants.APP_TITLE);
-        labelAppName.setFont(new Font("Ink Free", Font.CENTER_BASELINE, 35));
+        labelAppName.setFont(new Font("Ink Free", Font.BOLD, 35));
 
         addTop(new Widget.LogoLabel(2));
         addBottom(labelAppName);
@@ -98,8 +95,6 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
         return this;
     }
 
-    
-    
     @Override
     public String getID() {
         return ID;
@@ -109,5 +104,4 @@ public class Loading extends TwoRows implements Interfaces.UIPanel {
     public void onOpen(Object[] args) {
         runAnimation();
     }
-
 }

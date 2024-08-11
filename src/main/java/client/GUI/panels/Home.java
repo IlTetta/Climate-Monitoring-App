@@ -21,8 +21,8 @@ import shared.utils.Interfaces;
  * specifiche dell'applicazione.
  * </p>
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoRows
  * @see MainModel
  * @see Interfaces
@@ -51,21 +51,20 @@ public class Home extends TwoRows implements Interfaces.UIPanel {
      * dei
      * dati.
      */
-    private JButton buttonToFind = new Widget.Button("Cerca e visualizza dati");
+    private final JButton buttonToFind = new Widget.Button("Cerca e visualizza dati");
 
     /**
      * Pulsante per navigare alla funzionalit&agrave; di gestione dell'area
      * riservata agli
      * operatori.
      */
-    private JButton buttonToOperator = new Widget.Button("Gestisci area operatore");
+    private final JButton buttonToOperator = new Widget.Button("Gestisci area operatore");
 
     /**
      * Crea una nuova istanza di {@code Home}.
      *
-     * @param mainModel Il modello principale dell'applicazione.
      */
-    public Home(MainModel mainModel) {
+    public Home() {
     }
 
     /**
@@ -105,5 +104,4 @@ public class Home extends TwoRows implements Interfaces.UIPanel {
     @Override
     public void onOpen(Object[] args) {
     }
-
 }

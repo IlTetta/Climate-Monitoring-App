@@ -44,19 +44,18 @@ public class OperatorHome extends TwoRows implements Interfaces.UIPanel {
     /**
      * Pulsante per navigare alla schermata di registrazione degli operatori.
      */
-    private JButton buttonToRegistration = new Widget.Button("Registrati");
+    private final JButton buttonToRegistration = new Widget.Button("Registrati");
 
     /**
      * Pulsante per navigare alla schermata di login degli operatori.
      */
-    private JButton buttonToLogin = new Widget.Button("Accedi");
+    private final JButton buttonToLogin = new Widget.Button("Accedi");
 
     /**
      * Crea una nuova istanza di OperatorHome.
      *
-     * @param mainModel Il modello principale dell'applicazione.
      */
-    public OperatorHome(MainModel mainModel) {
+    public OperatorHome() {
     }
 
     /**
@@ -77,8 +76,6 @@ public class OperatorHome extends TwoRows implements Interfaces.UIPanel {
         });
     }
 
-    
-    
     @Override
     public OperatorHome createPanel(GUI gui) {
         this.gui = gui;
@@ -95,8 +92,6 @@ public class OperatorHome extends TwoRows implements Interfaces.UIPanel {
         return this;
     }
 
-    
-    
     @Override
     public String getID() {
         return ID;
@@ -111,5 +106,4 @@ public class OperatorHome extends TwoRows implements Interfaces.UIPanel {
     @Override
     public void onOpen(Object[] args) {
     }
-
 }

@@ -83,7 +83,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
             RecordOperator[] result = dataQuery.getOperatorBy(conditions);
             return result.length == 1 ? result[0] : null;
         } catch (SQLException e) {
-            throw new RemoteException("Errore durante il login", e);
+            throw new RemoteException();
         }
     }
 
@@ -210,7 +210,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      */
     private void validateLoginInputs(String username, String password) {
         if (username == null || username.isEmpty() || password == null || password.isEmpty()) {
-            throw new IllegalArgumentException("Username e password non possono essere vuoti.");
+            throw new IllegalArgumentException();
         }
     }
 
