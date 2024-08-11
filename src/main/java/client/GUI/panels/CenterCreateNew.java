@@ -37,12 +37,12 @@ import shared.record.QueryCondition;
  * La classe gestisce la validazione dei dati inseriti e fornisce feedback
  * all'operatore in caso di errori.
  * 
- * @see GUI.GUI
- * @see GUI.Widget
+ * @see GUI
+ * @see Widget
  * @see TwoColumns
  * @see CurrentOperator
  * @see MainModel
- * @see DataQueryImp.QueryCondition
+ * @see QueryCondition
  * @see RecordCity
  * @see Constants
  * @see Interfaces
@@ -68,62 +68,62 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
     /**
      * Riferimento al modello principale associato a questo pannello.
      */
-    private MainModel mainModel;
+    private final MainModel mainModel;
 
     /**
      * Campo di testo per il nome del centro.
      */
-    private JTextField textfieldCenterName = new JTextField();
+    private final JTextField textfieldCenterName = new JTextField();
 
     /**
      * Campo di testo per il nome della via.
      */
-    private JTextField textfieldStreetName = new JTextField();
+    private final JTextField textfieldStreetName = new JTextField();
 
     /**
      * Campo di testo per il numero civico.
      */
-    private JTextField textfieldStreetNumber = new JTextField();
+    private final JTextField textfieldStreetNumber = new JTextField();
 
     /**
      * Campo di testo per il CAP.
      */
-    private JTextField textfieldCAP = new JTextField();
+    private final JTextField textfieldCAP = new JTextField();
 
     /**
      * Campo di testo per il nome del comune.
      */
-    private JTextField textfieldTownName = new JTextField();
+    private final JTextField textfieldTownName = new JTextField();
 
     /**
      * Campo di testo per la sigla della provincia.
      */
-    private JTextField textfieldDistrictName = new JTextField();
+    private final JTextField textfieldDistrictName = new JTextField();
 
     /**
      * Campo di testo per il nome dela citt&agrave; da associare al centro.
      */
-    private JTextField textfieldCityName = new JTextField();
+    private final JTextField textfieldCityName = new JTextField();
 
     /**
      * Bottone per la creazione del centro.
      */
-    private JButton buttonPerformInit = new Widget.Button("Crea il centro");
+    private final JButton buttonPerformInit = new Widget.Button("Crea il centro");
 
     /**
      * Modello predefinito per la lista delle citt&agrave; asscoiate al centro.
      */
-    private DefaultListModel<String> listmodelCityIDs = new DefaultListModel<>();
+    private final DefaultListModel<String> listmodelCityIDs = new DefaultListModel<>();
 
     /**
      * Lista delle citt&agrave; associate al centro.
      */
-    private JList<String> listCityIDs = new JList<>(listmodelCityIDs);
+    private final JList<String> listCityIDs = new JList<>(listmodelCityIDs);
 
     /**
      * ScrollPane per la lista delle citt&agrave;.
      */
-    private JScrollPane scrollpaneCityInfo = new JScrollPane();
+    private final JScrollPane scrollpaneCityInfo = new JScrollPane();
 
     /**
      * Crea una nuova istanza di {@code CenterCreateNew}.
@@ -163,14 +163,12 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
             String cityName = textfieldCityName.getText().trim();
 
-
-
             if (!cityName.isEmpty() && !listmodelCityIDs.contains(cityName)) {
 
-                RecordCity[] result = null;
+                RecordCity[] result;
                 List<QueryCondition> conditions = new ArrayList<>();
 
-                char firstChar = Character.toUpperCase(cityName.charAt(0));                 //Gestione formattazione città
+                char firstChar = Character.toUpperCase(cityName.charAt(0));
                 String restOfString = cityName.substring(1).toLowerCase();
                 cityName = firstChar + restOfString;
 
@@ -178,7 +176,12 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                 try {
                     result = mainModel.dataQuery.getCityBy(conditions);
                 } catch (SQLException | RemoteException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(
+                            this,
+                            "Errore durante la ricerca della città.",
+                            "Errore",
+                            JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
 
                 if (result.length > 1) {
@@ -268,15 +271,14 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
                         JOptionPane.INFORMATION_MESSAGE);
                 gui.goToPanel(CityAddData.ID, null);
 
-            } catch (Exception exception) {
+            } catch (SQLException | RemoteException exception) {
                 JOptionPane.showMessageDialog(
                         this,
-                        exception.getMessage(),
-                        "Dato errato",
+                        "Tutti i campi sono obbligatori. Assicurati di aver inserito i dati correttamente.",
+                        "Dato mancante",
                         JOptionPane.ERROR_MESSAGE);
             }
         });
-
     };
 
     @Override
@@ -334,8 +336,6 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
 
             gui.goToPanel(CityAddData.ID, null);
         }
-
         clearFields();
-
     }
 }
