@@ -19,22 +19,17 @@ import client.GUI.panels.OperatorRegister;
 import client.models.CurrentOperator;
 
 /**
- * La classe {@code MenuBar} rappresenta una barra del men&ugrave; per
- * l'interfaccia
- * grafica dell'applicazione.
+ * La classe {@code MenuBar} rappresenta la barra del menu dell'interfaccia grafica dell'applicazione.
  * <p>
- * La barra del men&ugrave; contiene elementi per la navigazione tra diverse
- * sezioni
- * dell'applicazione e per cambiare il tema dell'interfaccia utente.
+ * Questa barra del menu consente la navigazione tra diverse sezioni dell'applicazione e
+ * fornisce opzioni per cambiare il tema dell'interfaccia utente e gestire la sessione dell'operatore.
  * </p>
  * <p>
- * I principali elementi del men&ugrave; includono Home, Area Cittadino e Area
- * Operatore con le opzioni di Login, Registrazione, Gestione della citt&agrave;
- * e
- * Loguot.
+ * Gli elementi principali del menu includono Home, Ricerca città, e un sotto-menu per l'Area Operatore
+ * con le opzioni di Login, Registrazione, Gestione città e Logout.
  * </p>
- * 
- * @see GUI.GUI
+ *
+ * @see GUI
  * @see CityAddData
  * @see CitySerch
  * @see Home
@@ -53,14 +48,12 @@ public class MenuBar extends JMenuBar {
     /**
      * Crea una nuova istanza di {@code MenuBar}.
      * <p>
-     * Ad ogni elemento del men&ugrave; &egrave; associato un'azione che pu&ograve;
-     * essere l'andare in un
-     * pannello specifico o performare il logout.
+     * Imposta il layout della barra del menu, aggiunge gli elementi del menu e
+     * configura le azioni associate a ciascun elemento.
      * </p>
-     * 
-     * @param gui L'istanza dell'interfaccia grafica principale a cui &egrave;
-     *            associata la
-     *            barra del men&ugrave;.
+     *
+     * @param gui L'istanza dell'interfaccia grafica principale a cui è associata
+     *            la barra del menu.
      */
     public MenuBar(GUI gui) {
         setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -76,16 +69,6 @@ public class MenuBar extends JMenuBar {
 
         JCheckBoxMenuItem itemToggleTheme = new JCheckBoxMenuItem("Tema scuro");
         itemToggleTheme.setSelected(gui.appTheme.isDarkTheme());
-
-        JMenuItem[] jMenuItems = new JMenuItem[] {
-                itemHome,
-                itemCityQuery,
-                submenuOperator,
-                itemOperatorLogin,
-                itemOperatorRegistration,
-                itemCityAddData,
-                itemAreaLogout,
-                itemToggleTheme };
 
         itemHome.addActionListener(e -> {
             gui.goToPanel(Home.ID, null);
@@ -113,7 +96,7 @@ public class MenuBar extends JMenuBar {
         });
 
         itemAreaLogout.addActionListener(e -> {
-            Integer answer = JOptionPane.showConfirmDialog(
+            int answer = JOptionPane.showConfirmDialog(
                     this,
                     "Sei sicuro di voler uscire dall'area operatore?",
                     "Logout",
@@ -139,7 +122,8 @@ public class MenuBar extends JMenuBar {
         submenuOperator.add(itemAreaLogout);
         add(itemToggleTheme);
 
-        for (JMenuItem jMenuItem : jMenuItems) {
+        for (JMenuItem jMenuItem : new JMenuItem[] {itemHome, itemCityQuery, itemOperatorLogin,
+                itemOperatorRegistration, itemCityAddData, itemAreaLogout, itemToggleTheme}) {
             jMenuItem.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
     }
