@@ -27,9 +27,15 @@ import shared.record.QueryCondition;
  * @see QueryCondition
  * @see DataHandlerInterface
  * @see DataQueryInterface
+ * @see LogicOperatorInterface
  *
+ * @serial exclude
+ *
+ * @author Andrea Tettamanti
+ * @author Luca Mascetti
+ * @author Manuel Morlin
  * @version 1.1
- * @since 16/09/2023
+ * @since 14/08/2024
  */
 public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperatorInterface {
 
@@ -52,7 +58,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati degli
      *                    operatori.
      * @param dataQuery   L'interfaccia per le query sui dati.
-     * @throws RemoteException Se si verifica un errore durante la creazione dell'oggetto remoto.
+     * @throws RemoteException Se si verifica un errore di comunicazione RMI.
      */
     public LogicOperatorImp(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) throws RemoteException {
         super();
@@ -68,7 +74,8 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @param password La password dell'operatore.
      * @return Il record dell'operatore se le credenziali sono corrette, {@code null} altrimenti.
      * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
-     * @throws IllegalArgumentException Se il nome utente o la password sono vuoti.
+     * @throws IllegalArgumentException Se il nome utente o la password sono vuoti.ù
+     * @throws SQLException Se si verifica un errore durante l'accesso ai dati.
      */
     @Override
     public RecordOperator performLogin(String username, String password) throws RemoteException, SQLException {
@@ -84,10 +91,6 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
 
     /**
      * Effettua la registrazione di un nuovo operatore con i dati forniti.
-     * <p>
-     * Se la registrazione è avvenuta con successo viene effettuato automaticamente
-     * il login.
-     * </p>
      *
      * @param nameSurname Il nome e cognome dell'operatore.
      * @param taxCode     Il codice fiscale dell'operatore.
@@ -99,6 +102,8 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws IllegalArgumentException Se uno dei dati inseriti non è valido
      *                                  o se si è già loggati come operatore.
      * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
+     * @throws SQLException Se si verifica un errore durante l'accesso ai dati.
+     *
      */
     @Override
     public void performRegistration(String nameSurname, String taxCode, String email, String username,
@@ -114,7 +119,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * Modifica i dati dell'operatore corrente riguardanti il centro a esso
      * associato.
      * <p>
-     * Questo metodo cerca un centro con il nome specificato e aggiorna l'operatore
+     * Questo metodo cerca un centro con l'ID specificato e aggiorna l'operatore
      * corrente con l'ID del centro trovato.
      * </p>
      *
@@ -124,6 +129,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws SQLException Se si verifica un errore durante l'accesso ai dati o
      *                      durante l'aggiornamento.
      * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
+     * @throws IllegalStateException Se l'operatore è già associato a un centro.
      */
     @Override
     public RecordOperator associateCenter(Integer operatorID, Integer centerID) throws SQLException, RemoteException {
@@ -152,6 +158,8 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      *
      * @param username Il nome utente da verificare.
      * @return {@code true} se il formato è valido e non esiste già, {@code false} altrimenti.
+     * @throws SQLException Se si verifica un errore durante l'accesso ai dati.
+     * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
      */
     private boolean isValidUsername(String username) throws SQLException, RemoteException {
         String usernamePattern = "^[a-zA-Z0-9._-]{3,}$";
@@ -171,6 +179,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @param username L'username dell'utente.
      * @param password La password dell'utente.
      * @return La password cifrata.
+     * @throws RuntimeException Se l'algoritmo di cifratura non è disponibile.
      */
     private String hashPassword(String username, String password) {
         try {
@@ -189,7 +198,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
     }
 
     /**
-     * Valida gli input per il login.
+     * Convalida i dati per il login.
      *
      * @param username Il nome utente da validare.
      * @param password La password da validare.
@@ -202,7 +211,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
     }
 
     /**
-     * Valida gli input per la registrazione.
+     * Convalida i dati per la registrazione.
      *
      * @param nameSurname Il nome e cognome da validare.
      * @param taxCode     Il codice fiscale da validare.
@@ -210,6 +219,8 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @param username    Il nome utente da validare.
      * @param password    La password da validare.
      * @throws IllegalArgumentException Se uno dei dati inseriti non è valido.
+     * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
+     * @throws SQLException Se si verifica un errore durante l'accesso ai dati.
      */
     private void validateRegistrationInputs(String nameSurname, String taxCode, String email,
                                             String username, String password) throws RemoteException, SQLException {

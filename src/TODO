@@ -38,3 +38,4 @@ DataHandlerImp
 DataQueryImp
 LogicCenterImp
 LogicCityImp
+LogicOperatorImp
