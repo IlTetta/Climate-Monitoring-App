@@ -35,3 +35,4 @@ CenterCreateNew
 Server
 ConnectionMaker
 DataHandlerImp
+DataQueryImp

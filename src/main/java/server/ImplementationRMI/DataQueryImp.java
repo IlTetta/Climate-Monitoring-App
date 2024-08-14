@@ -17,14 +17,48 @@ import java.util.List;
 
 import static shared.utils.Functions.zeroToNull;
 
-// Classe che implementa i metodi per interrogare il database
+/**
+ * La classe {@code DataQueryImp} implementa l'interfaccia {@code DataQueryInterface} e fornisce i metodi
+ * per interrogare il database e ottenere i dati richiesti.
+ * <p>
+ *     La classe si occupa di creare una connessione al database e di eseguire le query richieste.
+ *     I metodi implementati permettono di ottenere informazioni riguardanti città, operatori, centri di monitoraggio
+ *     e dati meteo.
+ * </p>
+ *
+ * @see DataQueryInterface
+ * @see RecordCity
+ * @see RecordOperator
+ * @see RecordCenter
+ * @see RecordWeather
+ * @see QueryCondition
+ * @see ConnectionMaker
+ *
+ * @serial exclude
+ *
+ * @author Andrea Tettamanti
+ * @author Luca Mascetti
+ * @author Manuel Morlin
+ * @version 1.0
+ * @since 14/08/2024
+ *
+ */
 public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterface {
 
     @Serial
     private static final long serialVersionUID = 2L;
 
+    /**
+     * La connessione al database utilizzata per eseguire le operazioni.
+     */
     private final Connection conn;
 
+    /**
+     * Costruttore che inizializza la connessione al database utilizzando un file
+     * di configurazione.
+     *
+     * @throws RemoteException Se la connessione al database fallisce
+     */
     public DataQueryImp() throws RemoteException {
         super();
         try {
@@ -35,6 +69,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni di una città dal database in base all'ID specificato.
+     *
+     * @param ID L'ID della città da cercare.
+     * @return Un oggetto RecordCity contenente le informazioni della città.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordCity getCityBy(Integer ID) throws SQLException, RemoteException {
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE id = ?";
@@ -50,6 +92,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni delle città dal database in base a una lista di condizioni di ricerca.
+     *
+     * @param conditions Le condizioni di ricerca.
+     * @return Un array di RecordCity contenente le informazioni delle città che soddisfano le condizioni.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordCity[] getCityBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE " + createSQLCondition(conditions);
@@ -65,6 +115,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni di un operatore dal database in base all'ID specificato.
+     *
+     * @param ID L'ID dell'operatore da cercare.
+     * @return Un oggetto RecordOperator contenente le informazioni dell'operatore.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordOperator getOperatorBy(Integer ID) throws SQLException, RemoteException {
         String sql = "SELECT * FROM operatoriregistrati WHERE id = ?";
@@ -80,6 +138,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni di uno o più operatori dal database in base a una condizione di ricerca.
+     *
+     * @param condition La condizione di ricerca.
+     * @return Un array di RecordOperator contenente le informazioni degli operatori che soddisfano la condizione.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordOperator[] getOperatorBy(QueryCondition condition) throws SQLException, RemoteException {
         List<QueryCondition> conditions = new ArrayList<>();
@@ -87,6 +153,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         return getOperatorBy(conditions);
     }
 
+    /**
+     * Ottiene le informazioni di uno o più operatori dal database in base a una lista di condizioni di ricerca.
+     *
+     * @param conditions Le condizioni di ricerca.
+     * @return Un array di RecordOperator contenente le informazioni degli operatori che soddisfano le condizioni.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordOperator[] getOperatorBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
         String sql = "SELECT * FROM operatoriregistrati WHERE " + createSQLCondition(conditions);
@@ -102,6 +176,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni di un centro di monitoraggio dal database in base all'ID specificato.
+     *
+     * @param ID L'ID del centro di monitoraggio da cercare.
+     * @return Un oggetto RecordCenter contenente le informazioni del centro, o null se non trovato.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordCenter getCenterBy(Integer ID) throws SQLException, RemoteException {
         String sql = "SELECT * FROM centrimonitoraggio WHERE id = ?";
@@ -117,6 +199,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene le informazioni di tutti i centri di monitoraggio dal database.
+     *
+     * @return Un array di RecordCenter contenente le informazioni di tutti i centri di monitoraggio.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordCenter[] getCenters() throws SQLException, RemoteException {
         String sql = "SELECT * FROM centrimonitoraggio";
@@ -131,6 +220,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
+    /**
+     * Ottiene i parametri climatici dal database in base a una condizione di ricerca.
+     *
+     * @param condition La condizione di ricerca.
+     * @return Un array di RecordWeather contenente i parametri climatici che soddisfano la condizione.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordWeather[] getWeatherBy(QueryCondition condition) throws SQLException, RemoteException {
         List<QueryCondition> conditions = new ArrayList<>();
@@ -138,6 +235,14 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         return getWeatherBy(conditions);
     }
 
+    /**
+     * Ottiene i parametri climatici dal database in base a una lista di condizioni di ricerca.
+     *
+     * @param conditions Le condizioni di ricerca.
+     * @return Un array di RecordWeather contenente i parametri climatici che soddisfano le condizioni.
+     * @throws SQLException     Se si verifica un errore durante l'esecuzione della query.
+     * @throws RemoteException  Se si verifica un errore di comunicazione RMI.
+     */
     @Override
     public RecordWeather[] getWeatherBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
         String sql = "SELECT * FROM parametriclimatici WHERE " + createSQLCondition(conditions);
@@ -153,7 +258,12 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
-    // Crea una stringa di condizione SQL basata su una lista di QueryCondition
+    /**
+     * Crea una stringa di condizione SQL basata su una lista di {@code QueryCondition}.
+     *
+     * @param conditions Le condizioni di ricerca.
+     * @return Una stringa rappresentante la condizione SQL.
+     */
     private String createSQLCondition(List<QueryCondition> conditions) {
         StringBuilder conditionString = new StringBuilder();
         for (int i = 0; i < conditions.size(); i++) {
@@ -170,7 +280,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         return conditionString.toString();
     }
 
-    // Imposta i valori dei parametri nel PreparedStatement basato sulle condizioni
+    /**
+     * Imposta i valori dei parametri nel PreparedStatement basato sulle condizioni di ricerca.
+     *
+     * @param stmt       Il PreparedStatement da popolare.
+     * @param conditions Le condizioni di ricerca contenenti i valori dei parametri.
+     * @throws SQLException Se si verifica un errore nell'impostazione dei valori dei parametri.
+     */
     private void setPreparedStatementValues(PreparedStatement stmt, List<QueryCondition> conditions) throws SQLException {
         for (int i = 0; i < conditions.size(); i++) {
             Object value = conditions.get(i).value();
@@ -182,7 +298,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         }
     }
 
-    // Mappa un ResultSet a un RecordCity
+    /**
+     * Mappa un ResultSet a un oggetto RecordCity.
+     *
+     * @param rs Il ResultSet contenente i dati della città.
+     * @return Un oggetto RecordCity mappato dal ResultSet.
+     * @throws SQLException Se si verifica un errore durante la mappatura.
+     */
     private RecordCity mapResultSetToRecordCity(ResultSet rs) throws SQLException {
         return new RecordCity(
                 rs.getInt("id"),
@@ -195,7 +317,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         );
     }
 
-    // Mappa un ResultSet a un RecordOperator
+    /**
+     * Mappa un ResultSet a un oggetto RecordOperator.
+     *
+     * @param rs Il ResultSet contenente i dati dell'operatore.
+     * @return Un oggetto RecordOperator mappato dal ResultSet.
+     * @throws SQLException Se si verifica un errore durante la mappatura.
+     */
     private RecordOperator mapResultSetToRecordOperator(ResultSet rs) throws SQLException {
         return new RecordOperator(
                 rs.getInt("id"),
@@ -208,7 +336,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         );
     }
 
-    // Mappa un ResultSet a un RecordCenter
+    /**
+     * Mappa un ResultSet a un oggetto RecordCenter.
+     *
+     * @param rs Il ResultSet contenente i dati del centro di monitoraggio.
+     * @return Un oggetto RecordCenter mappato dal ResultSet.
+     * @throws SQLException Se si verifica un errore durante la mappatura.
+     */
     private RecordCenter mapResultSetToRecordCenter(ResultSet rs) throws SQLException {
         Integer[] cityIds = (Integer[]) rs.getArray("cityids").getArray();
         return new RecordCenter(
@@ -223,7 +357,13 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         );
     }
 
-    // Mappa un ResultSet a un RecordWeather
+    /**
+     * Mappa un ResultSet a un oggetto RecordWeather.
+     *
+     * @param rs Il ResultSet contenente i dati dei parametri climatici.
+     * @return Un oggetto RecordWeather mappato dal ResultSet.
+     * @throws SQLException Se si verifica un errore durante la mappatura.
+     */
     private RecordWeather mapResultSetToRecordWeather(ResultSet rs) throws SQLException {
         return new RecordWeather(
                 rs.getInt("id"),
@@ -240,7 +380,11 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
         );
     }
 
-    // Ritorna la connessione al database per i test
+    /**
+     * Ritorna l'oggetto {@code Connection} al database, utilizzato anche per scopi di testing.
+     *
+     * @return L'oggetto Connection al database.
+     */
     @Override
     public Connection getConn() {
         return conn;
