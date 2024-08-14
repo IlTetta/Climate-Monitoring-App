@@ -19,8 +19,8 @@ import java.util.Date;
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 16/09/2023
+ * @version 1.1
+ * @since 41/08/2024
  */
 public class Functions {
 
@@ -88,6 +88,11 @@ public class Functions {
         return new String(byteString, charset);
     }
 
+    /**
+     * Converte un valore intero in un valore nullo se il valore &egrave; 0.
+     * @param value Il valore da convertire.
+     * @return {@code null} se il valore &egrave; 0, altrimenti il valore stesso.
+     */
     public static Integer zeroToNull(Integer value) {
         return value == 0 ? null : value;
     }

@@ -19,8 +19,8 @@ import java.awt.Dimension;
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 16/09/2023
+ * @version 1.1
+ * @since 14/08/2024
  */
 public class Constants {
 
