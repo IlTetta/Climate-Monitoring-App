@@ -1,6 +1,6 @@
 package server.ImplementationRMI;
 
-import server.QueryToDB;
+import server.ConnectionMaker;
 import shared.InterfacesRMI.DataQueryInterface;
 import shared.record.*;
 
@@ -28,7 +28,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
     public DataQueryImp() throws RemoteException {
         super();
         try {
-            QueryToDB queryToDB = QueryToDB.createFromProperties("database.properties");
+            ConnectionMaker queryToDB = ConnectionMaker.createFromProperties("database.properties");
             this.conn = queryToDB.getConnection();
         } catch (SQLException | IOException e) {
             throw new RemoteException("Inizializzazione della connessione al database fallita", e);
