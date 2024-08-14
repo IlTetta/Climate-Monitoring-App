@@ -77,18 +77,17 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      * @param username    Il nome utente dell'operatore.
      * @param password    La password dell'operatore.
      * @param centerID    L'ID del centro a cui l'operatore è associato (può essere null).
-     * @return Un'istanza di {@code RecordOperator} che rappresenta l'operatore aggiunto.
-     * @throws SQLException       Se si verifica un errore durante l'interazione con il database.
-     * @throws RemoteException    Se si verifica un errore durante la comunicazione remota.
+     * @throws SQLException             Se si verifica un errore durante l'interazione con il database.
+     * @throws RemoteException          Se si verifica un errore durante la comunicazione remota.
      * @throws IllegalArgumentException Se l'utente esiste già.
      */
     @Override
-    public RecordOperator addNewOperator(String nameSurname,
-                                         String taxCode,
-                                         String email,
-                                         String username,
-                                         String password,
-                                         Integer centerID) throws SQLException, RemoteException {
+    public void addNewOperator(String nameSurname,
+                               String taxCode,
+                               String email,
+                               String username,
+                               String password,
+                               Integer centerID) throws SQLException, RemoteException {
         String checkSql = "SELECT * FROM operatoriregistrati WHERE username = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, username);
@@ -118,7 +117,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
             try (ResultSet generatedKeys = insertStmt.getGeneratedKeys()) {
                 if (generatedKeys.next()) {
                     int newID = generatedKeys.getInt(1);
-                    return new RecordOperator(newID, nameSurname, taxCode, email, username, password, centerID);
+                    new RecordOperator(newID, nameSurname, taxCode, email, username, password, centerID);
                 } else {
                     throw new SQLException("Inserimento fallito, nessun ID generato.");
                 }
