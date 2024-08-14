@@ -17,36 +17,52 @@ import shared.record.RecordWeather;
 import shared.utils.Functions;
 
 /**
- * La classe {@code LogicCenterImp} gestisce la logica relativa ai Centri di
- * Monitoraggio.
+ * La classe {@code LogicCenterImp} implementa i servizi RMI per la gestione dei centri di monitoraggio
+ * e dei dati associati, oltre alla loro logica.
  * <p>
  * Questa classe offre metodi per inizializzare un nuovo Centro di Monitoraggio
  * e per aggiungere dati meteorologici associati a una città specifica.
  * </p>
  *
+ * @see LogicCenterInterface
+ * @see DataHandlerInterface
+ * @see DataQueryInterface
  * @see DataHandlerImp
  * @see RecordCenter
  * @see RecordWeather
  * @see RecordOperator
  * @see Functions
+ * @serial exclude
  *
- * @version 1.0
- * @since 16/09/2023
+ * @author Andrea Tettamanti
+ * @author Luca Mascetti
+ * @author Manuel Morlin
+ * @version 1.1
+ * @since 14/08/2024
  */
 public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterInterface {
 
     @Serial
     private static final long serialVersionUID = 4L;
 
+    /**
+     * Il gestore dei dati utilizzato per l'accesso ai dati dell'applicazione.
+     */
     private final DataHandlerInterface dataHandler;
+
+    /**
+     * L'interfaccia per le query sui dati.
+     */
     private final DataQueryInterface dataQuery;
 
     /**
-     * Costruttore della classe {@code LogicCenterImp}.
+     * Costruttore della classe {@code LogicCenterImp} che la inizializza cone le
+     * interfacce necessarie.
      *
      * @param dataHandler Il gestore dei dati utilizzato per l'accesso ai dati
      *                    dell'applicazione.
      * @param dataQuery   L'interfaccia per le query sui dati.
+     * @throws RemoteException Se si verifica un errore di comunicazione RMI.
      */
     public LogicCenterImp(DataHandlerInterface dataHandler, DataQueryInterface dataQuery) throws RemoteException {
         this.dataHandler = dataHandler;
@@ -54,7 +70,8 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
     }
 
     /**
-     * Inizializza un nuovo Centro di Monitoraggio con i dati specificati.
+     * Inizializza un nuovo Centro di Monitoraggio con i dati specificati e assegna
+     * l'operatore a tale centro.
      *
      * @param centerName   Il nome del centro di monitoraggio.
      * @param streetName   Il nome della via o della piazza.
@@ -63,11 +80,11 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
      * @param townName     Il nome del comune.
      * @param districtName Il nome della provincia.
      * @param cityIDs      Un array di ID di città associate al centro di monitoraggio.
-     * @param operatorID   L'ID dell'operatore che gestirà il centro.
+     * @param operatorID   L'ID dell'operatore associato al centro.
      *
      * @throws IllegalArgumentException Se uno dei parametri non è valido.
-     * @throws RuntimeException         Se l'operatore non è valido o già associato a un centro di monitoraggio.
-     * @throws SQLException             Se si verifica un errore durante l'accesso ai dati.
+     * @throws SQLException             Se si verifica un errore durante l'accesso al database.
+     * @throws RemoteException          Se si verifica un errore di comunicazione RMI.
      */
     @Override
     public void initNewCenter(
@@ -107,7 +124,8 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
     }
 
     /**
-     * Aggiunge dati meteorologici associati a un centro specifico.
+     * Aggiunge nuovi dati climatici per una città specifica e li associa al centro di
+     * monitoraggio dell'operatore specificato.
      *
      * @param cityID     L'ID della città a cui sono associati i dati meteorologici.
      * @param operatorID L'ID dell'operatore che aggiunge i dati.
@@ -115,8 +133,8 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
      * @param tableDatas Una matrice di dati meteorologici da aggiungere.
      *
      * @throws IllegalArgumentException Se uno dei parametri non è valido.
-     * @throws RuntimeException         Se l'operatore non è valido o non associato a un centro di monitoraggio.
-     * @throws SQLException             Se si verifica un errore durante l'accesso ai dati.
+     * @throws SQLException             Se si verifica un errore durante l'accesso al database.
+     * @throws RemoteException          Se si verifica un errore di comunicazione RMI.
      */
     @Override
     public void addDataToCenter(
@@ -148,6 +166,20 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
                 weatherDataList.get(6));
     }
 
+    /**
+     * Valida i parametri per l'inizializzazione di un nuovo centro di monitoraggio.
+     *
+     * @param centerName   Il nome del centro.
+     * @param streetName   Il nome della via.
+     * @param streetNumber Il numero civico.
+     * @param CAP          Il CAP.
+     * @param townName     Il nome del comune.
+     * @param districtName Il nome della provincia.
+     * @param cityIDs      Gli ID delle città associate.
+     * @throws RemoteException    Se si verifica un errore di comunicazione RMI.
+     * @throws SQLException       Se si verifica un errore di accesso al database.
+     * @throws IllegalArgumentException Se uno qualsiasi dei parametri non è valido.
+     */
     private void validateCenterParameters(String centerName, String streetName, String streetNumber, String CAP,
                                           String townName, String districtName, Integer[] cityIDs) throws RemoteException, SQLException, IllegalArgumentException {
         if (centerName.isBlank())
@@ -170,6 +202,15 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
         }
     }
 
+    /**
+     * Valida l'operatore specificato assicurandosi che esista e sia associato a un centro di monitoraggio.
+     *
+     * @param operatorID L'ID dell'operatore da validare.
+     * @throws RemoteException       Se si verifica un errore di comunicazione RMI.
+     * @throws SQLException          Se si verifica un errore di accesso al database.
+     * @throws NoSuchElementException Se l'operatore non esiste.
+     * @throws IllegalStateException  Se l'operatore non è associato a nessun centro di monitoraggio.
+     */
     private void validateOperator(Integer operatorID) throws RemoteException, SQLException {
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
@@ -182,6 +223,13 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
         }
     }
 
+    /**
+     * Valida i dati climatici specificati assicurandosi che la data sia valida e che almeno un dato sia non nullo.
+     *
+     * @param date       La data da validare.
+     * @param tableDatas I dati climatici da validare.
+     * @throws IllegalArgumentException Se i dati o la data non sono validi.
+     */
     private void validateWeatherData(String date, Object[][] tableDatas) {
         if (date == null || date.isBlank() || !Functions.isDateValid(date)) {
             throw new IllegalArgumentException("Data non valida.");
