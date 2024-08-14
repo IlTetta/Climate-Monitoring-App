@@ -17,6 +17,12 @@ import shared.utils.Constants;
  * immutabile
  * una volta creata.
  * </p>
+ * * <p>
+ *  *     La classe implementa l'interfaccia {@link Serializable} per permettere la
+ *  *     serializzazione e la deserializzazione degli oggetti di questa classe.
+ *  *     Questo &egrave; necessario per inviare oggetti di questa classe tramite
+ *  *     RMI.
+ *  * </p>
  * 
  * @param ID           L'ID univoco del centro.
  * @param centerName   Il nome del centro.
@@ -31,8 +37,8 @@ import shared.utils.Constants;
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 16/09/2023
+ * @version 1.1
+ * @since 14/08/2024
  */
 public record RecordCenter(
                 Integer ID,
@@ -72,41 +78,73 @@ public record RecordCenter(
                 return String.join(Constants.CSV_SEPARATOR, dataStrings);
         }
 
+        /**
+         * Restituisce l'ID del centro.
+         * @return L'ID del centro.
+         */
         @Override
         public Integer ID() {
                 return ID;
         }
 
+        /**
+         * Restituisce il nome del centro.
+         * @return Il nome del centro.
+         */
         @Override
         public String centerName() {
                 return centerName;
         }
 
+        /**
+         * Restituisce il nome della via.
+         * @return Il nome della via.
+         */
         @Override
         public String streetName() {
                 return streetName;
         }
 
+        /**
+         * Restituisce il numero civico.
+         * @return Il numero civico.
+         */
         @Override
         public String streetNumber() {
                 return streetNumber;
         }
 
+        /**
+         * Restituisce il CAP.
+         * @return Il CAP.
+         */
         @Override
         public String CAP() {
                 return CAP;
         }
 
+        /**
+         * Restituisce il nome del comune.
+         * @return Il nome del comune.
+         */
         @Override
         public String townName() {
                 return townName;
         }
 
+        /**
+         * Restituisce il nome della provincia.
+         * @return Il nome della provincia.
+         */
         @Override
         public String districtName() {
                 return districtName;
         }
 
+        /**
+         * Restituisce un array di ID delle citt&agrave; associate a questo centro.
+         * @return Un array di ID delle citt&agrave; associate a questo centro.
+         */
         @Override
         public Integer[] cityIDs() {
                 return cityIDs;

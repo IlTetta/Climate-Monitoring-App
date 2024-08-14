@@ -17,6 +17,12 @@ import java.io.Serializable;
  * immutabile
  * una volta creata.
  * </p>
+ * <p>
+ *     La classe implementa l'interfaccia {@link Serializable} per permettere la
+ *     serializzazione e la deserializzazione degli oggetti di questa classe.
+ *     Questo &egrave; necessario per inviare oggetti di questa classe tramite
+ *     RMI.
+ * </p>
  * 
  * @param ID               L'ID univoco dei dati meteorologici.
  * @param cityID           L'ID della citt&agrave; a cui appartengono i dati
@@ -36,8 +42,8 @@ import java.io.Serializable;
  * 
  * @author Andrea Tettamanti
  * @author Luca Mascetti
- * @version 1.0
- * @since 16/09/2023
+ * @version 1.1
+ * @since 14/08/2024
  */
 public record RecordWeather(
         Integer ID,
@@ -64,7 +70,6 @@ public record RecordWeather(
     public String toString() {
         String[] dataStrings = new String[] {
 
-                // Creazione di un array di stringhe contenente tutti i dati meteorologici
                 ID.toString(),
                 cityID.toString(),
                 centerID.toString(),
@@ -78,60 +83,103 @@ public record RecordWeather(
                 glacierMass.toString()
         };
 
-        // Unisci tutte le informazioni in una singola stringa separata da virgole
         return String.join(Constants.CSV_SEPARATOR, dataStrings);
     }
 
+    /**
+     * Restituisce l'ID dei dati meteorologici.
+     * @return L'ID dei dati meteorologici.
+     */
     @Override
     public Integer ID() {
         return ID;
     }
 
+    /**
+     * Restituisce l'ID della citt&agrave; a cui appartengono i dati meteorologici.
+     * @return L'ID della citt&agrave; a cui appartengono i dati meteorologici.
+     */
     @Override
     public Integer cityID() {
         return cityID;
     }
 
+    /**
+     * Restituisce l'ID del centro a cui appartengono i dati meteorologici.
+     * @return L'ID del centro a cui appartengono i dati meteorologici.
+     */
     @Override
     public Integer centerID() {
         return centerID;
     }
 
+    /**
+     * Restituisce la data di rilevazione dei dati meteorologici.
+     * @return La data di rilevazione dei dati meteorologici.
+     */
     @Override
     public String date() {
         return date;
     }
 
+    /**
+     * Restituisce i dati relativi al vento.
+     * @return I dati relativi al vento.
+     */
     @Override
     public WeatherData wind() {
         return wind;
     }
 
+    /**
+     * Restituisce i dati relativi all'umidit&agrave;.
+     * @return I dati relativi all'umidit&agrave;.
+     */
     @Override
     public WeatherData humidity() {
         return humidity;
     }
 
+    /**
+     * Restituisce i dati relativi alla pressione atmosferica.
+     * @return I dati relativi alla pressione atmosferica.
+     */
     @Override
     public WeatherData pressure() {
         return pressure;
     }
 
+    /**
+     * Restituisce i dati relativi alla temperatura.
+     * @return I dati relativi alla temperatura.
+     */
     @Override
     public WeatherData temperature() {
         return temperature;
     }
 
+    /**
+     * Restituisce i dati relativi alla precipitazione.
+     * @return I dati relativi alla precipitazione.
+     */
     @Override
     public WeatherData precipitation() {
         return precipitation;
     }
 
+    /**
+     * Restituisce i dati relativi all'elevazione del ghiacciaio.
+     * @return I dati relativi all'elevazione del ghiacciaio.
+     */
     @Override
     public WeatherData glacierElevation() {
         return glacierElevation;
     }
 
+    /**
+     * Restituisce i dati relativi alla massa del ghiacciaio.
+     * @return I dati relativi alla massa del ghiacciaio.
+     */
     @Override
     public WeatherData glacierMass() {
         return glacierMass;
@@ -170,11 +218,19 @@ public record RecordWeather(
                     comment;
         }
 
+        /**
+         * Restituisce il punteggio relativo al dato meteorologico.
+         * @return Il punteggio relativo al dato meteorologico.
+         */
         @Override
         public Integer score() {
             return score;
         }
 
+        /**
+         * Restituisce un commento descrittivo sul dato meteorologico.
+         * @return Un commento descrittivo sul dato meteorologico.
+         */
         @Override
         public String comment() {
             return comment;
