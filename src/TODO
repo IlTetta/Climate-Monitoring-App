@@ -37,3 +37,4 @@ ConnectionMaker
 DataHandlerImp
 DataQueryImp
 LogicCenterImp
+LogicCityImp

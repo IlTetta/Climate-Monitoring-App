@@ -1,5 +1,6 @@
 package server.ImplementationRMI;
 
+import java.io.Serial;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -11,23 +12,31 @@ import shared.InterfacesRMI.LogicCityInterface;
 import shared.record.RecordWeather;
 
 /**
- * La classe {@code LogicCityImp} gestisce la logica relativa alle città.
+ * La classe {@code LogicCityImp} implementa i servizi RMI per la gestione dei dati meteorologici
+ * delle città.
  * <p>
  * Fornisce metodi per l'elaborazione dei dati meteorologici delle città.
  * </p>
  *
  * @see RecordWeather
- * @see RecordWeather.WeatherData
+ * @see WeatherTableData
+ * @see LogicCityInterface
+ * @serial exclude
  *
- * @version 1.0
- * @since 16/09/2023
+ * @author Andrea Tettamanti
+ * @author Luca Mascetti
+ * @author Manuel Morlin
+ * @version 1.1
+ * @since 14/08/2024
  */
 public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterface {
 
+    @Serial
+    private static final long serialVersionUID = 5L;
     /**
      * Costruttore della classe {@code LogicCityImp}.
      *
-     * @throws RemoteException Se si verifica un errore durante la creazione dell'oggetto remoto.
+     * @throws RemoteException Se si verifica un errore di comunicazione RMI.
      */
     public LogicCityImp() throws RemoteException {
         super();
@@ -77,6 +86,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          * </p>
          *
          * @param weatherRecords Un array di record meteorologici.
+            * @throws IllegalArgumentException Se non vengono forniti dati meteorologici.
          */
         public WeatherTableData(RecordWeather[] weatherRecords) {
             if (weatherRecords == null || weatherRecords.length == 0) {
@@ -162,7 +172,8 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
      *
      * @param weatherRecords Un array di record meteorologici.
      * @return Un oggetto {@code WeatherTableData} con i dati elaborati.
-     * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
+     * @throws RemoteException Se si verifica un errore durante la comunicazione RMI.
+     * @throws IllegalArgumentException Se non vengono forniti dati meteorologici.
      */
     @Override
     public WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords) throws RemoteException {
