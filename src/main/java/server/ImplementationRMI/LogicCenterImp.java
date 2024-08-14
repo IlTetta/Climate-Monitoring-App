@@ -109,7 +109,6 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
                 cityIDs);
 
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
-        validateOperator(operatorID);
 
         RecordOperator updatedOperator = new RecordOperator(
                 currentOperator.ID(),
