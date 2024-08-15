@@ -6,8 +6,10 @@
 \usepackage{amsmath}
 
 \title{Raccolta e Analisi dei Requisiti\\ \textbf{Climate Monitoring System}}
-\author{}
-\date{\today}
+\author{Andrea Tettamanti 745387\\
+Luca Mascetti 752951\\
+Manuel Morlin 750743}
+\date{Guigno 2024}
 
 \begin{document}
 
@@ -70,17 +72,19 @@ Il sistema utilizza un database relazionale (PostgreSQL) per memorizzare i dati 
 \subsection{Tabella CoordinateMonitoraggio}
 Contiene le informazioni sulle aree di interesse monitorate. I campi principali includono:
 \begin{itemize}
+    \item \textbf{Nome Area}
+    \item \textbf{Nome ASCII Area}
+    \item \textbf{Codice del Paese}
+    \item \textbf{Nome del Paese}
     \item \textbf{Latitudine}
     \item \textbf{Longitudine}
-    \item \textbf{Denominazione ufficiale}
-    \item \textbf{Stato}
 \end{itemize}
 
 \subsection{Tabella CentriMonitoraggio}
 Memorizza le informazioni sui centri di monitoraggio. I campi principali includono:
 \begin{itemize}
     \item \textbf{Nome Centro Monitoraggio}
-    \item \textbf{Indirizzo fisico}
+    \item \textbf{Indirizzo fisico composto da più campi}
     \item \textbf{Elenco delle aree di interesse}
 \end{itemize}
 
