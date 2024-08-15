@@ -1,0 +1,111 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+\usepackage{hyperref}
+\usepackage{amsmath}
+
+\title{Raccolta e Analisi dei Requisiti\\ \textbf{Climate Monitoring System}}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Introduzione}
+Il presente documento descrive la raccolta e l'analisi dei requisiti per lo sviluppo del sistema di monitoraggio climatico denominato \textbf{Climate Monitoring System (CM)}. Il sistema è progettato per raccogliere e rendere disponibili i dati climatici forniti da centri di monitoraggio situati in tutto il territorio italiano, permettendo agli operatori ambientali e ai cittadini comuni di consultare le informazioni relative alla loro zona di interesse.
+
+\section{Descrizione Generale}
+Il sistema CM si compone di due moduli principali: \textbf{serverCM}, che si interfaccia con un DBMS relazionale per fornire i servizi di back-end, e \textbf{clientCM}, che fornisce i servizi e le funzionalità per gli utenti finali. Il sistema supporta l'interazione in parallelo con più utenti connessi da postazioni differenti.
+
+\subsection{Obiettivi del Sistema}
+Gli obiettivi principali del sistema CM includono:
+\begin{itemize}
+    \item Fornire un repository centralizzato per la raccolta e la gestione dei dati climatici.
+    \item Consentire agli operatori autorizzati di creare e gestire centri di monitoraggio e aree di interesse.
+    \item Rendere disponibili i dati climatici ai cittadini comuni in forma aggregata.
+\end{itemize}
+
+\subsection{Utenti del Sistema}
+Il sistema CM è progettato per due categorie di utenti:
+\begin{itemize}
+    \item \textbf{Operatori Autorizzati}: Possono registrarsi al sistema, creare centri di monitoraggio, inserire dati climatici e gestire aree di interesse.
+    \item \textbf{Cittadini Comuni}: Possono consultare le informazioni climatiche delle aree di interesse senza necessità di registrazione.
+\end{itemize}
+
+\section{Requisiti Funzionali}
+Di seguito sono elencati i principali requisiti funzionali del sistema CM.
+
+\subsection{Gestione della Registrazione e Autenticazione}
+\begin{itemize}
+    \item \textbf{registrazione()}: Permette agli operatori di registrarsi al sistema inserendo nome, cognome, codice fiscale, indirizzo email, userid, password e centro di monitoraggio (se presente).
+    \item \textbf{login()}: Permette agli operatori registrati di accedere al sistema tramite userid e password.
+\end{itemize}
+
+\subsection{Gestione delle Aree di Interesse}
+\begin{itemize}
+    \item \textbf{creaCentroMonitoraggio()}: Permette agli operatori registrati di creare centri di monitoraggio inserendo nome, indirizzo e l'elenco delle aree di interesse.
+    \item \textbf{inserisciParametriClimatici()}: Consente agli operatori registrati di inserire i dati climatici (vento, umidità, pressione, temperatura, ecc.) per ciascuna area di interesse e per una specifica data di rilevazione.
+\end{itemize}
+
+\subsection{Consultazione delle Aree di Interesse}
+\begin{itemize}
+    \item \textbf{cercaAreaGeografica()}: Permette di cercare aree geografiche per denominazione o per coordinate geografiche.
+    \item \textbf{visualizzaAreaGeografica()}: Consente di visualizzare le informazioni dettagliate e i dati climatici aggregati relativi a un'area di interesse.
+\end{itemize}
+
+\section{Requisiti Non Funzionali}
+\begin{itemize}
+    \item \textbf{Scalabilità}: Il sistema deve essere in grado di gestire un numero elevato di utenti connessi simultaneamente.
+    \item \textbf{Sicurezza}: L'accesso ai dati sensibili deve essere protetto tramite autenticazione e autorizzazione.
+    \item \textbf{Usabilità}: L'interfaccia utente deve essere intuitiva e facile da usare sia per operatori che per cittadini comuni.
+\end{itemize}
+
+\section{Design del Database}
+Il sistema utilizza un database relazionale (PostgreSQL) per memorizzare i dati relativi alle aree di interesse, ai centri di monitoraggio, agli operatori registrati e ai parametri climatici. Di seguito sono descritte le tabelle principali.
+
+\subsection{Tabella CoordinateMonitoraggio}
+Contiene le informazioni sulle aree di interesse monitorate. I campi principali includono:
+\begin{itemize}
+    \item \textbf{Latitudine}
+    \item \textbf{Longitudine}
+    \item \textbf{Denominazione ufficiale}
+    \item \textbf{Stato}
+\end{itemize}
+
+\subsection{Tabella CentriMonitoraggio}
+Memorizza le informazioni sui centri di monitoraggio. I campi principali includono:
+\begin{itemize}
+    \item \textbf{Nome Centro Monitoraggio}
+    \item \textbf{Indirizzo fisico}
+    \item \textbf{Elenco delle aree di interesse}
+\end{itemize}
+
+\subsection{Tabella OperatoriRegistrati}
+Contiene le informazioni sugli operatori autorizzati. I campi principali includono:
+\begin{itemize}
+    \item \textbf{Nome e cognome}
+    \item \textbf{Codice fiscale}
+    \item \textbf{Indirizzo email}
+    \item \textbf{Userid}
+    \item \textbf{Password}
+    \item \textbf{Centro di monitoraggio di afferenza}
+\end{itemize}
+
+\subsection{Tabella ParametriClimatici}
+Memorizza i dati climatici inseriti dagli operatori per ciascuna area di interesse e data di rilevazione. I campi principali includono:
+\begin{itemize}
+    \item \textbf{Centro di monitoraggio}
+    \item \textbf{Area di interesse}
+    \item \textbf{Data di rilevazione}
+    \item \textbf{Parametri climatici (vento, umidità, pressione, ecc.)}
+    \item \textbf{Commenti (opzionali)}
+\end{itemize}
+
+\section{Conclusioni}
+Il documento ha presentato la raccolta e l'analisi dei requisiti per lo sviluppo del sistema CM. Una corretta implementazione del sistema richiederà un'attenta progettazione sia del backend che dell'interfaccia utente, al fine di garantire un'esperienza utente ottimale e la corretta gestione dei dati climatici.
+
+\end{document}
