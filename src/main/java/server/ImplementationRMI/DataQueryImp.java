@@ -62,8 +62,8 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
     public DataQueryImp() throws RemoteException {
         super();
         try {
-            ConnectionMaker queryToDB = ConnectionMaker.createFromProperties("database.properties");
-            this.conn = queryToDB.getConnection();
+            ConnectionMaker connection = ConnectionMaker.createFromProperties("database.properties");
+            this.conn = connection.getConnection();
         } catch (SQLException | IOException e) {
             throw new RemoteException("Inizializzazione della connessione al database fallita", e);
         }

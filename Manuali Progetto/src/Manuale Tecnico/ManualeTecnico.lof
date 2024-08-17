@@ -1,6 +1,7 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Struttura dei package dell'applicazione.}}{2}{figure.1}%
-\contentsline {figure}{\numberline {2}{\ignorespaces Costruttore della classe CurrentOperator}}{7}{figure.2}%
-\contentsline {figure}{\numberline {3}{\ignorespaces Schema del pattern Singleton}}{8}{figure.3}%
-\contentsline {figure}{\numberline {4}{\ignorespaces Interfaccia CurrentUserChangeListener}}{8}{figure.4}%
-\contentsline {figure}{\numberline {5}{\ignorespaces Metodo notifyCurrentUserChange}}{9}{figure.5}%
-\contentsline {figure}{\numberline {6}{\ignorespaces Schema del pattern Observer}}{9}{figure.6}%
+\contentsline {figure}{\numberline {1}{\ignorespaces Struttura dei package dell'applicazione.}}{3}{figure.1}%
+\contentsline {figure}{\numberline {2}{\ignorespaces UML del package Server}}{4}{figure.2}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Costruttore della classe CurrentOperator}}{9}{figure.3}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Schema del pattern Singleton}}{10}{figure.4}%
+\contentsline {figure}{\numberline {5}{\ignorespaces Interfaccia CurrentUserChangeListener}}{10}{figure.5}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Metodo notifyCurrentUserChange}}{11}{figure.6}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Schema del pattern Observer}}{11}{figure.7}%

@@ -5,7 +5,7 @@ Il pattern Singleton è utilizzato per garantire che ci sia una sola istanza del
 che rappresenta l'istanza unica della classe. Il metodo \texttt{getInstance()} restituisce l'istanza esistente se è già stata creata o ne crea una nuova se non esiste ancora.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../img/Singleton.png}
+    \includegraphics[width=1\textwidth]{img/Singleton.png}
     \caption{Costruttore della classe CurrentOperator}
     \label{fig:Singleton}
     
@@ -14,7 +14,7 @@ che rappresenta l'istanza unica della classe. Il metodo \texttt{getInstance()} r
 Questo pattern è stato implementato seguendo questo schema:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../img/schema_singleton.png}
+    \includegraphics[width=1\textwidth]{img/schema_singleton.png}
     \caption{Schema del pattern Singleton}
     \label{fig:SingletonPattern}
     
@@ -24,7 +24,7 @@ Il pattern Observer è utilizzato per notificare altri oggetti quando l'utente c
 che deve essere implementata da tutte le classi interessate ai cambiamenti dell'utente corrente.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../img/currentUserChangeListener.png}
+    \includegraphics[width=1\textwidth]{img/currentUserChangeListener.png}
     \caption{Interfaccia CurrentUserChangeListener}
     \label{fig:Observer 1}
 \end{figure}
@@ -32,7 +32,7 @@ La classe contiene metodi per aggiungere (\texttt{addCurrentUserChangeListener})
 Quando l'utente corrente cambia, il metodo \texttt{notifyCurrentUserChange} viene chiamato per notificare tutti i listener registrati.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../img/notifyCurrentUserChange.png}
+    \includegraphics[width=1\textwidth]{img/notifyCurrentUserChange.png}
     \caption{Metodo notifyCurrentUserChange}
     \label{fig:Observer 2}
 \end{figure}
@@ -41,7 +41,7 @@ In questo modo, altre parti dell'applicazione possono essere avvisate quando l'u
 Questo pattern è stato implementato seguendo questo schema:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\textwidth]{../../img/schema_observer.png}
+    \includegraphics[width=1\textwidth]{img/schema_observer.png}
     \caption{Schema del pattern Observer}
     \label{fig:ObserverPattern}
 \end{figure}

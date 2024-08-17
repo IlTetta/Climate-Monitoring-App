@@ -1,6 +1,6 @@
-PWD c:\Users\utente\Documents\GitHub\Appunti LaTex\Manuali Progetto\src\Manuale Tecnico
+PWD c:\Users\utente\IdeaProjects\Progetto_B_MVN\Manuali Progetto\src\Manuale Tecnico
 INPUT C:\Users\utente\AppData\Local\MiKTeX\miktex\data\le\pdftex\pdflatex.fmt
-INPUT c:\Users\utente\Documents\GitHub\Appunti LaTex\Manuali Progetto\src\Manuale Tecnico\ManualeTecnico.tex
+INPUT c:\Users\utente\IdeaProjects\Progetto_B_MVN\Manuali Progetto\src\Manuale Tecnico\ManualeTecnico.tex
 OUTPUT ManualeTecnico.log
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\tex\latex\base\fix-cm.sty
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\tex\latex\base\fix-cm.sty
@@ -251,28 +251,43 @@ INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
-INPUT .\Introduzione.tex
-INPUT .\Introduzione.tex
-INPUT Introduzione.tex
-INPUT .\StrutturaGenerale.tex
-INPUT .\StrutturaGenerale.tex
-INPUT StrutturaGenerale.tex
+INPUT .\capitoli\Introduzione.tex
+INPUT .\capitoli\Introduzione.tex
+INPUT capitoli\Introduzione.tex
+INPUT .\capitoli\Progettazione.tex
+INPUT .\capitoli\Progettazione.tex
+INPUT capitoli\Progettazione.tex
+INPUT .\capitoli\StrutturaGenerale.tex
+INPUT .\capitoli\StrutturaGenerale.tex
+INPUT capitoli\StrutturaGenerale.tex
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT ..\..\img\package_structure.png
-INPUT .\StruttureDati_Algoritmi.tex
-INPUT .\StruttureDati_Algoritmi.tex
-INPUT StruttureDati_Algoritmi.tex
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\jknappen\ec\tcrm1000.tfm
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\img\packageStructure.png
+INPUT .\capitoli\Server.tex
+INPUT .\capitoli\Server.tex
+INPUT capitoli\Server.tex
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT .\img\serverClassDiagram.jpg
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
@@ -292,49 +307,53 @@ INPUT ..\..\img\number page.png
 INPUT .\Pattern.tex
 INPUT .\Pattern.tex
 INPUT Pattern.tex
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\Singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
-INPUT ..\..\img\schema_singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
+INPUT .\img\Singleton.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\currentUserChangeListener.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
-INPUT ..\..\img\notifyCurrentUserChange.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
+INPUT .\img\schema_singleton.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
-INPUT ..\..\img\schema_observer.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\currentUserChangeListener.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
+INPUT .\img\schema_observer.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
@@ -348,16 +367,10 @@ INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx10.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmbx12.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmmi10.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr10.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr12.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy7.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti12.pfb
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
