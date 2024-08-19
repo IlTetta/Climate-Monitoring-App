@@ -1,17 +1,17 @@
-\section{Package Server}
+\section{Package server}
 In questa sezione verranno descritti il package \texttt{server} e le classi che lo compongono.\\
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{img/serverClassDiagram.jpg}
-    \caption{UML del package Server}
+    \caption{UML del package server}
     \label{fig:Server}
 \end{figure}
 
-\subsection{Server}
-La classe \texttt{Server} è progettata per avviare il registro RMI e pubblicare le implementazioni delle interfacce remote.\\
+\subsection{server}
+La classe \texttt{server} è progettata per avviare il registro RMI e pubblicare le implementazioni delle interfacce remote.\\
 Queste implementazioni sono accessibili ai client remoti, che possoo invocare metodi per interrogare, gestire e manipolare i dati relativi alle operazioni dell'applicazione.\\
-In sisntesi, \texttt{Server} svolge le seguenti operazioni principali:
+In sintesi, \texttt{server} svolge le seguenti operazioni principali:
 \begin{itemize}
     \item \textbf{Creazione e Configurazione del Registro RMI}: avvia un registro RMI sulla porta specificata (di default, la porta 1099) utilizzando il metodo\\
           \texttt{LocateRegistry.createRegistry(int port)}. Questo registro permette ai client remoti di trovare e invocare i metodi delle interfacce registrate.
@@ -50,8 +50,8 @@ I metodi privati sono:
 
 
 
-\subsection{Package ImplementationRMI}
-Il package \texttt{ImplementationRMI} contiene le classi che implementano le interfacce remote definite nel package \texttt{InterfacesRMI} e che gestiscono le logiche di business dell'applicazione.\\
+\subsection{Package implementationRMI}
+Il package \texttt{implementationRMI} contiene le classi che implementano le interfacce remote definite nel package \texttt{interfacesRMI} e che gestiscono le logiche di business dell'applicazione.\\
 
 
 \subsubsection{DataHandlerImp}
