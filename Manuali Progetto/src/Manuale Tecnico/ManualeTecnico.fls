@@ -239,17 +239,17 @@ INPUT .\ManualeTecnico.toc
 INPUT .\ManualeTecnico.toc
 INPUT ManualeTecnico.toc
 INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx10.tfm
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
 OUTPUT ManualeTecnico.toc
 INPUT .\ManualeTecnico.lof
 INPUT .\ManualeTecnico.lof
 INPUT ManualeTecnico.lof
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
 OUTPUT ManualeTecnico.lof
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
@@ -277,52 +277,14 @@ INPUT .\img\packageStructure.png
 INPUT .\img\packageStructure.png
 INPUT .\img\packageStructure.png
 INPUT .\img\packageStructure.png
-INPUT .\capitoli\Server.tex
-INPUT .\capitoli\Server.tex
-INPUT capitoli\Server.tex
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT .\img\serverPackage.png
-INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
 INPUT .\capitoli\Shared.tex
 INPUT .\capitoli\Shared.tex
 INPUT capitoli\Shared.tex
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT C:\Users\utente\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\img\interfaceRMIPackage.png
 INPUT .\img\interfaceRMIPackage.png
 INPUT .\img\interfaceRMIPackage.png
@@ -330,6 +292,10 @@ INPUT .\img\interfaceRMIPackage.png
 INPUT .\img\interfaceRMIPackage.png
 INPUT .\img\interfaceRMIPackage.png
 INPUT .\img\interfaceRMIPackage.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
@@ -364,17 +330,86 @@ INPUT .\img\utils_1.png
 INPUT .\img\utils_1.png
 INPUT .\img\utils_1.png
 INPUT .\img\utils_1.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
+INPUT .\img\utils_2.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
-INPUT .\img\utils_2.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT .\capitoli\Server.tex
+INPUT .\capitoli\Server.tex
+INPUT capitoli\Server.tex
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT .\img\serverPackage.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT .\capitoli\Client.tex
+INPUT .\capitoli\Client.tex
+INPUT capitoli\Client.tex
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png

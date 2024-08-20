@@ -26,9 +26,9 @@ I metodi di tale classe sono:
     \item \texttt{public void setCurrentOperator(RecordOperator operator)}
     \item \texttt{public RecordOperator getCurrentOperator()}
     \item \texttt{public boolean isUserLogged()}
-    \item \texttt(public void performLogout())
+    \item \texttt{public void performLogout()}
     \item \texttt{void onCurrentUserChange(RecordOperator newOperator)}
-    \item \textttt{public void addCurrentUserChangeListener(CurrentUserChangeListener listener)}
+    \item \texttt{public void addCurrentUserChangeListener(CurrentUserChangeListener listener)}
     \item \texttt{public void removeCurrentUserChangeListener(CurrentUserChangeListener listener)}
     \item \texttt{private void notifyCurrentUserChange()}
 \end{itemize}
@@ -54,9 +54,9 @@ I metodi di tale classe sono:
     \item \texttt{public void addPanel(Interfaces.UIPanel Panel)}
     \item \texttt{public void clearCityAddData()}
     \item \texttt{public Interfaces.UIPanel getUIPanel(String ID)}
-    \item \texttt(public Interfaces.UIWindows getMainWindowArea())
+    \item \texttt{public Interfaces.UIWindows getMainWindowArea()}
     \item \texttt{public CardLayout getCardLayout()}
-    \item \textttt{public String getCurrentID()}
+    \item \texttt{public String getCurrentID()}
     \item \texttt{public void goToPanel(String ID, Object[] args)}
 \end{itemize}
 
@@ -70,7 +70,7 @@ I metodi di tale classe sono:
     \item \texttt{public void registerLabel(JLabel label)}
     \item \texttt{public void registerPanel(JPanel panel)}
     \item \texttt{public void applyTheme()}
-    \item \texttt(public void applyThemeToPanel(JPanel panel))
+    \item \texttt{public void applyThemeToPanel(JPanel panel)}
     \item \texttt{public void applyThemeToLabel(JLabel label)}
 \end{itemize}
 
@@ -85,13 +85,12 @@ I metodi di tale classe sono:
     \item \texttt{public LogoLabel()}
     \item \texttt{public LogoLabel(double scale)}
     \item \texttt{public LogoLabel(int width, int height)}
-    \item \texttt(public ComboItem(String label, int value))
+    \item \texttt{public ComboItem(String label, int value)}
     \item \texttt{public int getValue()}
     \item \texttt{public String toString()}
 \end{itemize}
 
-\paragraph{TwoColumns}\\
-\\
+\paragraph{TwoColumns}
 La classe astratta \texttt{TwoColumns} rappresenta un layout a due colonne, con un pannello sinistro e un pannello destro. È progettata per essere estesa da altre classi che necessitano di questo tipo di layout.
 Entrambi i pannelli utilizzano un \texttt{GridBagLayout} per permettere un layout flessibile dei componenti.
 La classe fornisce metodi protetti per aggiungere componenti ai pannelli sinistro e destro.
@@ -102,8 +101,7 @@ I metodi di tale classe sono:
     \item \texttt{protected void addRight(Component component)}
 \end{itemize}
 
-\paragraph{TwoRows}\\
-\\
+\paragraph{TwoRows}
 La classe astratta \texttt{TwoRows} rappresenta un layout a due righe per un'interfaccia grafica Swing.
 Le due righe contengono un pannello superiore e un pannello inferiore per organizzare i componenti dell'interfaccia.
 È possibile aggiungere componenti ai pannelli superiore e inferiore utilizzando i metodi \texttt{addTop} e \texttt{addBottom}.
@@ -116,8 +114,8 @@ I metodi di tale classe sono:
 
 \subsubsection {Package mainElements}
 
-\paragraph{MainFrame}\\
-\\
+\paragraph{MainFrame}
+
 La classe \texttt{MainFrame} rappresenta il frame principale dell'applicazione.
 Il frame contiene i componenti principali dell'interfaccia utente e funge da contenitore principale per tutti i widget e pannelli dell'applicazione.
 I metodi di tale classe sono:
@@ -126,8 +124,8 @@ I metodi di tale classe sono:
     \item \texttt{private void setIcon(String iconPath)}
 \end{itemize}
 
-\paragraph{MainWindows}\\
-\\
+\paragraph{MainWindows}
+
 La classe \texttt{MainWindows} rappresenta la finestra principale dell'applicazione.
 Questa finestra contiene un pannello scorrevole con un layout a schede, in cui vengono visualizzate diverse schermate dell'applicazione. 
 Inoltre, nella parte inferiore della finestra, vengono visualizzate informazioni sull'operatore attualmente loggato e l'orario corrente.
@@ -140,8 +138,8 @@ I metodi di tale classe sono:
     \item \texttt{public void setAppInfo(String text)}
 \end{itemize}
 
-\paragraph{MenuBar}\\
-\\
+\paragraph{MenuBar}
+
 La classe \texttt{MenuBar} rappresenta la barra del menù dell'interfaccia grafica dell'applicazione.
 Questa barra del menù consente la navigazione tra diverse sezioni dell'applicazione e fornisce opzioni per cambiare il tema dell'interfaccia utente e gestire la sessione dell'operatore.
 Gli elementi principali del menù includono home, ricerca città, e un sotto-menù per l'area operatore con le opzioni di login, registrazione, gestione città e logout.
@@ -152,8 +150,8 @@ L'unico metodo di tale classe è:
 
 \subsubsection {Package panels}
 
-\paragraph{CenterCreateNew}\\
-\\
+\paragraph{CenterCreateNew}
+
 La classe \texttt{CenterCreateNew} rappresenta un pannello per la creazione di un nuovo centro di monitoraggio da parte dell'operatore.
 Il pannello consente all'operatore di inserire informazioni sul centro, come il nome, la via, il numero civico, il CAP, il comune, la provincia e le città associate al centro. 
 Una volta inseriti i dati, l'operatore può salvare il centro nel sistema utilizzando i servizi offerti dal modulo server RMI e interagendo con il database.
@@ -167,11 +165,10 @@ I metodi di tale classe sono:
     \item \texttt{public CenterCreateNew createPanel(GUI gui)}
     \item \texttt{public String getID()}
     \item \texttt{public void onOpen(Object[] args)}
-    \item 
 \end{itemize}
 
-\paragraph{CityAddData}\\
-\\
+\paragraph{CityAddData}
+
 La classe \texttt{CityAddData} rappresenta un pannello per l'aggiunta di dati di una città da parte dell'operatore.
 Il pannello consente all'operatore di inserire i dati relativi alla città selezionata quali: data di rilevamento dati, punteggi per le varie categorie ed eventualmente dei commenti che li descrivono.
 La classe gestisce la validazione della data inserita, il limite di caratteri per i commenti dei dati e la funzionalità per il salvataggio dei dati inseriti. 
@@ -193,8 +190,8 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{CitySearch}\\
-\\
+\paragraph{CitySearch}
+
 La classe \texttt{CitySearch} rappresenta un pannello Swing per effettuare query sulla base di dati delle città.
 Gli utenti possono cercare una città per nome o per coordinate geografiche utilizzando i campi di input e i pulsanti forniti.
 I metodi di tale classe sono:
@@ -207,8 +204,8 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{CityVisualizer}\\
-\\
+\paragraph{CityVisualizer}
+
 La classe \texttt{CityVisualizer} rappresenta un pannello Swing per la visualizzazione dei dati di una città, inclusi i dati meteorologici relativi a diverse categorie.
 È utilizzato nell'applicazione per mostrare dettagli sulla città selezionata e i dati meteorologici associati.
 I metodi di tale classe sono:
@@ -219,14 +216,13 @@ I metodi di tale classe sono:
     \item \texttt{public void mouseClicked(MouseEvent e)}
     \item \texttt{public TooltipCellRenderer()}
     \item \texttt{public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)}
-    \item  \textt{public NonEditableCellEditor()}
-    \item \textt{public boolean isCellEditable(EventObject e)}
+    \item  \texttt{public NonEditableCellEditor()}
+    \item \texttt{public boolean isCellEditable(EventObject e)}
     \item \texttt{public String getID()}
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{Home}\\
-\\
+\paragraph{Home}
 La classe \texttt{Home} rappresenta il pannello principale dell'applicazione visualizzato dopo il caricamento iniziale.
 Questo pannello fornisce all'utente due opzioni principali: "Cerca e visualizza dati" per accedere alla funzionalità di ricerca e visualizzazione dei dati, e "Gestisci area operatore" per accedere alla gestione dell'area riservata agli operatori.
 L'utente può selezionare una delle opzioni per avviare le funzionalità specifiche dell'applicazione.
@@ -239,8 +235,7 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{Loading}\\
-\\
+\paragraph{Loading}
 La classe \texttt{Loading} rappresenta un pannello di caricamento animato che viene visualizzato all'avvio dell'applicazione.
 Questo pannello mostra il nome dell'applicazione con una serie di punti che si muovono per simulare un caricamento. 
 L'animazione prosegue fino a quando il pannello non reindirizza automaticamente all'homepage dell'applicazione.
@@ -253,8 +248,7 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{OperatorHome}\\
-\\
+\paragraph{OperatorHome}
 La classe \texttt{OperatorHome} rappresenta il pannello principale per gli operatori dell'applicazione.
 Da questo pannello, gli operatori possono scegliere di registrarsi o accedere all'applicazione. 
 Questa classe gestisce la navigazione tra il pannello di registrazione e quello di login tramite i pulsanti corrispondenti.
@@ -267,8 +261,7 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{OperatorLogin}\\
-\\
+\paragraph{OperatorLogin}
 La classe \texttt{OperatorLogin} rappresenta un pannello di login per gli operatori dell'applicazione.
 Gli operatori possono inserire il loro username e la password per accedere all'applicazione. 
 Utilizza un modulo server RMI per autenticare l'operatore e interagisce con un database per recuperare e gestire i dati necessari.
@@ -283,8 +276,7 @@ I metodi di tale classe sono:
     \item \texttt{public void onOpen(Object[] args)}
 \end{itemize}
 
-\paragraph{OperatorRegister}\\
-\\
+\paragraph{OperatorRegister}
 La classe \texttt{OperatorRegister} rappresenta un pannello Swing utilizzato per la registrazione di un operatore all'interno dell'applicazione.
 Questo pannello consente agli operatori di inserire i loro dati personali, come nome, codice fiscale, email, username e password, al fine di creare un nuovo account operatore.
 Utilizza il modulo server RMI per la registrazione e gestisce le eccezioni che possono derivare dalla connessione al server o dalle operazioni sul database.

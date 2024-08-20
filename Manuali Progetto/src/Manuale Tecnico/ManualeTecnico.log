@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  20 AUG 2024 18:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  20 AUG 2024 18:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -440,7 +440,7 @@ Package hyperref Info: Link coloring OFF on input line 32.
 \@outlinefile=\write4
 \openout4 = `ManualeTecnico.out'.
 
-<../../img/firstpage_background.png, id=126, 594.585pt x 833.295pt>
+<../../img/firstpage_background.png, id=170, 594.585pt x 833.295pt>
 File: ../../img/firstpage_background.png Graphic file (type png)
 <use ../../img/firstpage_background.png>
 Package pdftex.def Info: ../../img/firstpage_background.png  used on input line 39.
@@ -452,24 +452,24 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <7> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 5.
-)
-\tf@toc=\write5
-\openout5 = `ManualeTecnico.toc'.
 
- (ManualeTecnico.lof
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.8 ...chema del pattern Singleton}}{20}{figure.8}
+l.55 ...line {7}Pattern utilizzati}{27}{section.7}
                                                   %
-<../../img/number page.png, id=174, 651.43375pt x 602.25pt>
+<../../img/number page.png, id=221, 651.43375pt x 602.25pt>
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 8.
+Package pdftex.def Info: ../../img/number page.png  used on input line 55.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
  [1
 
  <../../img/number page.png>])
+\tf@toc=\write5
+\openout5 = `ManualeTecnico.toc'.
+
+ (ManualeTecnico.lof)
 \tf@lof=\write6
 \openout6 = `ManualeTecnico.lof'.
 
@@ -491,12 +491,12 @@ Overfull \hbox (11.86105pt too wide) in paragraph at lines 5--8
 \OT1/cmr/m/n/10 grafica, \OT1/cmtt/m/n/10 mainPackage \OT1/cmr/m/n/10 che con-tiene la classe punto di in-gresso dell'applicazione
  []
 
-<img/packageStructure.png, id=202, 495.0495pt x 388.45125pt>
+<img/packageStructure.png, id=257, 495.0495pt x 388.45125pt>
 File: img/packageStructure.png Graphic file (type png)
 <use img/packageStructure.png>
 Package pdftex.def Info: img/packageStructure.png  used on input line 16.
 (pdftex.def)             Requested size: 276.00105pt x 216.57692pt.
-) (capitoli/Server.tex
+) (capitoli/Shared.tex
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 1.
@@ -508,7 +508,196 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
-<img/serverPackage.png, id=209, 3988.9025pt x 2039.62pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+<img/interfaceRMIPackage.png, id=264, 2103.86pt x 903.375pt>
+File: img/interfaceRMIPackage.png Graphic file (type png)
+<use img/interfaceRMIPackage.png>
+Package pdftex.def Info: img/interfaceRMIPackage.png  used on input line 11.
+(pdftex.def)             Requested size: 420.76456pt x 180.6718pt.
+
+Overfull \hbox (75.76456pt too wide) in paragraph at lines 11--12
+ [][] 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 15.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[4 <./img/packageStructure.png>]
+Overfull \hbox (5.4972pt too wide) in paragraph at lines 22--23
+[]\OT1/cmtt/m/n/10 void addNewOperator(String nameSurname, String taxCode, String
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 23--24
+[]\OT1/cmtt/m/n/10 RecordCenter addNewCenter(String centerName, String streetName,
+ []
+
+
+Overfull \hbox (47.49683pt too wide) in paragraph at lines 23--24
+\OT1/cmtt/m/n/10 String streetNumber, String CAP, String townName, String districtName,
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 24--25
+[]\OT1/cmtt/m/n/10 void addNewWeather(Integer cityID, Integer centerID, String date,
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 RecordWeather.WeatherData wind, RecordWeather.WeatherData humidity,
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 RecordWeather.WeatherData pressure, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (94.74641pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 temperature, RecordWeather.WeatherData precipitation, RecordWeather.WeatherData
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 35.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[5 <./img/interfaceRMIPackage.png (PNG copy)>]
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 38--39
+[]\OT1/cmtt/m/n/10 RecordOperator[] getOperatorBy(List<QueryCondition> conditions) 
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 42--43
+[]\OT1/cmtt/m/n/10 RecordWeather[] getWeatherBy(List<QueryCondition> conditions) 
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
+[]\OT1/cmtt/m/n/10 void initNewCenter(String centerName, String streetName, String
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
+\OT1/cmtt/m/n/10 streetNumber, String CAP, String townName, String districtName,
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 53--54
+[]\OT1/cmtt/m/n/10 void addDataToCenter(Integer cityID, Integer operatorID, String
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 61--62
+[]\OT1/cmtt/m/n/10 LogicCityImp.WeatherTableData getWeatherTableData(RecordWeather[]
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 69--70
+[]\OT1/cmtt/m/n/10 RecordOperator performLogin(String username, String password) 
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 70--71
+[]\OT1/cmtt/m/n/10 void performRegistration(String nameSurname, String taxCode, String
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 71.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[6]
+Overfull \hbox (36.99692pt too wide) in paragraph at lines 71--72
+[]\OT1/cmtt/m/n/10 RecordOperator associateCenter(Integer operatorID, Integer centerID) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+<img/recordPackage.png, id=279, 1935.23pt x 1270.7475pt>
+File: img/recordPackage.png Graphic file (type png)
+<use img/recordPackage.png>
+Package pdftex.def Info: img/recordPackage.png  used on input line 79.
+(pdftex.def)             Requested size: 387.03914pt x 254.14499pt.
+
+Overfull \hbox (42.03914pt too wide) in paragraph at lines 79--80
+ [][] 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 86.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[7 <./img/recordPackage.png (PNG copy)>]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 122.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [8]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 152.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+
+ []
+
+<img/utils_1.png, id=292, 1937.2375pt x 1174.3875pt>
+File: img/utils_1.png Graphic file (type png)
+<use img/utils_1.png>
+Package pdftex.def Info: img/utils_1.png  used on input line 160.
+(pdftex.def)             Requested size: 387.44064pt x 234.87334pt.
+
+Overfull \hbox (42.44064pt too wide) in paragraph at lines 160--161
+ [][] 
+ []
+
+<img/utils_2.png, id=293, 2647.8925pt x 1575.8875pt>
+File: img/utils_2.png Graphic file (type png)
+<use img/utils_2.png>
+Package pdftex.def Info: img/utils_2.png  used on input line 167.
+(pdftex.def)             Requested size: 264.80476pt x 157.59798pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 171.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[10 <./img/utils_1.png (PNG copy)>]
+Overfull \hbox (37.16676pt too wide) in paragraph at lines 173--176
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Constants \OT1/cmr/m/n/10 for-nisce una se-rie di costanti e definizioni uti-liz-zate nell'applicazione.
+ []
+
+
+Overfull \hbox (7.08156pt too wide) in paragraph at lines 182--183
+[]\OT1/cmtt/m/n/10 public static String getCurrentDateString()\OT1/cmr/m/n/10 : resti-tu-isce una stringa
+ []
+
+
+Overfull \hbox (1.41437pt too wide) in paragraph at lines 183--184
+[]\OT1/cmtt/m/n/10 public static boolean isDateValid(String dateString)\OT1/cmr/m/n/10 : ver-i-fica se
+ []
+
+
+Overfull \hbox (1.22021pt too wide) in paragraph at lines 186--187
+[]\OT1/cmtt/m/n/10 public static Integer zeroToNull(Integer value)\OT1/cmr/m/n/10 : con-verte un val-
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 194.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[11 <./img/utils_2.png (PNG copy)>]) (capitoli/Server.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+<img/serverPackage.png, id=302, 3988.9025pt x 2039.62pt>
 File: img/serverPackage.png Graphic file (type png)
 <use img/serverPackage.png>
 Package pdftex.def Info: img/serverPackage.png  used on input line 6.
@@ -527,7 +716,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 16.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[4 <./img/packageStructure.png> <./img/serverPackage.png (PNG copy)>]
+[12 <./img/serverPackage.png (PNG copy)>]
 Overfull \hbox (4.5651pt too wide) in paragraph at lines 17--18
 []\OT1/cmr/bx/n/10 Creazione con-nes-sione al database\OT1/cmr/m/n/10 : uti-lizza la classe \OT1/cmtt/m/n/10 DataBaseManager
  []
@@ -556,7 +745,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 43.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[5]
+[13]
 Overfull \hbox (21.24706pt too wide) in paragraph at lines 43--44
 []\OT1/cmtt/m/n/10 public static boolean checkTableExistence(Connection conn, String
  []
@@ -615,7 +804,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 71.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[6]
+[14]
 Overfull \hbox (52.74678pt too wide) in paragraph at lines 71--74
 []\OT1/cmtt/m/n/10 addNewCenter(String centerName, String streetName, String streetNumber,
  []
@@ -684,7 +873,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 100.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[7]
+[15]
 Overfull \hbox (4.33174pt too wide) in paragraph at lines 102--103
 []\OT1/cmtt/m/n/10 getOperatorBy(Integer ID)\OT1/cmr/m/n/10 : resti-tu-isce un oggetto \OT1/cmtt/m/n/10 RecordOperator \OT1/cmr/m/n/10 con-
  []
@@ -703,7 +892,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 117.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[8]
+[16]
 Overfull \hbox (1.99838pt too wide) in paragraph at lines 117--118
 []\OT1/cmtt/m/n/10 mapResultSetToRecordWeather(ResultSet rs)\OT1/cmr/m/n/10 : mappa i risul-tati di una
  []
@@ -767,7 +956,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 151.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[9]
+[17]
 Overfull \hbox (0.97003pt too wide) in paragraph at lines 153--154
 []\OT1/cmtt/m/n/10 public int getCategoryRecordCount(String category)\OT1/cmr/m/n/10 : resti-tu-isce il
  []
@@ -831,7 +1020,7 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 178.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[10]
+[18]
 Overfull \hbox (5.4972pt too wide) in paragraph at lines 178--179
 []\OT1/cmtt/m/n/10 private boolean validateRegistrationInputs(String nameSurname,
  []
@@ -841,194 +1030,123 @@ Overfull \hbox (13.52493pt too wide) in paragraph at lines 178--179
 \OT1/cmtt/m/n/10 String taxcode, String email, String username, String password)\OT1/cmr/m/n/10 :
  []
 
-) (capitoli/Shared.tex
+) (capitoli/Client.tex
 Underfull \hbox (badness 10000) in paragraph at lines 2--3
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 7--8
+Underfull \hbox (badness 10000) in paragraph at lines 16--17
 
- []
-
-<img/interfaceRMIPackage.png, id=240, 2103.86pt x 903.375pt>
-File: img/interfaceRMIPackage.png Graphic file (type png)
-<use img/interfaceRMIPackage.png>
-Package pdftex.def Info: img/interfaceRMIPackage.png  used on input line 11.
-(pdftex.def)             Requested size: 420.76456pt x 180.6718pt.
-
-Overfull \hbox (75.76456pt too wide) in paragraph at lines 11--12
- [][] 
- []
-
-
-Overfull \hbox (5.4972pt too wide) in paragraph at lines 22--23
-[]\OT1/cmtt/m/n/10 void addNewOperator(String nameSurname, String taxCode, String
- []
-
-
-Overfull \hbox (10.74715pt too wide) in paragraph at lines 23--24
-[]\OT1/cmtt/m/n/10 RecordCenter addNewCenter(String centerName, String streetName,
- []
-
-
-Overfull \hbox (47.49683pt too wide) in paragraph at lines 23--24
-\OT1/cmtt/m/n/10 String streetNumber, String CAP, String townName, String districtName,
  []
 
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 24.
+Package pdftex.def Info: ../../img/number page.png  used on input line 30.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[11 <./img/interfaceRMIPackage.png (PNG copy)>]
-Overfull \hbox (21.24706pt too wide) in paragraph at lines 24--25
-[]\OT1/cmtt/m/n/10 void addNewWeather(Integer cityID, Integer centerID, String date,
+[19]
+Overfull \hbox (26.49701pt too wide) in paragraph at lines 31--32
+[]\OT1/cmtt/m/n/10 public void addCurrentUserChangeListener(CurrentUserChangeListener
  []
 
 
-Overfull \hbox (31.74696pt too wide) in paragraph at lines 24--25
-\OT1/cmtt/m/n/10 RecordWeather.WeatherData wind, RecordWeather.WeatherData humidity,
+Overfull \hbox (42.24687pt too wide) in paragraph at lines 32--33
+[]\OT1/cmtt/m/n/10 public void removeCurrentUserChangeListener(CurrentUserChangeListener
  []
 
 
-Overfull \hbox (0.24724pt too wide) in paragraph at lines 24--25
-\OT1/cmtt/m/n/10 RecordWeather.WeatherData pressure, RecordWeather.WeatherData
- []
+Underfull \hbox (badness 10000) in paragraph at lines 45--46
 
-
-Overfull \hbox (94.74641pt too wide) in paragraph at lines 24--25
-\OT1/cmtt/m/n/10 temperature, RecordWeather.WeatherData precipitation, RecordWeather.WeatherData
- []
-
-
-Overfull \hbox (10.74715pt too wide) in paragraph at lines 38--39
-[]\OT1/cmtt/m/n/10 RecordOperator[] getOperatorBy(List<QueryCondition> conditions) 
- []
-
-
-Overfull \hbox (0.24724pt too wide) in paragraph at lines 42--43
-[]\OT1/cmtt/m/n/10 RecordWeather[] getWeatherBy(List<QueryCondition> conditions) 
- []
-
-
-Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
-[]\OT1/cmtt/m/n/10 void initNewCenter(String centerName, String streetName, String
- []
-
-
-Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
-\OT1/cmtt/m/n/10 streetNumber, String CAP, String townName, String districtName,
- []
-
-
-Overfull \hbox (10.74715pt too wide) in paragraph at lines 53--54
-[]\OT1/cmtt/m/n/10 void addDataToCenter(Integer cityID, Integer operatorID, String
  []
 
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 60.
+Package pdftex.def Info: ../../img/number page.png  used on input line 61.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[12]
-Overfull \hbox (21.24706pt too wide) in paragraph at lines 61--62
-[]\OT1/cmtt/m/n/10 LogicCityImp.WeatherTableData getWeatherTableData(RecordWeather[]
+[20]
+Overfull \hbox (36.47261pt too wide) in paragraph at lines 64--67
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Theme \OT1/cmr/m/n/10 gestisce il tema grafico dell'applicazione, in-clusa la modalit^^Rachiaro/scuro,
  []
 
 
-Overfull \hbox (0.24724pt too wide) in paragraph at lines 69--70
-[]\OT1/cmtt/m/n/10 RecordOperator performLogin(String username, String password) 
- []
-
-
-Overfull \hbox (31.74696pt too wide) in paragraph at lines 70--71
-[]\OT1/cmtt/m/n/10 void performRegistration(String nameSurname, String taxCode, String
- []
-
-
-Overfull \hbox (36.99692pt too wide) in paragraph at lines 71--72
-[]\OT1/cmtt/m/n/10 RecordOperator associateCenter(Integer operatorID, Integer centerID) 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--76
-
- []
-
-<img/recordPackage.png, id=250, 1935.23pt x 1270.7475pt>
-File: img/recordPackage.png Graphic file (type png)
-<use img/recordPackage.png>
-Package pdftex.def Info: img/recordPackage.png  used on input line 79.
-(pdftex.def)             Requested size: 387.03914pt x 254.14499pt.
-
-Overfull \hbox (42.03914pt too wide) in paragraph at lines 79--80
- [][] 
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 83--84
+[]\OT1/cmtt/m/n/10 public FormPanel(Theme appTheme, String labelText, JComponent
  []
 
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 83.
+Package pdftex.def Info: ../../img/number page.png  used on input line 98.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[13]
-File: ../../img/number page.png Graphic file (type png)
-<use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 99.
-(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
- [14 <./img/recordPackage.png (PNG copy)>]
-File: ../../img/number page.png Graphic file (type png)
-<use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 138.
-(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
- [15]
-Underfull \hbox (badness 10000) in paragraph at lines 156--157
-
+[21]
+Overfull \hbox (19.65941pt too wide) in paragraph at lines 119--122
+ []\OT1/cmr/bx/n/10 MainFrame[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 MainFrame \OT1/cmr/m/n/10 rap-p-re-senta il frame prin-ci-pale dell'applicazione.
  []
 
-<img/utils_1.png, id=263, 1937.2375pt x 1174.3875pt>
-File: img/utils_1.png Graphic file (type png)
-<use img/utils_1.png>
-Package pdftex.def Info: img/utils_1.png  used on input line 160.
-(pdftex.def)             Requested size: 387.44064pt x 234.87334pt.
 
-Overfull \hbox (42.44064pt too wide) in paragraph at lines 160--161
- [][] 
+Overfull \hbox (54.61201pt too wide) in paragraph at lines 129--133
+ []\OT1/cmr/bx/n/10 MainWindows[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 MainWindows \OT1/cmr/m/n/10 rap-p-re-senta la fines-tra prin-ci-pale dell'applicazione.
+ []
+
+
+Overfull \hbox (12.25056pt too wide) in paragraph at lines 143--147
+\OT1/cmr/m/n/10 verse sezioni dell'applicazione e for-nisce opzioni per cam-biare il tema dell'interfaccia
  []
 
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 164.
+Package pdftex.def Info: ../../img/number page.png  used on input line 147.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[16]
-<img/utils_2.png, id=268, 2647.8925pt x 1575.8875pt>
-File: img/utils_2.png Graphic file (type png)
-<use img/utils_2.png>
-Package pdftex.def Info: img/utils_2.png  used on input line 167.
-(pdftex.def)             Requested size: 264.80476pt x 157.59798pt.
+[22]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 184.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [23]
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 184--185
+[]\OT1/cmtt/m/n/10 public Component getTableCellRendererComponent(JTable table, Object
+ []
 
-Overfull \hbox (37.16676pt too wide) in paragraph at lines 173--176
-\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Constants \OT1/cmr/m/n/10 for-nisce una se-rie di costanti e definizioni uti-liz-zate nell'applicazione.
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 184--185
+\OT1/cmtt/m/n/10 value, boolean isSelected, boolean hasFocus, int row, int column) 
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 218--219
+[]\OT1/cmtt/m/n/10 public Component getTableCellRendererComponent(JTable table, Object
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 218--219
+\OT1/cmtt/m/n/10 value, boolean isSelected, boolean hasFocus, int row, int column) 
  []
 
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 177.
+Package pdftex.def Info: ../../img/number page.png  used on input line 221.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[17 <./img/utils_1.png (PNG copy)> <./img/utils_2.png (PNG copy)>]
-Overfull \hbox (7.08156pt too wide) in paragraph at lines 182--183
-[]\OT1/cmtt/m/n/10 public static String getCurrentDateString()\OT1/cmr/m/n/10 : resti-tu-isce una stringa
+[24]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 260.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [25]
+Overfull \hbox (42.24687pt too wide) in paragraph at lines 273--274
+[]\OT1/cmtt/m/n/10 private void proceedToCenterCreation(CurrentOperator currentOperator) 
  []
 
 
-Overfull \hbox (1.41437pt too wide) in paragraph at lines 183--184
-[]\OT1/cmtt/m/n/10 public static boolean isDateValid(String dateString)\OT1/cmr/m/n/10 : ver-i-fica se
+Overfull \hbox (10.72968pt too wide) in paragraph at lines 280--284
+ []\OT1/cmr/bx/n/10 OperatorRegister[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 OperatorRegister \OT1/cmr/m/n/10 rap-p-re-senta un pan-nello Swing
  []
 
 
-Overfull \hbox (1.22021pt too wide) in paragraph at lines 186--187
-[]\OT1/cmtt/m/n/10 public static Integer zeroToNull(Integer value)\OT1/cmr/m/n/10 : con-verte un val-
+Overfull \hbox (4.6303pt too wide) in paragraph at lines 280--284
+\OT1/cmr/m/n/10 uti-liz-zato per la reg-is-trazione di un op-er-a-tore all'interno dell'applicazione. Questo
  []
 
 ) (Pattern.tex
-<img/Singleton.png, id=273, 449.88075pt x 232.4685pt>
+<img/Singleton.png, id=373, 449.88075pt x 232.4685pt>
 File: img/Singleton.png Graphic file (type png)
 <use img/Singleton.png>
 Package pdftex.def Info: img/Singleton.png  used on input line 8.
@@ -1037,8 +1155,8 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 12.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
- [18]
-<img/schema_singleton.png, id=279, 295.1025pt x 173.448pt>
+ [26]
+<img/schema_singleton.png, id=381, 295.1025pt x 173.448pt>
 File: img/schema_singleton.png Graphic file (type png)
 <use img/schema_singleton.png>
 Package pdftex.def Info: img/schema_singleton.png  used on input line 17.
@@ -1047,8 +1165,8 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 22.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
- [19 <./img/Singleton.png>]
-<img/currentUserChangeListener.png, id=285, 353.52075pt x 84.91725pt>
+ [27 <./img/Singleton.png>]
+<img/currentUserChangeListener.png, id=387, 353.52075pt x 84.91725pt>
 File: img/currentUserChangeListener.png Graphic file (type png)
 <use img/currentUserChangeListener.png>
 Package pdftex.def Info: img/currentUserChangeListener.png  used on input line 27.
@@ -1063,7 +1181,7 @@ Overfull \hbox (15.38937pt too wide) in paragraph at lines 23--30
 \OT1/cmr/m/n/10 che deve es-sere im-ple-men-tata da tutte le classi in-ter-es-sate ai cam-bi-a-menti dell'utente
  []
 
-<img/notifyCurrentUserChange.png, id=286, 351.11176pt x 78.2925pt>
+<img/notifyCurrentUserChange.png, id=388, 351.11176pt x 78.2925pt>
 File: img/notifyCurrentUserChange.png Graphic file (type png)
 <use img/notifyCurrentUserChange.png>
 Package pdftex.def Info: img/notifyCurrentUserChange.png  used on input line 35.
@@ -1077,8 +1195,8 @@ File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
 Package pdftex.def Info: ../../img/number page.png  used on input line 39.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
-[20 <./img/schema_singleton.png> <./img/currentUserChangeListener.png>]
-<img/schema_observer.png, id=293, 427.5975pt x 274.626pt>
+[28 <./img/schema_singleton.png> <./img/currentUserChangeListener.png>]
+<img/schema_observer.png, id=395, 427.5975pt x 274.626pt>
 File: img/schema_observer.png Graphic file (type png)
 <use img/schema_observer.png>
 Package pdftex.def Info: img/schema_observer.png  used on input line 44.
@@ -1086,28 +1204,28 @@ Package pdftex.def Info: img/schema_observer.png  used on input line 44.
 )
 File: ../../img/number page.png Graphic file (type png)
 <use ../../img/number page.png>
-Package pdftex.def Info: ../../img/number page.png  used on input line 62.
+Package pdftex.def Info: ../../img/number page.png  used on input line 63.
 (pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
- [21 <./img/notifyCurrentUserChange.png> <./img/schema_observer.png>] (ManualeTecnico.aux)
+ [29 <./img/notifyCurrentUserChange.png> <./img/schema_observer.png>] (ManualeTecnico.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `ManualeTecnico.out' has not changed.
-(rerunfilecheck)             Checksum: A4A1753807C053F3A0B03E4C16243D79;4144.
+(rerunfilecheck)             Checksum: A70A2CCF7777FB10588430FC60719534;5428.
  ) 
 Here is how much of TeX's memory you used:
- 19784 strings out of 474542
- 382313 string characters out of 5743975
+ 19853 strings out of 474542
+ 383481 string characters out of 5743975
  1938978 words of memory out of 5000000
- 41613 multiletter control sequences out of 15000+600000
+ 41646 multiletter control sequences out of 15000+600000
  561043 words of font info for 46 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,15n,107p,554b,1217s stack positions out of 10000i,1000n,20000p,200000b,200000s
  <C:\Users\utente\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on ManualeTecnico.pdf (22 pages, 5200316 bytes).
+Output written on ManualeTecnico.pdf (30 pages, 5228469 bytes).
 PDF statistics:
- 346 PDF objects out of 1000 (max. 8388607)
- 65 named destinations out of 1000 (max. 500000)
- 318 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 455 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 500000)
+ 406 words of extra memory for PDF output out of 10000 (max. 10000000)
 

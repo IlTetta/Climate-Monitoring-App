@@ -1,30 +1,55 @@
 \contentsline {section}{\numberline {1}Introduzione}{3}{section.1}%
 \contentsline {section}{\numberline {2}Progettazione}{3}{section.2}%
 \contentsline {section}{\numberline {3}Struttura Generale dell'Applicazione}{3}{section.3}%
-\contentsline {section}{\numberline {4}Package server}{4}{section.4}%
-\contentsline {subsection}{\numberline {4.1}Server}{5}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}DataBaseManager}{5}{subsection.4.2}%
-\contentsline {subsection}{\numberline {4.3}Package implementationRMI}{6}{subsection.4.3}%
-\contentsline {subsubsection}{\numberline {4.3.1}DataHandlerImp}{6}{subsubsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.2}DataQueryImp}{8}{subsubsection.4.3.2}%
-\contentsline {subsubsection}{\numberline {4.3.3}LogicCenterImp}{9}{subsubsection.4.3.3}%
-\contentsline {subsubsection}{\numberline {4.3.4}LogicCityImp}{9}{subsubsection.4.3.4}%
-\contentsline {subsubsection}{\numberline {4.3.5}LogicOperatorImp}{10}{subsubsection.4.3.5}%
-\contentsline {section}{\numberline {5}Package shared}{11}{section.5}%
-\contentsline {subsection}{\numberline {5.1}Package interfacesRMI}{11}{subsection.5.1}%
-\contentsline {subsubsection}{\numberline {5.1.1}DataHandlerInterface}{11}{subsubsection.5.1.1}%
-\contentsline {subsubsection}{\numberline {5.1.2}DataQueryInterface}{12}{subsubsection.5.1.2}%
-\contentsline {subsubsection}{\numberline {5.1.3}LogicCenterInterface}{12}{subsubsection.5.1.3}%
-\contentsline {subsubsection}{\numberline {5.1.4}LogicCityInterface}{13}{subsubsection.5.1.4}%
-\contentsline {subsubsection}{\numberline {5.1.5}LogicOperatorInterface}{13}{subsubsection.5.1.5}%
-\contentsline {subsection}{\numberline {5.2}Package record}{13}{subsection.5.2}%
-\contentsline {subsubsection}{\numberline {5.2.1}QueryCondition}{14}{subsubsection.5.2.1}%
-\contentsline {subsubsection}{\numberline {5.2.2}RecordCenter}{14}{subsubsection.5.2.2}%
-\contentsline {subsubsection}{\numberline {5.2.3}RecordCity}{15}{subsubsection.5.2.3}%
-\contentsline {subsubsection}{\numberline {5.2.4}RecordOperator}{15}{subsubsection.5.2.4}%
-\contentsline {subsubsection}{\numberline {5.2.5}RecordWeather}{16}{subsubsection.5.2.5}%
-\contentsline {subsection}{\numberline {5.3}Package utils}{16}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}Constants}{17}{subsubsection.5.3.1}%
-\contentsline {subsubsection}{\numberline {5.3.2}Functions}{18}{subsubsection.5.3.2}%
-\contentsline {subsubsection}{\numberline {5.3.3}Interfaces}{18}{subsubsection.5.3.3}%
-\contentsline {section}{\numberline {6}Pattern utilizzati}{19}{section.6}%
+\contentsline {section}{\numberline {4}Package shared}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}Package interfacesRMI}{4}{subsection.4.1}%
+\contentsline {subsubsection}{\numberline {4.1.1}DataHandlerInterface}{5}{subsubsection.4.1.1}%
+\contentsline {subsubsection}{\numberline {4.1.2}DataQueryInterface}{5}{subsubsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.3}LogicCenterInterface}{6}{subsubsection.4.1.3}%
+\contentsline {subsubsection}{\numberline {4.1.4}LogicCityInterface}{6}{subsubsection.4.1.4}%
+\contentsline {subsubsection}{\numberline {4.1.5}LogicOperatorInterface}{7}{subsubsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.2}Package record}{7}{subsection.4.2}%
+\contentsline {subsubsection}{\numberline {4.2.1}QueryCondition}{8}{subsubsection.4.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2}RecordCenter}{8}{subsubsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.3}RecordCity}{8}{subsubsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.4}RecordOperator}{9}{subsubsection.4.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.5}RecordWeather}{9}{subsubsection.4.2.5}%
+\contentsline {subsection}{\numberline {4.3}Package utils}{10}{subsection.4.3}%
+\contentsline {subsubsection}{\numberline {4.3.1}Constants}{11}{subsubsection.4.3.1}%
+\contentsline {subsubsection}{\numberline {4.3.2}Functions}{11}{subsubsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.3}Interfaces}{12}{subsubsection.4.3.3}%
+\contentsline {section}{\numberline {5}Package server}{12}{section.5}%
+\contentsline {subsection}{\numberline {5.1}Server}{13}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}DataBaseManager}{13}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Package implementationRMI}{14}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}DataHandlerImp}{14}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}DataQueryImp}{16}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}LogicCenterImp}{17}{subsubsection.5.3.3}%
+\contentsline {subsubsection}{\numberline {5.3.4}LogicCityImp}{17}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}LogicOperatorImp}{18}{subsubsection.5.3.5}%
+\contentsline {section}{\numberline {6}Package client}{19}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Main}{19}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Package models}{19}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}CurrentOperator}{19}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}MainModel}{20}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Package GUI}{20}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}GUI}{20}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Theme}{21}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Widget}{21}{subsubsection.6.3.3}%
+\contentsline {paragraph}{TwoColumns}{22}{section*.3}%
+\contentsline {paragraph}{TwoRows}{22}{section*.4}%
+\contentsline {subsubsection}{\numberline {6.3.4}Package mainElements}{22}{subsubsection.6.3.4}%
+\contentsline {paragraph}{MainFrame}{22}{section*.5}%
+\contentsline {paragraph}{MainWindows}{22}{section*.6}%
+\contentsline {paragraph}{MenuBar}{23}{section*.7}%
+\contentsline {subsubsection}{\numberline {6.3.5}Package panels}{23}{subsubsection.6.3.5}%
+\contentsline {paragraph}{CenterCreateNew}{23}{section*.8}%
+\contentsline {paragraph}{CityAddData}{23}{section*.9}%
+\contentsline {paragraph}{CitySearch}{24}{section*.10}%
+\contentsline {paragraph}{CityVisualizer}{24}{section*.11}%
+\contentsline {paragraph}{Home}{25}{section*.12}%
+\contentsline {paragraph}{Loading}{25}{section*.13}%
+\contentsline {paragraph}{OperatorHome}{26}{section*.14}%
+\contentsline {paragraph}{OperatorLogin}{26}{section*.15}%
+\contentsline {paragraph}{OperatorRegister}{26}{section*.16}%
+\contentsline {section}{\numberline {7}Pattern utilizzati}{27}{section.7}%
