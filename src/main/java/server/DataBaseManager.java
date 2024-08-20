@@ -5,12 +5,8 @@ import java.sql.*;
 import java.util.Properties;
 
 /**
- * La classe {@code DataBaseManager} gestisce la connessione a un database utilizzando
- * le credenziali fornite o lette da un file di configurazione.
- * <p>
- * Questa classe fornisce metodi per creare una connessione al database tramite
- * parametri espliciti o utilizzando un file di properties.
- * </p>
+ * La classe {@code DataBaseManager} gestisce la connessione al database e
+ * fornisce metodi per creare le tabelle e popolarle con dati.
  *
  * <p>
  * La connessione viene gestita tramite l'oggetto {@link Connection}, che può
@@ -20,7 +16,7 @@ import java.util.Properties;
  * @author Andrea Tettamanti
  * @author Luca Mascetti
  * @author Manuel Morlin
- * @version 1.0
+ * @version 1.1
  * @see Connection
  * @see Properties
  * @see java.sql.DriverManager
@@ -35,7 +31,16 @@ public class DataBaseManager {
 
 
     /**
-     * Costruisce un oggetto {@code DataBaseManager} utilizzando i parametri forniti.
+     * Costruisce un oggetto {@code DataBaseManager} che si connette al database
+     * specificato utilizzando le credenziali fornite.
+     * <p>
+     * Questo costruttore crea una connessione al database specificato e la
+     * memorizza all'interno dell'oggetto {@code DataBaseManager}.
+     * </p>
+     * <p>
+     * Se il database specificato non esiste, viene creato un nuovo database
+     * denominato "climatemonitoring".
+     * </p>
      *
      * @param host     l'host del database a cui connettersi
      * @param password la password per l'autenticazione al database
@@ -82,6 +87,12 @@ public class DataBaseManager {
         return java.sql.DriverManager.getConnection(url, props);
     }
 
+    /**
+     * Controlla se il database "climatemonitoring" esiste già.
+     * @param conn La connessione al database
+     * @return {@code true} se il database non esiste, {@code false} altrimenti
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query
+     */
     public boolean checkDatabaseExistence(Connection conn) throws SQLException {
         String query = "SELECT 1 FROM pg_database WHERE datname = 'climatemonitoring'";
         try (Statement stmt = conn.createStatement();
@@ -90,6 +101,13 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Controlla se la tabella specificata esiste già nel database.
+     * @param conn La connessione al database
+     * @param tableName Il nome della tabella da cercare
+     * @return {@code true} se la tabella esiste, {@code false} altrimenti
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query
+     */
     public static boolean checkTableExistence(Connection conn, String tableName) throws SQLException {
         String query = "SELECT to_regclass('" + tableName + "')";
         try (Statement stmt = conn.createStatement();
@@ -101,6 +119,11 @@ public class DataBaseManager {
         return false;
     }
 
+    /**
+     * Crea il database "climatemonitoring" all'interno del server PostgreSQL.
+     * @param connection La connessione al server PostgreSQL
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query
+     */
     public void createDatabase(Connection connection) throws SQLException {
         String query = "CREATE DATABASE climatemonitoring";
         try (Statement stmt = connection.createStatement()) {
@@ -108,10 +131,14 @@ public class DataBaseManager {
         }
     }
 
+    /**
+     * Crea le tabelle necessarie per il funzionamento del sistema.
+     * @param conn La connessione al database
+     * @throws SQLException Se si verifica un errore durante l'esecuzione della query
+     */
     public static void createTables(Connection conn) throws SQLException {
         try (Statement stmt = conn.createStatement()) {
 
-            // Creazione della tabella CoordinateMonitoraggio
             String sqlCoordinateMonitoraggio = "CREATE TABLE IF NOT EXISTS coordinatemonitoraggio (" +
                     "id SERIAL PRIMARY KEY, " +
                     "name VARCHAR(100) NOT NULL, " +
@@ -122,11 +149,9 @@ public class DataBaseManager {
                     "longitude DECIMAL(9, 6) NOT NULL);";
             stmt.executeUpdate(sqlCoordinateMonitoraggio);
 
-            // Assegnazione dei permessi alla tabella CoordinateMonitoraggio
             String grantCoordinateMonitoraggio = "GRANT SELECT ON coordinatemonitoraggio TO PUBLIC;";
             stmt.executeUpdate(grantCoordinateMonitoraggio);
 
-            // Creazione della tabella CentriMonitoraggio
             String sqlCentriMonitoraggio = "CREATE TABLE IF NOT EXISTS centrimonitoraggio (" +
                     "id SERIAL PRIMARY KEY, " +
                     "centername VARCHAR(100) NOT NULL, " +
@@ -138,7 +163,6 @@ public class DataBaseManager {
                     "cityids INTEGER[]);";
             stmt.executeUpdate(sqlCentriMonitoraggio);
 
-            // Creazione della tabella OperatoriRegistrati
             String sqlOperatoriRegistrati = "CREATE TABLE IF NOT EXISTS operatoriregistrati (" +
                     "id SERIAL PRIMARY KEY, " +
                     "namesurname VARCHAR(200) NOT NULL, " +
@@ -150,7 +174,6 @@ public class DataBaseManager {
                     "FOREIGN KEY (centerid) REFERENCES centrimonitoraggio(id));";
             stmt.executeUpdate(sqlOperatoriRegistrati);
 
-            // Creazione della tabella ParametriClimatici
             String sqlParametriClimatici = "CREATE TABLE IF NOT EXISTS parametriclimatici (" +
                     "id SERIAL PRIMARY KEY, " +
                     "cityid INTEGER NOT NULL, " +
@@ -174,7 +197,6 @@ public class DataBaseManager {
                     "FOREIGN KEY (centerid) REFERENCES centrimonitoraggio(id));";
             stmt.executeUpdate(sqlParametriClimatici);
 
-            // Assegnazione dei permessi alla tabella ParametriClimatici
             String grantParametriclimatici = "GRANT SELECT ON parametriclimatici TO PUBLIC;";
             stmt.executeUpdate(grantParametriclimatici);
 
@@ -186,6 +208,13 @@ public class DataBaseManager {
     }
 
 
+    /**
+     * Popola la tabella "coordinatemonitoraggio" con i dati presenti nel file CSV specificato.
+     * @param conn La connessione al database
+     * @param csvFilePath Il percorso del file CSV contenente i dati da inserire
+     * @throws SQLException Se si verifica un errore durante l'inserimento dei dati
+     * @throws IOException Se si verifica un errore durante la lettura del file CSV
+     */
     public static void populateCoordinateMonitoraggio(Connection conn, String csvFilePath) throws SQLException, IOException {
         String insertSquery = "INSERT INTO coordinatemonitoraggio (id, name, asciiname, countrycode, countryname, latitude, longitude) VALUES (?, ?, ?, ?, ?, ?, ?)";
 

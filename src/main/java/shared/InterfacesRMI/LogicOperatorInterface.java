@@ -1,4 +1,4 @@
-package shared.InterfacesRMI;
+package shared.interfacesRMI;
 
 import shared.record.RecordOperator;
 

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import shared.InterfacesRMI.LogicCityInterface;
+import shared.interfacesRMI.LogicCityInterface;
 import shared.record.RecordWeather;
 
 /**

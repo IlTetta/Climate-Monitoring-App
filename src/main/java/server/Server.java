@@ -1,7 +1,7 @@
 package server;
 
 import server.ImplementationRMI.*;
-import shared.InterfacesRMI.*;
+import shared.interfacesRMI.*;
 
 import java.io.IOException;
 import java.rmi.registry.LocateRegistry;
@@ -52,13 +52,23 @@ import java.sql.SQLException;
  */
 public class Server {
 
+    /**
+     * La connessione al database.
+     */
     private static Connection conn;
+
+    /**
+     * Il percorso del file CSV contenente i dati da popolare nel database.
+     */
     private static final String csvFilePath = "/geonames-and-coordinates.CSV";
 
     /**
      * Il metodo principale per avviare il server.
      * <p>
-     * Questo metodo crea le istanze delle implementazioni RMI e le registra nel
+     * Questo metodo prende in input gli argomenti della riga di comando e, se
+     * presenti, crea una connessione al database e verifica la presenza delle
+     * tabelle necessarie. In caso di assenza, le crea e popola con i dati
+     * presenti nel file CSV. Inoltre crea le istanze delle implementazioni RMI e le registra nel
      * registro RMI. In caso di successo, il server sarà in ascolto sulle
      * richieste dei client remoti. In caso di errore, vengono gestite le
      * eccezioni e viene stampato un messaggio di errore sulla console.

@@ -1,11 +1,11 @@
 package server.ImplementationRMI;
 
-import shared.InterfacesRMI.DataHandlerInterface;
+import shared.interfacesRMI.DataHandlerInterface;
 import shared.record.RecordCenter;
 import shared.record.RecordCity;
 import shared.record.RecordOperator;
 import shared.record.RecordWeather;
-import shared.InterfacesRMI.DataQueryInterface;
+import shared.interfacesRMI.DataQueryInterface;
 
 import java.io.Serial;
 import java.rmi.RemoteException;

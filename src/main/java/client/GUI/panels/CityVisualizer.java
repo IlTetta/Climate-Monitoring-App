@@ -11,16 +11,13 @@ import java.util.EventObject;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
 
 import client.GUI.GUI;
 import client.GUI.Widget;
 import client.models.MainModel;
-import server.ImplementationRMI.LogicCityImp;
 import server.ImplementationRMI.LogicCityImp.WeatherTableData;
 import shared.record.RecordCity;
 import shared.record.RecordWeather;
-import shared.utils.Constants;
 import shared.utils.Interfaces;
 import shared.utils.Constants.Legend;
 import shared.record.QueryCondition;
@@ -132,7 +129,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
      */
     private void addActionEvent() {
         buttonToBack.addActionListener(e -> {
-            gui.goToPanel(CitySerch.ID, null);
+            gui.goToPanel(CitySearch.ID, null);
         });
     }
 
@@ -212,7 +209,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
                     "L'operatore non ha ancora inserito dati per la città selezionata.",
                     "Dati mancanti",
                     JOptionPane.WARNING_MESSAGE);
-            gui.goToPanel(CitySerch.ID, null);
+            gui.goToPanel(CitySearch.ID, null);
         }
     }
 
@@ -230,8 +227,8 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
         defaulmodelTable.addColumn("Numero campionamenti");
         defaulmodelTable.addColumn("Commenti");
 
-        for (int i = 0; i < tableCategory.length; i++) {
-            defaulmodelTable.addRow(new Object[] { tableCategory[i], "/", "0", "" });
+        for (String s : tableCategory) {
+            defaulmodelTable.addRow(new Object[]{s, "/", "0", ""});
         }
 
         table.setModel(defaulmodelTable);
@@ -333,7 +330,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
      * {@code isCellEditable} per impedire la modifica delle celle.
      * </p>
      */
-    class NonEditableCellEditor extends DefaultCellEditor {
+    static class NonEditableCellEditor extends DefaultCellEditor {
 
         public NonEditableCellEditor() {
             super(new JTextField());

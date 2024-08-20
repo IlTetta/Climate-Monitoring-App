@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import shared.InterfacesRMI.LogicCenterInterface;
-import shared.InterfacesRMI.DataHandlerInterface;
-import shared.InterfacesRMI.DataQueryInterface;
+import shared.interfacesRMI.LogicCenterInterface;
+import shared.interfacesRMI.DataHandlerInterface;
+import shared.interfacesRMI.DataQueryInterface;
 import shared.record.RecordCenter;
 import shared.record.RecordOperator;
 import shared.record.RecordWeather;

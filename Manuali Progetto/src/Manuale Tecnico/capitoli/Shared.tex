@@ -6,6 +6,13 @@ In questa sezione verranno descritti il package \texttt{shared} e le classi che 
 \subsection{Package interfacesRMI}
 In questa sezione verranno descritti il package \texttt{interfacesRMI} e le classi che lo compongono.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{img/interfaceRMIPackage.png}
+    \caption{UML delle classi del package interfacesRMI}
+    \label{fig:InterfacesRMI}
+\end{figure}
+
 \subsubsection{DataHandlerInterface}
 L'interfaccia \texttt{DataHandlerInterface} è un'interfaccia che permette di definire i metodi remoti che possono
 essere invocati da un client per interagire con il server per la gestione dei dati.
@@ -67,8 +74,15 @@ I metodi di tale interfaccia sono:
 \subsection{Package record}
 In questa sezione verranno descritti il package \texttt{record} e le classi che lo compongono.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{img/recordPackage.png}
+    \caption{UML delle classi del package record}
+    \label{fig:Record}
+\end{figure}
 \subsubsection{QueryCondition}
-La classe \texttt{QueryCondition} rappresenta una condizione di query.
+La classe \texttt{QueryCondition} rappresenta una condizione di query.\\
+Viene utilizzata per definire una condizione di ricerca per i record presenti nel database.
 
 \subsubsection{RecordCenter}
 La classe \texttt{RecordCenter} rappresenta un centro di monitoraggio e contiene informazioni come il nome del centro, il nome della via, il numero civico, il CAP, il nome del comune, la sigla della provincia e una lista di ID delle città associate.
@@ -141,29 +155,35 @@ I metodi di tale classe sono:
 \subsection{Package utils}
 In questa sezione verranno descritti il package \texttt{utils} e le classi che lo compongono.\\
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.2]{img/utils_1.png}
+    \caption{UML delle classi Functions e Constants}
+    \label{fig:Utils1}    
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale = 0.1]{img/utils_2.png}
+    \caption{UML delle classi Interfaces}
+    \label{fig:Utils2}    
+\end{figure}
+
 \subsubsection{Constants}
 La classe \texttt{Constants} fornisce una serie di costanti e definizioni utilizzate nell'applicazione.
 Queste costanti includono separatori CSV, titolo dell'applicazione, indici di dati, percorsi dei file, dimensioni GUI predefinite e dati predefiniti.
 La classe è progettata per memorizzare costanti utilizzate in tutto il codice e semplificare eventuali modifiche future.
-I metodi di tale classe sono:
-\begin{itemize}
-    \item \texttt{private Constants()}
-    \item \texttt{private Legend()}
-    \item \texttt{private static String getPath(String fileName)}
-    \item \texttt{private Assets()}
-    \item \texttt{private GUI()}
-\end{itemize}
 
 \subsubsection{Functions}
 La classe \texttt{Functions} fornisce una serie di funzioni di utilità per la gestione delle date e degli orari.
 Queste funzioni includono la generazione della data corrente, la validazione delle date e la generazione della data e dell'orario correnti.
 I metodi di tale classe sono:
 \begin{itemize}
-    \item \texttt{public static String getCurrentDateString()}
-    \item \texttt{public static boolean isDateValid(String dateString)}
-    \item \texttt{public static String getCurrentTimeDateString()}
-    \item \texttt{public static String charsetString(String string)}
-    \item \texttt{public static Integer zeroToNull(Integer value)}
+    \item \texttt{public static String getCurrentDateString()}: restituisce una stringa rappresentante la data corrente nel formato \textbf{yyyy-MM-dd}.
+    \item \texttt{public static boolean isDateValid(String dateString)}: verifica se una stringa rappresentante una data è valida e non successiva alla data corrente.
+    \item \texttt{public static String getCurrentTimeDateString()}: restituisce una stringa rappresentante la data e l'orario correnti nel formato \textbf{yyyy-MM-dd HH:mm:ss}.
+    \item \texttt{public static String charsetString(String string)}: converte una stringa in un formato compatibile con il charset UTF-8.
+    \item \texttt{public static Integer zeroToNull(Integer value)}: converte un valore 0 in un valore nullo.
 \end{itemize}
 
 \subsubsection{Interfaces}

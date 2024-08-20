@@ -1,4 +1,4 @@
-package shared.InterfacesRMI;
+package shared.interfacesRMI;
 
 import server.ImplementationRMI.LogicCityImp;
 import shared.record.RecordWeather;

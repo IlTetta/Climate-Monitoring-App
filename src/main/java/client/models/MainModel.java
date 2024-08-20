@@ -1,6 +1,6 @@
 package client.models;
 
-import shared.InterfacesRMI.*;
+import shared.interfacesRMI.*;
 
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;

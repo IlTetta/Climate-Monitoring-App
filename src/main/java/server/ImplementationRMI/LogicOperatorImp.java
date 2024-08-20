@@ -9,9 +9,9 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
-import shared.InterfacesRMI.LogicOperatorInterface;
-import shared.InterfacesRMI.DataHandlerInterface;
-import shared.InterfacesRMI.DataQueryInterface;
+import shared.interfacesRMI.LogicOperatorInterface;
+import shared.interfacesRMI.DataHandlerInterface;
+import shared.interfacesRMI.DataQueryInterface;
 import shared.record.RecordOperator;
 import shared.record.QueryCondition;
 

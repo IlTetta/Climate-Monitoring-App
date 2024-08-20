@@ -1,7 +1,7 @@
 package server.ImplementationRMI;
 
 import server.DataBaseManager;
-import shared.InterfacesRMI.DataQueryInterface;
+import shared.interfacesRMI.DataQueryInterface;
 import shared.record.*;
 
 import java.io.Serial;
