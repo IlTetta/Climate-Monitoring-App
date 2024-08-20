@@ -1,14 +1,9 @@
 \section{Package shared}
 In questa sezione verranno descritti il package \texttt{shared} e le classi che lo compongono.\\
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\textwidth]{}
-    \caption{UML del package shared}
-    \label{fig:Server}
-\end{figure}
 
-\subsection{Package interfacesRMI} 
+
+\subsection{Package interfacesRMI}
 In questa sezione verranno descritti il package \texttt{interfacesRMI} e le classi che lo compongono.\\
 
 \subsubsection{DataHandlerInterface}
@@ -17,10 +12,10 @@ essere invocati da un client per interagire con il server per la gestione dei da
 Quest'interfaccia dev'essere implementata dalla classe \texttt{DataHandlerImp} la quale esegue i metodi dichiarati.
 I metodi di tale interfaccia sono:
 \begin{itemize}
-\item \texttt{void addNewOperator(String nameSurname, String taxCode, String email, String username, String password, Integer centerID)}
-\item \texttt{RecordCenter addNewCenter(String centerName, String streetName, String streetNumber, String CAP, String townName, String districtName, Integer[] cityIDs)}
-\item \texttt{void addNewWeather(Integer cityID, Integer centerID, String date, RecordWeather.WeatherData wind, RecordWeather.WeatherData humidity, RecordWeather.WeatherData pressure, RecordWeather.WeatherData temperature, RecordWeather.WeatherData precipitation, RecordWeather.WeatherData glacierElevation, RecordWeather.WeatherData glacierMass)}
-\item \textt{void updateOperator(RecordOperator operator)}
+    \item \texttt{void addNewOperator(String nameSurname, String taxCode, String email, String username, String password, Integer centerID)}
+    \item \texttt{RecordCenter addNewCenter(String centerName, String streetName, String streetNumber, String CAP, String townName, String districtName, Integer[] cityIDs)}
+    \item \texttt{void addNewWeather(Integer cityID, Integer centerID, String date, RecordWeather.WeatherData wind, RecordWeather.WeatherData humidity, RecordWeather.WeatherData pressure, RecordWeather.WeatherData temperature, RecordWeather.WeatherData precipitation, RecordWeather.WeatherData glacierElevation, RecordWeather.WeatherData glacierMass)}
+    \item \texttt{void updateOperator(RecordOperator operator)}
 \end{itemize}
 
 \subsubsection{DataQueryInterface}
@@ -29,16 +24,16 @@ essere invocati da un client per interagire con il server per la gestione dei da
 Quest'interfaccia dev'essere implementata dalla classe \texttt{DataQueryImp} la quale esegue i metodi dichiarati.
 I metodi di tale interfaccia sono:
 \begin{itemize}
-\item \texttt{RecordCity getCityBy(Integer ID)}
-\item \texttt{RecordCity[] getCityBy(List<QueryCondition> conditions)}
-\item \texttt{RecordOperator getOperatorBy(Integer ID)}
-\item \texttt{RecordOperator[] getOperatorBy(QueryCondition condition)}
-\item \texttt{RecordOperator[] getOperatorBy(List<QueryCondition> conditions)}
-\item \texttt{RecordCenter getCenterBy(Integer ID)}
-\item \texttt{RecordCenter[] getCenters()}
-\item \texttt{RecordWeather[] getWeatherBy(QueryCondition condition)}
-\item \texttt{RecordWeather[] getWeatherBy(List<QueryCondition> conditions)}
-\item \texttt{Connection getConn()}
+    \item \texttt{RecordCity getCityBy(Integer ID)}
+    \item \texttt{RecordCity[] getCityBy(List<QueryCondition> conditions)}
+    \item \texttt{RecordOperator getOperatorBy(Integer ID)}
+    \item \texttt{RecordOperator[] getOperatorBy(QueryCondition condition)}
+    \item \texttt{RecordOperator[] getOperatorBy(List<QueryCondition> conditions)}
+    \item \texttt{RecordCenter getCenterBy(Integer ID)}
+    \item \texttt{RecordCenter[] getCenters()}
+    \item \texttt{RecordWeather[] getWeatherBy(QueryCondition condition)}
+    \item \texttt{RecordWeather[] getWeatherBy(List<QueryCondition> conditions)}
+    \item \texttt{Connection getConn()}
 \end{itemize}
 
 \subsubsection{LogicCenterInterface}
@@ -47,8 +42,8 @@ essere invocati da un client per interagire con il server per la gestione dei ce
 Quest'interfaccia dev'essere implementata dalla classe \texttt{LogicCenterImp} la quale esegue i metodi dichiarati.
 I metodi di tale interfaccia sono:
 \begin{itemize}
-\item \texttt{void initNewCenter(String centerName, String streetName, String streetNumber, String CAP, String townName, String districtName, Integer[] cityIDs, Integer operatorID)}
-\item \texttt{void addDataToCenter(Integer cityID, Integer operatorID, String date, Object[][] tableData)}
+    \item \texttt{void initNewCenter(String centerName, String streetName, String streetNumber, String CAP, String townName, String districtName, Integer[] cityIDs, Integer operatorID)}
+    \item \texttt{void addDataToCenter(Integer cityID, Integer operatorID, String date, Object[][] tableData)}
 \end{itemize}
 
 \subsubsection{LogicCityInterface}
@@ -56,7 +51,7 @@ L'interfaccia \texttt{LogicCityInterface} è utilizzata per esporre i metodi che
 Quest'interfaccia dev'essere implementata dalla classe \texttt{LogicCityImp} la quale esegue i metodi dichiarati.
 I metodi di tale interfaccia sono:
 \begin{itemize}
-\item \texttt{LogicCityImp.WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords)}
+    \item \texttt{LogicCityImp.WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords)}
 \end{itemize}
 
 \subsubsection{LogicOperatorInterface}
@@ -64,12 +59,12 @@ L'interfaccia \texttt{LogicOperatorInterface} è un'interfaccia che permette di 
 Quest'interfaccia dev'essere implementata dalla classe \texttt{LogicOperatorImp} la quale esegue i metodi dichiarati.
 I metodi di tale interfaccia sono:
 \begin{itemize}
-\item \texttt{RecordOperator performLogin(String username, String password)}
-\item \textt{void performRegistration(String nameSurname, String taxCode, String email, String username, String password, Integer centerID)}
-\item \textt{RecordOperator associateCenter(Integer operatorID, Integer centerID)}
+    \item \texttt{RecordOperator performLogin(String username, String password)}
+    \item \texttt{void performRegistration(String nameSurname, String taxCode, String email, String username, String password, Integer centerID)}
+    \item \texttt{RecordOperator associateCenter(Integer operatorID, Integer centerID)}
 \end{itemize}
 
-\subsection{Package record} 
+\subsection{Package record}
 In questa sezione verranno descritti il package \texttt{record} e le classi che lo compongono.\\
 
 \subsubsection{QueryCondition}
@@ -80,15 +75,15 @@ La classe \texttt{RecordCenter} rappresenta un centro di monitoraggio e contiene
 Questa classe è definita come un record, il che significa che è immutabile una volta creata.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{public String toString()}
-\item \texttt{public Integer ID()}
-\item \texttt{public String centerName()}
-\item \texttt{public String streetName()}
-\item \texttt{public String streetNumber()}
-\item \texttt{public String CAP()}
-\item \texttt{public String townName()}
-\item \texttt{public String districtName()}
-\item \texttt{public String cityIDs()}
+    \item \texttt{public String toString()}
+    \item \texttt{public Integer ID()}
+    \item \texttt{public String centerName()}
+    \item \texttt{public String streetName()}
+    \item \texttt{public String streetNumber()}
+    \item \texttt{public String CAP()}
+    \item \texttt{public String townName()}
+    \item \texttt{public String districtName()}
+    \item \texttt{public String cityIDs()}
 \end{itemize}
 
 \subsubsection{RecordCity}
@@ -96,14 +91,14 @@ La classe \texttt{RecordCity} rappresenta una città e contiene informazioni com
 Questa classe è definita come un record, il che significa che è immutabile una volta creata.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{public String toString()}
-\item \texttt{public Integer ID()}
-\item \texttt{public String name()}
-\item \texttt{public String ASCIIname()}
-\item \texttt{public String countryCode()}
-\item \texttt{public String countryName()}
-\item \texttt{public double latitude()}
-\item \texttt{public double longitude()}
+    \item \texttt{public String toString()}
+    \item \texttt{public Integer ID()}
+    \item \texttt{public String name()}
+    \item \texttt{public String ASCIIname()}
+    \item \texttt{public String countryCode()}
+    \item \texttt{public String countryName()}
+    \item \texttt{public double latitude()}
+    \item \texttt{public double longitude()}
 \end{itemize}
 
 \subsubsection{RecordOperator}
@@ -111,14 +106,14 @@ La classe \texttt{RecordOperator} rappresenta un operatore e contiene informazio
 Questa classe è definita come un record, il che significa che è immutabile una volta creata.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{public String toString()}
-\item \texttt{public Integer ID()}
-\item \texttt{public String nameSurname()}
-\item \texttt{public String taxCode()}
-\item \texttt{public String email()}
-\item \texttt{public String username()}
-\item \texttt{public String password()}
-\item \texttt{public Integer centerID()}
+    \item \texttt{public String toString()}
+    \item \texttt{public Integer ID()}
+    \item \texttt{public String nameSurname()}
+    \item \texttt{public String taxCode()}
+    \item \texttt{public String email()}
+    \item \texttt{public String username()}
+    \item \texttt{public String password()}
+    \item \texttt{public Integer centerID()}
 \end{itemize}
 
 \subsubsection{RecordWeather}
@@ -127,23 +122,23 @@ Questa classe contiene informazioni come l'ID, l'ID della città, l'ID del centr
 Questa classe è definita come un record, il che significa che è immutabile una volta creata.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{public String toString()}
-\item \texttt{public Integer ID()}
-\item \texttt{public Integer cityID()}
-\item \texttt{public Integer centerID()}
-\item \texttt{public String date()}
-\item \texttt{public WeatherData wind()}
-\item \texttt{public WeatherData humidity()}
-\item \texttt{public WeatherData pressure()}
-\item \texttt{public WeatherData temperature()}
-\item \texttt{public WeatherData precipitation()}
-\item \texttt{public WeatherData glacierElevation()}
-\item \texttt{public WeatherData glacierMass()}
-\item \textt{public Integer score()}
-\item \texttt{public String comment()}
+    \item \texttt{public String toString()}
+    \item \texttt{public Integer ID()}
+    \item \texttt{public Integer cityID()}
+    \item \texttt{public Integer centerID()}
+    \item \texttt{public String date()}
+    \item \texttt{public WeatherData wind()}
+    \item \texttt{public WeatherData humidity()}
+    \item \texttt{public WeatherData pressure()}
+    \item \texttt{public WeatherData temperature()}
+    \item \texttt{public WeatherData precipitation()}
+    \item \texttt{public WeatherData glacierElevation()}
+    \item \texttt{public WeatherData glacierMass()}
+    \item \texttt{public Integer score()}
+    \item \texttt{public String comment()}
 \end{itemize}
 
-\subsection{Package utils} 
+\subsection{Package utils}
 In questa sezione verranno descritti il package \texttt{utils} e le classi che lo compongono.\\
 
 \subsubsection{Constants}
@@ -152,11 +147,11 @@ Queste costanti includono separatori CSV, titolo dell'applicazione, indici di da
 La classe è progettata per memorizzare costanti utilizzate in tutto il codice e semplificare eventuali modifiche future.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{private Constants()}
-\item \texttt{private Legend()}
-\item \texttt{private static String getPath(String fileName)}
-\item \texttt{private Assets()}
-\item \texttt{private GUI()}
+    \item \texttt{private Constants()}
+    \item \texttt{private Legend()}
+    \item \texttt{private static String getPath(String fileName)}
+    \item \texttt{private Assets()}
+    \item \texttt{private GUI()}
 \end{itemize}
 
 \subsubsection{Functions}
@@ -164,15 +159,15 @@ La classe \texttt{Functions} fornisce una serie di funzioni di utilità per la g
 Queste funzioni includono la generazione della data corrente, la validazione delle date e la generazione della data e dell'orario correnti.
 I metodi di tale classe sono:
 \begin{itemize}
-\item \texttt{public static String getCurrentDateString()}
-\item \texttt{public static boolean isDateValid(String dateString)}
-\item \texttt{public static String getCurrentTimeDateString()}
-\item \texttt{public static String charsetString(String string)}
-\item \texttt{public static Integer zeroToNull(Integer value)}
+    \item \texttt{public static String getCurrentDateString()}
+    \item \texttt{public static boolean isDateValid(String dateString)}
+    \item \texttt{public static String getCurrentTimeDateString()}
+    \item \texttt{public static String charsetString(String string)}
+    \item \texttt{public static Integer zeroToNull(Integer value)}
 \end{itemize}
 
 \subsubsection{Interfaces}
-L'interfaccia \texttt{Interfaces} definisce una serie di interfacce e contratti che rappresentano diversi aspetti ed entità all'interno del sistema. 
+L'interfaccia \texttt{Interfaces} definisce una serie di interfacce e contratti che rappresentano diversi aspetti ed entità all'interno del sistema.
 Queste interfacce definiscono le proprietà e i metodi che devono essere implementati da classi specifiche per fornire funzionalità legate a città, operatori, centri, dati meteorologici, finestre UI e pannelli UI.
 Per le interfacce dei record i metodi sono i getter degli attributi.
 Invece per l'interfaccia di UI Windows i metodi sono:
@@ -181,11 +176,11 @@ Invece per l'interfaccia di UI Windows i metodi sono:
     \item \texttt{JScrollPane getScrollPanel()}
     \item \texttt{JPanel getContentPanel()}
     \item \texttt{void setAppInfo(String text)}
-    \end{itemize}
+\end{itemize}
 Infine per l'interfaccia di UI Panel i metodi sono:
 \begin{itemize}
     \item \texttt{JPanel createPanel(GUI gui)}
     \item \texttt{void onOpen(Object[] args)}
     \item \texttt{String getID()}
-    \end{itemize}
+\end{itemize}
 

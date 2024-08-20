@@ -304,6 +304,33 @@ INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
+INPUT .\capitoli\Shared.tex
+INPUT .\capitoli\Shared.tex
+INPUT capitoli\Shared.tex
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
 INPUT .\Pattern.tex
 INPUT .\Pattern.tex
 INPUT Pattern.tex
@@ -325,10 +352,6 @@ INPUT .\img\schema_singleton.png
 INPUT .\img\schema_singleton.png
 INPUT .\img\schema_singleton.png
 INPUT .\img\schema_singleton.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
-INPUT ..\..\img\number page.png
 INPUT .\img\currentUserChangeListener.png
 INPUT .\img\currentUserChangeListener.png
 INPUT .\img\currentUserChangeListener.png
@@ -336,17 +359,17 @@ INPUT .\img\currentUserChangeListener.png
 INPUT .\img\currentUserChangeListener.png
 INPUT .\img\currentUserChangeListener.png
 INPUT .\img\currentUserChangeListener.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
-INPUT .\img\notifyCurrentUserChange.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
+INPUT .\img\notifyCurrentUserChange.png
 INPUT .\img\schema_observer.png
 INPUT .\img\schema_observer.png
 INPUT .\img\schema_observer.png
@@ -354,6 +377,10 @@ INPUT .\img\schema_observer.png
 INPUT .\img\schema_observer.png
 INPUT .\img\schema_observer.png
 INPUT .\img\schema_observer.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
+INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png
 INPUT ..\..\img\number page.png

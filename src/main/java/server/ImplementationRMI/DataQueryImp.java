@@ -1,10 +1,9 @@
 package server.ImplementationRMI;
 
-import server.ConnectionMaker;
+import server.DataBaseManager;
 import shared.InterfacesRMI.DataQueryInterface;
 import shared.record.*;
 
-import java.io.IOException;
 import java.io.Serial;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
@@ -32,7 +31,7 @@ import static shared.utils.Functions.zeroToNull;
  * @see RecordCenter
  * @see RecordWeather
  * @see QueryCondition
- * @see ConnectionMaker
+ * @see DataBaseManager
  *
  * @serial exclude
  *
@@ -59,14 +58,9 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      *
      * @throws RemoteException Se la connessione al database fallisce
      */
-    public DataQueryImp() throws RemoteException {
+    public DataQueryImp(Connection connection) throws RemoteException {
         super();
-        try {
-            ConnectionMaker connection = ConnectionMaker.createFromProperties("database.properties");
-            this.conn = connection.getConnection();
-        } catch (SQLException | IOException e) {
-            throw new RemoteException("Inizializzazione della connessione al database fallita", e);
-        }
+        this.conn = connection;
     }
 
     /**

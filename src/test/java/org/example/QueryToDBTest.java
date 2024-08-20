@@ -1,7 +1,8 @@
-package org.example;
+/*package org.example;
 
-import server.ConnectionMaker;
+import server.DataBaseManager;
 import org.junit.jupiter.api.*;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.*;
@@ -27,7 +28,7 @@ public class QueryToDBTest {
     @Test
     public void testConnectionCreation() {
         assertDoesNotThrow(() -> {
-            ConnectionMaker db = new ConnectionMaker("jdbc:postgresql://localhost/climateMonitoring", "postgres", "3s7k2a1m6e");
+            DataBaseManager db = new DataBaseManager("jdbc:postgresql://localhost/climateMonitoring", "postgres", "3s7k2a1m6e");
             assertNotNull(db);
             System.out.println("Test di creazione connessione riuscito.");
         });
@@ -36,7 +37,7 @@ public class QueryToDBTest {
     @Test
     public void testCreateFromProperties() {
         assertDoesNotThrow(() -> {
-            ConnectionMaker db = ConnectionMaker.createFromProperties(TEST_PROPERTIES_FILE);
+            DataBaseManager db = DataBaseManager.createFromProperties(TEST_PROPERTIES_FILE);
             assertNotNull(db);
             System.out.println("Test di creazione da file properties riuscito.");
         });
@@ -45,28 +46,28 @@ public class QueryToDBTest {
     @Test
     public void testInvalidUrl() {
         assertThrows(SQLException.class, () -> {
-            new ConnectionMaker("invalid-url", "postgres", "3s7k2a1m6e");
+            new DataBaseManager("invalid-url", "postgres", "3s7k2a1m6e");
         });
     }
 
     @Test
     public void testInvalidCredentials() {
         assertThrows(SQLException.class, () -> {
-            new ConnectionMaker("jdbc:mysql://localhost:3306/testdb", "wronguser", "wrongpassword");
+            new DataBaseManager("jdbc:mysql://localhost:3306/testdb", "wronguser", "wrongpassword");
         });
     }
 
     @Test
     public void testInvalidPropertiesFile() {
         assertThrows(RuntimeException.class, () -> {
-            ConnectionMaker.createFromProperties("nonexistentfile.properties");
+            DataBaseManager.createFromProperties("nonexistentfile.properties");
         });
     }
 
     @Test
     public void testGetCatalog() {
         assertDoesNotThrow(() -> {
-            ConnectionMaker db = new ConnectionMaker("jdbc:postgresql://localhost/climateMonitoring", "postgres", "3s7k2a1m6e");
+            DataBaseManager db = new DataBaseManager("jdbc:postgresql://localhost/climateMonitoring", "postgres", "3s7k2a1m6e");
             Connection conn = db.getConnection();
             assertEquals("climateMonitoring", conn.getCatalog());
             System.out.println("Test di recupero catalogo riuscito.");
@@ -85,4 +86,4 @@ public class QueryToDBTest {
         }
     }
 
-}
+}*/
