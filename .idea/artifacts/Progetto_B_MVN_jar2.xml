@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Progetto_B_MVN:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Progetto_B_MVN_jar2</output-path>
+    <root id="archive" name="Progetto_B_MVN.jar">
+      <element id="module-output" name="Progetto_B_MVN" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/checkerframework/checker-qual/3.42.0/checker-qual-3.42.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.7.3/postgresql-42.7.3.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
