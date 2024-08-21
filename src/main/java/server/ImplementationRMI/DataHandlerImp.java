@@ -82,7 +82,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      * @throws IllegalArgumentException Se l'utente esiste già.
      */
     @Override
-    public void addNewOperator(String nameSurname,
+    public synchronized void addNewOperator(String nameSurname,
                                String taxCode,
                                String email,
                                String username,
@@ -141,7 +141,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      * @throws IllegalArgumentException Se il centro esiste già.
      */
     @Override
-    public RecordCenter addNewCenter(String centerName,
+    public synchronized RecordCenter addNewCenter(String centerName,
                                      String streetName,
                                      String streetNumber,
                                      String CAP,
@@ -203,7 +203,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
      */
     @Override
-    public void addNewWeather(Integer cityID,
+    public synchronized void addNewWeather(Integer cityID,
                               Integer centerID,
                               String date,
                               RecordWeather.WeatherData wind,
@@ -274,7 +274,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      * @throws RemoteException Se si verifica un errore durante la comunicazione remota.
      */
     @Override
-    public void updateOperator(RecordOperator operator) throws SQLException, RemoteException {
+    public synchronized void updateOperator(RecordOperator operator) throws SQLException, RemoteException {
         updateRecord("operatoriregistrati", operator.ID(), operator);
     }
 

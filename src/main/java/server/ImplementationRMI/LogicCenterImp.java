@@ -87,7 +87,7 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
      * @throws RemoteException          Se si verifica un errore di comunicazione RMI.
      */
     @Override
-    public void initNewCenter(
+    public synchronized void initNewCenter(
             String centerName,
             String streetName,
             String streetNumber,
@@ -136,7 +136,7 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
      * @throws RemoteException          Se si verifica un errore di comunicazione RMI.
      */
     @Override
-    public void addDataToCenter(
+    public synchronized void addDataToCenter(
             Integer cityID,
             Integer operatorID,
             String date,

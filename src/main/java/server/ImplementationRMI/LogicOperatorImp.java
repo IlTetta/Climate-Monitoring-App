@@ -78,7 +78,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws SQLException Se si verifica un errore durante l'accesso ai dati.
      */
     @Override
-    public RecordOperator performLogin(String username, String password) throws RemoteException, SQLException {
+    public synchronized RecordOperator performLogin(String username, String password) throws RemoteException, SQLException {
         validateLoginInputs(username, password);
 
         List<QueryCondition> conditions = List.of(
@@ -106,7 +106,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      *
      */
     @Override
-    public void performRegistration(String nameSurname, String taxCode, String email, String username,
+    public synchronized void performRegistration(String nameSurname, String taxCode, String email, String username,
                                     String password, Integer centerID) throws RemoteException, SQLException, IllegalArgumentException {
 
         validateRegistrationInputs(nameSurname, taxCode, email, username, password);
@@ -132,7 +132,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      * @throws IllegalStateException Se l'operatore è già associato a un centro.
      */
     @Override
-    public RecordOperator associateCenter(Integer operatorID, Integer centerID) throws SQLException, RemoteException {
+    public synchronized RecordOperator associateCenter(Integer operatorID, Integer centerID) throws SQLException, RemoteException {
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
         if (currentOperator.centerID() != 0) {
