@@ -29,7 +29,7 @@ import java.util.EventObject;
 import java.util.NoSuchElementException;
 
 /**
- * La classe {@code CityAddData} rappresenta un pannello per l'aggiunta di dati
+ * La classe {@code CityAddData} rappresenta il pannello per l'aggiunta di dati
  * di una città da parte dell'operatore.
  * <p>
  * Il pannello consente all'operatore di inserire i dati relativi alla città
@@ -298,12 +298,18 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
      */
     static class TooltipCellRenderer extends JTextArea implements TableCellRenderer {
 
+        /**
+         * Costruisce un nuovo {@code TooltipCellRenderer}.
+         */
         public TooltipCellRenderer() {
             setLineWrap(true);
             setWrapStyleWord(true);
             setOpaque(true);
         }
 
+        /**
+         * Restituisce il componente per la cella della tabella.
+         */
         @Override
         public Component getTableCellRendererComponent(JTable table,
                                                        Object value,
@@ -410,10 +416,16 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
      */
     static class NonEditableCellEditor extends DefaultCellEditor {
 
+        /**
+         * Costruisce un nuovo {@code NonEditableCellEditor}.
+         */
         public NonEditableCellEditor() {
             super(new JTextField());
         }
 
+        /**
+         * Restituisce false per indicare che la cella non è modificabile.
+         */
         @Override
         public boolean isCellEditable(EventObject e) {
             return false;

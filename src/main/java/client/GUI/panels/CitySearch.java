@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * La classe {@code CitySearch} rappresenta un pannello Swing per effettuare
- * query sulla base di dati delle città.
+ * La classe {@code CitySearch} rappresenta il pannello per effettuare
+ * ricerche sulla base di dati delle città.
  * <p>
  * Gli utenti possono cercare una città per nome o per coordinate
  * geografiche utilizzando i campi di input e i pulsanti forniti.

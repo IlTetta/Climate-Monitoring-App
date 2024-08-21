@@ -18,7 +18,7 @@ import shared.record.RecordOperator;
 import shared.utils.Interfaces;
 
 /**
- * La classe {@code OperatorLogin} rappresenta un pannello di login per gli
+ * La classe {@code OperatorLogin} rappresenta il pannello di login per gli
  * operatori dell'applicazione.
  * <p>
  * Gli operatori possono inserire il loro Username e la password per accedere

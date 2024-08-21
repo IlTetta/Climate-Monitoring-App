@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
 import java.sql.SQLException;
 
 /**
- * La classe {@code OperatorRegister} rappresenta un pannello Swing utilizzato per
+ * La classe {@code OperatorRegister} rappresenta il pannello utilizzato per
  * la registrazione di un operatore all'interno dell'applicazione.
  * <p>
  * Questo pannello consente agli operatori di inserire i loro dati personali, come nome,

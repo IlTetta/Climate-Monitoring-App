@@ -22,34 +22,35 @@
 \contentsline {subsection}{\numberline {5.1}Server}{13}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}DataBaseManager}{13}{subsection.5.2}%
 \contentsline {subsection}{\numberline {5.3}Package implementationRMI}{14}{subsection.5.3}%
-\contentsline {subsubsection}{\numberline {5.3.1}DataHandlerImp}{14}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1}DataHandlerImp}{15}{subsubsection.5.3.1}%
 \contentsline {subsubsection}{\numberline {5.3.2}DataQueryImp}{16}{subsubsection.5.3.2}%
 \contentsline {subsubsection}{\numberline {5.3.3}LogicCenterImp}{17}{subsubsection.5.3.3}%
-\contentsline {subsubsection}{\numberline {5.3.4}LogicCityImp}{17}{subsubsection.5.3.4}%
-\contentsline {subsubsection}{\numberline {5.3.5}LogicOperatorImp}{18}{subsubsection.5.3.5}%
+\contentsline {subsubsection}{\numberline {5.3.4}LogicCityImp}{18}{subsubsection.5.3.4}%
+\contentsline {subsubsection}{\numberline {5.3.5}LogicOperatorImp}{19}{subsubsection.5.3.5}%
 \contentsline {section}{\numberline {6}Package client}{19}{section.6}%
 \contentsline {subsection}{\numberline {6.1}Main}{19}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Package models}{19}{subsection.6.2}%
-\contentsline {subsubsection}{\numberline {6.2.1}CurrentOperator}{19}{subsubsection.6.2.1}%
-\contentsline {subsubsection}{\numberline {6.2.2}MainModel}{20}{subsubsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.3}Package GUI}{20}{subsection.6.3}%
-\contentsline {subsubsection}{\numberline {6.3.1}GUI}{20}{subsubsection.6.3.1}%
-\contentsline {subsubsection}{\numberline {6.3.2}Theme}{21}{subsubsection.6.3.2}%
-\contentsline {subsubsection}{\numberline {6.3.3}Widget}{21}{subsubsection.6.3.3}%
-\contentsline {paragraph}{TwoColumns}{22}{section*.3}%
-\contentsline {paragraph}{TwoRows}{22}{section*.4}%
-\contentsline {subsubsection}{\numberline {6.3.4}Package mainElements}{22}{subsubsection.6.3.4}%
-\contentsline {paragraph}{MainFrame}{22}{section*.5}%
-\contentsline {paragraph}{MainWindows}{22}{section*.6}%
-\contentsline {paragraph}{MenuBar}{23}{section*.7}%
-\contentsline {subsubsection}{\numberline {6.3.5}Package panels}{23}{subsubsection.6.3.5}%
-\contentsline {paragraph}{CenterCreateNew}{23}{section*.8}%
-\contentsline {paragraph}{CityAddData}{23}{section*.9}%
-\contentsline {paragraph}{CitySearch}{24}{section*.10}%
-\contentsline {paragraph}{CityVisualizer}{24}{section*.11}%
-\contentsline {paragraph}{Home}{25}{section*.12}%
-\contentsline {paragraph}{Loading}{25}{section*.13}%
-\contentsline {paragraph}{OperatorHome}{26}{section*.14}%
-\contentsline {paragraph}{OperatorLogin}{26}{section*.15}%
-\contentsline {paragraph}{OperatorRegister}{26}{section*.16}%
-\contentsline {section}{\numberline {7}Pattern utilizzati}{27}{section.7}%
+\contentsline {subsection}{\numberline {6.2}Package models}{20}{subsection.6.2}%
+\contentsline {subsubsection}{\numberline {6.2.1}CurrentOperator}{20}{subsubsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2}MainModel}{21}{subsubsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.3}Package GUI}{21}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {6.3.1}GUI}{22}{subsubsection.6.3.1}%
+\contentsline {subsubsection}{\numberline {6.3.2}Theme}{23}{subsubsection.6.3.2}%
+\contentsline {subsubsection}{\numberline {6.3.3}Widget}{23}{subsubsection.6.3.3}%
+\contentsline {subsubsection}{\numberline {6.3.4}Package layouts}{24}{subsubsection.6.3.4}%
+\contentsline {paragraph}{TwoColumns}{25}{section*.3}%
+\contentsline {paragraph}{TwoRows}{25}{section*.4}%
+\contentsline {subsubsection}{\numberline {6.3.5}Package mainElements}{25}{subsubsection.6.3.5}%
+\contentsline {paragraph}{MainFrame}{26}{section*.5}%
+\contentsline {paragraph}{MainWindows}{26}{section*.6}%
+\contentsline {paragraph}{MenuBar}{27}{section*.7}%
+\contentsline {subsubsection}{\numberline {6.3.6}Package panels}{27}{subsubsection.6.3.6}%
+\contentsline {paragraph}{Loading}{27}{section*.8}%
+\contentsline {paragraph}{Home}{28}{section*.9}%
+\contentsline {paragraph}{CitySearch}{28}{section*.10}%
+\contentsline {paragraph}{CityVisualizer}{28}{section*.11}%
+\contentsline {paragraph}{OperatorHome}{29}{section*.12}%
+\contentsline {paragraph}{OperatorRegister}{30}{section*.13}%
+\contentsline {paragraph}{OperatorLogin}{30}{section*.14}%
+\contentsline {paragraph}{CenterCreateNew}{30}{section*.15}%
+\contentsline {paragraph}{CityAddData}{31}{section*.16}%
+\contentsline {section}{\numberline {7}Pattern utilizzati}{32}{section.7}%

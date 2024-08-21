@@ -25,7 +25,7 @@ import shared.utils.Interfaces;
 import shared.record.QueryCondition;
 
 /**
- * La classe {@code CenterCreateNew} rappresenta un pannello per la creazione di
+ * La classe {@code CenterCreateNew} rappresenta il pannello per la creazione di
  * un nuovo Centro di Monitoraggio da parte dell'operatore.
  * <p>
  * Il pannello consente all'operatore di inserire informazioni sul centro, come
@@ -138,6 +138,9 @@ public class CenterCreateNew extends TwoColumns implements Interfaces.UIPanel {
         this.mainModel = mainModel;
     }
 
+    /**
+     * Pulisce i campi di testo dell'interfaccia.
+     */
     private void clearFields() {
         textfieldCenterName.setText("");
         textfieldStreetName.setText("");

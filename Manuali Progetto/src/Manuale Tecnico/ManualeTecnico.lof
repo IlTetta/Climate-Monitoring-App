@@ -4,8 +4,16 @@
 \contentsline {figure}{\numberline {4}{\ignorespaces UML delle classi Functions e Constants}}{10}{figure.4}%
 \contentsline {figure}{\numberline {5}{\ignorespaces UML delle classi Interfaces}}{11}{figure.5}%
 \contentsline {figure}{\numberline {6}{\ignorespaces UML del package server}}{12}{figure.6}%
-\contentsline {figure}{\numberline {7}{\ignorespaces Costruttore della classe CurrentOperator}}{27}{figure.7}%
-\contentsline {figure}{\numberline {8}{\ignorespaces Schema del pattern Singleton}}{28}{figure.8}%
-\contentsline {figure}{\numberline {9}{\ignorespaces Interfaccia CurrentUserChangeListener}}{28}{figure.9}%
-\contentsline {figure}{\numberline {10}{\ignorespaces Metodo notifyCurrentUserChange}}{29}{figure.10}%
-\contentsline {figure}{\numberline {11}{\ignorespaces Schema del pattern Observer}}{29}{figure.11}%
+\contentsline {figure}{\numberline {7}{\ignorespaces UML del package implementationRMI}}{15}{figure.7}%
+\contentsline {figure}{\numberline {8}{\ignorespaces UML della classe MainModel}}{21}{figure.8}%
+\contentsline {figure}{\numberline {9}{\ignorespaces UML del package GUI}}{22}{figure.9}%
+\contentsline {figure}{\numberline {10}{\ignorespaces UML della classe Widget}}{24}{figure.10}%
+\contentsline {figure}{\numberline {11}{\ignorespaces UML del package layouts}}{25}{figure.11}%
+\contentsline {figure}{\numberline {12}{\ignorespaces UML del package mainElements}}{26}{figure.12}%
+\contentsline {figure}{\numberline {13}{\ignorespaces UML del package panels}}{27}{figure.13}%
+\contentsline {figure}{\numberline {14}{\ignorespaces UML della classe CityVisualizer}}{29}{figure.14}%
+\contentsline {figure}{\numberline {15}{\ignorespaces Costruttore della classe CurrentOperator}}{32}{figure.15}%
+\contentsline {figure}{\numberline {16}{\ignorespaces Schema del pattern Singleton}}{33}{figure.16}%
+\contentsline {figure}{\numberline {17}{\ignorespaces Interfaccia CurrentUserChangeListener}}{33}{figure.17}%
+\contentsline {figure}{\numberline {18}{\ignorespaces Metodo notifyCurrentUserChange}}{34}{figure.18}%
+\contentsline {figure}{\numberline {19}{\ignorespaces Schema del pattern Observer}}{34}{figure.19}%

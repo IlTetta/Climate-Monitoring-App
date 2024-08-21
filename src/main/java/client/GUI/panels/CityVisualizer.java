@@ -23,7 +23,7 @@ import shared.utils.Constants.Legend;
 import shared.record.QueryCondition;
 
 /**
- * La classe {@code CityVisualizer} rappresenta un pannello Swing per la
+ * La classe {@code CityVisualizer} rappresenta il pannello per la
  * visualizzazione dei dati di una città, inclusi i dati meteorologici relativi
  * a diverse categorie.
  * <p>
