@@ -138,7 +138,7 @@ public class CitySearch extends TwoColumns implements Interfaces.UIPanel {
                     String restOfString = cityName.substring(1).toLowerCase();
                     cityName = firstChar + restOfString;
 
-                    conditions.add(new QueryCondition("name", cityName));
+                    conditions.add(new QueryCondition("asciiname", cityName));
                     try {
                         result = mainModel.dataQuery.getCityBy(conditions);
                     } catch (SQLException ex) {

@@ -9,6 +9,7 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.List;
 
+import server.Server;
 import shared.interfacesRMI.LogicOperatorInterface;
 import shared.interfacesRMI.DataHandlerInterface;
 import shared.interfacesRMI.DataQueryInterface;
@@ -79,6 +80,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      */
     @Override
     public synchronized RecordOperator performLogin(String username, String password) throws RemoteException, SQLException {
+        Server.resetInactivityTimer();
         validateLoginInputs(username, password);
 
         List<QueryCondition> conditions = List.of(
@@ -109,6 +111,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
     public synchronized void performRegistration(String nameSurname, String taxCode, String email, String username,
                                     String password, Integer centerID) throws RemoteException, SQLException, IllegalArgumentException {
 
+        Server.resetInactivityTimer();
         validateRegistrationInputs(nameSurname, taxCode, email, username, password);
 
         dataHandler.addNewOperator(nameSurname, taxCode, email, username,
@@ -133,6 +136,7 @@ public class LogicOperatorImp extends UnicastRemoteObject implements LogicOperat
      */
     @Override
     public synchronized RecordOperator associateCenter(Integer operatorID, Integer centerID) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         RecordOperator currentOperator = dataQuery.getOperatorBy(operatorID);
 
         if (currentOperator.centerID() != 0) {

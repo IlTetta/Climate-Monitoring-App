@@ -1,0 +1,1467 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 24.1) (preloaded format=pdflatex 2024.2.3)  21 AUG 2024 17:44
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"c:/Users/utente/IdeaProjects/Progetto_B_MVN/doc/Manuali Progetto/src/Manuale Tecnico/ManualeTecnico.tex"
+(c:/Users/utente/IdeaProjects/Progetto_B_MVN/doc/Manuali Progetto/src/Manuale Tecnico/ManualeTecnico.tex
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+(C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\fix-cm.sty
+Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2023/05/17 v1.4n Standard LaTeX document class
+(C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\size10.clo
+File: size10.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
+)
+\c@part=\count187
+\c@section=\count188
+\c@subsection=\count189
+\c@subsubsection=\count190
+\c@paragraph=\count191
+\c@subparagraph=\count192
+\c@figure=\count193
+\c@table=\count194
+\abovecaptionskip=\skip48
+\belowcaptionskip=\skip49
+\bibindent=\dimen140
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+\KV@toks@=\toks17
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 107.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen141
+\Gin@req@width=\dimen142
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/background\background.sty
+Package: background 2014/03/04 v2.1 background material
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/xkeyval\xkeyval.sty
+Package: xkeyval 2022/06/16 v2.9 package option processing (HA)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkeyval.tex (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/xkeyval\xkvutils.tex
+\XKV@toks=\toks18
+\XKV@tempa@toks=\toks19
+)
+\XKV@depth=\count195
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
+\pgfutil@everybye=\toks20
+\pgfutil@tempdima=\dimen143
+\pgfutil@tempdimb=\dimen144
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
+\pgfutil@abb=\box51
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks21
+\pgfkeys@temptoks=\toks22
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks23
+))
+\pgf@x=\dimen145
+\pgf@y=\dimen146
+\pgf@xa=\dimen147
+\pgf@ya=\dimen148
+\pgf@xb=\dimen149
+\pgf@yb=\dimen150
+\pgf@xc=\dimen151
+\pgf@yc=\dimen152
+\pgf@xd=\dimen153
+\pgf@yd=\dimen154
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count196
+\c@pgf@countb=\count197
+\c@pgf@countc=\count198
+\c@pgf@countd=\count199
+\t@pgf@toka=\toks24
+\t@pgf@tokb=\toks25
+\t@pgf@tokc=\toks26
+\pgf@sys@id@count=\count266
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count267
+\pgfsyssoftpath@bigbuffer@items=\count268
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+\pgfmath@dimen=\dimen155
+\pgfmath@count=\count269
+\pgfmath@box=\box52
+\pgfmath@toks=\toks27
+\pgfmath@stack@operand=\toks28
+\pgfmath@stack@operation=\toks29
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count270
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen156
+\pgf@picmaxx=\dimen157
+\pgf@picminy=\dimen158
+\pgf@picmaxy=\dimen159
+\pgf@pathminx=\dimen160
+\pgf@pathmaxx=\dimen161
+\pgf@pathminy=\dimen162
+\pgf@pathmaxy=\dimen163
+\pgf@xx=\dimen164
+\pgf@xy=\dimen165
+\pgf@yx=\dimen166
+\pgf@yy=\dimen167
+\pgf@zx=\dimen168
+\pgf@zy=\dimen169
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen170
+\pgf@path@lasty=\dimen171
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen172
+\pgf@shorten@start@additional=\dimen173
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box53
+\pgf@hbox=\box54
+\pgf@layerbox@main=\box55
+\pgf@picture@serial@count=\count271
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen174
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen175
+\pgf@pt@y=\dimen176
+\pgf@pt@temp=\dimen177
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen178
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen179
+\pgf@sys@shading@range@num=\count272
+\pgf@shadingcount=\count273
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box56
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box57
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen180
+\pgf@nodesepend=\dimen181
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen182
+\pgffor@skip=\dimen183
+\pgffor@stack=\toks30
+\pgffor@toks=\toks31
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count274
+\pgfplotmarksize=\dimen184
+)
+\tikz@lastx=\dimen185
+\tikz@lasty=\dimen186
+\tikz@lastxsaved=\dimen187
+\tikz@lastysaved=\dimen188
+\tikz@lastmovetox=\dimen189
+\tikz@lastmovetoy=\dimen190
+\tikzleveldistance=\dimen191
+\tikzsiblingdistance=\dimen192
+\tikz@figbox=\box58
+\tikz@figbox@bg=\box59
+\tikz@tempbox=\box60
+\tikz@tempbox@bg=\box61
+\tikztreelevel=\count275
+\tikznumberofchildren=\count276
+\tikznumberofcurrentchild=\count277
+\tikz@fig@count=\count278
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count279
+\pgfmatrixcurrentcolumn=\count280
+\pgf@matrix@numberofcolumns=\count281
+)
+\tikz@expandcount=\count282
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/everypage\everypage.sty
+Package: everypage 2020/10/17 R2.0b Hooks to run on every page
+
+
+Package everypage Warning: Functionality similar to this package has recently
+(everypage)                been implemented in LaTeX. This package is now in
+(everypage)                legacy status.
+(everypage)                Please, don't use it in new documents and packages.
+
+
+Package everypage Warning: You appear to be running a version of LaTeX
+(everypage)                providing the new functionality.
+(everypage)                Doing the best to deliver the original `everypage`
+(everypage)                interface on top of it. Strict equivalence is
+(everypage)                not possible, breakage may occur.
+(everypage)                If truly needed, Use `everypage-1x` to force the
+(everypage)                loading of an older code base.
+
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/tools\afterpage.sty
+Package: afterpage 2023/07/04 v1.08 After-Page Package (DPC)
+\AP@output=\toks32
+\AP@partial=\box62
+\AP@footins=\box63
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count283
+\float@exts=\toks33
+\float@box=\box64
+\@float@everytoks=\toks34
+\@floatcapt=\box65
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+Package: eso-pic 2023/05/03 v3.0c eso-pic (RN)
+\ESO@tempdima=\dimen193
+\ESO@tempdimb=\dimen194
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2024-01-20 v7.01h Hypertext links for LaTeX
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2022/02/03 v1.0f TeX engine tests
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2023-11-26 v2.56 Cross-referencing by name of section
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
+))
+\c@section@level=\count284
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count285
+)
+\@linkdim=\dimen195
+\Hy@linkcounter=\count286
+\Hy@pagecounter=\count287
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2024-01-20 v7.01h Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+\Hy@SavedSpaceFactor=\count288
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
+File: puenc.def 2024-01-20 v7.01h Hyperref: PDF Unicode definition (HO)
+Now handling font encoding PU ...
+... no UTF-8 mapping file for font encoding PU
+)
+Package hyperref Info: Hyper figures OFF on input line 4179.
+Package hyperref Info: Link nesting OFF on input line 4184.
+Package hyperref Info: Hyper index ON on input line 4187.
+Package hyperref Info: Plain pages OFF on input line 4194.
+Package hyperref Info: Backreferencing OFF on input line 4199.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4446.
+\c@Hy@tempcnt=\count289
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4784.
+\XeTeXLinkMargin=\dimen196
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count290
+\Field@Width=\dimen197
+\Fld@charsize=\dimen198
+Package hyperref Info: Hyper figures OFF on input line 6063.
+Package hyperref Info: Link nesting OFF on input line 6068.
+Package hyperref Info: Hyper index ON on input line 6071.
+Package hyperref Info: backreferencing OFF on input line 6078.
+Package hyperref Info: Link coloring OFF on input line 6083.
+Package hyperref Info: Link coloring with OCG OFF on input line 6088.
+Package hyperref Info: PDF/A mode OFF on input line 6093.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
+package with kernel methods
+)
+\Hy@abspage=\count291
+\c@Item=\count292
+\c@Hfootnote=\count293
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2024-01-20 v7.01h Hyperref driver for pdfTeX
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend package
+with kernel methods
+)
+\Fld@listcount=\count294
+\c@bookmark@seq@number=\count295
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+)
+\Hy@SectionHShift=\skip50
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
+\lst@mode=\count296
+\lst@gtempboxa=\box66
+\lst@token=\toks35
+\lst@length=\count297
+\lst@currlwidth=\dimen199
+\lst@column=\count298
+\lst@pos=\count299
+\lst@lostspace=\dimen256
+\lst@width=\dimen257
+\lst@newlines=\count300
+\lst@lineno=\count301
+\lst@maxwidth=\dimen258
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+File: lstmisc.sty 2023/02/27 1.9 (Carsten Heinz)
+\c@lstnumber=\count302
+\lst@skipnumbers=\count303
+\lst@framebox=\box67
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+File: listings.cfg 2023/02/27 1.9 listings configuration
+))
+Package: listings 2023/02/27 1.9 (Carsten Heinz)
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
+File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count304
+\l__pdf_internal_box=\box68
+) (ManualeTecnico.aux)
+\openout1 = `ManualeTecnico.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count305
+\scratchdimen=\dimen259
+\scratchbox=\box69
+\nofMPsegments=\count306
+\nofMParguments=\count307
+\everyMPshowfont=\toks36
+\MPscratchCnt=\count308
+\MPscratchDim=\dimen260
+\MPnumerator=\count309
+\makeMPintoPDFobject=\count310
+\everyMPtoPDFconversion=\toks37
+) (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+ (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+))
+Package hyperref Info: Link coloring OFF on input line 35.
+ (ManualeTecnico.out) (ManualeTecnico.out)
+\@outlinefile=\write4
+\openout4 = `ManualeTecnico.out'.
+
+\c@lstlisting=\count311
+<../../img/firstpage_background.png, id=210, 594.585pt x 833.295pt>
+File: ../../img/firstpage_background.png Graphic file (type png)
+<use ../../img/firstpage_background.png>
+Package pdftex.def Info: ../../img/firstpage_background.png  used on input line 42.
+(pdftex.def)             Requested size: 567.26585pt x 795.00795pt.
+ [1{C:/Users/utente/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}
+
+ <../../img/firstpage_background.png>] (ManualeTecnico.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 5.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 5.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.46 ...6}Package panels}{27}{subsubsection.6.3.6}
+                                                  %
+<../../img/number page.png, id=261, 651.43375pt x 602.25pt>
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 46.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [1
+
+ <../../img/number page.png>])
+\tf@toc=\write5
+\openout5 = `ManualeTecnico.toc'.
+
+ (ManualeTecnico.lof)
+\tf@lof=\write6
+\openout6 = `ManualeTecnico.lof'.
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 56.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [2] (capitoli/Introduzione.tex) (capitoli/Progettazione.tex) (capitoli/StrutturaGenerale.tex
+Overfull \hbox (26.41556pt too wide) in paragraph at lines 5--8
+[]\OT1/cmtt/m/n/10 client \OT1/cmr/m/n/10 nel quale sono pre-senti il pack-age \OT1/cmtt/m/n/10 GUI \OT1/cmr/m/n/10 che con-tiene le classi dell'interfaccia
+ []
+
+
+Overfull \hbox (11.86105pt too wide) in paragraph at lines 5--8
+\OT1/cmr/m/n/10 grafica, \OT1/cmtt/m/n/10 mainPackage \OT1/cmr/m/n/10 che con-tiene la classe punto di in-gresso dell'applicazione
+ []
+
+<img/packageStructure.png, id=325, 495.0495pt x 388.45125pt>
+File: img/packageStructure.png Graphic file (type png)
+<use img/packageStructure.png>
+Package pdftex.def Info: img/packageStructure.png  used on input line 16.
+(pdftex.def)             Requested size: 276.00105pt x 216.57692pt.
+) (capitoli/Shared.tex
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 1.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [3
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 7--8
+
+ []
+
+<img/interfaceRMIPackage.png, id=332, 2103.86pt x 903.375pt>
+File: img/interfaceRMIPackage.png Graphic file (type png)
+<use img/interfaceRMIPackage.png>
+Package pdftex.def Info: img/interfaceRMIPackage.png  used on input line 11.
+(pdftex.def)             Requested size: 420.76456pt x 180.6718pt.
+
+Overfull \hbox (75.76456pt too wide) in paragraph at lines 11--12
+ [][] 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 15.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[4 <./img/packageStructure.png>]
+Overfull \hbox (5.4972pt too wide) in paragraph at lines 22--23
+[]\OT1/cmtt/m/n/10 void addNewOperator(String nameSurname, String taxCode, String
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 23--24
+[]\OT1/cmtt/m/n/10 RecordCenter addNewCenter(String centerName, String streetName,
+ []
+
+
+Overfull \hbox (47.49683pt too wide) in paragraph at lines 23--24
+\OT1/cmtt/m/n/10 String streetNumber, String CAP, String townName, String districtName,
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 24--25
+[]\OT1/cmtt/m/n/10 void addNewWeather(Integer cityID, Integer centerID, String date,
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 RecordWeather.WeatherData wind, RecordWeather.WeatherData humidity,
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 RecordWeather.WeatherData pressure, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (94.74641pt too wide) in paragraph at lines 24--25
+\OT1/cmtt/m/n/10 temperature, RecordWeather.WeatherData precipitation, RecordWeather.WeatherData
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 35.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[5 <./img/interfaceRMIPackage.png (PNG copy)>]
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 38--39
+[]\OT1/cmtt/m/n/10 RecordOperator[] getOperatorBy(List<QueryCondition> conditions) 
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 42--43
+[]\OT1/cmtt/m/n/10 RecordWeather[] getWeatherBy(List<QueryCondition> conditions) 
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
+[]\OT1/cmtt/m/n/10 void initNewCenter(String centerName, String streetName, String
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 52--53
+\OT1/cmtt/m/n/10 streetNumber, String CAP, String townName, String districtName,
+ []
+
+
+Overfull \hbox (10.74715pt too wide) in paragraph at lines 53--54
+[]\OT1/cmtt/m/n/10 void addDataToCenter(Integer cityID, Integer operatorID, String
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 61--62
+[]\OT1/cmtt/m/n/10 LogicCityImp.WeatherTableData getWeatherTableData(RecordWeather[]
+ []
+
+
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 69--70
+[]\OT1/cmtt/m/n/10 RecordOperator performLogin(String username, String password) 
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 70--71
+[]\OT1/cmtt/m/n/10 void performRegistration(String nameSurname, String taxCode, String
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 71.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[6]
+Overfull \hbox (36.99692pt too wide) in paragraph at lines 71--72
+[]\OT1/cmtt/m/n/10 RecordOperator associateCenter(Integer operatorID, Integer centerID) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--76
+
+ []
+
+<img/recordPackage.png, id=347, 1935.23pt x 1270.7475pt>
+File: img/recordPackage.png Graphic file (type png)
+<use img/recordPackage.png>
+Package pdftex.def Info: img/recordPackage.png  used on input line 79.
+(pdftex.def)             Requested size: 387.03914pt x 254.14499pt.
+
+Overfull \hbox (42.03914pt too wide) in paragraph at lines 79--80
+ [][] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 84--86
+
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 86.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[7 <./img/recordPackage.png (PNG copy)>]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 122.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [8]
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 152.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [9]
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+
+ []
+
+<img/utils_1.png, id=360, 1937.2375pt x 1174.3875pt>
+File: img/utils_1.png Graphic file (type png)
+<use img/utils_1.png>
+Package pdftex.def Info: img/utils_1.png  used on input line 160.
+(pdftex.def)             Requested size: 387.44064pt x 234.87334pt.
+
+Overfull \hbox (42.44064pt too wide) in paragraph at lines 160--161
+ [][] 
+ []
+
+<img/utils_2.png, id=361, 2647.8925pt x 1575.8875pt>
+File: img/utils_2.png Graphic file (type png)
+<use img/utils_2.png>
+Package pdftex.def Info: img/utils_2.png  used on input line 167.
+(pdftex.def)             Requested size: 264.80476pt x 157.59798pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 171.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[10 <./img/utils_1.png (PNG copy)>]
+Overfull \hbox (37.16676pt too wide) in paragraph at lines 173--176
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Constants \OT1/cmr/m/n/10 for-nisce una se-rie di costanti e definizioni uti-liz-zate nell'applicazione.
+ []
+
+
+Overfull \hbox (7.08156pt too wide) in paragraph at lines 182--183
+[]\OT1/cmtt/m/n/10 public static String getCurrentDateString()\OT1/cmr/m/n/10 : resti-tu-isce una stringa
+ []
+
+
+Overfull \hbox (1.41437pt too wide) in paragraph at lines 183--184
+[]\OT1/cmtt/m/n/10 public static boolean isDateValid(String dateString)\OT1/cmr/m/n/10 : ver-i-fica se
+ []
+
+
+Overfull \hbox (1.22021pt too wide) in paragraph at lines 186--187
+[]\OT1/cmtt/m/n/10 public static Integer zeroToNull(Integer value)\OT1/cmr/m/n/10 : con-verte un val-
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 194.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[11 <./img/utils_2.png (PNG copy)>]) (capitoli/Server.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+<img/serverPackage.png, id=370, 3988.9025pt x 2039.62pt>
+File: img/serverPackage.png Graphic file (type png)
+<use img/serverPackage.png>
+Package pdftex.def Info: img/serverPackage.png  used on input line 6.
+(pdftex.def)             Requested size: 310.4979pt x 158.7536pt.
+
+Overfull \hbox (4.52797pt too wide) in paragraph at lines 12--16
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Server \OT1/cmr/m/n/10 ^^Re pro-get-tata per con-trol-lare l'esistenza delle tabelle nel database,
+ []
+
+
+Overfull \hbox (41.05629pt too wide) in paragraph at lines 12--16
+\OT1/cmr/m/n/10 metodi per in-ter-rog-are, ge-stire e ma-nipo-lare i dati rel-a-tivi alle op-er-azioni dell'applicazione. 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 16.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[12 <./img/serverPackage.png (PNG copy)>]
+Overfull \hbox (4.5651pt too wide) in paragraph at lines 17--18
+[]\OT1/cmr/bx/n/10 Creazione con-nes-sione al database\OT1/cmr/m/n/10 : uti-lizza la classe \OT1/cmtt/m/n/10 DataBaseManager
+ []
+
+
+Overfull \hbox (35.797pt too wide) in paragraph at lines 18--19
+[]\OT1/cmr/bx/n/10 Creazione e Con-fig-u-razione delle Tabelle\OT1/cmr/m/n/10 : uti-lizza la classe \OT1/cmtt/m/n/10 DataBaseManager
+ []
+
+
+Overfull \hbox (0.2496pt too wide) in paragraph at lines 19--21
+\OT1/cmr/m/n/10 RMI sulla porta spec-i-fi-cata (di de-fault, la porta 1099) uti-liz-zando il metodo 
+ []
+
+
+Overfull \hbox (3.08167pt too wide) in paragraph at lines 40--41
+[]\OT1/cmtt/m/n/10 private static void startInactivityTimer()\OT1/cmr/m/n/10 : questo metodo pri-vato
+ []
+
+
+Overfull \hbox (0.91562pt too wide) in paragraph at lines 41--42
+[]\OT1/cmtt/m/n/10 private static void shutdown()\OT1/cmr/m/n/10 : questo metodo pri-vato chi-ude la con-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--51
+
+ []
+
+
+Overfull \hbox (6.74771pt too wide) in paragraph at lines 45--51
+\OT1/cmr/m/n/10 Il costrut-tore \OT1/cmtt/m/n/10 public DataBaseManager(String host, String password) \OT1/cmr/m/n/10 crea
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 51.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[13]
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 53--54
+[]\OT1/cmtt/m/n/10 public static boolean checkTableExistence(Connection conn, String
+ []
+
+
+Overfull \hbox (42.1361pt too wide) in paragraph at lines 55--57
+\OT1/cmr/m/n/10 tabelle \OT1/cmtt/m/n/10 coordinatemonitoraggio, centrimonitoraggio, operatoriregistrati
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 57--58
+[]\OT1/cmtt/m/n/10 public static void populateCoordinateMonitoraggio(Connectionconn,
+ []
+
+
+Overfull \hbox (40.5818pt too wide) in paragraph at lines 57--58
+\OT1/cmtt/m/n/10 String csvFilePath)\OT1/cmr/m/n/10 : questo metodo popola la tabella \OT1/cmtt/m/n/10 coordinatemonitoraggio
+ []
+
+
+Overfull \hbox (8.66591pt too wide) in paragraph at lines 58--60
+[]\OT1/cmtt/m/n/10 getConnection()\OT1/cmr/m/n/10 : questo metodo pub-blico resti-tu-isce l'oggetto \OT1/cmtt/m/n/10 Connection
+ []
+
+
+Overfull \hbox (1.08147pt too wide) in paragraph at lines 63--65
+[]\OT1/cmtt/m/n/10 connectionMaker(String url, String password)\OT1/cmr/m/n/10 : questo metodo ^^Re re-
+ []
+
+
+Overfull \hbox (5.91602pt too wide) in paragraph at lines 63--65
+\OT1/cmtt/m/n/10 DriverManager \OT1/cmr/m/n/10 di JDBC. Il metodo con-figura an-che un oggetto \OT1/cmtt/m/n/10 Properties
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 68--69
+
+ []
+
+<img/implementatioRMIPackage.png, id=380, 3001.2125pt x 1583.9175pt>
+File: img/implementatioRMIPackage.png Graphic file (type png)
+<use img/implementatioRMIPackage.png>
+Package pdftex.def Info: img/implementatioRMIPackage.png  used on input line 72.
+(pdftex.def)             Requested size: 310.4979pt x 163.86313pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 76.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 78--83
+
+ []
+
+
+Overfull \hbox (15.9971pt too wide) in paragraph at lines 84--87
+[]\OT1/cmtt/m/n/10 addNewOperator(String nameSurname, String taxcode, String email,
+ []
+
+
+Overfull \hbox (4.41449pt too wide) in paragraph at lines 84--87
+\OT1/cmtt/m/n/10 String username, String password, Integer centerID)\OT1/cmr/m/n/10 : ag-giunge un
+ []
+
+
+Overfull \hbox (52.74678pt too wide) in paragraph at lines 87--90
+[]\OT1/cmtt/m/n/10 addNewCenter(String centerName, String streetName, String streetNumber,
+ []
+
+
+Overfull \hbox (34.52475pt too wide) in paragraph at lines 87--90
+\OT1/cmtt/m/n/10 String CAP, String townName, String districName, Integer[] cityIDs)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (9.3031pt too wide) in paragraph at lines 87--90
+\OT1/cmr/m/n/10 ec-cezioni \OT1/cmtt/m/n/10 SQLException, RemoteException, IllegalArgumentException
+ []
+
+
+Overfull \hbox (131.4961pt too wide) in paragraph at lines 90--93
+[]\OT1/cmtt/m/n/10 addNewWeather(Integer cityID, Integer centerID, String date, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 90--93
+\OT1/cmtt/m/n/10 wind, RecordWeather.WeatherData humidity, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (68.49664pt too wide) in paragraph at lines 90--93
+\OT1/cmtt/m/n/10 pressure, RecordWeather.WeatherData temperature, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (120.99619pt too wide) in paragraph at lines 90--93
+\OT1/cmtt/m/n/10 precipitation, RecordWeather.WeatherData glacierElevation, RecordWeather.WeatherData
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 93.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[15 <./img/implementatioRMIPackage.png (PNG copy)>]
+Overfull \hbox (16.04527pt too wide) in paragraph at lines 93--96
+\OT1/cmr/m/n/10 per es-eguire l'operazione. Lan-cia ec-cezioni \OT1/cmtt/m/n/10 SQLException, RemoteException
+ []
+
+
+Overfull \hbox (64.72003pt too wide) in paragraph at lines 99--101
+[]\OT1/cmtt/m/n/10 updateRecord(String tableName, int ID, Object record)\OT1/cmr/m/n/10 : es-egue l'aggiornamento
+ []
+
+
+Overfull \hbox (5.60852pt too wide) in paragraph at lines 103--105
+[]\OT1/cmtt/m/n/10 setUpdateParameters(PreparedStatement stmt, Object object)\OT1/cmr/m/n/10 : im-
+ []
+
+
+Overfull \hbox (73.7466pt too wide) in paragraph at lines 105--107
+[]\OT1/cmtt/m/n/10 setWeatherData(PreparedStatement stmt, int index, RecordWeather.WeatherData
+ []
+
+
+Overfull \hbox (47.61057pt too wide) in paragraph at lines 105--107
+\OT1/cmtt/m/n/10 data)\OT1/cmr/m/n/10 : im-posta i dati cli-matici (score e com-menti) all'interno del \OT1/cmtt/m/n/10 PreparedStatement
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 112--116
+
+ []
+
+
+Overfull \hbox (4.33174pt too wide) in paragraph at lines 118--119
+[]\OT1/cmtt/m/n/10 getOperatorBy(Integer ID)\OT1/cmr/m/n/10 : resti-tu-isce un oggetto \OT1/cmtt/m/n/10 RecordOperator \OT1/cmr/m/n/10 con-
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 122.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[16]
+Overfull \hbox (22.85893pt too wide) in paragraph at lines 128--129
+[]\OT1/cmtt/m/n/10 createSQLCondition(List<QueryCondition> conditions)\OT1/cmr/m/n/10 : crea una stringa
+ []
+
+
+Overfull \hbox (52.74678pt too wide) in paragraph at lines 129--130
+[]\OT1/cmtt/m/n/10 setPreparedStatementValues(PreparedStatement stmt, List<QueryCondition>
+ []
+
+
+Overfull \hbox (1.99838pt too wide) in paragraph at lines 133--134
+[]\OT1/cmtt/m/n/10 mapResultSetToRecordWeather(ResultSet rs)\OT1/cmr/m/n/10 : mappa i risul-tati di una
+ []
+
+
+Overfull \hbox (50.72299pt too wide) in paragraph at lines 138--142
+\OT1/cmr/m/n/10 la ges-tione di cen-tri di mon-i-tor-ag-gio e dei rel-a-tivi dati cli-matici for-nendo un'implementazione
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--142
+
+ []
+
+
+Overfull \hbox (57.99673pt too wide) in paragraph at lines 143--146
+[]\OT1/cmtt/m/n/10 initNewCenter(String centerName, String streetName, String streetNumber,
+ []
+
+
+Overfull \hbox (39.7747pt too wide) in paragraph at lines 143--146
+\OT1/cmtt/m/n/10 String CAP, String townName, String districtName, Integer[] cityIDs)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (26.49701pt too wide) in paragraph at lines 146--149
+[]\OT1/cmtt/m/n/10 addDataToCenter(Integer centerID, Integer operatorID, String date,
+ []
+
+
+Overfull \hbox (23.41731pt too wide) in paragraph at lines 146--149
+\OT1/cmr/m/n/10 per una citt^^Ra speci-fica e li as-so-cia al cen-tro di mon-i-tor-ag-gio gestito dall'operatore
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 149.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[17]
+Overfull \hbox (5.4972pt too wide) in paragraph at lines 152--154
+[]\OT1/cmtt/m/n/10 validateCenterParameters(String centerName, String streetName,
+ []
+
+
+Overfull \hbox (47.49683pt too wide) in paragraph at lines 152--154
+\OT1/cmtt/m/n/10 String streetNumber, String CAP, String townName, String districtName,
+ []
+
+
+Overfull \hbox (3.52534pt too wide) in paragraph at lines 156--158
+[]\OT1/cmtt/m/n/10 validateWeatherData(String date, Object[][] tableDatas)\OT1/cmr/m/n/10 : questo
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 161--167
+
+ []
+
+
+Overfull \hbox (0.97003pt too wide) in paragraph at lines 169--170
+[]\OT1/cmtt/m/n/10 public int getCategoryRecordCount(String category)\OT1/cmr/m/n/10 : resti-tu-isce il
+ []
+
+
+Overfull \hbox (2.96971pt too wide) in paragraph at lines 170--171
+[]\OT1/cmtt/m/n/10 public List<String> getCategoryComments(String category)\OT1/cmr/m/n/10 : resti-
+ []
+
+
+Overfull \hbox (81.77434pt too wide) in paragraph at lines 171--172
+[]\OT1/cmtt/m/n/10 public WheatherTableData getWeatherTableData(RecordWeather[] weatherRecords)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 175--176
+[]\OT1/cmtt/m/n/10 private void processCatgeory(RecordWeather.WeatherData data, String
+ []
+
+
+Overfull \hbox (2.83182pt too wide) in paragraph at lines 179--184
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 LogicOperatorImp \OT1/cmr/m/n/10 im-ple-menta l'interfaccia \OT1/cmtt/m/n/10 LogicOperatorInterface
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--184
+
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 184.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[18]
+Overfull \hbox (39.7747pt too wide) in paragraph at lines 185--186
+[]\OT1/cmtt/m/n/10 public RecordOperator performLogin(String username, String password)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 186--187
+[]\OT1/cmtt/m/n/10 public void performRegistration(String nameSurname, String taxcode,
+ []
+
+
+Overfull \hbox (24.02484pt too wide) in paragraph at lines 186--187
+\OT1/cmtt/m/n/10 String email, String username, String password, Integer centerID)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (21.24706pt too wide) in paragraph at lines 187--188
+[]\OT1/cmtt/m/n/10 public RecordOperator associateCenter(Integer operatorID, Integer
+ []
+
+
+Overfull \hbox (4.41484pt too wide) in paragraph at lines 192--193
+[]\OT1/cmtt/m/n/10 private String hashPassword(String password)\OT1/cmr/m/n/10 : gen-era un hash della
+ []
+
+
+Overfull \hbox (45.02466pt too wide) in paragraph at lines 193--194
+[]\OT1/cmtt/m/n/10 private boolean validateLoginInputs(String username, String password)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (5.4972pt too wide) in paragraph at lines 194--195
+[]\OT1/cmtt/m/n/10 private boolean validateRegistrationInputs(String nameSurname,
+ []
+
+
+Overfull \hbox (13.52493pt too wide) in paragraph at lines 194--195
+\OT1/cmtt/m/n/10 String taxcode, String email, String username, String password)\OT1/cmr/m/n/10 :
+ []
+
+) (capitoli/Client.tex
+Underfull \hbox (badness 10000) in paragraph at lines 2--3
+
+ []
+
+
+Overfull \hbox (13.3605pt too wide) in paragraph at lines 10--11
+[]\OT1/cmtt/m/n/10 public void launchGUI()\OT1/cmr/m/n/10 : fa par-tire l'interfaccia grafica dell'appplicazione. 
+ []
+
+
+Overfull \hbox (42.69305pt too wide) in paragraph at lines 11--12
+[]\OT1/cmtt/m/n/10 public static void main(String[] args)\OT1/cmr/m/n/10 : metodo di in-gresso dell'applicazione. 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 12.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 15--16
+
+ []
+
+
+Overfull \hbox (10.19206pt too wide) in paragraph at lines 24--25
+[]\OT1/cmtt/m/n/10 public void setCurrentOperator(RecordOperator operator)\OT1/cmr/m/n/10 : im-posta
+ []
+
+
+Overfull \hbox (0.41493pt too wide) in paragraph at lines 25--26
+[]\OT1/cmtt/m/n/10 public RecordOperator getCurrentOperator()\OT1/cmr/m/n/10 : resti-tu-isce l'operatore
+ []
+
+
+Overfull \hbox (23.55334pt too wide) in paragraph at lines 28--29
+[]\OT1/cmtt/m/n/10 void onCurrentUserChange(RecordOperator newOperator)\OT1/cmr/m/n/10 : metodo chiam-
+ []
+
+
+Overfull \hbox (26.49701pt too wide) in paragraph at lines 29--30
+[]\OT1/cmtt/m/n/10 public void addCurrentUserChangeListener(CurrentUserChangeListener
+ []
+
+
+Overfull \hbox (2.30565pt too wide) in paragraph at lines 29--30
+\OT1/cmtt/m/n/10 listener)\OT1/cmr/m/n/10 : ag-giunge un lis-tener per os-ser-vare i cam-bi-a-menti dell'operatore
+ []
+
+
+Overfull \hbox (42.24687pt too wide) in paragraph at lines 30--31
+[]\OT1/cmtt/m/n/10 public void removeCurrentUserChangeListener(CurrentUserChangeListener
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 37.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[20]
+<img/mainModelUML.png, id=410, 859.21pt x 809.0225pt>
+File: img/mainModelUML.png Graphic file (type png)
+<use img/mainModelUML.png>
+Package pdftex.def Info: img/mainModelUML.png  used on input line 40.
+(pdftex.def)             Requested size: 241.49895pt x 227.38889pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 50--51
+
+ []
+
+<img/guiPackage.png, id=411, 1963.335pt x 1047.915pt>
+File: img/guiPackage.png Graphic file (type png)
+<use img/guiPackage.png>
+Package pdftex.def Info: img/guiPackage.png  used on input line 54.
+(pdftex.def)             Requested size: 310.4979pt x 165.71906pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 58.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[21 <./img/mainModelUML.png (PNG copy)>]
+Overfull \hbox (26.86057pt too wide) in paragraph at lines 64--65
+[]\OT1/cmtt/m/n/10 public void addPanels()\OT1/cmr/m/n/10 : ag-giunge tutti i pan-nelli uti-liz-zati nell'applicazione. 
+ []
+
+
+Overfull \hbox (1.4981pt too wide) in paragraph at lines 65--66
+[]\OT1/cmtt/m/n/10 public void addPanel(Interfaces.UIPanel Panel)\OT1/cmr/m/n/10 : ag-giunge un pan-
+ []
+
+
+Overfull \hbox (3.58131pt too wide) in paragraph at lines 68--69
+[]\OT1/cmtt/m/n/10 public Interfaces.UIWindows getMainWindowArea()\OT1/cmr/m/n/10 : resti-tu-isce l'area
+ []
+
+
+Overfull \hbox (36.47261pt too wide) in paragraph at lines 75--78
+\OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 Theme \OT1/cmr/m/n/10 gestisce il tema grafico dell'applicazione, in-clusa la modalit^^Rachiaro/scuro,
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 78.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[22 <./img/guiPackage.png (PNG copy)>]
+<img/UMLWidget.png, id=420, 1911.14pt x 1074.0125pt>
+File: img/UMLWidget.png Graphic file (type png)
+<use img/UMLWidget.png>
+Package pdftex.def Info: img/UMLWidget.png  used on input line 95.
+(pdftex.def)             Requested size: 310.4979pt x 174.484pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 99.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [23]
+Overfull \hbox (0.24724pt too wide) in paragraph at lines 101--102
+[]\OT1/cmtt/m/n/10 public FromPanel(Theme appTheme, String labelText, JComponent
+ []
+
+
+Overfull \hbox (8.13725pt too wide) in paragraph at lines 106--107
+[]\OT1/cmtt/m/n/10 public ComboItem(String label, int value)\OT1/cmr/m/n/10 : costrut-tore di un oggetto
+ []
+
+
+Overfull \hbox (5.08257pt too wide) in paragraph at lines 108--109
+[]\OT1/cmtt/m/n/10 public String toString()\OT1/cmr/m/n/10 : resti-tu-isce l'etichetta dell'elemento della lista
+ []
+
+
+Overfull \hbox (30.11168pt too wide) in paragraph at lines 112--113
+\OT1/cmr/m/n/10 In questo pack-age sono pre-senti le classi che definis-cono i lay-out uti-liz-zati nell'interfaccia
+ []
+
+<img/layoutsPackage.png, id=425, 1431.3475pt x 517.935pt>
+File: img/layoutsPackage.png Graphic file (type png)
+<use img/layoutsPackage.png>
+Package pdftex.def Info: img/layoutsPackage.png  used on input line 116.
+(pdftex.def)             Requested size: 310.4979pt x 112.34962pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 120.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[24 <./img/UMLWidget.png (PNG copy)>]
+<img/mainElementsPackage.png, id=431, 829.0975pt x 760.8425pt>
+File: img/mainElementsPackage.png Graphic file (type png)
+<use img/mainElementsPackage.png>
+Package pdftex.def Info: img/mainElementsPackage.png  used on input line 144.
+(pdftex.def)             Requested size: 207.0021pt x 189.95474pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 148.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [25 <./img/layoutsPackage.png (PNG copy)>]
+Overfull \hbox (19.65941pt too wide) in paragraph at lines 150--153
+ []\OT1/cmr/bx/n/10 MainFrame[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 MainFrame \OT1/cmr/m/n/10 rap-p-re-senta il frame prin-ci-pale dell'applicazione.
+ []
+
+
+Overfull \hbox (54.61201pt too wide) in paragraph at lines 159--163
+ []\OT1/cmr/bx/n/10 MainWindows[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 MainWindows \OT1/cmr/m/n/10 rap-p-re-senta la fines-tra prin-ci-pale dell'applicazione.
+ []
+
+
+Overfull \hbox (32.55435pt too wide) in paragraph at lines 168--169
+[]\OT1/cmtt/m/n/10 public void setAppInfo(String text)\OT1/cmr/m/n/10 : im-posta le in-for-mazioni sull'operatore
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 169.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[26 <./img/mainElementsPackage.png (PNG copy)>]
+Overfull \hbox (12.25056pt too wide) in paragraph at lines 173--177
+\OT1/cmr/m/n/10 verse sezioni dell'applicazione e for-nisce opzioni per cam-biare il tema dell'interfaccia
+ []
+
+<img/panelsPackage.png, id=444, 1999.47pt x 1150.2975pt>
+File: img/panelsPackage.png Graphic file (type png)
+<use img/panelsPackage.png>
+Package pdftex.def Info: img/panelsPackage.png  used on input line 186.
+(pdftex.def)             Requested size: 310.4979pt x 178.62776pt.
+
+Overfull \hbox (2.97089pt too wide) in paragraph at lines 198--199
+[]\OT1/cmtt/m/n/10 public Loading createPanel(GUI gui)\OT1/cmr/m/n/10 : crea il pan-nello di cari-ca-mento. 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 201.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[27 <./img/panelsPackage.png (PNG copy)>]
+Overfull \hbox (8.41624pt too wide) in paragraph at lines 216--219
+ []\OT1/cmr/bx/n/10 CitySearch[] \OT1/cmr/m/n/10 La classe \OT1/cmtt/m/n/10 CitySearch \OT1/cmr/m/n/10 rap-p-re-senta il pan-nello per ef-fet-tuare ricerche
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 240.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[28]
+<img/cityVisualizerUML.png, id=458, 1710.39pt x 602.25pt>
+File: img/cityVisualizerUML.png Graphic file (type png)
+<use img/cityVisualizerUML.png>
+Package pdftex.def Info: img/cityVisualizerUML.png  used on input line 246.
+(pdftex.def)             Requested size: 310.4979pt x 109.32846pt.
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 253--254
+[]\OT1/cmtt/m/n/10 public Component getTableCellRendererComponent(JTable table, Object
+ []
+
+
+Overfull \hbox (24.02484pt too wide) in paragraph at lines 253--254
+\OT1/cmtt/m/n/10 value, boolean isSelected, boolean hasFocus, int row, int column)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (6.58119pt too wide) in paragraph at lines 254--255
+[]\OT1/cmtt/m/n/10 public boolean isCellEditable(EventObject e)\OT1/cmr/m/n/10 : resti-tu-isce \OT1/cmtt/m/n/10 false \OT1/cmr/m/n/10 per
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 273.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[29 <./img/cityVisualizerUML.png (PNG copy)>]
+Overfull \hbox (25.13802pt too wide) in paragraph at lines 286--287
+[]\OT1/cmtt/m/n/10 public void addActionEvent()\OT1/cmr/m/n/10 : ag-giunge gli eventi per il lo-gin dell'operatore. 
+ []
+
+
+Overfull \hbox (45.02466pt too wide) in paragraph at lines 290--291
+[]\OT1/cmtt/m/n/10 private void proceedToCenterCreation(CurrentOperator currentOperator)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (8.58209pt too wide) in paragraph at lines 295--301
+\OT1/cmr/m/n/10 La co-mu-ni-cazione con il server RMI ^^Re gestita at-traverso l'interfaccia \OT1/cmtt/m/n/10 DataQueryImp
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 304.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[30]
+Overfull \hbox (6.16515pt too wide) in paragraph at lines 317--318
+[]\OT1/cmtt/m/n/10 public CityAddData createPanel(GUI gui)\OT1/cmr/m/n/10 : crea il pan-nello di ag-giunta
+ []
+
+
+Overfull \hbox (31.74696pt too wide) in paragraph at lines 330--331
+[]\OT1/cmtt/m/n/10 public Component getTableCellRendererComponent(JTable table, Object
+ []
+
+
+Overfull \hbox (24.02484pt too wide) in paragraph at lines 330--331
+\OT1/cmtt/m/n/10 value, boolean isSelected, boolean hasFocus, int row, int column)\OT1/cmr/m/n/10 :
+ []
+
+
+Overfull \hbox (2.69229pt too wide) in paragraph at lines 331--332
+[]\OT1/cmtt/m/n/10 public boolean isCellEditable(EventObject e)\OT1/cmr/m/n/10 : re-si-tu-isce \OT1/cmtt/m/n/10 false \OT1/cmr/m/n/10 per
+ []
+
+) (Pattern.tex
+<img/Singleton.png, id=472, 449.88075pt x 232.4685pt>
+File: img/Singleton.png Graphic file (type png)
+<use img/Singleton.png>
+Package pdftex.def Info: img/Singleton.png  used on input line 8.
+(pdftex.def)             Requested size: 345.0pt x 178.27412pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 12.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [31]
+<img/schema_singleton.png, id=478, 295.1025pt x 173.448pt>
+File: img/schema_singleton.png Graphic file (type png)
+<use img/schema_singleton.png>
+Package pdftex.def Info: img/schema_singleton.png  used on input line 17.
+(pdftex.def)             Requested size: 345.0pt x 202.77983pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 22.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [32 <./img/Singleton.png>]
+<img/currentUserChangeListener.png, id=484, 353.52075pt x 84.91725pt>
+File: img/currentUserChangeListener.png Graphic file (type png)
+<use img/currentUserChangeListener.png>
+Package pdftex.def Info: img/currentUserChangeListener.png  used on input line 27.
+(pdftex.def)             Requested size: 345.0pt x 82.87495pt.
+
+Overfull \hbox (80.57256pt too wide) in paragraph at lines 23--30
+\OT1/cmr/m/n/10 cor-rente cam-bia. La classe\OT1/cmtt/m/n/10 CurrentOperator \OT1/cmr/m/n/10 definisce un'interfaccia \OT1/cmtt/m/n/10 CurrentUserChangeListener
+ []
+
+
+Overfull \hbox (15.38937pt too wide) in paragraph at lines 23--30
+\OT1/cmr/m/n/10 che deve es-sere im-ple-men-tata da tutte le classi in-ter-es-sate ai cam-bi-a-menti dell'utente
+ []
+
+<img/notifyCurrentUserChange.png, id=485, 351.11176pt x 78.2925pt>
+File: img/notifyCurrentUserChange.png Graphic file (type png)
+<use img/notifyCurrentUserChange.png>
+Package pdftex.def Info: img/notifyCurrentUserChange.png  used on input line 35.
+(pdftex.def)             Requested size: 345.0pt x 76.93279pt.
+
+Overfull \hbox (0.91568pt too wide) in paragraph at lines 31--38
+[]\OT1/cmr/m/n/10 La classe con-tiene metodi per ag-giun-gere (\OT1/cmtt/m/n/10 addCurrentUserChangeListener\OT1/cmr/m/n/10 )
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 39.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[33 <./img/schema_singleton.png> <./img/currentUserChangeListener.png>]
+<img/schema_observer.png, id=492, 427.5975pt x 274.626pt>
+File: img/schema_observer.png Graphic file (type png)
+<use img/schema_observer.png>
+Package pdftex.def Info: img/schema_observer.png  used on input line 44.
+(pdftex.def)             Requested size: 345.0pt x 221.57841pt.
+) (capitoli/Database.tex
+<img/Schema_ER.jpg, id=493, 755.82375pt x 781.92125pt>
+File: img/Schema_ER.jpg Graphic file (type jpg)
+<use img/Schema_ER.jpg>
+Package pdftex.def Info: img/Schema_ER.jpg  used on input line 6.
+(pdftex.def)             Requested size: 276.00105pt x 285.52415pt.
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 10.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [34 <./img/notifyCurrentUserChange.png> <./img/schema_observer.png>]
+Overfull \hbox (12.56935pt too wide) in paragraph at lines 15--16
+[]\OT1/cmr/bx/n/10 CentriMonitoraggio\OT1/cmr/m/n/10 ($[]$, cen-ter-name, street-name, street-num-ber, cap, town-
+ []
+
+
+Overfull \hbox (15.56982pt too wide) in paragraph at lines 17--18
+[]\OT1/cmr/bx/n/10 ParametriClimatici\OT1/cmr/m/n/10 ($[]$, cityid$[]$, centerid$[]$,
+ []
+
+
+Overfull \hbox (2.00055pt too wide) in paragraph at lines 17--18
+\OT1/cmr/m/n/10 surescore, pres-surecom-ment, tem-per-a-turescore, tem-per-a-turecom-ment, pre-
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 23.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[35 <./img/Schema_ER.jpg>] (C:\Users\utente\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+Overfull \hbox (27.00378pt too wide) in paragraph at lines 63--64
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 69.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+[36]
+Overfull \hbox (33.00385pt too wide) in paragraph at lines 87--88
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+
+Overfull \hbox (27.00378pt too wide) in paragraph at lines 88--89
+[][][][][][][][][][][][][][][][][][] 
+ []
+
+)
+File: ../../img/number page.png Graphic file (type png)
+<use ../../img/number page.png>
+Package pdftex.def Info: ../../img/number page.png  used on input line 68.
+(pdftex.def)             Requested size: 42.6727pt x 42.67642pt.
+ [37] (ManualeTecnico.aux)
+ ***********
+LaTeX2e <2023-11-01> patch level 1
+L3 programming layer <2024-01-22>
+ ***********
+Package rerunfilecheck Info: File `ManualeTecnico.out' has not changed.
+(rerunfilecheck)             Checksum: 94C6040D78AF235909915182EAEC2685;7283.
+ ) 
+Here is how much of TeX's memory you used:
+ 21947 strings out of 474542
+ 412774 string characters out of 5743975
+ 1961978 words of memory out of 5000000
+ 43641 multiletter control sequences out of 15000+600000
+ 561043 words of font info for 46 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 99i,15n,107p,573b,2239s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ <C:\Users\utente\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1000.pk><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/Users/utente/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on ManualeTecnico.pdf (38 pages, 6567933 bytes).
+PDF statistics:
+ 647 PDF objects out of 1000 (max. 8388607)
+ 182 named destinations out of 1000 (max. 500000)
+ 531 words of extra memory for PDF output out of 10000 (max. 10000000)
+

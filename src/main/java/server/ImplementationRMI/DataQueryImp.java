@@ -1,6 +1,7 @@
 package server.ImplementationRMI;
 
 import server.DataBaseManager;
+import server.Server;
 import shared.interfacesRMI.DataQueryInterface;
 import shared.record.*;
 
@@ -73,6 +74,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordCity getCityBy(Integer ID) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, ID);
@@ -96,6 +98,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordCity[] getCityBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM coordinatemonitoraggio WHERE " + createSQLCondition(conditions);
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setPreparedStatementValues(stmt, conditions);
@@ -119,6 +122,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordOperator getOperatorBy(Integer ID) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM operatoriregistrati WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, ID);
@@ -142,6 +146,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordOperator[] getOperatorBy(QueryCondition condition) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         List<QueryCondition> conditions = new ArrayList<>();
         conditions.add(condition);
         return getOperatorBy(conditions);
@@ -157,6 +162,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordOperator[] getOperatorBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM operatoriregistrati WHERE " + createSQLCondition(conditions);
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setPreparedStatementValues(stmt, conditions);
@@ -180,6 +186,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordCenter getCenterBy(Integer ID) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM centrimonitoraggio WHERE id = ?";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, ID);
@@ -202,6 +209,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordCenter[] getCenters() throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM centrimonitoraggio";
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             try (ResultSet rs = stmt.executeQuery()) {
@@ -224,6 +232,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordWeather[] getWeatherBy(QueryCondition condition) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         List<QueryCondition> conditions = new ArrayList<>();
         conditions.add(condition);
         return getWeatherBy(conditions);
@@ -239,6 +248,7 @@ public class DataQueryImp extends UnicastRemoteObject implements DataQueryInterf
      */
     @Override
     public synchronized RecordWeather[] getWeatherBy(List<QueryCondition> conditions) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String sql = "SELECT * FROM parametriclimatici WHERE " + createSQLCondition(conditions);
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             setPreparedStatementValues(stmt, conditions);

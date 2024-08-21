@@ -1,0 +1,11 @@
+client
+client.GUI
+client.GUI.layouts
+client.GUI.mainElements
+client.GUI.panels
+client.models
+server
+server.ImplementationRMI
+shared.interfacesRMI
+shared.record
+shared.utils

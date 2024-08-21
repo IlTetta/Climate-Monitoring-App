@@ -489,7 +489,7 @@ public class CityAddData extends JPanel implements Interfaces.UIPanel {
                         return;
                     }
                     if (city != null) {
-                        comboboxCityName.addItem(new ComboItem(city.name()+" "+city.latitude()+" "+city.longitude(), city.ID()));
+                        comboboxCityName.addItem(new ComboItem(city.ASCIIName()+" "+city.latitude()+" "+city.longitude(), city.ID()));
                     }
                 }
 

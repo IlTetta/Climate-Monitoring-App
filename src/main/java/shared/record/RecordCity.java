@@ -59,7 +59,6 @@ public record RecordCity(
     public String toString() {
         String[] dataStrings = new String[] {
                 ID.toString(),
-                name,
                 ASCIIName,
                 countryCode,
                 countryName,

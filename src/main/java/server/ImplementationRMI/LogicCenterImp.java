@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import server.Server;
 import shared.interfacesRMI.LogicCenterInterface;
 import shared.interfacesRMI.DataHandlerInterface;
 import shared.interfacesRMI.DataQueryInterface;
@@ -97,6 +98,8 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
             Integer[] cityIDs,
             Integer operatorID) throws RemoteException, SQLException {
 
+        Server.resetInactivityTimer();
+
         validateCenterParameters(centerName, streetName, streetNumber, CAP, townName, districtName, cityIDs);
 
         RecordCenter newCenter = dataHandler.addNewCenter(
@@ -141,6 +144,8 @@ public class LogicCenterImp extends UnicastRemoteObject implements LogicCenterIn
             Integer operatorID,
             String date,
             Object[][] tableDatas) throws RemoteException, SQLException {
+
+        Server.resetInactivityTimer();
 
         validateOperator(operatorID);
         validateWeatherData(date, tableDatas);

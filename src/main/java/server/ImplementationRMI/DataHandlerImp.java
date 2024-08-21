@@ -1,5 +1,6 @@
 package server.ImplementationRMI;
 
+import server.Server;
 import shared.interfacesRMI.DataHandlerInterface;
 import shared.record.RecordCenter;
 import shared.record.RecordCity;
@@ -88,6 +89,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
                                String username,
                                String password,
                                Integer centerID) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         String checkSql = "SELECT * FROM operatoriregistrati WHERE username = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, username);
@@ -149,6 +151,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
                                      String districtName,
                                      Integer[] cityIDs) throws SQLException, RemoteException {
 
+        Server.resetInactivityTimer();
         String checkSql = "SELECT * FROM centrimonitoraggio WHERE centername = ? AND streetname = ? AND streetnumber = ? AND CAP = ? AND townname = ? AND districtname = ?";
         try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
             checkStmt.setString(1, centerName);
@@ -214,6 +217,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
                               RecordWeather.WeatherData glacierElevation,
                               RecordWeather.WeatherData glacierMass) throws SQLException, RemoteException {
 
+        Server.resetInactivityTimer();
         String insertSql = "INSERT INTO parametriclimatici (cityid, centerid, date, windscore, windcomment, humidityscore, humiditycomment, pressurescore, pressurecomment, temperaturescore, temperaturecomment, precipitationscore, precipitationcomment, glacierelevationscore, glacierelevationcomment, glaciermassscore, glaciermasscomment) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try (PreparedStatement insertStmt = conn.prepareStatement(insertSql, PreparedStatement.RETURN_GENERATED_KEYS)) {
@@ -275,6 +279,7 @@ public class DataHandlerImp extends UnicastRemoteObject implements DataHandlerIn
      */
     @Override
     public synchronized void updateOperator(RecordOperator operator) throws SQLException, RemoteException {
+        Server.resetInactivityTimer();
         updateRecord("operatoriregistrati", operator.ID(), operator);
     }
 

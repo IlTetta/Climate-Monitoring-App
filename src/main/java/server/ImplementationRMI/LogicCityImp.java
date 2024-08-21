@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import server.Server;
 import shared.interfacesRMI.LogicCityInterface;
 import shared.record.RecordWeather;
 
@@ -139,6 +140,8 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          *         record.
          */
         public Integer getCategoryAvgScore(String category) {
+
+            Server.resetInactivityTimer();
             if (category == null || getCategoryRecordCount(category) == 0) {
                 return null;
             }
@@ -152,6 +155,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          * @return Il conteggio dei record per la categoria.
          */
         public int getCategoryRecordCount(String category) {
+            Server.resetInactivityTimer();
             return categoryRecordCounts.getOrDefault(category, 0);
         }
 
@@ -163,6 +167,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
          *         sono commenti.
          */
         public List<String> getCategoryComments(String category) {
+            Server.resetInactivityTimer();
             return categoryComments.getOrDefault(category, new ArrayList<>());
         }
     }
@@ -177,6 +182,7 @@ public class LogicCityImp extends UnicastRemoteObject implements LogicCityInterf
      */
     @Override
     public WeatherTableData getWeatherTableData(RecordWeather[] weatherRecords) throws RemoteException {
+        Server.resetInactivityTimer();
         if (weatherRecords == null) {
             throw new IllegalArgumentException("L'array di record meteorologici non può essere nullo.");
         }

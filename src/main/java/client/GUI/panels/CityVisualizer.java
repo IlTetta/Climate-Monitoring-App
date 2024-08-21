@@ -156,7 +156,7 @@ public class CityVisualizer extends JPanel implements Interfaces.UIPanel {
             return;
         }
 
-        textfieldCityName.setText(recordCity.name());
+        textfieldCityName.setText(recordCity.ASCIIName());
         textfieldCountryName.setText(recordCity.countryName());
         textfieldLatitude.setText(String.valueOf(recordCity.latitude()));
         textfieldLongitude.setText(String.valueOf(recordCity.longitude()));
